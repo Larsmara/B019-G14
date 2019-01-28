@@ -1,0 +1,16 @@
+{
+  "name": "v1",
+  "version": "1.0.0",
+  "description": "Første versjon av portal til Bacheloroppgave",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "B019-G14",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.7"
+  }
+}
