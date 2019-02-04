@@ -9,8 +9,10 @@ var express         = require("express"),
 
 mongoose.connect("mongodb://localhost:27017/portal_kommune", {useNewUrlParser: true});
 app.set("view engine", "ejs");
+app.use(express.static(__dirname+ "/public"));
 
 app.use(authRoutes);
+app.use("/prosjekter", prosjektRoute);
 
 
 app.listen(3000, function(){
