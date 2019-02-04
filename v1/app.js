@@ -1,6 +1,9 @@
 var express         = require("express"),
     app             = express(),
-    mongoose        = require("mongoose");
+    mongoose        = require("mongoose"),
+    passport        = require("passport"),
+    localStrategy   = require("passport-local"),
+    User            = require("./models/user");
 
     // ROUTES
     var prosjektRoute   = require("./routes/prosjekter"),
@@ -11,6 +14,20 @@ mongoose.connect("mongodb://localhost:27017/portal_kommune", {useNewUrlParser: t
 app.set("view engine", "ejs");
 app.use(express.static(__dirname+ "/public"));
 
+// Passport konfigurasjon
+app.use(require("express-session")({
+    secret: "Vi er den beste bachelorgruppen",
+    resave: true,
+    saveUninitialized: true
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new localStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+// Henter routes globalt
 app.use(authRoutes);
 app.use("/prosjekter", prosjektRoute);
 
