@@ -1,0 +1,47 @@
+nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border-bottom: ridge;
+}
+
+nav a{
+  color: #000;
+  padding: 10px 30px;
+}
+
+nav a:hover {
+  font-weight: bold;
+}
+
+main {
+  width: 50%;
+  margin: auto;
+}
+
+h2, h3 {
+  text-align: center;
+}
+
+section {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  border-top: ridge;
+}
+
+.button {
+  text-decoration: none;
+  border-style: ridge;
+  padding: 5px 10px;
+  color: #000;
+}
+
+.button:hover {
+  background-color: #000;
+  color: #fff;
+}
