@@ -10,31 +10,60 @@ var User = require("../models/user");
 
 // Registrerings skjema
 router.get("/register", function(req,res){
-    res.render("register");
+    res.render("register", {title:'Registrer deg'});
 });
 // Logikk for registrering
-applicationCache.use("/register", function(req,res){
-    var newUser = new User({});
+router.post("/register", function(req,res){
+    var newUser = new User({username: req.body.username, email: req.body.email, tlf: req.body.tlf});
+    User.register(newUser, req.body.password, function(err, user){
+        if(err){
+            console.log(err.message);
+            return res.render("register", {title:'Registrer deg'});
+        } else {
+            passport.authenticate("local")(req,res,function(){
+                console.log("Navn: " + user.username + " e-post: " + user.email + " tlf: " + user.tlf);
+                res.redirect("/landing");
+            });
+        }
+    });
 })
 
 // Login skjema
 router.get("/login",function(req,res){
-    res.render("login");
+    res.render("login", {title:'Login'});
 });
+
+// Login logikk
+router.post("/login", passport.authenticate("local",{
+    successRedirect: "/",
+    failureRedirect: "login"
+}), function(req,res){
+});
+
+// Logut logikk
+router.get("/logout", function(req,res){
+    req.logOut();
+    res.redirect("landing");
+});
+
+
+//==========================================================
+// Common Routes
 
 // Min side skjema
 router.get("/mySite", function(req,res){
-    res.render("mySite");
+    res.render("mySite", {title:'Min side'});
 });
 
 // Om oss skjema
 router.get("/about", function(req,res){
-    res.render("about");
+    res.render("about", {title:'Om oss'});
 });
 
 //Root route
 router.get("/", function(req,res){
-    res.render("landing");
+    res.render("landing", {title: 'Hjem'});
+    console.log("Landing page");
 });
 
 module.exports = router;

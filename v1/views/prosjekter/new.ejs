@@ -1,6 +1,17 @@
 <% include ../partials/header %>
 
-<h1>Nytt prosjekt</h1>
+<div class="formContainer">
+
+    <h1>Send oss din idé!</h1>
+
+    <form action="prosjekter/new" method="post" enctype="text/plain">
+        <p><input type="text" name="ideTittel" placeholder="Tittel"></p>
+        <p><textarea name="ideTekst" cols="30" rows="10"></textarea></p>
+        <p><input type="file" name="pic" accept="image/*"> </p>
+        <input type="submit" value="Send inn">
+    </form>
+
+</div>
 
 <% include ../partials/footer %>
 

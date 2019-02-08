@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Idé-portalen</title>
+    <title><%= title %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="/stylesheets/navFooter.css">
@@ -21,9 +21,11 @@
             <li class="nav-item">
                 <a class="nav-link" href="/">Hjem</a>
             </li>
+            <% if(currentUser) { %>
             <li class="nav-item">
                 <a class="nav-link" href="/prosjekter/new">Send inn</a>
             </li>
+            <% } %>
             <li class="nav-item">
                 <a class="nav-link" href="/prosjekter">Prosjekter</a>
             </li>
@@ -32,18 +34,21 @@
             </li>
             </ul>
             <ul class="navbar-nav ml-auto">
+                <% if(!currentUser){ %>
                 <li class="nav-item">
                     <a class="nav-link right-nav" href="/login">Logg inn</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link right-nav" href="/register">Sign up</a>
                 </li>
+                <% } else { %>
                 <li class="nav-item">
                     <a class="nav-link right-nav" href="/mySite">Min side</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link right-nav" href="#">Logg ut</a>
                 </li>
+                <% } %>
             </ul>
         </div>
     </nav>
