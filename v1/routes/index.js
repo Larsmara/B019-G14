@@ -14,7 +14,7 @@ router.get("/register", function(req,res){
 });
 // Logikk for registrering
 router.post("/register", function(req,res){
-    var newUser = new User({username: req.body.username, email: req.body.email, tlf: req.body.tlf});
+    var newUser = new User({username: req.body.email, name: req.body.name, tlf: req.body.tlf});
     User.register(newUser, req.body.password, function(err, user){
         if(err){
             console.log(err.message);
@@ -22,7 +22,7 @@ router.post("/register", function(req,res){
         } else {
             passport.authenticate("local")(req,res,function(){
                 console.log("Navn: " + user.username + " e-post: " + user.email + " tlf: " + user.tlf);
-                res.redirect("/landing");
+                res.redirect("landing");
             });
         }
     });
@@ -63,7 +63,6 @@ router.get("/about", function(req,res){
 //Root route
 router.get("/", function(req,res){
     res.render("landing", {title: 'Hjem'});
-    console.log("Landing page");
 });
 
 module.exports = router;
