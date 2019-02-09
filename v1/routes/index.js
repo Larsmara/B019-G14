@@ -63,9 +63,9 @@ router.get("/about", function(req,res){
     res.render("about", {title:'Om oss'});
 });
 
-// Admin route
-router.get("/admin/backdoor", function(req,res){
-    res.send("Velkommen til admin siden!");
+// Admin dashboard
+router.get("/dashboard", function(req,res){
+    res.render("admin/dashboard", {title:'Dashboard'});
 });
 
 //Root route

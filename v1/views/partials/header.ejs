@@ -44,12 +44,22 @@
                     <a class="nav-link right-nav" href="/register">Sign up</a>
                 </li>
                 <% } else { %>
+                    <% if(currentUser && currentUser.isAdmin) { %>
+                
+                <li class="nav-item">
+                    <a class="nav-link right-nav" href="/dashboard">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                        <a class="nav-link right-nav" href="/logout">Logg ut</a>
+                    </li>
+                <% } else { %>
                 <li class="nav-item">
                     <a class="nav-link right-nav" href="/mySite">Min side</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link right-nav" href="/logout">Logg ut</a>
                 </li>
+                <% } %>
                 <% } %>
             </ul>
         </div>
