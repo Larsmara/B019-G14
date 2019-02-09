@@ -15,6 +15,10 @@ router.get("/register", function(req,res){
 // Logikk for registrering
 router.post("/register", function(req,res){
     var newUser = new User({username: req.body.email, name: req.body.name, tlf: req.body.tlf});
+    console.log(req.body.adminCode);
+    if(req.body.adminCode == 'lars') {
+        newUser.isAdmin = true;
+      }
     User.register(newUser, req.body.password, function(err, user){
         if(err){
             console.log(err.message);
@@ -26,7 +30,7 @@ router.post("/register", function(req,res){
             });
         }
     });
-})
+});
 
 // Login skjema
 router.get("/login",function(req,res){
@@ -43,7 +47,7 @@ router.post("/login", passport.authenticate("local",{
 // Logut logikk
 router.get("/logout", function(req,res){
     req.logOut();
-    res.redirect("landing");
+    res.redirect("/");
 });
 
 

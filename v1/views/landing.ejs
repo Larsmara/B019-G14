@@ -2,6 +2,9 @@
 
 <div class="infoContainer">
     <h1>Velkommen</h1>
+    <% if(currentUser && currentUser.isAdmin) { %>
+        <h2>Velcome admin</h2>
+    <% } %>
 </div>
 
 
