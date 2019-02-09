@@ -6,11 +6,11 @@
 
     <form action="/register" method="POST">
 
-        <p><input type="text" name="username" placeholder="Navn"></p>
-        <p><input type="email" name="email" placeholder="E-post"></p>
-        <p><input type="number" name="tlf" placeholder="Telefonnummer"></p>
-        <p><input type="password" name="password" placeholder="Passord"></p>
-        <p><input type="text" name="" id="adminCode" placeholder="Admin"></p>
+        <p><input type="email" name="username" placeholder="E-post" required></p>
+        <p><input type="text" name="name" placeholder="Navn" required></p>
+        <p><input type="number" name="tlf" placeholder="Telefonnummer" required></p>
+        <p><input type="password" name="password" placeholder="Passord" required></p>
+        <p><input type="text" name="adminCode" placeholder="Admin"></p>
         <p><input type="submit" value="Login">
 
     </form>

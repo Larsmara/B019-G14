@@ -14,21 +14,20 @@ router.get("/register", function(req,res){
 });
 // Logikk for registrering
 router.post("/register", function(req,res){
-    var newUser = new User({username: req.body.email, name: req.body.name, tlf: req.body.tlf});
-    console.log(req.body.adminCode);
-    if(req.body.adminCode == 'lars') {
+    var newUser = new User({username: req.body.username});
+    if(req.body.adminCode === "admin") {
         newUser.isAdmin = true;
       }
     User.register(newUser, req.body.password, function(err, user){
         if(err){
             console.log(err.message);
             return res.render("register", {title:'Registrer deg'});
-        } else {
+        } 
             passport.authenticate("local")(req,res,function(){
-                console.log("Navn: " + user.username + " e-post: " + user.email + " tlf: " + user.tlf);
-                res.redirect("landing");
+                console.log("Navn: " + user.username + " e-post: " + user.name + " tlf: " + user.tlf + " admin: " + user.isAdmin);
+                res.redirect("mySite");
             });
-        }
+        
     });
 });
 
@@ -62,6 +61,11 @@ router.get("/mySite", function(req,res){
 // Om oss skjema
 router.get("/about", function(req,res){
     res.render("about", {title:'Om oss'});
+});
+
+// Admin route
+router.get("/admin/backdoor", function(req,res){
+    res.send("Velkommen til admin siden!");
 });
 
 //Root route
