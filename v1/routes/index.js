@@ -25,10 +25,15 @@ router.post("/register", function(req,res){
         } 
             passport.authenticate("local")(req,res,function(){
                 console.log("Navn: " + user.username + " e-post: " + user.name + " tlf: " + user.tlf + " admin: " + user.isAdmin);
-                res.redirect("mySite");
+                res.render("reg-done",{title:'Registrering fullført'});
             });
         
     });
+});
+
+//Reg done
+router.get("/reg-done",function(req,res){
+    res.render("reg-done",{title:'Registrering fullført'});
 });
 
 // Login skjema

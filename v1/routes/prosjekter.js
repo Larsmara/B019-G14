@@ -15,4 +15,9 @@ router.get("/new", middleware.isLoggedIn , function(req,res){
     res.render("prosjekter/new", {title:'Ny idé'});
 });
 
+// Ide mottat
+router.get("/ideSendt", function(req,res){
+    res.render("prosjekter/ideSendt", {title:'Takk for din ide!'});
+});
+
 module.exports = router;
