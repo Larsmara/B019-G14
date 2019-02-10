@@ -1,20 +1,22 @@
-<% include partials/header %> 
+<% include partials/header %>
 
-<div class="formContainer">
+<main>
+  <div class="formContainer">
 
-    <h1>Registrer deg</h1>
+      <h2>Registrer deg</h2>
 
-    <form action="/register" method="POST">
+      <form action="/register" method="POST">
 
-        <p><input type="email" name="username" placeholder="E-post" required></p>
-        <p><input type="text" name="name" placeholder="Navn" required></p>
-        <p><input type="number" name="tlf" placeholder="Telefonnummer" required></p>
-        <p><input type="password" name="password" placeholder="Passord" required></p>
-        <p><input type="text" name="adminCode" placeholder="Admin"></p>
-        <p><input type="submit" value="Login">
+          <p><input type="email" name="username" placeholder="E-post" required></p>
+          <p><input type="text" name="name" placeholder="Navn" required></p>
+          <p><input type="number" name="tlf" placeholder="Telefonnummer" required></p>
+          <p><input type="password" name="password" placeholder="Passord" required></p>
+          <p><input type="text" name="adminCode" placeholder="Admin"></p>
+          <p><input type="submit" value="Login">
 
-    </form>
+      </form>
 
 </div>
+</main>
 
-<% include partials/footer %> 
+<% include partials/footer %>

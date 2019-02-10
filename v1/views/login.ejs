@@ -1,17 +1,19 @@
-<% include partials/header %> 
+<% include partials/header %>
 
-<div class="formContainer">
-    
-    <h1>Login</h1>
+<main>
+  <div class="formContainer">
 
-    <form action="/login" method="POST">
+      <h2>Login</h2>
 
-        <p><input type="text" name="username" placeholder="e-post / tlf-nr"></p>
-        <p><input type="password" name="password" placeholder="Passord"></p>
-        <p><input type="submit" value="Login"></p>
+      <form action="/login" method="POST">
 
-    </form>
+          <p><input type="text" name="username" placeholder="e-post / tlf-nr"></p>
+          <p><input type="password" name="password" placeholder="Passord"></p>
+          <p><input type="submit" value="Login"></p>
 
-</div>
+      </form>
 
-<% include partials/footer %> 
+  </div>
+</main>
+
+<% include partials/footer %>
