@@ -16,7 +16,11 @@
     <article>
       <h2>Idé</h2>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam interdum ipsum ut ex feugiat laoreet. Praesent vitae volutpat orci. Aliquam faucibus at leo non facilisis. Ut quis pellentesque diam. Proin sit amet varius libero. Sed malesuada tincidunt tellus. Maecenas varius blandit consequat. Donec sed tempus eros, sed mollis justo. Etiam tempus risus a ullamcorper tristique. Vivamus sagittis magna nunc, quis ullamcorper velit tristique et. Phasellus tincidunt quam sit amet eros mattis maximus a non urna. Sed pretium magna in ultrices tempus.</p>
+      <% if(!currentUser){ %>
       <p><a href="login" class="button">Kom med din idé</a></p>
+      <% } else { %>
+        <p><a href="/prosjekter/new">Send inn din ide!</a></p>
+      <% } %>
     </article>
 </main>
 
