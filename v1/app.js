@@ -12,7 +12,8 @@ var express         = require("express"),
         authRoutes      = require("./routes/index");
 
 
-mongoose.connect("mongodb://localhost:27017/portal_kommune", {useNewUrlParser: true});
+//mongoose.connect("mongodb://localhost:27017/portal_kommune", {useNewUrlParser: true});
+mongoose.connect("mongodb://lars:lars12345@ds129625.mlab.com:29625/bachelor_portal", {useNewUrlParser: true});
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
