@@ -5,6 +5,7 @@ var ProjectSelectSchema = new mongoose.Schema({
     image: String,
     text: String,
     createdAt: String,
+    showing: {type: Boolean, default: false},
     author: {
         id: {
             type: mongoose.Schema.Types.ObjectId,

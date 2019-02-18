@@ -40,6 +40,7 @@ router.post("/",function(req,res){
         if(err){
             console.log(err);
         } else {
+            req.flash("success", "Din ide er registrert. Denne ideen vil bli vurdert, men vi gjør oppmerksom på at vi ikke kan realisere alle ideer, men dit innspill kan bidra til et bedre samfunn i halden.")
             res.redirect("/prosjekter");
         }
     });

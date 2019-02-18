@@ -5,6 +5,7 @@ var ProjectSchema = new mongoose.Schema({
     image: String,
     text: {type: String, required: true},
     createdAt: {type: Date, default: Date.now},
+    showing: {type: Boolean, default: false},
     author: {
         id: {
             type: mongoose.Schema.Types.ObjectId,

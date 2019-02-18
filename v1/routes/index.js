@@ -1,7 +1,10 @@
 var express = require("express");
+var session = require("express-session");
 var router = express.Router();
 var passport = require("passport");
 var User = require("../models/user");
+
+var sess;
 
 
 // ===============================
@@ -21,10 +24,11 @@ router.post("/register", function(req,res){
     User.register(newUser, req.body.password, function(err, user){
         if(err){
             console.log(err.message);
-            return res.render("register", {title:'Registrer deg'});
+            return res.render("register", {error: err.message ,title:'Registrer deg'});
         } 
             passport.authenticate("local")(req,res,function(){
                 console.log("Navn: " + user.username + " e-post: " + user.name + " tlf: " + user.tlf + " admin: " + user.isAdmin);
+                req.flash("success", "Innlogget som: " + req.body.username);
                 res.render("reg-done",{title:'Registrering fullført'});
             });
         
@@ -38,19 +42,23 @@ router.get("/reg-done",function(req,res){
 
 // Login skjema
 router.get("/login",function(req,res){
+    sess.email = req.body.username;
     res.render("login", {title:'Login'});
 });
 
 // Login logikk
 router.post("/login", passport.authenticate("local",{
     successRedirect: "/",
-    failureRedirect: "login"
+    failureRedirect: "login",
+    failureFlash: true,
+    successFlash: "Velkommen!"
 }), function(req,res){
 });
 
 // Logut logikk
 router.get("/logout", function(req,res){
     req.logOut();
+    req.flash("success", "Logget ut.");
     res.redirect("/");
 });
 
@@ -70,7 +78,13 @@ router.get("/about", function(req,res){
 
 //Root route
 router.get("/", function(req,res){
-    res.render("landing", {title: 'Hjem'});
+    sess = req.session;
+    sess.username;
+    if(sess.username){
+        res.redirect("/admin");
+    }else {
+        res.render("landing", {title: 'Hjem'});
+    }
 });
 
 module.exports = router;

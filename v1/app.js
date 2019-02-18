@@ -1,7 +1,9 @@
 var express         = require("express"),
+    session         = require("express-session"),
     app             = express(),
     mongoose        = require("mongoose"),
     bodyParser      = require("body-parser"),
+    flash           = require("connect-flash"),
     passport        = require("passport"),
     localStrategy   = require("passport-local"),
     methodOverride  = require("method-override"),
@@ -31,7 +33,7 @@ app.use(require("express-session")({
 
 app.locals.moment = require("moment");
 
-
+app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new localStrategy(User.authenticate()));
@@ -40,6 +42,8 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use(function(req,res,next){
     res.locals.currentUser = req.user;
+    res.locals.success = req.flash('success');
+    res.locals.error = req.flash('error');
     next();
 });
 

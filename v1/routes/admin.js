@@ -1,4 +1,5 @@
 var express     = require("express"),
+    session     = require("express-session"),
     router      = express.Router(),
     passport    = require("passport"),
     mongoose    = require("mongoose"),
@@ -6,17 +7,21 @@ var express     = require("express"),
     Project        = require("../models/project"),
     ProjectSelect        = require("../models/project_select");
 
+    var sess;
+
 
 // Admin dashboard
 router.get("/dashboard", function(req,res){
     if(req.user.isAdmin === true){
         Project.find({}, function(err, allProjects){
             User.find({}, function(err, allUsers){
-                if(err){
-                    console.log(err);
-                } else {
-                    res.render("admin/dashboard", {currentUser: req.user, projects: allProjects, users: allUsers ,title:'Dashboard'});
-                }
+                ProjectSelect.find({}, function(err, selected){
+                    if(err){
+                        console.log(err);
+                    } else {
+                        res.render("admin/dashboard", {currentUser: req.user, projects: allProjects, selected: selected,users: allUsers ,title:'Dashboard'});
+                    }
+                });
             });
         });
     } else {
@@ -31,9 +36,10 @@ router.get("/:id", function(req,res){
             image       = foundProj.image,
             text        = foundProj.text,
             createdAt   = foundProj.createdAt,
+            showing     = true,
             author      = foundProj.author;
 
-        var selectedProject = { _id: foundProj._id,title: title, image: image, text: text, createdAt: createdAt, author: author};
+        var selectedProject = { _id: foundProj._id,title: title, image: image, text: text, createdAt: createdAt, showing: showing,author: author};
 
         ProjectSelect.create(selectedProject, function(err, newSelect){
             if(err){
@@ -42,7 +48,8 @@ router.get("/:id", function(req,res){
                 console.log(JSON.stringify(foundProj));
                 console.log("=================================================")
                 console.log("Tittel: " + title + " image: " + image + " text: " + text + " createdAt: " + createdAt + " author: " + author + " found ID: " + foundProj._id);
-                res.redirect("/dashboard")
+                //req.flash("success", "Vises nå til publikum!");
+                res.redirect("/dashboard");
             }
         }); 
     });
@@ -54,6 +61,7 @@ router.delete("/:id", function(req,res){
         if(err){
             console.log(err);
         }else{
+            //req.flash("error", "Ideén vises ikke lenger for publikum");
             res.redirect("/dashboard");
         }
     });
