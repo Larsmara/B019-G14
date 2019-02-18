@@ -5,7 +5,7 @@
   <p>En oversikt over prosjektene. </p>
   <div >
     <% projects.forEach(function(projects){ %>
-      <div class="hidden" id="projShow" data-id="<%= projects._id %>">
+      <div id="projShow" data-id="<%= projects._id %>">
         <%= projects.title %> - <%= projects.text %> - <%= projects._id %>
       </div>
     <% }) %>

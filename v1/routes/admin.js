@@ -1,6 +1,7 @@
 var express     = require("express"),
     router      = express.Router(),
     passport    = require("passport"),
+    mongoose    = require("mongoose"),
     User        = require("../models/user"),
     Project        = require("../models/project"),
     ProjectSelect        = require("../models/project_select");
@@ -23,24 +24,39 @@ router.get("/dashboard", function(req,res){
     }
 });
 
+// Legger til idéen i listen over prosjekter som skal vises til publikum.
 router.get("/:id", function(req,res){
-    Project.findById(req.params.id).exec(function(err, foundProj){
-        var title      = foundProj.title,
+    Project.findById(req.params.id).exec(function(err, foundProj) { 
+            var title   = foundProj.title,
             image       = foundProj.image,
             text        = foundProj.text,
             createdAt   = foundProj.createdAt,
             author      = foundProj.author;
 
-        var selectedProject = {title: title, image: image, text: text, createdAt: createdAt, author: author};
+        var selectedProject = { _id: foundProj._id,title: title, image: image, text: text, createdAt: createdAt, author: author};
 
+        ProjectSelect.create(selectedProject, function(err, newSelect){
+            if(err){
+                console.log(err);
+            } else {
+                console.log(JSON.stringify(foundProj));
+                console.log("=================================================")
+                console.log("Tittel: " + title + " image: " + image + " text: " + text + " createdAt: " + createdAt + " author: " + author + " found ID: " + foundProj._id);
+                res.redirect("/dashboard")
+            }
+        }); 
+    });
+});
+
+// DESTROY - Sletter prosjektet som vises til publikum.
+router.delete("/:id", function(req,res){
+    ProjectSelect.findByIdAndRemove(req.params.id, function(err){
         if(err){
             console.log(err);
         }else{
-            console.log(JSON.stringify(foundProj));
-            console.log("Tittel: " + title + " image: " + image + " text: " + text + " createdAt: " + createdAt + " author: " + author);
-            res.redirect("/")
+            res.redirect("/dashboard");
         }
     });
-})
+});
 
 module.exports = router;

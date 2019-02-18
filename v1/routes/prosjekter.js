@@ -2,12 +2,13 @@ var express = require("express"),
     router  = express.Router(),
     middleware = require("../middleware");
     User        = require("../models/user"),
-    Project     = require("../models/project");
+    Project     = require("../models/project"),
+    ProjectSelect = require("../models/project_select");
 
 
 // INDEX - Viser prosjektoversikt
 router.get("/", function(req,res){
-    Project.find({}, function(err, allProjects){
+    ProjectSelect.find({}, function(err, allProjects){
         if(err){
             console.log(err);
         } else {
@@ -16,7 +17,7 @@ router.get("/", function(req,res){
     }); 
 });
 
-// SHOW - Legger et nytt prosjekt til db
+// SHOW - Viser skjema for å registrere ny ide
 router.get("/new", middleware.isLoggedIn , function(req,res){
     res.render("prosjekter/new", {title:'Ny idé'});
 });

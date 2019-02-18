@@ -4,6 +4,7 @@ var express         = require("express"),
     bodyParser      = require("body-parser"),
     passport        = require("passport"),
     localStrategy   = require("passport-local"),
+    methodOverride  = require("method-override"),
     User            = require("./models/user");
 
     // ROUTES
@@ -19,6 +20,7 @@ mongoose.connect("mongodb://lars:lars12345@ds129625.mlab.com:29625/bachelor_port
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + '/public'));
+app.use(methodOverride("_method"));
 
 // Passport konfigurasjon
 app.use(require("express-session")({

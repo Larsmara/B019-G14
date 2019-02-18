@@ -5,7 +5,14 @@ var ProjectSelectSchema = new mongoose.Schema({
     image: String,
     text: String,
     createdAt: String,
-    author: String
+    author: {
+        id: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        },
+        username: String,
+        name: String
+    }
 });
 
 module.exports = mongoose.model("Project_select", ProjectSelectSchema);
