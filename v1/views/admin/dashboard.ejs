@@ -2,4 +2,19 @@
 
 <h1>Welcome to the dashboard</h1>
 
+<% projects.forEach(function(projects){ %>
+    <div class="list-group-item list-group-item">
+        <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1"><%= projects.title %></h5>
+        <small class="text-muted"><%= moment(projects.createdAt).fromNow() %></small>
+        </div>
+        <p class="mb-1"><%= projects.text %></p>
+        <small class="text-muted"><%= projects.author.username %></small>
+        <a href="/<%= projects._id %>"><i class="far fa-eye"></i></a>
+        <form class="commentDelete" action="/<%=projects._id%>?_method=DELETE" method="POST">
+             <button type="submit"><i class="far fa-trash-alt"></i></button>
+        </form>
+    </div>
+<% }) %>
+
 <% include ../partials/footer %>

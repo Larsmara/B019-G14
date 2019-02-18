@@ -3,6 +3,27 @@
 <main>
   <h2>Prosjekter</h2>
   <p>En oversikt over prosjektene. </p>
+  <p>Totalt antall idéer: <%= project.length%></p>
+
+  <% if(selected.length > null){ %>
+  <h3>Til produksjon</h3>
+  <% } %>
+  <div>
+    <% selected.forEach(function(selected){ %>
+      <div>
+        <%= selected.title %> - <%= selected.text %>
+      </div>
+    <% }) %>
+  </div>
+  <h3>Alle ideér</h3>
+  <div>
+    <% project.forEach(function(project){ %>
+      <div>
+        <%= project.title %> - <%= project.text %>
+      </div>
+    <% }) %>
+  </div>
+
 </main>
 
 <% include ../partials/footer %>
