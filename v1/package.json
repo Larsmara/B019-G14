@@ -4,7 +4,8 @@
   "description": "Første versjon av portal til Bacheloroppgave",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "author": "B019-G14",
   "license": "ISC",
