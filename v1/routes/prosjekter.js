@@ -8,14 +8,19 @@ var express = require("express"),
 
 // INDEX - Viser prosjektoversikt
 router.get("/", function(req,res){
-    ProjectSelect.find({}, function(err, allProjects){
-        if(err){
-            console.log(err);
-        } else {
-            res.render("prosjekter/index", {projects: allProjects, currentUser: req.user, title:'Prosjekter'});
-        }
-    }); 
+    Project.find({}, function(err, allPosts){
+        ProjectSelect.find({}, function(err, allUsers){
+            if(err){
+                console.log(err);
+            } else {
+                res.render("prosjekter/index", {selected: allUsers, project: allPosts, currentUser: req.user, title:'Prosjekter'});
+            }
+        });
+    });
 });
+
+//                res.render("prosjekter/index", {projects: allProjects, post: allProj, currentUser: req.user, title:'Prosjekter'});
+
 
 // SHOW - Viser skjema for å registrere ny ide
 router.get("/new", middleware.isLoggedIn , function(req,res){

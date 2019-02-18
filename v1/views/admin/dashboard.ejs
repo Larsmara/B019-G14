@@ -6,7 +6,7 @@
     <div class="list-group-item list-group-item">
         <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1"><%= projects.title %></h5>
-        <small class="text-muted"><%= projects.createdAt %></small>
+        <small class="text-muted"><%= moment(projects.createdAt).fromNow() %></small>
         </div>
         <p class="mb-1"><%= projects.text %></p>
         <small class="text-muted"><%= projects.author.username %></small>

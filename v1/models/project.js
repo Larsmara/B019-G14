@@ -1,9 +1,9 @@
 var mongoose = require("mongoose");
 
 var ProjectSchema = new mongoose.Schema({
-    title: String,
+    title: {type: String, required: true},
     image: String,
-    text: String,
+    text: {type: String, required: true},
     createdAt: {type: Date, default: Date.now},
     author: {
         id: {
