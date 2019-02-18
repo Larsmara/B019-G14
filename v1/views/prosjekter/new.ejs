@@ -5,9 +5,9 @@
 
       <h2>Send oss din idé!</h2>
 
-      <form action="prosjekter/new" method="post" enctype="text/plain">
-          <p><input type="text" name="ideTittel" placeholder="Tittel"></p>
-          <p><textarea name="ideTekst" cols="30" rows="10"></textarea></p>
+      <form action="/prosjekter" method="POST">
+          <p><input type="text" name="title" placeholder="Tittel"></p>
+          <p><input type="text" name="text" placeholder="Din idé"></p>
           <p><input type="file" name="pic" accept="image/*"> </p>
           <input type="submit" value="Send inn">
       </form>
@@ -16,6 +16,9 @@
       <p><a href="ideSendt">Send inn</a></p> -->
 
   </div>
+
+  <a href="/prosjekter">Back</a>
+  
 </main>
 
 <% include ../partials/footer %>

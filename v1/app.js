@@ -9,7 +9,8 @@ var express         = require("express"),
     // ROUTES
     var prosjektRoute   = require("./routes/prosjekter"),
         commentRoute    = require("./routes/kommentarer"),
-        authRoutes      = require("./routes/index");
+        authRoutes      = require("./routes/index"),
+        adminRoute      = require("./routes/admin");
 
 
 //mongoose.connect("mongodb://localhost:27017/portal_kommune", {useNewUrlParser: true});
@@ -40,6 +41,7 @@ app.use(function(req,res,next){
 // Henter routes globalt
 app.use(authRoutes);
 app.use("/prosjekter", prosjektRoute);
+app.use(adminRoute);
 
 
 app.listen(3000, function(){

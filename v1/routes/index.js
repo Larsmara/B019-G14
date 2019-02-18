@@ -68,11 +68,6 @@ router.get("/about", function(req,res){
     res.render("about", {title:'Om oss'});
 });
 
-// Admin dashboard
-router.get("/dashboard", function(req,res){
-    res.render("admin/dashboard", {title:'Dashboard'});
-});
-
 //Root route
 router.get("/", function(req,res){
     res.render("landing", {title: 'Hjem'});

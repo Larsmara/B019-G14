@@ -6,14 +6,42 @@ var express = require("express"),
 
 
 // INDEX - Viser prosjektoversikt
-router.get("/",function(req,res){
-    res.render("prosjekter/index", {title:'Prosjekter'});
+router.get("/", function(req,res){
+    Project.find({}, function(err, allProjects){
+        if(err){
+            console.log(err);
+        } else {
+            res.render("prosjekter/index", {projects: allProjects, currentUser: req.user, title:'Prosjekter'});
+        }
+    }); 
 });
 
-// Nytt prosjekt - Legger et nytt prosjekt til db
+// SHOW - Legger et nytt prosjekt til db
 router.get("/new", middleware.isLoggedIn , function(req,res){
     res.render("prosjekter/new", {title:'Ny idé'});
 });
+
+// CREATE - Legger til nytt prosjekt i databasen
+router.post("/",function(req,res){
+    var title = req.body.title,
+        img = req.body.img,
+        text = req.body.text;
+    var author = { id: req.user._id, username: req.user.username, name: req.user.name };
+
+    var newProject = {title: title, img: img, text: text, author: author, createdAt: Date.now()};
+
+    Project.create(newProject, function(err, newlyCreatedPost){
+        if(err){
+            console.log(err);
+        } else {
+            res.redirect("/prosjekter");
+        }
+    });
+});
+
+// EDIT - Tror ikke vi trenger? 
+
+// DESTROY - Tror ikke vi trenger? 
 
 // Ide mottat
 router.get("/ideSendt", function(req,res){
