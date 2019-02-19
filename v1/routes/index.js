@@ -42,7 +42,6 @@ router.get("/reg-done",function(req,res){
 
 // Login skjema
 router.get("/login",function(req,res){
-    sess.email = req.body.username;
     res.render("login", {title:'Login'});
 });
 
@@ -78,13 +77,7 @@ router.get("/about", function(req,res){
 
 //Root route
 router.get("/", function(req,res){
-    sess = req.session;
-    sess.username;
-    if(sess.username){
-        res.redirect("/admin");
-    }else {
-        res.render("landing", {title: 'Hjem'});
-    }
+    res.render("landing", {title: 'Hjem'});
 });
 
 module.exports = router;
