@@ -11,7 +11,7 @@
   <div>
     <% selected.forEach(function(selected){ %>
       <div class="">
-        <p> <%= selected.title %> </p>
+        <a href="/prosjekter/<%=selected._id%>"><%= selected.title %></a>
       </div>
     <% }) %>
   </div>
@@ -22,8 +22,7 @@
   <div>
     <% project.forEach(function(project){ %>
       <div>
-        <%= project.title %> - <%= project.text %>
-        <hr>
+        <a href="/prosjekter/<%=project._id%>"><%= project.title %></a>
       </div>
     <% }) %>
   </div>

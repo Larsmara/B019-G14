@@ -46,13 +46,16 @@ router.post("/",function(req,res){
     });
 });
 
-// EDIT - Tror ikke vi trenger? 
-
-// DESTROY - Tror ikke vi trenger? 
-
-// Ide mottat
-router.get("/ideSendt", function(req,res){
-    res.render("prosjekter/ideSendt", {title:'Takk for din ide!'});
+// SHOW - Viser ideén på egen side
+router.get("/:id", function(req,res){
+    Project.findById(req.params.id).exec(function(err, foundProject){
+        if(err){
+            console.log(err);
+        }else {
+            res.render("prosjekter/show", {project: foundProject, title: foundProject.title});
+        }
+    });
 });
+
 
 module.exports = router;

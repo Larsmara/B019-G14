@@ -45,7 +45,7 @@
                     <a class="nav-link right-nav" href="/register">Registrer deg</a>
                 </li>
                 <% } else { %>
-                    <% if(currentUser && currentUser.isAdmin) { %>
+                <% if(currentUser && currentUser.isAdmin) { %>
                 
                 <li class="nav-item">
                     <a class="nav-link right-nav" href="/dashboard">Dashboard</a>

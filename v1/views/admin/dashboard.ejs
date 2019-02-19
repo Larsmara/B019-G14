@@ -13,10 +13,14 @@
         </div>
         <p class="mb-1"><%= projects.text %></p>
         <small class="text-muted"><%= projects.author.username %> - <span id="showing"></span></small>
+
+        <!-- FJERNER PROSJEKTET FRA PÅGÅENDE -->
         <a href="/<%= projects._id %>" id="showBtn"><i class="far fa-eye"></i></a>
         <form class="commentDelete" action="/<%=projects._id%>?_method=DELETE" method="POST">
              <button type="submit" id="deleteBtn"><i class="far fa-trash-alt"></i></button>
         </form>
+
+        
     </div>
 <% }) %>
 </div>

@@ -3,6 +3,9 @@ var express         = require("express"),
     app             = express(),
     mongoose        = require("mongoose"),
     bodyParser      = require("body-parser"),
+    helmet          = require("helmet"),
+    morgan          = require("morgan"),
+    multer          = require("multer"),
     flash           = require("connect-flash"),
     passport        = require("passport"),
     localStrategy   = require("passport-local"),
@@ -23,6 +26,12 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + '/public'));
 app.use(methodOverride("_method"));
+app.use(helmet());
+
+if(app.get('env') === 'development'){
+    app.use(morgan('tiny'));
+    console.log("Morgan enabled..")
+}
 
 // Passport konfigurasjon
 app.use(require("express-session")({
