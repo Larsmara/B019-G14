@@ -44,7 +44,7 @@ Sjekkliste for V2 av web applikasjonen:
 [X]  -   Lage form på NyIdé view
 [X]  -   Registrere ny ide til DB
 []  -   Linke opp Min side med bruker id
-[]  -   Vise alle innsendte ideer på prosjekter
+[X]  -   Vise alle innsendte ideer på prosjekter
 []  -   
 []  -   
 []  -   
