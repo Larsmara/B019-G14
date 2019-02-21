@@ -15,32 +15,17 @@ nav {
 
 header {
   grid-area: header;
-  background-image: url("/images/smartcity-index.jpg");
+  background-image: url("/images/smartcity-about.jpg");
   background-size: cover;
-  height: 650px;
+  background-position: top;
+  height: 350px;
 }
 
 main {
   grid-area: content;
   padding: 1rem;
-  display: grid;
-  grid-template-areas:
-    "about project idea";
-  grid-gap: 2rem;
-  width: 70%;
 }
+
 main article {
   padding: 1rem 0;
-}
-
-#article-about {
-  grid-area: about;
-}
-
-#article-project {
-  grid-area: project;
-}
-
-#article-idea {
-  grid-area:idea ;
 }

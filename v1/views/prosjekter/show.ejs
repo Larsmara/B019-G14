@@ -1,12 +1,15 @@
 <% include ../partials/header %>
-<a href="/prosjekter">Back</a>
-<section>
-    <h1><%= project.title %></h1>
-    <hr>
-    <p><%= project.text %></p>
-    <img src="<%= project.img%>" alt="">
-    <small><%= project.author.username %></small>
-    
-</section>
+
+<main>
+  <a href="/prosjekter">Back</a>
+  <section>
+      <h1><%= project.title %></h1>
+      <hr>
+      <p><%= project.text %></p>
+      <img src="<%= project.img%>" alt="">
+      <small><%= project.author.username %></small>
+
+  </section>
+</main>
 
 <% include ../partials/footer %>

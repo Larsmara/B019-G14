@@ -1,6 +1,54 @@
+@import url("normalize.css");
+
+body {
+  font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,sans-serif;
+  /*font-size: 13px; 16px
+  line-height: 20px;
+  color: #333;*/
+  max-width: 100%;
+  display: grid;
+  grid-template-areas:
+    "menu"
+    "content";
+}
+
+nav {
+  grid-area: menu;
+}
+
 main {
+  grid-area: content;
   width: 50%;
   margin: auto;
+  padding: 1rem;
+}
+
+main article {
+  padding: 1rem 0;
+}
+
+.button {
+  text-decoration: none;
+  background-color: #0091d3;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #0091d3;
+}
+
+.button:hover {
+  text-decoration: none;
+  background-color: #0072bb;
+  color: #fff;
+  border-color: #0072bb;
+}
+
+.button:active {
+  text-decoration: none;
+  background-color: #00498f;
+  color: #fff;
+  border-color: #00498f;
 }
 
 .hidden{
