@@ -30,8 +30,8 @@ router.get("/dashboard", function(req,res){
 });
 
 // Legger til idéen i listen over prosjekter som skal vises til publikum.
-router.get("/:id", function(req,res){
-    Project.findById(req.params.id).exec(function(err, foundProj) { 
+/*router.get("/:id", function(req,res){
+    Project.findById(req.params.id).exec(function(err, foundProj) {
             var title   = foundProj.title,
             image       = foundProj.image,
             text        = foundProj.text,
@@ -51,9 +51,9 @@ router.get("/:id", function(req,res){
                 //req.flash("success", "Vises nå til publikum!");
                 res.redirect("/dashboard");
             }
-        }); 
+        });
     });
-});
+});*/
 
 // DESTROY - Sletter prosjektet som vises til publikum.
 router.delete("/:id", function(req,res){

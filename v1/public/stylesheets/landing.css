@@ -1,0 +1,81 @@
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sixing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  grid-template-areas:
+    "menu"
+    "header"
+    "content"
+    "footer";
+  /*grid-gap: 20px;*/
+  max-width: 100%;
+  /*font-family:
+  font-size: 13px; 16px
+  line-height: 20px;
+  color: #333;*/
+}
+
+nav {
+  grid-area: menu;
+}
+
+header {
+  grid-area: header;
+  background-image: url("/images/smartcity.jpg");
+  background-size: cover;
+  height: 700px;
+}
+
+main {
+  grid-area: content;
+  padding: 20px 0px;
+  display: grid;
+  grid-template-areas:
+    "about project idea";
+  grid-gap: 30px;
+  width: 70%;
+}
+
+#article-about {
+  grid-area: about;
+}
+
+#article-project {
+  grid-area: project;
+}
+
+#article-idea {
+  grid-area:idea ;
+}
+
+footer {
+  grid-area: footer;
+}
+
+.button {
+  text-decoration: none;
+  background-color: #0091d3;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #0091d3;
+}
+
+.button:hover {
+  text-decoration: none;
+  background-color: #0072bb;
+  color: #fff;
+  border-color: #0072bb;
+}
+
+.button:active {
+  text-decoration: none;
+  background-color: #00498f;
+  color: #fff;
+  border-color: #00498f;
+}
