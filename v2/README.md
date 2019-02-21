@@ -35,12 +35,12 @@ Sjekkliste for V2 av web applikasjonen:
 
 [X]  -   Sett opp firebase
 [X]  -   Koble firebase til prosjektet
-[]  -   Sett opp Auth route
-[]  -   Sett opp onAuthStateChange for å sjekke at en bruker er logget inn
-[]  -   Lag NyIdé view
-[]  -   Lag form for å Registrere seg
-[]  -   Lag form for å logge inn
-[]  -   Lag Log ut funksjon
+[X]  -   Sett opp Auth route
+[X]  -   Sett opp onAuthStateChange for å sjekke at en bruker er logget inn
+[X]  -   Lag NyIdé view
+[X]  -   Lag form for å Registrere seg
+[X]  -   Lag form for å logge inn
+[X]  -   Lag Log ut funksjon
 []  -   Lage form på NyIdé view
 []  -   
 []  -   
