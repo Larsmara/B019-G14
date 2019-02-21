@@ -56,6 +56,8 @@ export default {
                 email: this.email,
                 name: this.name,
                 phone: this.phone,
+                isAdmin: null,
+                timestamp: Date.now(),
                 user_id: cred.user.uid
               })
             }).then(() => {

@@ -10,7 +10,7 @@
                 <label for="password">Passord</label>
                 <input type="password" name="password" v-model="password">
             </div>
-            <p v-if="feedback">{{feedback}}</p>
+            <p v-if="feedback" class="red-text center">{{feedback}}</p>
             <div class="field">
                 <button class="btn blue">Logg inn</button>
             </div>

@@ -1,6 +1,6 @@
 <template>
     <div class="project container">
-        <h2>Prosjekter</h2>
+        <h2 class="center">Alle innsendte forslag</h2>
     </div>
 </template>
 

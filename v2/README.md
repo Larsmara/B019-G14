@@ -41,9 +41,10 @@ Sjekkliste for V2 av web applikasjonen:
 [X]  -   Lag form for å Registrere seg
 [X]  -   Lag form for å logge inn
 [X]  -   Lag Log ut funksjon
-[]  -   Lage form på NyIdé view
-[]  -   
-[]  -   
+[X]  -   Lage form på NyIdé view
+[X]  -   Registrere ny ide til DB
+[]  -   Linke opp Min side med bruker id
+[]  -   Vise alle innsendte ideer på prosjekter
 []  -   
 []  -   
 []  -   
