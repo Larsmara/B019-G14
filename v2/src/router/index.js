@@ -3,6 +3,7 @@ import Router         from 'vue-router'
 import Index          from '@/components/home/Index'
 import Project        from '@/components/project/Project'
 import NewProject     from '@/components/project/NewProject'
+import ProjectShow    from '@/components/project/ProjectShow'
 import About          from '@/components/home/About'
 import Login          from '@/components/auth/Login'
 import Register       from '@/components/auth/Register'
@@ -27,7 +28,14 @@ const router = new Router({
     {
       path: '/project',
       name: 'Project',
+      props: true,
       component: Project
+    },
+    {
+      path: '/project/:id',
+      name: 'ProjectShow',
+      props: true,
+      component: ProjectShow
     },
     {
       path: '/new',

@@ -1,14 +1,19 @@
 <template>
     <div class="project container">
         <h2 class="center">Alle innsendte forslag</h2>
-        <ul class="collection">
+        <div class="collection">
+            <router-link v-for="project in projects" :key="project.id" :to="{name: 'ProjectShow', params: {id: project.projectId}}" class="collection-item">
+                {{project.title}}
+            </router-link>
+        </div>
+        <!-- <ul class="collection">
             <li class="collection-item" v-for="project in projects" :key="project.id">
                 <span class="teal-text center title">{{project.title}}</span> -
                 <span class="teal-text">{{project.content}}</span>
                 <span class="grey-text time">{{project.timestamp}} - Bruker: {{project.user}}</span>
             </li>
             
-        </ul>
+        </ul> -->
     </div>
 </template>
 
@@ -37,8 +42,9 @@ export default {
                         title: doc.data().title,
                         content: doc.data().content,
                         timestamp: moment(doc.data().timestamp).format('lll'),
+                        projectId: doc.id
                     })
-                    console.log(doc)
+                    console.log(change.doc.id)
                 }
             })
         })
