@@ -17,7 +17,8 @@ header {
   grid-area: header;
   background-image: url("/images/smartcity-index.jpg");
   background-size: cover;
-  height: 650px;
+  background-position: top;
+  height: 600px;
 }
 
 main {
