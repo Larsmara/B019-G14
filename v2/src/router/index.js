@@ -48,7 +48,7 @@ const router = new Router({
       component: Register
     },
     {
-      path: '/profile/:user_id',
+      path: '/profile/:id',
       name: 'UserProfile',
       component: UserProfile,
       meta: {
@@ -58,7 +58,7 @@ const router = new Router({
   ]
 })
 
-/* router.beforeEach((to,from,next) => {
+router.beforeEach((to,from,next) => {
   if(to.matched.some(rec => rec.meta.requiresAuth)){
     let user = firebase.auth().currentUser
     if(user){
@@ -70,7 +70,7 @@ const router = new Router({
   } else {
     next()
   }
-}) */
+})
 
 
 export default router
