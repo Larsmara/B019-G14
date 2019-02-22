@@ -45,7 +45,9 @@ Sjekkliste for V2 av web applikasjonen:
 [X]  -   Registrere ny ide til DB
 [X]  -   Linke opp Min side med bruker id
 [X]  -   Vise alle innsendte ideer på prosjekter
-[]  -   Vise egen dise for hvert prosjekt   
-[]  -   
-[]  -   
-[]  -   
+[X]  -   Vise egen dise for hvert prosjekt   
+[]  -   Lage funksjon for "slug" til hvert prosjekt.
+[]  -   Lagre et "alias"/slug for hver bruker.
+[]  -   Dashboard for admin
+[]  -   Oversikt over alle prosjekter fra admin dashboard
+[]  -   Muligheten til å vise prosjekter som "pågående" fra admin dashboard
