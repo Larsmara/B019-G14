@@ -7,8 +7,12 @@
                 <input type="email" name="email" v-model="email">
             </div>
             <div class="field">
-                <label for="name">Fult navn</label>
-                <input type="text" name="name" v-model="name">
+                <label for="fname">Fornavn</label>
+                <input type="text" name="fname" v-model="fname">
+            </div>
+            <div class="field">
+                <label for="ename">Etternavn</label>
+                <input type="text" name="ename" v-model="ename">
             </div>
             <div class="field">
                 <label for="phone">Telefon nummer</label>
@@ -35,7 +39,8 @@ export default {
   data(){
     return{
       email: null,
-      name: null,
+      fname: null,
+      ename: null,
       phone: null,
       password: null,
       feedback: null
@@ -43,7 +48,7 @@ export default {
   },
   methods: {
     register(){
-      if(this.email && this.name && this.phone && this.password){
+      if(this.email && this.fname && this.ename && this.phone && this.password){
         let ref = db.collection('users').doc(this.phone)
         ref.get().then(doc => {
           if(doc.exists){
@@ -54,7 +59,7 @@ export default {
             .then(cred => {
               ref.set({
                 email: this.email,
-                name: this.name,
+                name: this.fname +" " + this.ename,
                 phone: this.phone,
                 isAdmin: null,
                 timestamp: Date.now(),
