@@ -12,7 +12,7 @@
                 <ul class="right">
                     <li><router-link :to="{name: 'Login'}" v-if="!user">Logg inn</router-link></li>
                     <li><router-link :to="{name: 'Register'}" v-if="!user">Registrer deg</router-link></li>
-                    <li><router-link :to="{name: 'UserProfile'}" v-if="user">Min side</router-link></li>
+                    <li><router-link :to="{name: 'UserProfile', params: {id: user.uid}}" v-if="user">Min side</router-link></li>
                     <li><a @click="logout" v-if="user">Log ut</a></li>
                 </ul>
             </div>
@@ -22,12 +22,14 @@
 
 <script>
 import firebase from 'firebase'
+import db from '@/firebase/init'
 
 export default {
     name: 'Navbar',
     data(){
         return{
-            user: null
+            user: null,
+            user_id: null
         }
     },
     methods: {
@@ -41,6 +43,8 @@ export default {
         firebase.auth().onAuthStateChanged((user) => {
             if(user){
                 this.user = user
+                this.user_id = user.uid
+                console.log("Navbar: " + this.user.uid)
             } else {
                 this.user = null
             }
