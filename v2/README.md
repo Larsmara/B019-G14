@@ -43,7 +43,7 @@ Sjekkliste for V2 av web applikasjonen:
 [X]  -   Lag Log ut funksjon
 [X]  -   Lage form på NyIdé view
 [X]  -   Registrere ny ide til DB
-[]  -   Linke opp Min side med bruker id
+[X]  -   Linke opp Min side med bruker id
 [X]  -   Vise alle innsendte ideer på prosjekter
 []  -   Vise egen dise for hvert prosjekt   
 []  -   

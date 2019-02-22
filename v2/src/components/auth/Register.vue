@@ -49,7 +49,7 @@ export default {
   methods: {
     register(){
       if(this.email && this.fname && this.ename && this.phone && this.password){
-        let ref = db.collection('users').doc()
+        let ref = db.collection('users').doc(this.phone)
         ref.get().then(doc => {
           if(doc.exists){
             this.feedback = 'Dette telefonnummeret finnes'
