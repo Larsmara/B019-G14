@@ -45,6 +45,9 @@ export default {
              this.feedback = 'Please fill in both fields'
          }
         }
+    },
+    created(){
+        document.title = "Logg inn"
     }
 }
 </script>

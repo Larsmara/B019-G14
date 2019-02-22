@@ -37,6 +37,9 @@ export default {
     return {
       
     }
+  },
+  created(){
+    document.title = "Hjem"
   }
 }
 </script>

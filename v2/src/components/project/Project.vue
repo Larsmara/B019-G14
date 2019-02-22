@@ -25,6 +25,7 @@ export default {
         }
     },
     created() {
+        document.title = "Prosjekter"
         let ref = db.collection('projects')
 
         ref.onSnapshot(snapshot => {

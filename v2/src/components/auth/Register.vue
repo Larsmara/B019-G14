@@ -78,6 +78,9 @@ export default {
       }
 
     }
+  },
+  created(){
+    document.title = "Registrer deg"
   }
 }
 </script>

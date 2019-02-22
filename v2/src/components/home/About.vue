@@ -12,6 +12,9 @@ export default {
         return {
 
         }
+    },
+    created(){
+        document.title = "Om oss"
     }
 }
 </script>

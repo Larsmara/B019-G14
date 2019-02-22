@@ -38,6 +38,7 @@ export default {
         }
     },
     created(){
+        document.title = "Min side";
         let ref = db.collection('users')
         let project = db.collection('projects')
 

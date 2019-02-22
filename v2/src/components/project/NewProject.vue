@@ -39,6 +39,7 @@ export default {
         }
     },
     created(){
+        document.title = "Ny idé"
         let ref = db.collection('users')
         // Get current user
         ref.where('user_id', '==', firebase.auth().currentUser.uid).get()
