@@ -2,7 +2,7 @@
     <div class="project container">
         <h2 class="center">Alle innsendte forslag: <span>{{projects.length}}</span></h2>
         <div class="collection">
-            <router-link v-for="(project, index) in projects" :key="index" :to="{name: 'ProjectShow', params: {id: project.projectId}}" class="collection-item">
+            <router-link v-for="(project, index) in projects" :key="index" :to="{name: 'ProjectShow', params: {id: project.title}}" class="collection-item">
                 {{index+1}} : {{project.title}} <span class="right red-text" v-if="project.showing == true"> I produksjon</span>
             </router-link>
         </div>
@@ -16,7 +16,6 @@ import moment from 'moment'
 
 export default {
     name:'Project',
-    props: [project.projectId],
     data(){
         return {
             projects: []
