@@ -33,6 +33,7 @@
 <script>
 import db from '@/firebase/init'
 import firebase from 'firebase'
+import slugify from 'slugify'
 
 export default {
   name: 'Register',
@@ -42,6 +43,7 @@ export default {
       fname: null,
       ename: null,
       phone: null,
+      slug: null,
       password: null,
       feedback: null
     }
@@ -49,6 +51,12 @@ export default {
   methods: {
     register(){
       if(this.email && this.fname && this.ename && this.phone && this.password){
+        let name = this.fname + " " + this. ename
+          this.slug = slugify(name, {
+              replacement: '-',
+              remove: /[$*_+~.()'"!\._@]/g,
+              lower: true
+          })
         let ref = db.collection('users').doc(this.phone)
         ref.get().then(doc => {
           if(doc.exists){
@@ -63,6 +71,7 @@ export default {
                 phone: this.phone,
                 isAdmin: false,
                 timestamp: Date.now(),
+                slug: this.name,
                 user_id: cred.user.uid
               })
             }).then(() => {
@@ -76,7 +85,6 @@ export default {
       } else {
         this.feedback = 'Please fill in all fields'
       }
-
     }
   },
   created(){

@@ -1,7 +1,7 @@
 <template>
     <div class="container new-project">
         <div class="row" v-if="tilbakemelding">
-            <div class="card green">
+            <div class="card green accent-3">
                 <h3>{{tilbakemelding}}</h3>
             </div>
         </div>
@@ -26,6 +26,7 @@
 <script>
 import db from '@/firebase/init'
 import firebase from 'firebase'
+import slugify from 'slugify'
 
 export default {
     name: 'NewProject',
@@ -33,6 +34,7 @@ export default {
         return {
             title: null,
             content: null,
+            slug: null,
             user: null,
             feedback: null,
             tilbakemelding: null
@@ -54,6 +56,11 @@ export default {
     methods: {
         createidea(){
             if(this.title && this.content){
+                this.slug = slugify(this.title, {
+                    replacement: '-',
+                    remove: /[$*_+~.()'"!\._@]/g,
+                    lower: true
+                })
                 console.log(this.title, this.content)
                 console.log(this.user.user_id)
                 this.feedback = null
@@ -63,11 +70,14 @@ export default {
                     img_url: null,
                     time: Date.now(),
                     user_id: this.user.user_id,
-                    showing: false
+                    showing: false,
+                    slug: this.slug
                 }).then(() => {
                     this.title = null,
                     this.content = null
                     this.tilbakemelding = 'Din ide er registrert. Denne ideen vil bli vurdert, men vi gjør oppmerksom på at vi ikke kan realisere alle ideer, men dit innspill kan bidra til et bedre samfunn i halden.'
+                }).then(() =>{
+                    this.$router.push({ name: 'Project' })
                 })
             } else {
                 this.feedback = 'Fyll ut begge feltene'

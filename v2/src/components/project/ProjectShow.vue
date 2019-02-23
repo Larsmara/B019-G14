@@ -17,9 +17,7 @@ import Projects from './Project'
 import moment from 'moment'
 
 export default {
-    props: ['id'],
     name: 'ProjectShow',
-    components: {Project, Projects},
     data(){
         return {
             project: []
@@ -30,7 +28,7 @@ export default {
         let project = db.collection("projects")
         console.log(project)
 
-        project.where('title', '==', this.$route.params.id)
+        project.where('slug', '==', this.$route.params.id)
         .onSnapshot((snapshot) => {
             snapshot.docChanges().forEach(change => {
                 if(change.type == 'added'){

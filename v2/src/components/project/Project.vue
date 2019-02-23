@@ -2,7 +2,7 @@
     <div class="project container">
         <h2 class="center">Alle innsendte forslag: <span>{{projects.length}}</span></h2>
         <div class="collection">
-            <router-link v-for="(project, index) in projects" :key="index" :to="{name: 'ProjectShow', params: {id: project.title}}" class="collection-item">
+            <router-link v-for="(project, index) in projects" :key="index" :to="{name: 'ProjectShow', params: {id: project.slug}}" class="collection-item">
                 {{index+1}} : {{project.title}} <span class="right red-text" v-if="project.showing == true"> I produksjon</span>
             </router-link>
         </div>
@@ -13,6 +13,7 @@
 import db from '@/firebase/init'
 import firebase from 'firebase'
 import moment from 'moment'
+import slugify from 'slugify'
 
 export default {
     name:'Project',
@@ -24,7 +25,7 @@ export default {
     created() {
         document.title = "Prosjekter"
         
-        let ref = db.collection('projects')
+        let ref = db.collection('projects').orderBy("showing", "desc")
 
         ref.onSnapshot(snapshot => {
             snapshot.docChanges().forEach(change => {
@@ -34,6 +35,7 @@ export default {
                         title: doc.data().title,
                         content: doc.data().content,
                         showing: doc.data().showing,
+                        slug: doc.data().slug,
                         timestamp: moment(doc.data().timestamp).format('lll'),
                         projectId: doc.id
                     })
@@ -41,12 +43,7 @@ export default {
                 }
             })
         })
-    },
-    computed: {
-    projects: function () {
-        _.orderBy(this.projects, ['showing'], ['desc'])
     }
-}
 }
 </script>
 
