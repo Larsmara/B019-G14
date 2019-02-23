@@ -53,4 +53,3 @@ Sjekkliste for V2 av web applikasjonen:
 []  -   Oversikt over alle prosjekter fra admin dashboard
 []  -   Muligheten til å vise prosjekter som "pågående" fra admin dashboard
 [X]  -   Vise pågående prosjekter til brukere
-:to="{name: 'ProjectShow', params: {id: project.title}}"
