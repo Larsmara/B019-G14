@@ -1,10 +1,10 @@
 <template>
     <div class="project-show container">
-        <div v-for="pro in project" :key="pro.id">
+        <div v-for="pro in project" :key="pro.user_id">
             <h3>{{pro.title}}</h3>
             <p>{{pro.content}}</p>
             <p>{{pro.time}}</p>
-            <p>{{pro.user.email}}</p>
+            <p>{{pro.user}}</p>
         </div>
     </div>
 </template>
@@ -20,13 +20,14 @@ export default {
     name: 'ProjectShow',
     data(){
         return {
-            project: []
+            project: [],
+            user: null,
+            ansvarlig: null
         }
     },
     created(){
         console.log(this.$route.params.id)
         let project = db.collection("projects")
-        console.log(project)
 
         project.where('slug', '==', this.$route.params.id)
         .onSnapshot((snapshot) => {
@@ -39,11 +40,22 @@ export default {
                         user: doc.data().user_id,
                         time: moment(doc.data().timestamp).format('lll')
                     })
-                    console.log(change.doc.data())
                 }
             })
-        })
+        }) 
         
+        db.collection("users").where("user_id", "==", this.user)
+        .get()
+        .then(function(querySnapshot) {
+            querySnapshot.forEach(function(doc) {
+                // doc.data() is never undefined for query doc snapshots
+                console.log("Like")
+                console.log(doc.id, " => ", doc.data());
+            });
+        })
+        .catch(function(error) {
+            console.log("Error getting documents: ", error);
+        });
     }
 }
 </script>

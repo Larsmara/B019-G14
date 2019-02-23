@@ -53,12 +53,13 @@ Sjekkliste for V2 av web applikasjonen:
 [X]  -   Oversikt over alle prosjekter fra admin dashboard
 [X]  -   Muligheten til å vise prosjekter som "pågående" fra admin dashboard
 [X]  -   Vise pågående prosjekter til brukere
+[X]  -   Slette prosjekt
 
 LOGIN ALTERNATIVER
 []  -   Google login
 []  -   Telefonnummer verifisering
 []  -   email og passord + tlf verifisering
-[]  -   
+[]  -   Tilbakemelding til eier av prosjektet om det går i produksjon
 []  -   
 []  -   
 []  -   

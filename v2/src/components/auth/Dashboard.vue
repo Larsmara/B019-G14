@@ -3,10 +3,11 @@
         <h2>Dashboard</h2>
         
         <div class="collection">
-            <div class="prosjekter collection-item" v-for="(project, index) in projects" :key="index">
+            <div class="prosjekter collection-item" v-for="(project, index) in projects" :key="project.projectId">
                 <div class="vis">
-                    <button @click.prevent="showProject(project)" id="{project.id}">Vis</button>
-                    <button @click.prevent="hideProject(project)">Ikke vis</button>
+                    <button class="btn btn-small" @click.prevent="showProject(project)" id="{project.id}">Vis</button>
+                    <button class="btn red btn-small" @click.prevent="hideProject(project)">Ikke vis</button>
+                    <button class=" btn btn-small right" @click="deleteProject(project.projectId)"><i class="material-icons">delete</i></button>
                 </div>
                 <router-link  :to="{name: 'ProjectShow', params: {id: project.slug}}" class="collection-item">
                     {{index+1}} : {{project.title}} <span class="right red-text" v-if="project.showing == true"> I produksjon</span>
@@ -27,8 +28,7 @@ export default {
     data(){
         return {
             projects: [],
-            feedback: null,
-            boolean: false
+            feedback: null
         }
     },
     methods: {
@@ -55,6 +55,16 @@ export default {
             }).catch(err => {
                 console.log(err)
             })
+        },
+        deleteProject(id){
+            // Delete doc from firestore
+            db.collection('projects').doc(id).delete()
+            .then(() => {
+                this.projects = this.projects.filter(project => {
+                return projects.id != id
+                })
+                window.location.reload();
+            })
         }
     },
     created(){
@@ -71,18 +81,13 @@ export default {
                         content: doc.data().content,
                         showing: doc.data().showing,
                         slug: doc.data().slug,
+                        id: doc.data().id,
                         timestamp: moment(doc.data().timestamp).format('lll'),
                         projectId: doc.id
                     })
                 }
             })
         })
-
-        if(this.showing == true){
-            console.log("Checkbox for å vise prosjekt er sann")
-        } else {
-            console.log("Prosjekt vises ikke")
-        }
     }
 }
 </script>
