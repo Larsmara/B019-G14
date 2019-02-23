@@ -3,3 +3,9 @@
     margin: auto;
     text-align: center;
 }
+
+.formContainer form {
+  width: 40%;
+  margin: auto;
+  text-align: left;
+}

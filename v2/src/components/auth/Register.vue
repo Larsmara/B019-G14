@@ -61,7 +61,7 @@ export default {
                 email: this.email,
                 name: this.fname +" " + this.ename,
                 phone: this.phone,
-                isAdmin: null,
+                isAdmin: false,
                 timestamp: Date.now(),
                 user_id: cred.user.uid
               })
