@@ -13,6 +13,7 @@
                     <ul class="right hide-on-med-and-down" id="nav-mobile">
                         <li><router-link :to="{name: 'Login'}" v-if="!user">Logg inn</router-link></li>
                         <li><router-link :to="{name: 'Register'}" v-if="!user">Registrer deg</router-link></li>
+                        <li><router-link :to="{name: 'Dashboard'}" v-if="user && user.isAdmin">Dashboard</router-link></li>
                         <li><router-link :to="{name: 'UserProfile', params: {id: user.uid}}" v-if="user">Min side</router-link></li>
                         <li><a @click="logout" v-if="user">Log ut</a></li>
                     </ul>
@@ -31,6 +32,7 @@ export default {
     data(){
         return{
             user: null,
+            admin: null,
             user_id: null
         }
     },
@@ -45,11 +47,21 @@ export default {
         firebase.auth().onAuthStateChanged((user) => {
             if(user){
                 this.user = user
+                this.admin = user.isAdmin
                 this.user_id = user.uid
-                console.log("Navbar: " + this.user.uid)
             } else {
                 this.user = null
             }
+        })
+
+        let ref = db.collection('users')
+
+        //get current user
+        ref.where('user_id', '==', firebase.auth().currentUser.uid).get()
+        .then(snapshot => {
+            snapshot.forEach(doc => {
+                this.user = doc.data()
+            })
         })
     }
 }

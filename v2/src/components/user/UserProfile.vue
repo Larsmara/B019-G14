@@ -2,9 +2,10 @@
     <div class="user-profile">
         <div class="row">
             <div class="col s3 center sidebar">
-                <p class="blue-text">{{this.name}}</p>
-                <p>{{this.email}}</p>
+                <p class="blue-text">{{user.name}}</p>
+                <p>{{user.email}}</p>
                 <p>{{this.phone}}</p>
+                <p>Admin: {{this.admin}}</p>
             </div>
             <div class="col s9">
                 <h2 class="blue-text center">Prosjekter</h2>
@@ -33,6 +34,7 @@ export default {
             email: null,
             name: null,
             phone: null,
+            admin: null,
             feedback: null,
             projects: []
         }
@@ -49,7 +51,8 @@ export default {
                 this.user = doc.data(),
                 this.email = doc.data().email,
                 this.name = doc.data().name,
-                this.phone = doc.data().phone
+                this.phone = doc.data().phone,
+                this.admin = doc.data().isAdmin
                 /* console.log(doc.data().user_id)
                 console.log(doc.data()) */
                 console.log("User uid fra profil: "+firebase.auth().currentUser.uid)

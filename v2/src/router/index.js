@@ -8,7 +8,9 @@ import About          from '@/components/home/About'
 import Login          from '@/components/auth/Login'
 import Register       from '@/components/auth/Register'
 import UserProfile    from '@/components/user/UserProfile'
+import Dashboard      from '@/components/auth/Dashboard'
 import firebase       from 'firebase'
+import db             from '@/firebase/init'
 
 Vue.use(Router)
 
@@ -62,17 +64,25 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
+    },
+    {
+      path:'/admin',
+      name: 'Dashboard',
+      component: Dashboard,
+      meta: {
+        adminAuth: true
+      }
     }
   ]
 })
 
 router.beforeEach((to,from,next) => {
-  if(to.matched.some(rec => rec.meta.requiresAuth)){
+  if(to.matched.some(rec => rec.meta.requiresAuth && rec.meta.adminAuth)){
     let user = firebase.auth().currentUser
     if(user){
       // User signed in, proceed to route
       next()
-    } else {
+    } else{
       next({name: 'Login'})
     }
   } else {

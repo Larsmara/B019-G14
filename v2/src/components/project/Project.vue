@@ -1,19 +1,11 @@
 <template>
     <div class="project container">
-        <h2 class="center">Alle innsendte forslag</h2>
+        <h2 class="center">Alle innsendte forslag: <span>{{projects.length}}</span></h2>
         <div class="collection">
-            <router-link v-for="project in projects" :key="project.id" :to="{name: 'ProjectShow', params: {id: project.projectId}}" class="collection-item">
-                {{project.title}}
+            <router-link v-for="(project, index) in projects" :key="index" :to="{name: 'ProjectShow', params: {id: project.projectId}}" class="collection-item">
+                {{index+1}} : {{project.title}} <span class="right red-text" v-if="project.showing == true"> I produksjon</span>
             </router-link>
         </div>
-        <!-- <ul class="collection">
-            <li class="collection-item" v-for="project in projects" :key="project.id">
-                <span class="teal-text center title">{{project.title}}</span> -
-                <span class="teal-text">{{project.content}}</span>
-                <span class="grey-text time">{{project.timestamp}} - Bruker: {{project.user}}</span>
-            </li>
-            
-        </ul> -->
     </div>
 </template>
 
@@ -32,7 +24,7 @@ export default {
     created() {
         document.title = "Prosjekter"
         
-        let ref = db.collection('projects')
+        let ref = db.collection('projects').orderBy("showing", "desc")
 
         ref.onSnapshot(snapshot => {
             snapshot.docChanges().forEach(change => {
@@ -41,6 +33,7 @@ export default {
                     this.projects.push({
                         title: doc.data().title,
                         content: doc.data().content,
+                        showing: doc.data().showing,
                         timestamp: moment(doc.data().timestamp).format('lll'),
                         projectId: doc.id
                     })

@@ -49,5 +49,7 @@ Sjekkliste for V2 av web applikasjonen:
 []  -   Lage funksjon for "slug" til hvert prosjekt.
 []  -   Lagre et "alias"/slug for hver bruker.
 []  -   Dashboard for admin
+[]  -   Protecte admin route!!!
 []  -   Oversikt over alle prosjekter fra admin dashboard
 []  -   Muligheten til å vise prosjekter som "pågående" fra admin dashboard
+[X]  -   Vise pågående prosjekter til brukere
