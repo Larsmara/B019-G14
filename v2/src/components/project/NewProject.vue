@@ -13,7 +13,7 @@
             </div>
             <div class="field">
                 <label for="content">Forklar din idé</label>
-                <input type="text" name="content" v-model="content">
+                <textarea type="text" name="content" v-model="content" class="materialize-textarea"></textarea>
             </div>
             <p v-if="feedback" class="red-text center">{{feedback}}</p>
             <div class="field">

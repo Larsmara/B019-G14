@@ -3,12 +3,11 @@
         <h2>Dashboard</h2>
         
         <div class="collection">
-            <div class="prosjekter" v-for="(project, index) in projects" :key="index">
+            <div class="prosjekter collection-item" v-for="(project, index) in projects" :key="index">
                 <div class="vis">
-                    <button>Vis</button>
-                    <button>Ikke vis</button>
+                    <button @click.prevent="showProject(project)" id="{project.id}">Vis</button>
+                    <button @click.prevent="hideProject(project)">Ikke vis</button>
                 </div>
-                    <!-- <input type="checkbox" :value="project.title" :id="project.slug" v-model="showing" >{{project.showing}} -->
                 <router-link  :to="{name: 'ProjectShow', params: {id: project.slug}}" class="collection-item">
                     {{index+1}} : {{project.title}} <span class="right red-text" v-if="project.showing == true"> I produksjon</span>
                 </router-link>
@@ -29,34 +28,39 @@ export default {
         return {
             projects: [],
             feedback: null,
-            showing: []
+            boolean: false
         }
     },
     methods: {
-        editProject(){
-            console.log("Vises")
-            if(e.target.checked){
-                console.log(e.target.value)
-            }
+        showProject(project){
+            console.log(project.title + " - Er nå satt i produksjon " + project.projectId)
+            
+            db.collection("projects").doc(project.projectId).update({
+                showing: true
+            }).then(() => {
+                console.log("Prosjekt oppdatert til produksjon")
+                window.location.reload()
+            }).catch(err => {
+                console.log(err)
+            })
+        },
+        hideProject(project){
+            console.log(project.title + " - Er nå tatt ut av produksjon")
 
-
-            /* if(this.projects){
-                db.collection('smoothies').doc(this.project.showing).update({
-                    showing: true
-                }).then(() => {
-                    console.log("oppdatert")
-                }).catch(err => {
-                    console.log(err)
-                })
-            } else {
-                this.feedback = 'You must enter a smoothie title'
-            } */
+            db.collection("projects").doc(project.projectId).update({
+                showing: false
+            }).then(() => {
+                console.log("Prosjekt oppdatert til produksjon")
+                window.location.reload()
+            }).catch(err => {
+                console.log(err)
+            })
         }
     },
     created(){
         document.title = 'Dashboard'
 
-        let ref = db.collection('projects')
+        let ref = db.collection('projects').orderBy("showing", "desc")
 
         ref.onSnapshot(snapshot => {
             snapshot.docChanges().forEach(change => {

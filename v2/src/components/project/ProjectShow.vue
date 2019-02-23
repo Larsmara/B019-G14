@@ -1,10 +1,10 @@
 <template>
     <div class="project-show container">
-        <h2>Viser et spesifikt prosjekt</h2>
         <div v-for="pro in project" :key="pro.id">
             <h3>{{pro.title}}</h3>
             <p>{{pro.content}}</p>
             <p>{{pro.time}}</p>
+            <p>{{pro.user.email}}</p>
         </div>
     </div>
 </template>
@@ -36,6 +36,7 @@ export default {
                     this.project.push({
                         title: doc.data().title,
                         content: doc.data().content,
+                        user: doc.data().user_id,
                         time: moment(doc.data().timestamp).format('lll')
                     })
                     console.log(change.doc.data())

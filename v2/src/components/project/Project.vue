@@ -1,6 +1,6 @@
 <template>
     <div class="project container">
-        <h2 class="center">Alle innsendte forslag: <span>{{projects.length}}</span></h2>
+        <h2 class="center">Alle innsendte forslag denne mnd: <span>{{thisMonth.length}}</span></h2>
         <div class="collection">
             <router-link v-for="(project, index) in projects" :key="index" :to="{name: 'ProjectShow', params: {id: project.slug}}" class="collection-item">
                 {{index+1}} : {{project.title}} <span class="right red-text" v-if="project.showing == true"> I produksjon</span>
@@ -19,7 +19,8 @@ export default {
     name:'Project',
     data(){
         return {
-            projects: []
+            projects: [],
+            thisMonth: []
         }
     },
     created() {
@@ -39,7 +40,11 @@ export default {
                         timestamp: moment(doc.data().timestamp).format('lll'),
                         projectId: doc.id
                     })
-                    console.log(change.doc.id)
+                    this.thisMonth.push({
+                        title: doc.data().title,
+                        thisMonth: moment(doc.data().timestamp).startOf('month'),
+ 
+                    })
                 }
             })
         })

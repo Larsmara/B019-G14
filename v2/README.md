@@ -50,6 +50,15 @@ Sjekkliste for V2 av web applikasjonen:
 [X]  -   Lagre et "alias"/slug for hver bruker.
 [X]  -   Dashboard for admin
 []  -   Protecte admin route!!!
-[]  -   Oversikt over alle prosjekter fra admin dashboard
-[]  -   Muligheten til å vise prosjekter som "pågående" fra admin dashboard
+[X]  -   Oversikt over alle prosjekter fra admin dashboard
+[X]  -   Muligheten til å vise prosjekter som "pågående" fra admin dashboard
 [X]  -   Vise pågående prosjekter til brukere
+
+LOGIN ALTERNATIVER
+[]  -   Google login
+[]  -   Telefonnummer verifisering
+[]  -   email og passord + tlf verifisering
+[]  -   
+[]  -   
+[]  -   
+[]  -   
