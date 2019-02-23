@@ -14,7 +14,7 @@
                         <li><router-link :to="{name: 'Login'}" v-if="!user">Logg inn</router-link></li>
                         <li><router-link :to="{name: 'Register'}" v-if="!user">Registrer deg</router-link></li>
                         <li><router-link :to="{name: 'Dashboard'}" v-if="user && user.isAdmin">Dashboard</router-link></li>
-                        <li><router-link :to="{name: 'UserProfile', params: {id: user.uid}}" v-if="user">Min side</router-link></li>
+                        <li><router-link :to="{name: 'UserProfile', params: {id: user_id}}" v-if="user">Min side</router-link></li>
                         <li><a @click="logout" v-if="user">Log ut</a></li>
                     </ul>
                 </div>

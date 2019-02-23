@@ -2,7 +2,7 @@
     <div class="user-profile">
         <div class="row">
             <div class="col s3 center sidebar">
-                <p class="blue-text">{{user.name}}</p>
+                <p class="blue-text">{{this.name}}</p>
                 <p>{{user.email}}</p>
                 <p>{{this.phone}}</p>
                 <p>Admin: {{this.admin}}</p>
@@ -83,11 +83,6 @@ export default {
 
 .user-profile{
     margin-top: 60px;
-}
-
-.sidebar{
-    height: 80vh;
-    border-right: 1px solid black;
 }
 
 .user-profile .time{

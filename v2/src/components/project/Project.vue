@@ -24,7 +24,7 @@ export default {
     created() {
         document.title = "Prosjekter"
         
-        let ref = db.collection('projects').orderBy("showing", "desc")
+        let ref = db.collection('projects')
 
         ref.onSnapshot(snapshot => {
             snapshot.docChanges().forEach(change => {
@@ -41,7 +41,12 @@ export default {
                 }
             })
         })
+    },
+    computed: {
+    projects: function () {
+        _.orderBy(this.projects, ['showing'], ['desc'])
     }
+}
 }
 </script>
 

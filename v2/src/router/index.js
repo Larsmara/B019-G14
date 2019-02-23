@@ -77,7 +77,7 @@ const router = new Router({
 })
 
 router.beforeEach((to,from,next) => {
-  if(to.matched.some(rec => rec.meta.requiresAuth && rec.meta.adminAuth)){
+  if(to.matched.some(rec => rec.meta.requiresAuth)){
     let user = firebase.auth().currentUser
     if(user){
       // User signed in, proceed to route
