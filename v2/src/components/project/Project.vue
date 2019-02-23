@@ -2,7 +2,7 @@
     <div class="project container">
         <h2 class="center">Alle innsendte forslag</h2>
         <div class="collection">
-            <router-link v-for="project in projects" :key="project.id" :to="{name: 'ProjectShow', params: {id: project.projectId}}" class="collection-item">
+            <router-link v-for="project in projects" :key="project.id" :to="{name: 'ProjectShow', params: {id: project.projectId}}" class="collection-item" :value="project.projectId">
                 {{project.title}}
             </router-link>
         </div>
@@ -24,6 +24,7 @@ import moment from 'moment'
 
 export default {
     name:'Project',
+    props: [project.projectId],
     data(){
         return {
             projects: []

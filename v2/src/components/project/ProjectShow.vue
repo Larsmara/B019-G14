@@ -7,6 +7,7 @@
 <script>
 import db from '@/firebase/init'
 import firebase from 'firebase'
+import Project from './Project'
 
 export default {
     name: 'ProjectShow',
@@ -17,11 +18,7 @@ export default {
     },
     created(){
         // comments
-        db.collection('projects').get().then((snapshot) => {
-            snapshot.docs.forEach(doc => {
-                console.log(doc.data())
-            })
-        })
+        console.log($route.params.id)
     }
 }
 </script>
