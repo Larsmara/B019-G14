@@ -15,6 +15,15 @@
                 <label for="content">Forklar din idé</label>
                 <textarea type="text" name="content" v-model="content" class="materialize-textarea"></textarea>
             </div>
+            <div class="file-field input-field">
+                <div class="btn">
+                    <span>File</span>
+                    <input type="file">
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text">
+                </div>
+            </div>
             <p v-if="feedback" class="red-text center">{{feedback}}</p>
             <div class="field">
                 <button class="btn blue">Registrer ide</button>
@@ -37,6 +46,7 @@ export default {
             slug: null,
             user: null,
             feedback: null,
+            selectedFile: null,
             tilbakemelding: null
         }
     },
@@ -52,6 +62,15 @@ export default {
                 console.log(this.user)
             })
         })
+
+        var storage = db.storage()
+        var storRef = storage.ref("photos/")
+
+        var file = "Screenshot 2019-02-01 at 18.05.32.png"
+        storRef.put(file).then(snapshot =>{
+            console.log("uploaded")
+        })
+        
     },
     methods: {
         createidea(){
@@ -82,8 +101,16 @@ export default {
             } else {
                 this.feedback = 'Fyll ut begge feltene'
             }
-            this.tilbakemelding = null
+            this.tilbakemelding = null      
         }
+        /* onFileSelected(event){
+            let file = event.target.files[0]
+            this.selectedFile = event.target.files[0]
+            let storageRef = firebase.storeage().ref('photos/' + file.name)
+
+            var task = storageRef.put(file)
+            console.log(event)
+        } */
     }
 }
 </script>
