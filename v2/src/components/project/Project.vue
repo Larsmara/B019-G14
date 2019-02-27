@@ -25,7 +25,7 @@ export default {
     },
     created() {
         document.title = "Prosjekter"
-        
+
         let ref = db.collection('projects').orderBy("showing", "desc")
 
         ref.onSnapshot(snapshot => {
@@ -43,7 +43,7 @@ export default {
                     this.thisMonth.push({
                         title: doc.data().title,
                         thisMonth: moment(doc.data().timestamp).startOf('month'),
- 
+
                     })
                 }
             })
@@ -54,10 +54,14 @@ export default {
 
 <style>
 
+.project {
+  max-width: 50%;
+  margin: auto;
+}
+
 .project .time{
-    display: block;
-    font-size: 0.8em;
+  display: block;
+  font-size: 0.8em;
 }
 
 </style>
-
