@@ -15,7 +15,7 @@
                 <input type="text" name="ename" v-model="ename">
             </div>
             <div class="field">
-                <label for="phone">Telefon nummer</label>
+                <label for="phone">Telefonnummer</label>
                 <input type="number" name="phone" v-model="phone">
             </div>
             <div class="field">
@@ -98,16 +98,16 @@ export default {
 <style>
 
 .register{
-    max-width: 400px;
-    margin-top: 60px;
+  max-width: 25%;
+  margin-top: 40px;
 }
 
 .register h2{
-    font-size: 2.4em;
+  font-size: 2.4em;
 }
 
 .register .field{
-    margin-bottom: 16px;
+  margin-bottom: 16px;
 }
 
 </style>

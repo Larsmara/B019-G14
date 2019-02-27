@@ -1,7 +1,7 @@
 <template>
     <div class="dashboard container">
         <h2>Dashboard</h2>
-        
+
         <div class="collection">
             <div class="prosjekter collection-item" v-for="(project, index) in projects" :key="project.projectId">
                 <div class="vis">
@@ -34,7 +34,7 @@ export default {
     methods: {
         showProject(project){
             console.log(project.title + " - Er nå satt i produksjon " + project.projectId)
-            
+
             db.collection("projects").doc(project.projectId).update({
                 showing: true
             }).then(() => {
@@ -95,13 +95,13 @@ export default {
 <style>
 
 .prosjekter{
-    display: 
-
+  max-width: 50%;
+  margin-top: 40px;
 }
 
 .vis{
-    display: block;
-    padding: 4px 20px;
+  display: block;
+  padding: 4px 20px;
 }
 
 </style>

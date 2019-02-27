@@ -70,7 +70,7 @@ export default {
         storRef.put(file).then(snapshot =>{
             console.log("uploaded")
         })
-        
+
     },
     methods: {
         createidea(){
@@ -94,14 +94,14 @@ export default {
                 }).then(() => {
                     this.title = null,
                     this.content = null
-                    this.tilbakemelding = 'Din ide er registrert. Denne ideen vil bli vurdert, men vi gjør oppmerksom på at vi ikke kan realisere alle ideer, men dit innspill kan bidra til et bedre samfunn i halden.'
+                    this.tilbakemelding = 'Din ide er registrert. Denne ideen vil bli vurdert, men vi gjør oppmerksom på at vi ikke kan realisere alle ideer. Ditt innspill kan bidra til et bedre samfunn i Halden.'
                 }).then(() =>{
                     this.$router.push({ name: 'Project' })
                 })
             } else {
                 this.feedback = 'Fyll ut begge feltene'
             }
-            this.tilbakemelding = null      
+            this.tilbakemelding = null
         }
         /* onFileSelected(event){
             let file = event.target.files[0]
@@ -115,6 +115,12 @@ export default {
 }
 </script>
 
+
 <style>
+
+.new-project {
+  max-width: 50%;
+  margin-top: 40px;
+}
 
 </style>

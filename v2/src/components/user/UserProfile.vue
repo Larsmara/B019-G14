@@ -11,7 +11,7 @@
                 <h2 class="blue-text center">Prosjekter</h2>
                 <ul class="collection">
                     <li class="collection-item" v-for="project in projects" :key="project.id">
-                        <span>{{project.title}}</span> - 
+                        <span>{{project.title}}</span> -
                         <span>{{project.content}}</span>
                         <span class="grey-text time">{{project.time}}</span>
                     </li>
@@ -75,7 +75,7 @@ export default {
                 }
             })
         })
-        
+
     }
 }
 </script>
@@ -83,12 +83,13 @@ export default {
 <style>
 
 .user-profile{
-    margin-top: 60px;
+  max-width: 50%;
+  margin-top: 40px;
 }
 
 .user-profile .time{
-    display: block;
-    font-size: 0.8em;
+  display: block;
+  font-size: 0.8em;
 }
 
 </style>
