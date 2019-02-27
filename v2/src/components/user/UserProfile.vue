@@ -2,10 +2,10 @@
     <div class="user-profile">
         <div class="row">
             <div class="col s3 center sidebar">
-                <p class="blue-text">{{this.name}}</p>
+                <p class="blue-text">{{user.name}}</p>
                 <p>{{user.email}}</p>
-                <p>{{this.phone}}</p>
-                <p>Admin: {{this.admin}}</p>
+                <p>{{user.phone}}</p>
+                <p>Admin: {{user.admin}}</p>
             </div>
             <div class="col s9">
                 <h2 class="blue-text center">Prosjekter</h2>
@@ -56,11 +56,12 @@ export default {
                 /* console.log(doc.data().user_id)
                 console.log(doc.data()) */
                 console.log("User uid fra profil: "+firebase.auth().currentUser.uid)
+                console.log("Bruker: " + this.user.user_id)
             })
         })
 
         // get users projects
-        project.where('user_id', '==', this.$route.params.id)
+        project.where('user_id', '==', firebase.auth().currentUser.uid)
         .onSnapshot((snapshot) => {
             snapshot.docChanges().forEach(change => {
                 if(change.type == 'added'){

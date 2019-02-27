@@ -42,6 +42,7 @@ export default {
       email: null,
       fname: null,
       ename: null,
+      name: null,
       phone: null,
       slug: null,
       password: null,
@@ -50,9 +51,10 @@ export default {
   },
   methods: {
     register(){
+      let name = this.fname + " " + this. ename
+
       if(this.email && this.fname && this.ename && this.phone && this.password){
-        let name = this.fname + " " + this. ename
-          this.slug = slugify(name, {
+          this.slug = slugify(this.fname + ' ' + this.ename, {
               replacement: '-',
               remove: /[$*_+~.()'"!\._@]/g,
               lower: true
@@ -71,7 +73,7 @@ export default {
                 phone: this.phone,
                 isAdmin: false,
                 timestamp: Date.now(),
-                slug: this.name,
+                slug: this.slug,
                 user_id: cred.user.uid
               })
             }).then(() => {

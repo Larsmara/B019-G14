@@ -69,8 +69,20 @@ const router = new Router({
       path:'/admin',
       name: 'Dashboard',
       component: Dashboard,
-      meta: {
-        adminAuth: true
+      beforeEnter(to, from, next){
+        let user = null;
+        let admin = db.collection('users');
+        admin.where('isAdmin', '==', true).get()
+        .then(snapshot => {
+          snapshot.forEach(doc => {
+            user = doc.data().isAdmin
+            if(doc.data().isAdmin == true){
+              next()
+            } else {
+              next({name: 'Index'})
+            }
+          })
+        })
       }
     }
   ]
