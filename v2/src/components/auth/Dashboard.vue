@@ -3,7 +3,7 @@
         <h2>Dashboard</h2>
 
         <div class="collection">
-            <div class="prosjekter collection-item" v-for="(project, index) in projects" :key="project.projectId">
+            <div class=" collection-item" v-for="(project, index) in projects" :key="project.projectId">
                 <div class="vis">
                     <button class="btn btn-small" @click.prevent="showProject(project)" id="{project.id}">Vis</button>
                     <button class="btn red btn-small" @click.prevent="hideProject(project)">Ikke vis</button>
@@ -63,8 +63,8 @@ export default {
                 this.projects = this.projects.filter(project => {
                 return projects.id != id
                 })
-                window.location.reload();
             })
+            window.location.reload();
         }
     },
     created(){

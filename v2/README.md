@@ -61,5 +61,5 @@ LOGIN ALTERNATIVER
 []  -   email og passord + tlf verifisering
 []  -   Tilbakemelding til eier av prosjektet om det går i produksjon
 []  -   Sende med media
-[]  -   
+[]  -   Passord reset
 []  -   
