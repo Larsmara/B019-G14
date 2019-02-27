@@ -1,22 +1,20 @@
 <template>
     <div class="user-profile">
-        <div class="row">
-            <div class="col s3 center sidebar">
-                <p class="blue-text">{{user.name}}</p>
-                <p>{{user.email}}</p>
-                <p>{{user.phone}}</p>
-                <p>Admin: {{user.admin}}</p>
-            </div>
-            <div class="col s9">
-                <h2 class="blue-text center">Prosjekter</h2>
-                <ul class="collection">
-                    <li class="collection-item" v-for="project in projects" :key="project.id">
-                        <span>{{project.title}}</span> -
-                        <span>{{project.content}}</span>
-                        <span class="grey-text time">{{project.time}}</span>
-                    </li>
-                </ul>
-            </div>
+        <aside class="user-info">
+            <p class="blue-text">{{user.name}}</p>
+            <p>{{user.email}}</p>
+            <p>{{user.phone}}</p>
+            <p>Admin: {{user.admin}}</p>
+        </aside>
+        <div class="user-projects">
+            <h2 class="blue-text center">Prosjekter</h2>
+            <ul class="collection">
+                <li class="collection-item" v-for="project in projects" :key="project.id">
+                    <span>{{project.title}}</span> -
+                    <span>{{project.content}}</span>
+                    <span class="grey-text time">{{project.time}}</span>
+                </li>
+            </ul>
         </div>
     </div>
 </template>
@@ -83,13 +81,23 @@ export default {
 <style>
 
 .user-profile{
-  max-width: 50%;
   margin-top: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
 .user-profile .time{
   display: block;
   font-size: 0.8em;
+}
+
+.user-info {
+  grid-column: 1;
+  text-align: center;
+}
+
+.user-projects {
+  grid-column: 3 / 5;
 }
 
 </style>
