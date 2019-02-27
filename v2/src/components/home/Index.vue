@@ -25,7 +25,7 @@
     <div class="card">
       <div class="card-content">
         <h2 class="indigo-text">Har du en idé?</h2>
-        <p>i som kommune ønsker å være på topp når det gjelder innovative løsninger, men det er ikke alltid at det er oss ansatte som
+        <p>Vi som kommune ønsker å være på topp når det gjelder innovative løsninger, men det er ikke alltid at det er oss ansatte som
           sitter på de beste idéene, eller ser behovene. Derfor ønsker vi å høre deres idéforslag.</p>
         <span class="btn blue">
           <router-link :to="{name: 'NewProject'}" class="idea">Send inn din idé!</router-link>
