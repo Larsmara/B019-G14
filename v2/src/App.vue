@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Navbar/>
-    <p v-if="feedback" class="green-text">{{feedback}}</p>
+    <p class="green-text">{{feedback}}</p>
     <router-view/>
   </div>
 </template>

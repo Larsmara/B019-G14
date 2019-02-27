@@ -1,5 +1,8 @@
 <template>
   <div class="index container">
+    <alert>
+      <slot>{{feedback}}</slot>
+    </alert>
     <header class="index-header"></header>
     <div class="card">
       <div class="card-content">

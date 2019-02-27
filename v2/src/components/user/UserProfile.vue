@@ -7,7 +7,7 @@
             <p>Admin: {{user.admin}}</p>
         </aside>
         <div class="user-projects">
-            <h2 class="blue-text center">Prosjekter</h2>
+            <h2 class="blue-text center">Mine prosjekter</h2>
             <ul class="collection">
                 <li class="collection-item" v-for="project in projects" :key="project.id">
                     <span>{{project.title}}</span> -
