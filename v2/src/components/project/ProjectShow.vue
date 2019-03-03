@@ -66,7 +66,7 @@ export default {
 
 .project-show {
   max-width: 50%;
-  margin-top: 40px;
+  margin-top: 3rem;
 }
 
 </style>

@@ -71,15 +71,19 @@ export default {
 <style>
 
 .navbar nav{
-  padding: 0 20px;
+    padding: 0 2rem;
 }
 
 .navbar .container .left:first-child {
-  padding: 0 30px;
+    padding: 0 3rem;
 }
 
 .navbar img {
-  height: 64px;
+    height: 6.4rem;
+}
+
+ul li a {
+    font-size: 1.6rem;
 }
 
 </style>

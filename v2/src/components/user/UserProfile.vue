@@ -7,7 +7,7 @@
             <p>Admin: {{user.admin}}</p>
         </aside>
         <div class="user-projects">
-            <h2 class="blue-text center">Mine prosjekter</h2>
+            <h2 class="center">Mine prosjekter</h2>
             <ul class="collection">
                 <li class="collection-item" v-for="project in projects" :key="project.id">
                     <span>{{project.title}}</span> -
@@ -79,25 +79,5 @@ export default {
 </script>
 
 <style>
-
-.user-profile{
-  margin-top: 40px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-}
-
-.user-profile .time{
-  display: block;
-  font-size: 0.8em;
-}
-
-.user-info {
-  grid-column: 1;
-  text-align: center;
-}
-
-.user-projects {
-  grid-column: 3 / 5;
-}
 
 </style>

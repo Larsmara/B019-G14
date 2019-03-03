@@ -1,7 +1,7 @@
 <template>
     <div class="register container">
         <form @submit.prevent="register" class="card-panel">
-            <h2>Registrer deg</h2>
+            <h2 class="center">Registrer deg</h2>
             <div class="field">
                 <label for="email">E-post</label>
                 <input type="email" name="email" v-model="email">
@@ -99,15 +99,11 @@ export default {
 
 .register{
   max-width: 25%;
-  margin-top: 40px;
-}
-
-.register h2{
-  font-size: 2.4em;
+  margin-top: 3rem;
 }
 
 .register .field{
-  margin-bottom: 16px;
+  margin-bottom: 1.6rem;
 }
 
 </style>
