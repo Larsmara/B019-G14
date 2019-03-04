@@ -26,7 +26,7 @@
             </div>
             <p v-if="feedback" class="red-text center">{{feedback}}</p>
             <div class="field">
-                <button class="btn blue">Registrer idé</button>
+                <button class="btn">Registrer idé</button>
             </div>
         </form>
     </div>

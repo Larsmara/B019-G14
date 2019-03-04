@@ -1,6 +1,6 @@
 <template>
     <div class="navbar">
-        <nav class="blue lighten-2">
+        <nav>
             <div class="nav-wrapper">
                 <router-link :to="{name: 'Index'}" class="brand-logo left"><!-- <img src="../images/smartcity-tekst.png" alt="Smart City Halden" /> -->Smart City Halden</router-link>
                 <div class="container">
@@ -70,8 +70,11 @@ export default {
 
 <style>
 
+@import "/../style/main.css";
+
 .navbar nav{
     padding: 0 2rem;
+    background-color: rgba(0, 145, 211, 0.8);
 }
 
 .navbar .container .left:first-child {

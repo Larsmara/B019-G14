@@ -69,4 +69,8 @@ export default {
     margin-top: 3rem;
 }
 
+.collection a.collection-item {
+    color: #0072BB;
+}
+
 </style>

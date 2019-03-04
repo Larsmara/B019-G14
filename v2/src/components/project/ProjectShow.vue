@@ -69,4 +69,8 @@ export default {
   margin-top: 3rem;
 }
 
+.project-show a {
+    color: #0091D3;
+}
+
 </style>

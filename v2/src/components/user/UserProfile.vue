@@ -5,7 +5,7 @@
             <p>{{user.email}}</p>
             <p>{{user.phone}}</p>
             <p v-if="user.isAdmin">Admin: {{user.isAdmin}}</p>
-            <button v-on:click="reset()" class="btn btn-blue">tilbakestill passord</button>
+            <button v-on:click="reset()" class="btn">tilbakestill passord</button>
         </aside>
         <div class="user-projects">
             <h2 class="center">Mine prosjekter</h2>

@@ -31,7 +31,7 @@
             <div id="recaptcha-container"></div>
             <p class="red-text center" v-if="feedback">{{feedback}}</p>
             <div class="field center">
-                <button class="btn blue">Verifiser telefon</button>
+                <button class="btn">Verifiser telefon</button>
             </div>
         </form>
 
@@ -42,7 +42,7 @@
           </div>
           <p class="red-text center" v-if="feedback">{{feedback}}</p>
           <div class="field center">
-            <button class="btn blue" id="sign-in">Fullfør registreringen</button>
+            <button class="btn" id="sign-in">Fullfør registreringen</button>
           </div>
         </form>
     </div>
@@ -88,9 +88,9 @@ export default {
               // SMS sent. Prompt user to type the code from the message, then sign the
               // user in with confirmationResult.confirm(code).
               window.confirmationResult = confirmationResult;
-              window.signingIn = false;  
-              document.getElementById('skjema').style.display = 'none';   
-              document.getElementById('skjema2').style.display = 'block';         
+              window.signingIn = false;
+              document.getElementById('skjema').style.display = 'none';
+              document.getElementById('skjema2').style.display = 'block';
             }).catch(function (error) {
               // Error; SMS not sent
               console.error('Error during signInWithPhoneNumber', error);
@@ -98,13 +98,13 @@ export default {
                   + error.code + '\n\n' + error.message);
               window.signingIn = false;
             });
-            
+
           }
         })
       } else {
         this.feedback = 'Please fill in all fields'
       }
-      
+
     },
     reg(){
       let ref = db.collection('users').doc(this.phone)
@@ -151,9 +151,9 @@ export default {
 
       recaptchaVerifier.render().then(function(widgetId) {
         window.recaptchaWidgetId = widgetId;
-        
+
       });
-      
+
     });
   }
 }
