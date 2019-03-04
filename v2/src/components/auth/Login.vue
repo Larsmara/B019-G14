@@ -13,6 +13,7 @@
             <p v-if="feedback" class="red-text center">{{feedback}}</p>
             <div class="field">
                 <button class="btn blue">Logg inn</button>
+                <button class="btn blue" @click="forgotPassword">Glemt passord?</button>
             </div>
         </form>
     </div>
@@ -47,6 +48,9 @@ export default {
          } else {
              this.feedback = 'Please fill in both fields'
          }
+        },
+        forgotPassword(){
+            console.log("Glemt passord?")
         }
     },
     created(){
