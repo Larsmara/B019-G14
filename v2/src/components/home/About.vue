@@ -37,6 +37,7 @@ export default {
 .about-header {
   background-image: url("../images/smartcity-about.jpg");
   background-size: cover;
+  background-repeat: no-repeat;
   height: 300px;
   margin-top: 40px;
 }

@@ -4,7 +4,8 @@
             <p class="blue-text">{{user.name}}</p>
             <p>{{user.email}}</p>
             <p>{{user.phone}}</p>
-            <p>Admin: {{user.admin}}</p>
+            <p v-if="user.isAdmin">Admin: {{user.isAdmin}}</p>
+            <button v-on:click="reset()" class="btn btn-blue">tilbakestill passord</button>
         </aside>
         <div class="user-projects">
             <h2 class="blue-text center">Mine prosjekter</h2>
@@ -35,6 +36,24 @@ export default {
             admin: null,
             feedback: null,
             projects: []
+        }
+    },
+    methods: {
+        reset(){
+            console.log('Passord reset')
+            let auth = firebase.auth();
+            let ref = db.collection('users')
+            ref.where('user_id', '==', firebase.auth().currentUser.uid).get()
+                .then(snapshot => {
+                snapshot.forEach(doc => {
+                    this.email = doc.data().email
+                })
+            })
+            auth.sendPasswordResetEmail(this.email).then(() => {
+                console.log('Email sent')
+            }).catch((error) => {
+                this.feedback = error.message;
+            })
         }
     },
     created(){

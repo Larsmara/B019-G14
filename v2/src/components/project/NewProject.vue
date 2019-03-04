@@ -63,14 +63,6 @@ export default {
             })
         })
 
-        var storage = db.storage()
-        var storRef = storage.ref("photos/")
-
-        var file = "Screenshot 2019-02-01 at 18.05.32.png"
-        storRef.put(file).then(snapshot =>{
-            console.log("uploaded")
-        })
-
     },
     methods: {
         createidea(){

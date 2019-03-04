@@ -2,7 +2,7 @@
     <div class="navbar">
         <nav class="blue lighten-2">
             <div class="nav-wrapper">
-                <router-link :to="{name: 'Index'}" class="brand-logo left"><img src="../images/smartcity-tekst.png" alt="Smart City Halden" /></router-link>
+                <router-link :to="{name: 'Index'}" class="brand-logo left"><!-- <img src="../images/smartcity-tekst.png" alt="Smart City Halden" /> -->Smart City Halden</router-link>
                 <div class="container">
                     <ul class="left hide-on-med-and-down" id="nav-mobile">
                         <li><router-link :to="{name: 'Index'}">Hjem</router-link></li>
