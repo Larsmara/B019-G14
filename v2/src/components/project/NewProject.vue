@@ -26,7 +26,7 @@
             </div>
             <p v-if="feedback" class="red-text center">{{feedback}}</p>
             <div class="field">
-                <button class="btn blue">Registrer ide</button>
+                <button class="btn blue">Registrer idé</button>
             </div>
         </form>
     </div>
@@ -111,8 +111,8 @@ export default {
 <style>
 
 .new-project {
-  max-width: 50%;
-  margin-top: 40px;
+    max-width: 50%;
+    margin-top: 3rem;
 }
 
 </style>

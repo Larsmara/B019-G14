@@ -94,14 +94,14 @@ export default {
 
 <style>
 
-.prosjekter{
-  max-width: 50%;
-  margin-top: 40px;
+.prosjekter {
+    max-width: 50%;
+    margin-top: 3rem;
 }
 
-.vis{
-  display: block;
-  padding: 4px 20px;
+.vis {
+    display: block;
+    padding: .4rem 2rem;
 }
 
 </style>

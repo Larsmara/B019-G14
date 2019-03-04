@@ -58,16 +58,12 @@ export default {
 <style>
 
 .login{
-  max-width: 25%;
-  margin-top: 40px;
-}
-
-.login h2{
-  font-size: 2.4em;
+    max-width: 25%;
+    margin-top: 3rem;
 }
 
 .login .field{
-  margin-bottom: 16px;
+    margin-bottom: 1.6rem;
 }
 
 </style>

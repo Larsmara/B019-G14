@@ -55,13 +55,18 @@ export default {
 <style>
 
 .project {
-  max-width: 50%;
-  margin: auto;
+    max-width: 50%;
+    margin: auto;
+    margin-top: 3rem;
 }
 
 .project .time{
-  display: block;
-  font-size: 0.8em;
+    display: block;
+    font-size: 1.28rem;
+}
+
+.collection {
+    margin-top: 3rem;
 }
 
 </style>
