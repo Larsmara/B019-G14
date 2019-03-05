@@ -61,7 +61,7 @@ LOGIN ALTERNATIVER
 [X]  -   Passord reset
 []  -   Glemt passord på innloggingssiden
 []  -   Slette brukerkonto
-
+[]  -   Sletting / redigering av fil 
 
 
 OPPRYDDING
