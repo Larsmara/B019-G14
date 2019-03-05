@@ -9,7 +9,6 @@ import Profile from '../components/User/Profile.vue'
 import Signin from '../components/User/Signin.vue'
 import Register from '../components/User/Register.vue'
 import Dashboard from '../components/Admin/Dashboard.vue'
-//import AuthGuard from './auth-guard'
 
 Vue.use(Router)
 
