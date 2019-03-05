@@ -32,14 +32,14 @@ export default new Router({
       component: Project
     },
     {
-      path: '/new',
+      path: '/prosjekter/:id',
       name: 'ProjectShow',
-      component: NewProject
+      component: ProjectShow
     },
     {
-      path: '/prosjekter/:id',
+      path: '/prosjekter/ny',
       name: 'NewProject',
-      component: ProjectShow
+      component: NewProject
     },
     {
       path: '/login',

@@ -54,7 +54,7 @@
       menuItems(){
         let menuItems = [
           {icon: 'home', title: 'Hjem', link: '/home'},
-          {icon: 'input', title: 'Send idé', link: '/new'},
+          {icon: 'input', title: 'Send idé', link: '/prosjekter/ny'},
           {icon: 'list', title: 'Prosjekter', link: '/prosjekter'},
           {icon: 'supervisor_account', title: 'Om oss', link: '/om-oss'},
           {icon: 'account_box', title: 'Min Side', link: '/profil'},
