@@ -18,8 +18,6 @@ npm run build
 npm run build --report
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
-
 Sjekkliste for V2 av web applikasjonen: 
 
 [X]  -   Lag systemoversikt
@@ -49,17 +47,21 @@ Sjekkliste for V2 av web applikasjonen:
 [X]  -   Lage funksjon for "slug" til hvert prosjekt.
 [X]  -   Lagre et "alias"/slug for hver bruker.
 [X]  -   Dashboard for admin
-[]  -   Protecte admin route!!!
+[X]  -   Protecte admin route!!!
 [X]  -   Oversikt over alle prosjekter fra admin dashboard
 [X]  -   Muligheten til å vise prosjekter som "pågående" fra admin dashboard
 [X]  -   Vise pågående prosjekter til brukere
 [X]  -   Slette prosjekt
 
 LOGIN ALTERNATIVER
-[]  -   Google login
-[]  -   Telefonnummer verifisering
-[]  -   email og passord + tlf verifisering
+[X]  -   Telefonnummer verifisering
+[X]  -   email og passord + tlf verifisering
 []  -   Tilbakemelding til eier av prosjektet om det går i produksjon
+[]  -   Sende med media
+[X]  -   Passord reset
 []  -   
-[]  -   
-[]  -   
+
+
+
+OPPRYDDING
+[]  -   Rydde opp i koden på Register.vue

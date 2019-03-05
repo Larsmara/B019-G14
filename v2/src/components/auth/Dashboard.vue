@@ -1,9 +1,9 @@
 <template>
     <div class="dashboard container">
         <h2>Dashboard</h2>
-        
+
         <div class="collection">
-            <div class="prosjekter collection-item" v-for="(project, index) in projects" :key="project.projectId">
+            <div class=" collection-item" v-for="(project, index) in projects" :key="project.projectId">
                 <div class="vis">
                     <button class="btn btn-small" @click.prevent="showProject(project)" id="{project.id}">Vis</button>
                     <button class="btn red btn-small" @click.prevent="hideProject(project)">Ikke vis</button>
@@ -34,7 +34,7 @@ export default {
     methods: {
         showProject(project){
             console.log(project.title + " - Er nå satt i produksjon " + project.projectId)
-            
+
             db.collection("projects").doc(project.projectId).update({
                 showing: true
             }).then(() => {
@@ -63,8 +63,8 @@ export default {
                 this.projects = this.projects.filter(project => {
                 return projects.id != id
                 })
-                window.location.reload();
             })
+            window.location.reload();
         }
     },
     created(){
@@ -94,14 +94,14 @@ export default {
 
 <style>
 
-.prosjekter{
-    display: 
-
+.prosjekter {
+    max-width: 50%;
+    margin-top: 3rem;
 }
 
-.vis{
+.vis {
     display: block;
-    padding: 4px 20px;
+    padding: .4rem 2rem;
 }
 
 </style>

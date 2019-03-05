@@ -26,7 +26,7 @@
             </div>
             <p v-if="feedback" class="red-text center">{{feedback}}</p>
             <div class="field">
-                <button class="btn blue">Registrer ide</button>
+                <button class="btn">Registrer idé</button>
             </div>
         </form>
     </div>
@@ -63,14 +63,6 @@ export default {
             })
         })
 
-        var storage = db.storage()
-        var storRef = storage.ref("photos/")
-
-        var file = "Screenshot 2019-02-01 at 18.05.32.png"
-        storRef.put(file).then(snapshot =>{
-            console.log("uploaded")
-        })
-        
     },
     methods: {
         createidea(){
@@ -94,14 +86,14 @@ export default {
                 }).then(() => {
                     this.title = null,
                     this.content = null
-                    this.tilbakemelding = 'Din ide er registrert. Denne ideen vil bli vurdert, men vi gjør oppmerksom på at vi ikke kan realisere alle ideer, men dit innspill kan bidra til et bedre samfunn i halden.'
+                    this.tilbakemelding = 'Din ide er registrert. Denne ideen vil bli vurdert, men vi gjør oppmerksom på at vi ikke kan realisere alle ideer. Ditt innspill kan bidra til et bedre samfunn i Halden.'
                 }).then(() =>{
                     this.$router.push({ name: 'Project' })
                 })
             } else {
                 this.feedback = 'Fyll ut begge feltene'
             }
-            this.tilbakemelding = null      
+            this.tilbakemelding = null
         }
         /* onFileSelected(event){
             let file = event.target.files[0]
@@ -115,6 +107,12 @@ export default {
 }
 </script>
 
+
 <style>
+
+.new-project {
+    max-width: 50%;
+    margin-top: 3rem;
+}
 
 </style>

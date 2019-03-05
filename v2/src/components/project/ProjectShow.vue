@@ -1,10 +1,12 @@
 <template>
     <div class="project-show container">
         <div v-for="pro in project" :key="pro.user_id">
+            <a href="/project">Tilbake</a>
             <h3>{{pro.title}}</h3>
+            <hr>
             <p>{{pro.content}}</p>
-            <p>{{pro.time}}</p>
-            <p>{{pro.user}}</p>
+            <p style="font-style: italic;">{{pro.time}}</p>
+            <p style="font-style: italic;">{{pro.user}}</p>
         </div>
     </div>
 </template>
@@ -42,8 +44,8 @@ export default {
                     })
                 }
             })
-        }) 
-        
+        })
+
         db.collection("users").where("user_id", "==", this.user)
         .get()
         .then(function(querySnapshot) {
@@ -61,5 +63,14 @@ export default {
 </script>
 
 <style>
+
+.project-show {
+  max-width: 50%;
+  margin-top: 3rem;
+}
+
+.project-show a {
+    color: #0091D3;
+}
 
 </style>

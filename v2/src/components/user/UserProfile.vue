@@ -1,22 +1,21 @@
 <template>
     <div class="user-profile">
-        <div class="row">
-            <div class="col s3 center sidebar">
-                <p class="blue-text">{{this.name}}</p>
-                <p>{{user.email}}</p>
-                <p>{{this.phone}}</p>
-                <p>Admin: {{this.admin}}</p>
-            </div>
-            <div class="col s9">
-                <h2 class="blue-text center">Prosjekter</h2>
-                <ul class="collection">
-                    <li class="collection-item" v-for="project in projects" :key="project.id">
-                        <span>{{project.title}}</span> - 
-                        <span>{{project.content}}</span>
-                        <span class="grey-text time">{{project.time}}</span>
-                    </li>
-                </ul>
-            </div>
+        <aside class="user-info">
+            <p class="blue-text">{{user.name}}</p>
+            <p>{{user.email}}</p>
+            <p>{{user.phone}}</p>
+            <p v-if="user.isAdmin">Admin: {{user.isAdmin}}</p>
+            <button v-on:click="reset()" class="btn">tilbakestill passord</button>
+        </aside>
+        <div class="user-projects">
+            <h2 class="center">Mine prosjekter</h2>
+            <ul class="collection">
+                <li class="collection-item" v-for="project in projects" :key="project.id">
+                    <span>{{project.title}}</span> -
+                    <span>{{project.content}}</span>
+                    <span class="grey-text time">{{project.time}}</span>
+                </li>
+            </ul>
         </div>
     </div>
 </template>
@@ -39,6 +38,24 @@ export default {
             projects: []
         }
     },
+    methods: {
+        reset(){
+            console.log('Passord reset')
+            let auth = firebase.auth();
+            let ref = db.collection('users')
+            ref.where('user_id', '==', firebase.auth().currentUser.uid).get()
+                .then(snapshot => {
+                snapshot.forEach(doc => {
+                    this.email = doc.data().email
+                })
+            })
+            auth.sendPasswordResetEmail(this.email).then(() => {
+                console.log('Email sent')
+            }).catch((error) => {
+                this.feedback = error.message;
+            })
+        }
+    },
     created(){
         document.title = "Min side";
         let ref = db.collection('users')
@@ -56,11 +73,12 @@ export default {
                 /* console.log(doc.data().user_id)
                 console.log(doc.data()) */
                 console.log("User uid fra profil: "+firebase.auth().currentUser.uid)
+                console.log("Bruker: " + this.user.user_id)
             })
         })
 
         // get users projects
-        project.where('user_id', '==', this.$route.params.id)
+        project.where('user_id', '==', firebase.auth().currentUser.uid)
         .onSnapshot((snapshot) => {
             snapshot.docChanges().forEach(change => {
                 if(change.type == 'added'){
@@ -74,20 +92,11 @@ export default {
                 }
             })
         })
-        
+
     }
 }
 </script>
 
 <style>
-
-.user-profile{
-    margin-top: 60px;
-}
-
-.user-profile .time{
-    display: block;
-    font-size: 0.8em;
-}
 
 </style>

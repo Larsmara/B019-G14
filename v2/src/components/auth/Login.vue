@@ -1,7 +1,7 @@
 <template>
     <div class="container login">
         <form @submit.prevent="login" class="card-panel">
-            <h2 class="center">Log inn</h2>
+            <h2 class="center">Logg inn</h2>
             <div class="field">
                 <label for="email">E-post</label>
                 <input type="email" name="email" v-model="email">
@@ -12,7 +12,7 @@
             </div>
             <p v-if="feedback" class="red-text center">{{feedback}}</p>
             <div class="field">
-                <button class="btn blue">Logg inn</button>
+                <button class="btn">Logg inn</button>
             </div>
         </form>
     </div>
@@ -23,6 +23,7 @@ import firebase from 'firebase'
 
 export default {
     name: 'Login',
+    props: ['feedback'],
     data(){
         return {
             email: null,
@@ -36,7 +37,9 @@ export default {
              firebase.auth().signInWithEmailAndPassword(this.email, this.password)
              .then(cred => {
                  console.log(cred.user)
-                 this.$router.push({name: 'Index'})
+                 this.feedback = 'Du er nå logget inn'
+                 this.$router.push({name: 'Index', feedback: 'Logget inn'})
+                 window.location.reload()
              }).catch(err => {
                  this.feedback = err.message
              })
@@ -55,16 +58,12 @@ export default {
 <style>
 
 .login{
-    max-width: 400px;
-    margin-top: 60px;
-}
-
-.login h2{
-    font-size: 2.4em;
+    max-width: 25%;
+    margin-top: 3rem;
 }
 
 .login .field{
-    margin-bottom: 16px;
+    margin-bottom: 1.6rem;
 }
 
 </style>

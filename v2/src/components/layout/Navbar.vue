@@ -1,8 +1,8 @@
 <template>
     <div class="navbar">
-        <nav class="blue lighten-2">
+        <nav>
             <div class="nav-wrapper">
-                <router-link :to="{name: 'Index'}" class="brand-logo left">B019-G14</router-link>
+                <router-link :to="{name: 'Index'}" class="brand-logo left"><!-- <img src="../images/smartcity-tekst.png" alt="Smart City Halden" /> -->Smart City Halden</router-link>
                 <div class="container">
                     <ul class="left hide-on-med-and-down" id="nav-mobile">
                         <li><router-link :to="{name: 'Index'}">Hjem</router-link></li>
@@ -15,7 +15,7 @@
                         <li><router-link :to="{name: 'Register'}" v-if="!user">Registrer deg</router-link></li>
                         <li><router-link :to="{name: 'Dashboard'}" v-if="user && user.isAdmin">Dashboard</router-link></li>
                         <li><router-link :to="{name: 'UserProfile', params: {id: user.slug}}" v-if="user">Min side</router-link></li>
-                        <li><a @click="logout" v-if="user">Log ut</a></li>
+                        <li><a @click="logout" v-if="user">Logg ut</a></li>
                     </ul>
                 </div>
             </div>
@@ -81,10 +81,23 @@ export default {
 
 <style>
 
+@import "/../style/main.css";
+
 .navbar nav{
-    padding: 0 20px;
+    padding: 0 2rem;
+    background-color: rgba(0, 145, 211, 0.8);
+}
+
+.navbar .container .left:first-child {
+    padding: 0 3rem;
+}
+
+.navbar img {
+    height: 6.4rem;
+}
+
+ul li a {
+    font-size: 1.6rem;
 }
 
 </style>
-
-
