@@ -1,8 +1,8 @@
 <template>
     <div class="container new-project">
-        <div class="row" v-if="tilbakemelding">
+        <div class="row">
             <div class="card green accent-3">
-                <h3>{{tilbakemelding}}</h3>
+                <h3>Takk for din tilbakemelding!</h3>
             </div>
         </div>
         <form @submit.prevent="createidea" class="card-panel">
