@@ -3,6 +3,7 @@
         <nav>
             <div class="nav-wrapper">
                 <router-link :to="{name: 'Index'}" class="brand-logo left"><!-- <img src="../images/smartcity-tekst.png" alt="Smart City Halden" /> -->Smart City Halden</router-link>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger right" @click="loadSideNav"><i class="material-icons">menu</i></a>
                 <div class="container">
                     <ul class="left hide-on-med-and-down" id="nav-mobile">
                         <li><router-link :to="{name: 'Index'}">Hjem</router-link></li>
@@ -17,6 +18,8 @@
                         <li><router-link :to="{name: 'UserProfile', params: {id: user.slug}}" v-if="user">Min side</router-link></li>
                         <li><a @click="logout" v-if="user">Logg ut</a></li>
                     </ul>
+
+                    
                 </div>
             </div>
         </nav>
@@ -53,16 +56,8 @@ export default {
                 this.user = null
             }
 
-            document.addEventListener('DOMContentLoaded', function() {
-                var elems = document.querySelectorAll('.sidenav');
-                var instances = M.Sidenav.init(elems, options);
-            });
 
-            // Or with jQuery
-
-            $(document).ready(function(){
-                $('.sidenav').sidenav();
-            });
+            
         })
 
         let ref = db.collection('users')

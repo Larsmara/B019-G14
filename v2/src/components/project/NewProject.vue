@@ -9,11 +9,11 @@
             <h2 class="center">Send oss din idé!</h2>
             <div class="field">
                 <label for="title">Tittel</label>
-                <input type="text" name="title" v-model="title">
+                <input type="text" name="title" v-model="title" required>
             </div>
             <div class="field">
                 <label for="content">Forklar din idé</label>
-                <textarea type="text" name="content" v-model="content" class="materialize-textarea"></textarea>
+                <textarea type="text" name="content" v-model="content" class="materialize-textarea" required></textarea>
             </div>
             <div class="file-field input-field">
                 <div class="btn">
