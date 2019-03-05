@@ -32,7 +32,7 @@ export default new Router({
       component: Project
     },
     {
-      path: '/prosjekter/ny',
+      path: '/ny',
       name: 'createProject',
       component: CreateProject
     },

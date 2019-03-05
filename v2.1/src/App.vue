@@ -19,7 +19,7 @@
     </v-navigation-drawer>
     <!-- SLUTT MOBIL NAVIGASJON -->
 
-    <v-toolbar color="cyan" dark fixed app>
+    <v-toolbar color="primary" dark fixed app>
       <v-toolbar-title>
         <router-link to="/" tag="span" style="cursor: pointer">Smart City</router-link>
       </v-toolbar-title>
@@ -53,7 +53,7 @@
       menuItems(){
         let menuItems = [
           {icon: 'home', title: 'Hjem', link: '/'},
-          {icon: 'input', title: 'Send idé', link: '/prosjekter/ny'},
+          {icon: 'input', title: 'Send idé', link: '/ny'},
           {icon: 'list', title: 'Prosjekter', link: '/prosjekter'},
           {icon: 'supervisor_account', title: 'Om oss', link: '/om-oss'},
           {icon: 'account_box', title: 'Min Side', link: '/profil'},
@@ -65,3 +65,4 @@
     }
   }
 </script>
+
