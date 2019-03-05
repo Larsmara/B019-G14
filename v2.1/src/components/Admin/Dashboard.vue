@@ -1,16 +1,3 @@
 <template>
-    <div>
-        <h2>Admin dashboard</h2>
-    </div>
+    <h2>Admin dashboard</h2>
 </template>
-
-<script>
-export default {
-    name: 'Dashboard',
-    data(){
-        return{
-            
-        }
-    }
-}
-</script>

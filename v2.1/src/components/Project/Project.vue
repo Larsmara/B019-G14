@@ -1,16 +1,3 @@
 <template>
-    <div>
-        <h2>Prosjekter</h2>
-    </div>
+    <h2>Prosjekter</h2>
 </template>
-
-<script>
-export default {
-    name: 'Project',
-    data(){
-        return{
-            
-        }
-    }
-}
-</script>

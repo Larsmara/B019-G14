@@ -1,16 +1,3 @@
 <template>
-    <div>
-        <h2>Om oss</h2>
-    </div>
+    <h2>Om oss</h2>
 </template>
-
-<script>
-export default {
-    name: 'About',
-    data(){
-        return{
-            
-        }
-    }
-}
-</script>

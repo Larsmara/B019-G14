@@ -1,16 +1,3 @@
 <template>
-    <div>
-        <h2>Registrer deg</h2>
-    </div>
+    <h2>Registrer deg</h2>
 </template>
-
-<script>
-export default {
-    name: 'Register',
-    data(){
-        return{
-            
-        }
-    }
-}
-</script>
