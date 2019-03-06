@@ -1,5 +1,8 @@
 <template>
-    <h2>Bruker profil for {{user.id}}</h2>
+    <v-container>
+        <h2>Bruker profil for {{user.id}}</h2>
+        <p>tlf: {{user.displayName}}</p>
+    </v-container>
 </template>
 
 <script>

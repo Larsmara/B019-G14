@@ -119,6 +119,13 @@ export const store =  new Vuex.Store({
               joined: payload.user.joined,
               userId: user.user.uid
             })
+            firebase.auth().currentUser.updateProfile({
+              displayName: payload.user.phone
+            }).then(() => {
+              console.log('oppdatert bruker')
+            }).catch((error) => {
+              console.log(error)
+            })
             commit('setLoading', false)
             const newUser = {
               id: user.uid
