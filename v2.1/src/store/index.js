@@ -106,7 +106,8 @@ export const store =  new Vuex.Store({
       firebase.firestore().collection('users').doc(payload.user.phone).get()
       .then(doc => {
         if(doc.exists){
-          alert('Telefonnummer finnes')
+          let error = {message: 'Mobilnummber finnes'}
+          commit('setError', error)
         } else {
           firebase.auth().createUserWithEmailAndPassword(payload.email, payload.passord)
           .then((user) => {
@@ -148,6 +149,9 @@ export const store =  new Vuex.Store({
         commit('setError', error)
         console.log(error)
       })
+    },
+    loadUser({commit}, payload){
+
     },
     // METODE FOR Å AUTOMATISK LOGGE EN BRUKER INN
     autoSignIn({commit}, payload){
