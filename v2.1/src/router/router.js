@@ -9,6 +9,7 @@ import Dashboard from '../components/Admin/Dashboard.vue'
 import Profile from '../components/User/Profile.vue'
 import Login from '../components/User/Login.vue'
 import Register from '../components/User/Register.vue'
+import AuthGuard from './auth-guards'
 
 Vue.use(Router)
 
@@ -32,13 +33,15 @@ export default new Router({
       component: Project
     },
     {
-      path: '/ny',
+      path: '/ny-idé',
       name: 'createProject',
-      component: CreateProject
+      component: CreateProject,
+      beforeEnter: AuthGuard
     },
     {
-      path: '/prosjekter/:id',
-      name: 'showProject',
+      path: '/prosjekt/:id',
+      name: 'ShowProject',
+      props: true,
       component: ShowProject
     },
     {
@@ -49,7 +52,8 @@ export default new Router({
     {
       path: '/profil/:id',
       name: 'profile',
-      component: Profile
+      component: Profile,
+      beforeEnter: AuthGuard
     },
     {
       path: '/login',

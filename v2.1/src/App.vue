@@ -15,6 +15,25 @@
             <v-list-tile-title>{{item.title}}</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
+
+        <v-list-tile v-if="userIsAuthenticated">
+          <v-list-tile-action>
+            <v-icon>face</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>Min side</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+
+        <v-list-tile v-if="userIsAuthenticated" @click="onLogOut">
+          <v-list-tile-action>
+            <v-icon>exit_to_app</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>Logg ut</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+
       </v-list>
     </v-navigation-drawer>
     <!-- SLUTT MOBIL NAVIGASJON -->
@@ -28,6 +47,10 @@
         <v-btn flat v-for="item in menuItems" :key="item.title" :to="item.link">
         <v-icon left dark>{{item.icon}}</v-icon>
         {{item.title}}
+        </v-btn>
+        <v-btn flat v-if="userIsAuthenticated && user" :to="'/profil/' + user.id">
+        <v-icon left dark>account_box</v-icon>
+        Min Side
         </v-btn>
         <v-btn flat v-if="userIsAuthenticated" @click="onLogOut">
         <v-icon left dark>exit_to_app</v-icon>
@@ -49,18 +72,36 @@
     data: () => ({
       drawer: null
     }),
+    methods: {
+      onLogOut(){
+        this.$store.dispatch('logout')
+      }
+    },
     computed: {
       menuItems(){
         let menuItems = [
           {icon: 'home', title: 'Hjem', link: '/'},
-          {icon: 'input', title: 'Send idé', link: '/ny'},
           {icon: 'list', title: 'Prosjekter', link: '/prosjekter'},
           {icon: 'supervisor_account', title: 'Om oss', link: '/om-oss'},
-          {icon: 'account_box', title: 'Min Side', link: '/profil'},
           {icon: 'lock_open', title: 'Logg inn', link: '/login'},
           {icon: 'face', title: 'Registrer deg', link: '/register'}
         ]
+        if(this.userIsAuthenticated){
+          menuItems = [
+            {icon: 'home', title: 'Hjem', link: '/'},
+            {icon: 'input', title: 'Send idé', link: '/ny-idé'},
+            {icon: 'list', title: 'Prosjekter', link: '/prosjekter'},
+            {icon: 'supervisor_account', title: 'Om oss', link: '/om-oss'},
+            /* {icon: 'account_box', title: 'Min Side', link: "/profil"}, */
+          ]
+        }
         return menuItems
+      },
+      userIsAuthenticated(){
+        return this.$store.getters.user !== null && this.$store.getters.user !== undefined
+      },
+      user(){
+        return this.$store.getters.user
       }
     }
   }
