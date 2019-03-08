@@ -57,9 +57,10 @@ export default {
         let ref = db.collection('users')
 
         //get current user
-        ref.where('user_id', '==', firebase.auth().currentUser.uid).get()
+        ref.where('userId', '==', firebase.auth().currentUser.uid).get()
         .then(snapshot => {
             snapshot.forEach(doc => {
+                console.log(doc.data())
                 this.user = doc.data()
             })
         })

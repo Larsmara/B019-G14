@@ -66,3 +66,4 @@ LOGIN ALTERNATIVER
 
 OPPRYDDING
 []  -   Rydde opp i koden på Register.vue
+[]  -   Dialog for å skrive inn kode fra sms

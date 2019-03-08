@@ -42,12 +42,13 @@
       <v-toolbar-title>
         <router-link to="/" tag="span" style="cursor: pointer">Smart City</router-link>
       </v-toolbar-title>
-      <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-sm-and-down">
         <v-btn flat v-for="item in menuItems" :key="item.title" :to="item.link">
         <v-icon left dark>{{item.icon}}</v-icon>
         {{item.title}}
         </v-btn>
+        
+        <v-spacer></v-spacer>
         <v-btn flat v-if="userIsAuthenticated && user" :to="'/profil/' + user.id">
         <v-icon left dark>account_box</v-icon>
         Min Side
