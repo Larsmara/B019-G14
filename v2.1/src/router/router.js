@@ -10,6 +10,7 @@ import Profile from '../components/User/Profile.vue'
 import Login from '../components/User/Login.vue'
 import Register from '../components/User/Register.vue'
 import AuthGuard from './auth-guards'
+import firebase from 'firebase'
 
 Vue.use(Router)
 
@@ -47,7 +48,19 @@ export default new Router({
     {
       path: '/dashboard',
       name: 'dashboard',
-      component: Dashboard
+      component: Dashboard,
+      beforeEnter(to, from, next){
+        firebase.firestore().collection('users').where('isAdmin', '==', true).get()
+        .then(snapshot => {
+          snapshot.forEach(doc => {
+            if(doc.data().isAdmin == true){
+              next()
+            } else {
+              next('/login')
+            }
+          })
+        })
+      }
     },
     {
       path: '/profil/:id',

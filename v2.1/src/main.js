@@ -11,7 +11,7 @@ Vue.config.productionTip = false
 
 Vue.use(Vuetify, {
   theme: {
-    primary: '#008E76',
+    primary: '#2196f3',
     secondary: '#b0bec5',
     accent: '#8c9eff',
     error: '#b71c1c'
@@ -37,7 +37,7 @@ new Vue({
     firebase.auth().onAuthStateChanged((user) => {
       if(user){
         this.$store.dispatch('autoSignIn', user)
-        console.log(user)
+        this.$store.dispatch('fetchUserData')
       }
     })
     this.$store.dispatch('loadProjects')

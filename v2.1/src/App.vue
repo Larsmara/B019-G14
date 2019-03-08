@@ -16,7 +16,7 @@
           </v-list-tile-content>
         </v-list-tile>
 
-        <v-list-tile v-if="userIsAuthenticated">
+        <v-list-tile v-if="userIsAuthenticated" :to="'/profil/' + user.id">
           <v-list-tile-action>
             <v-icon>face</v-icon>
           </v-list-tile-action>
@@ -56,7 +56,7 @@
         <v-icon left dark>{{itm.icon}}</v-icon>
         {{itm.title}}
         </v-btn>
-        <v-btn flat v-if="userIsAuthenticated && user" to="/dashboard">
+        <v-btn flat v-if="userIsAuthenticated && user[0].admin" to="/dashboard">
         <v-icon left dark>assignment</v-icon>
         Dashboard
         </v-btn>

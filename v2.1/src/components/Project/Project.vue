@@ -1,12 +1,16 @@
 <template>
     <v-container grid-list-md >
         <v-layout row wrap>
-            <v-flex xs4 v-for="project in projects" :key="project.id">
+            <v-flex height="350px" xs12 md4 lg2 v-for="project in projects" :key="project.id">
                 <v-card>
-                    <v-img
+                    <v-img v-if="project.imageUrl"
                     :src="project.imageUrl"
                     height="200px"
                     >
+                    </v-img>
+                    <v-img v-if="!project.imageUrl"
+                    src="https://canadianinnovationspace.ca/wp-content/uploads/2018/05/IDeA_Graphic.jpg">
+                        
                     </v-img>
 
                     <v-card-title primary-title>
@@ -17,7 +21,7 @@
                     </v-card-title>
 
                     <v-card-actions>
-                    <v-btn flat :to="'/prosjekt/' + project.id">Les mer</v-btn>
+                    <v-btn bottom flat :to="'/prosjekt/' + project.id">Les mer</v-btn>
                     </v-card-actions>
 
                     <v-slide-y-transition>

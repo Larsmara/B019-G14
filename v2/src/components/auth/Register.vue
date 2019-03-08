@@ -90,7 +90,7 @@ export default {
               window.confirmationResult = confirmationResult;
               window.signingIn = false;  
               document.getElementById('skjema').style.display = 'none';   
-              document.getElementById('skjema2').style.display = 'block';         
+              document.getElementById('skjema2').style.display = '';         
             }).catch(function (error) {
               // Error; SMS not sent
               console.error('Error during signInWithPhoneNumber', error);

@@ -67,7 +67,7 @@ export const store = new Vuex.Store({
         content: payload.content,
         date: payload.date,
         slug: payload.slug,
-        creatorId: getters.user.id
+        creatorId: firebase.auth().currentUser.uid
       }
       // LAGRER I DATABASEN
       let imageUrl
@@ -103,9 +103,8 @@ export const store = new Vuex.Store({
     signUserUp({commit, getters}, payload){
       commit('setLoading', true)
       commit('clearError')
-      let ref = firebase.firestore().collection('users').doc(payload.user.phone)
       
-      firebase.firestore().collection('users').doc(payload.user.phone).get()
+      firebase.firestore().collection('users').doc().get()
       .then(doc => {
         if(doc.exists){
           let error = {message: 'Mobilnummber finnes'}
@@ -117,6 +116,7 @@ export const store = new Vuex.Store({
               email: payload.user.email,
               name: payload.user.name,
               slug: payload.user.slug,
+              phone: payload.user.phone,
               isAdmin: false,
               joined: payload.user.joined,
               userId: user.user.uid
@@ -163,28 +163,30 @@ export const store = new Vuex.Store({
 
     },
     // Henter bruker fra DB
-    loadedUser({commit}){
+    fetchUserData({commit}){
       console.log("Bruker")
       commit('setLoading', true)
-      const user = []
+      let userData = []
+
       firebase.firestore().collection('users')
       .where('userId', '==', firebase.auth().currentUser.uid).get()
         .then(snapshot => {
             snapshot.forEach(doc => {
               let docs = doc.data()
-              user.push({
-                  user: docs.data(),
-                  email: docs.data().email,
-                  name: docs.data().name,
-                  phone: docs.data().phone,
-                  admin: docs.data().isAdmin
+              userData.push({
+                  email: doc.data().email,
+                  name: docs.name,
+                  phone: docs.phone,
+                  admin: docs.isAdmin,
+                  joined: moment(docs.joined).format('lll'),
+                  userId: docs.userId
                 })  
+                console.log(userData)
                 console.log("User uid fra profil: "+firebase.auth().currentUser.uid)
-                console.log("Bruker: " + this.user.user_id)
             })
         })
-        commit('setLoadedUser', user)
         commit('setLoading', false)
+        commit('setUser', userData)
     },
     // METODE FOR Å AUTOMATISK LOGGE EN BRUKER INN
     autoSignIn({commit}, payload){
@@ -214,8 +216,7 @@ export const store = new Vuex.Store({
       }
     },
     loadedUser(state){
-      return state.loadedUser
-      
+      return state.loadedUser   
     },
     user(state){
       return state.user
