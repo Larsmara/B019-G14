@@ -18,7 +18,10 @@ export default {
     computed: {
         user(){
             return this.$store.getters.user
-        }
+        },
+        users () {
+        return this.$store.getters.loadedUser
+      }
     }
 }
 </script>

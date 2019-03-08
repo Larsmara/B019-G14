@@ -5,7 +5,7 @@
       <v-list dense>
 
         <v-list-tile
-          v-for="item in menuItems"
+          v-for="item in menuItemsLeft"
           :key="item.title"
           :to="item.link">
           <v-list-tile-action>
@@ -39,16 +39,27 @@
     <!-- SLUTT MOBIL NAVIGASJON -->
 
     <v-toolbar color="primary" dark fixed app>
-      <v-toolbar-title>
+      <v-toolbar-title class="mr-2">
         <router-link to="/" tag="span" style="cursor: pointer">Smart City</router-link>
       </v-toolbar-title>
       <v-toolbar-items class="hidden-sm-and-down">
-        <v-btn flat v-for="item in menuItems" :key="item.title" :to="item.link">
+        <v-btn flat v-for="item in menuItemsLeft" :key="item.title" :to="item.link">
         <v-icon left dark>{{item.icon}}</v-icon>
         {{item.title}}
         </v-btn>
         
-        <v-spacer></v-spacer>
+      </v-toolbar-items>
+      <v-spacer></v-spacer>
+      <v-toolbar-items class="hidden-sm-and-down">
+        
+        <v-btn flat v-for="itm in menuItemsRight" :key="itm.title" :to="itm.link">
+        <v-icon left dark>{{itm.icon}}</v-icon>
+        {{itm.title}}
+        </v-btn>
+        <v-btn flat v-if="userIsAuthenticated && user" to="/dashboard">
+        <v-icon left dark>assignment</v-icon>
+        Dashboard
+        </v-btn>
         <v-btn flat v-if="userIsAuthenticated && user" :to="'/profil/' + user.id">
         <v-icon left dark>account_box</v-icon>
         Min Side
@@ -60,7 +71,7 @@
       </v-toolbar-items>
       <v-toolbar-side-icon @click.stop="drawer = !drawer" class="hidden-md-and-up"></v-toolbar-side-icon>
     </v-toolbar>
-
+    
     <v-content>
       <router-view></router-view>
     </v-content>
@@ -79,24 +90,32 @@
       }
     },
     computed: {
-      menuItems(){
-        let menuItems = [
+      menuItemsLeft(){
+        let menuItemsLeft = [
           {icon: 'home', title: 'Hjem', link: '/'},
           {icon: 'list', title: 'Prosjekter', link: '/prosjekter'},
           {icon: 'supervisor_account', title: 'Om oss', link: '/om-oss'},
-          {icon: 'lock_open', title: 'Logg inn', link: '/login'},
-          {icon: 'face', title: 'Registrer deg', link: '/register'}
         ]
         if(this.userIsAuthenticated){
-          menuItems = [
+          menuItemsLeft = [
             {icon: 'home', title: 'Hjem', link: '/'},
             {icon: 'input', title: 'Send idé', link: '/ny-idé'},
             {icon: 'list', title: 'Prosjekter', link: '/prosjekter'},
             {icon: 'supervisor_account', title: 'Om oss', link: '/om-oss'},
-            /* {icon: 'account_box', title: 'Min Side', link: "/profil"}, */
           ]
         }
-        return menuItems
+        return menuItemsLeft
+      },
+      menuItemsRight(){
+        let menuItemsRight = [
+          {icon: 'lock_open', title: 'Logg inn', link: '/login'},
+          {icon: 'face', title: 'Registrer deg', link: '/register'}
+
+        ]
+        if(this.userIsAuthenticated){
+          menuItemsRight = []
+        }
+        return menuItemsRight
       },
       userIsAuthenticated(){
         return this.$store.getters.user !== null && this.$store.getters.user !== undefined

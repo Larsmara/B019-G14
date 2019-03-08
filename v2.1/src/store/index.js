@@ -5,11 +5,10 @@ import moment from 'moment'
 
 Vue.use(Vuex)
 
-export const store =  new Vuex.Store({
+export const store = new Vuex.Store({
   state: {
-    loadedProjects: [
-
-    ],
+    loadedProjects: [],
+    loadedUser: [],
     user: null,
     loading: false,
     error: null
@@ -18,11 +17,14 @@ export const store =  new Vuex.Store({
     setLoadedProjects(state, payload){
       state.loadedProjects = payload
     },
-    createProject(state, payload){
+    /* createProject(state, payload){
       state.loadedProjects.push(payload)
-    },
+    }, */
     setUser(state, payload){
       state.user = payload
+    },
+    setLoadedUser(state, payload){
+      state.loadedUser = payload
     },
     setLoading(state, payload){
       state.loading = payload
@@ -160,10 +162,35 @@ export const store =  new Vuex.Store({
     loadUser({commit}, payload){
 
     },
+    // Henter bruker fra DB
+    loadedUser({commit}){
+      console.log("Bruker")
+      commit('setLoading', true)
+      const user = []
+      firebase.firestore().collection('users')
+      .where('userId', '==', firebase.auth().currentUser.uid).get()
+        .then(snapshot => {
+            snapshot.forEach(doc => {
+              let docs = doc.data()
+              user.push({
+                  user: docs.data(),
+                  email: docs.data().email,
+                  name: docs.data().name,
+                  phone: docs.data().phone,
+                  admin: docs.data().isAdmin
+                })  
+                console.log("User uid fra profil: "+firebase.auth().currentUser.uid)
+                console.log("Bruker: " + this.user.user_id)
+            })
+        })
+        commit('setLoadedUser', user)
+        commit('setLoading', false)
+    },
     // METODE FOR Å AUTOMATISK LOGGE EN BRUKER INN
     autoSignIn({commit}, payload){
       commit('setUser', {id: payload.uid})
     },
+    // Logger ut bruker
     logout({commit}){
       firebase.auth().signOut()
       commit('setUser', null)
@@ -185,6 +212,10 @@ export const store =  new Vuex.Store({
           return project.id === projectId
         })
       }
+    },
+    loadedUser(state){
+      return state.loadedUser
+      
     },
     user(state){
       return state.user
