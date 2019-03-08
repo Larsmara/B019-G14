@@ -4,6 +4,7 @@ import * as firebase from 'firebase'
 import moment from 'moment'
 
 Vue.use(Vuex)
+moment.locale('nb')
 
 export const store = new Vuex.Store({
   state: {
@@ -164,7 +165,6 @@ export const store = new Vuex.Store({
     },
     // Henter bruker fra DB
     fetchUserData({commit}){
-      console.log("Bruker")
       commit('setLoading', true)
       let userData = []
 
@@ -173,12 +173,13 @@ export const store = new Vuex.Store({
         .then(snapshot => {
             snapshot.forEach(doc => {
               let docs = doc.data()
+              console.log(moment(docs.joined))
               userData.push({
                   email: doc.data().email,
                   name: docs.name,
                   phone: docs.phone,
                   admin: docs.isAdmin,
-                  joined: moment(docs.joined).format('lll'),
+                  joined: moment(docs.joined),
                   userId: docs.userId
                 })  
                 console.log(userData)

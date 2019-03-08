@@ -6,6 +6,7 @@
         <p>id: {{user[0].userId}}</p>
         <p>joined: {{user[0].joined}}</p>
         <p v-if="user[0].admin">Bruker er administrator</p>
+        <v-btn>Tilbakestill passord</v-btn>
         <v-btn>Endre informasjon</v-btn>
     </v-container>
 </template>
