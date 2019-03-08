@@ -5,10 +5,12 @@ import About from '../components/About'
 import Project from '../components/Project/Project.vue'
 import CreateProject from '../components/Project/CreateProject.vue'
 import ShowProject from '../components/Project/ShowProject.vue'
-import Dashboard from '../components/Admin/Dashboard.vue'
+import Dashboard from '../views/Dashboard.vue'
 import Profile from '../components/User/Profile.vue'
 import Login from '../components/User/Login.vue'
 import Register from '../components/User/Register.vue'
+import Interne from '../components/Admin/Interne.vue'
+import Eksterne from '../components/Admin/Eksterne'
 import AuthGuard from './auth-guards'
 import firebase from 'firebase'
 
@@ -60,12 +62,22 @@ export default new Router({
             }
           })
         })
-      }
+      },
+      children: [{
+        path: 'interne',
+        name: 'Interne',
+        component: Interne
+      }, {
+        path: 'eksterne',
+        name: 'Eksterne',
+        component: Eksterne
+      }]
     },
     {
       path: '/profil/:id',
       name: 'profile',
       component: Profile,
+      props: true,
       beforeEnter: AuthGuard
     },
     {

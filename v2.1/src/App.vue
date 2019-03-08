@@ -16,7 +16,16 @@
           </v-list-tile-content>
         </v-list-tile>
 
-        <v-list-tile v-if="userIsAuthenticated" :to="'/profil/' + user.id">
+        <v-list-tile v-if="userIsAuthenticated && user[0].admin" to="/dashboard">
+          <v-list-tile-action>
+            <v-icon>assignment</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>Dashboard</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+
+        <v-list-tile v-if="userIsAuthenticated" :to="'/profil/' + user[0].slug">
           <v-list-tile-action>
             <v-icon>face</v-icon>
           </v-list-tile-action>
@@ -60,7 +69,7 @@
         <v-icon left dark>assignment</v-icon>
         Dashboard
         </v-btn>
-        <v-btn flat v-if="userIsAuthenticated && user" :to="'/profil/' + user.id">
+        <v-btn flat v-if="userIsAuthenticated && user" :to="'/profil/' + user[0].slug">
         <v-icon left dark>account_box</v-icon>
         Min Side
         </v-btn>
@@ -121,6 +130,7 @@
         return this.$store.getters.user !== null && this.$store.getters.user !== undefined
       },
       user(){
+        console.log("bruker:" + this.$store.getters.user[0].admin)
         return this.$store.getters.user
       }
     }

@@ -105,7 +105,7 @@ export const store = new Vuex.Store({
       commit('setLoading', true)
       commit('clearError')
       
-      firebase.firestore().collection('users').doc().get()
+      firebase.firestore().collection('users').doc(payload.user.phone).get()
       .then(doc => {
         if(doc.exists){
           let error = {message: 'Mobilnummber finnes'}
@@ -180,10 +180,9 @@ export const store = new Vuex.Store({
                   phone: docs.phone,
                   admin: docs.isAdmin,
                   joined: moment(docs.joined),
+                  slug: docs.slug,
                   userId: docs.userId
                 })  
-                console.log(userData)
-                console.log("User uid fra profil: "+firebase.auth().currentUser.uid)
             })
         })
         commit('setLoading', false)
@@ -205,9 +204,7 @@ export const store = new Vuex.Store({
   },
   getters: {
     loadedProjects (state) {
-      return state.loadedProjects.sort((meetupA, meetupB) => {
-        return meetupA.date > meetupB.date
-      })
+      return state.loadedProjects
     },
     loadedProject (state) {
       return (projectId) => {
