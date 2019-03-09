@@ -1,9 +1,10 @@
 <template>
-    <h2>Interne prosjekter</h2>
+    <v-container fluid>
+        <h2>Interne prosjekter</h2>
+    </v-container>
 </template>
 
 <script>
-
   export default {
     name: 'Interne',
     data () {
@@ -12,7 +13,7 @@
       }
     },
     created(){
-        document.title = 'Dashboard'
+        document.title = 'Interne prosjekter'
     }
   }
 </script>

@@ -11,6 +11,7 @@ import Login from '../components/User/Login.vue'
 import Register from '../components/User/Register.vue'
 import Interne from '../components/Admin/Interne.vue'
 import Eksterne from '../components/Admin/Eksterne'
+import AdminHome from '../components/Admin/Home.vue'
 import AuthGuard from './auth-guards'
 import firebase from 'firebase'
 
@@ -64,6 +65,10 @@ export default new Router({
         })
       },
       children: [{
+        path: 'home',
+        name: 'Home',
+        component: AdminHome
+      },{
         path: 'interne',
         name: 'Interne',
         component: Interne

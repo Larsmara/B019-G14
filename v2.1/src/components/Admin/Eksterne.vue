@@ -1,20 +1,18 @@
 <template>
-    <h2>Eksterne prosjekter</h2>
+<v-container fluid>
+        <h2>Eksterne prosjekter</h2>
+    </v-container>
 </template>
 
 <script>
-import AdminNav from './AdminNav'
-
   export default {
-      name: 'Eksterne',
+    name: 'Eksterne',
     data () {
       return {
         
       }
     },
-    components: {
-        AdminNav
-    },
+
     created(){
         document.title = 'Eksterne prosjekter'
     }

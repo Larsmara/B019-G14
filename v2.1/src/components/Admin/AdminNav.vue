@@ -1,11 +1,11 @@
 <template>
-   <v-navigation-drawer
+   <v-navigation-drawer class="sidebar"
       v-model="drawer"
       :mini-variant.sync="mini"
       hide-overlay
       stateless
     >
-      <v-toolbar flat class="transparent">
+      <v-toolbar flat class="">
         <v-list class="pa-0">
           <v-list-tile avatar>
             <v-list-tile-avatar>
@@ -44,7 +44,7 @@
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
-    </v-navigation-drawer>
+    </v-navigation-drawer>  
 </template>
 
 <script>

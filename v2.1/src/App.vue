@@ -65,7 +65,7 @@
         <v-icon left dark>{{itm.icon}}</v-icon>
         {{itm.title}}
         </v-btn>
-        <v-btn flat v-if="userIsAuthenticated && user[0].admin" to="/dashboard">
+        <v-btn flat v-if="userIsAuthenticated && user[0].admin" to="/dashboard/home">
         <v-icon left dark>assignment</v-icon>
         Dashboard
         </v-btn>

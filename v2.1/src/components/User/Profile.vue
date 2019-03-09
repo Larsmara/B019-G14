@@ -1,6 +1,6 @@
 <template>
     <v-container grid-list-md>
-        <v-layout row>
+        <v-layout col>
             <v-flex>
             <h2>Bruker profil for {{user[0].name}}</h2>
             <p>email: {{user[0].email}}</p>
@@ -13,9 +13,9 @@
             </v-flex>
         </v-layout>
 
-        <v-layout row wrap>
-            <v-flex height="350px" xs12 md4 lg2 v-for="project in projects" :key="project.id">
-                <v-card v-if="project.creatorId == user[0].userId">
+        <v-layout row wrap v-for="project in projects" :key="project.id">
+            <v-flex height="350px" xs12 md4 lg2 v-if="project.creatorId == user[0].userId">
+                <v-card >
                     <v-card-title>
                         <h3 class="primary--text">{{project.title}}</h3>
                     </v-card-title>
