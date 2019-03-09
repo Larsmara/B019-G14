@@ -2,7 +2,7 @@
     <v-container grid-list-md >
         <v-layout row wrap>
             <v-flex height="350px" xs12 md4 lg4 v-for="project in projects" :key="project.id">
-                <v-card v-if="project.internt == false && project.eksternt == false && project.utvalgt == false">
+                <v-card >
                     
                     <v-card-title primary-title>
                     <div>
@@ -13,14 +13,14 @@
                     </v-card-title>
 
                     <v-card-actions>
-                    <v-btn bottom flat :to="'/prosjekt/' + project.id" class="blue">Les mer</v-btn>
-                    <v-btn bottom flat class="green">Interne</v-btn>
-                    <v-btn bottom flat class="brown">Eksterne</v-btn>
-                    <v-btn bottom flat class="red">Slett</v-btn>
+                            <v-btn bottom flat :to="'/prosjekt/' + project.id" class="blue">Les mer</v-btn>
+                            <v-btn bottom flat class="red">Slett</v-btn>
                     </v-card-actions>
-
-                    <v-slide-y-transition>
-                    </v-slide-y-transition>
+                    <v-card-actions>
+                        <v-btn bottom flat class="green">Interne</v-btn>
+                        <v-btn bottom flat class="brown">Eksterne</v-btn>
+                        <v-btn bottom flat class="yellow">Utvalgt</v-btn>
+                    </v-card-actions>
                 </v-card>
             </v-flex>
         </v-layout>
@@ -32,7 +32,7 @@ export default {
     name: 'Home',
     data(){
         return{
-
+            prosjekter: []
         }
     },
     created(){
@@ -40,7 +40,7 @@ export default {
     },
     computed: {
       projects () {
-        return this.$store.getters.loadedProjects
+        return this.$store.getters.adminProject
       }
     }
 }

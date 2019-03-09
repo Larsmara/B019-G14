@@ -1,6 +1,6 @@
 <template>
     <v-container grid-list-md >
-      <h2>Interne Prosjekter</h2>
+        <h2>Utvalgte prosjekter</h2>
         <v-layout row wrap>
             <v-flex height="350px" xs12 md4 lg4 v-for="project in projects" :key="project.id">
                 <v-card >
@@ -18,7 +18,8 @@
                       <v-btn bottom flat class="red">Slett</v-btn>
                     </v-card-actions>
                     <v-card-actions>
-                      <v-btn bottom flat class="brown">Eksterne</v-btn>
+                      <v-btn bottom flat class="green">Eksterne</v-btn>
+                      <v-btn bottom flat class="brown">Interne</v-btn>
                       <v-btn bottom flat class="yellow">Utvalgt</v-btn>
                     </v-card-actions>
                 </v-card>
@@ -29,18 +30,18 @@
 
 <script>
   export default {
-    name: 'Interne',
+    name: 'Utvalgte',
     data () {
       return {
         
       }
     },
     created(){
-        document.title = 'Interne prosjekter'
+        document.title = 'Utvalgte prosjekter'
     },
     computed: {
       projects () {
-        return this.$store.getters.interneProsjekter
+        return this.$store.getters.utvalgteProsjekter
       }
     }
   }

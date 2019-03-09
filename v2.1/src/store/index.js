@@ -219,6 +219,21 @@ export const store = new Vuex.Store({
         })
       }
     },
+    adminProject(state){
+      return state.loadedProjects.filter(project => project.internt === false && project.eksternt === false && project.utvalgt === false)
+    },
+    interneProsjekter(state){
+      return state.loadedProjects.filter(project => project.internt)
+    },
+    eksterneProsjekter(state){
+      return state.loadedProjects.filter(project => project.eksternt)
+    },
+    utvalgteProsjekter(state){
+      return state.loadedProjects.filter(project => project.utvalgt)
+    },
+    brukerProsjekter(state){
+      return state.loadedProjects.filter(project => project.creatorId === state.user.userId)
+    },
     loadedUser(state){
       return state.loadedUser   
     },

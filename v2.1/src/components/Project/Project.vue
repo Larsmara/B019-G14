@@ -36,7 +36,7 @@
 export default {
     computed: {
       projects () {
-        return this.$store.getters.loadedProjects
+        return this.$store.getters.utvalgteProsjekter
       }
     }
   }

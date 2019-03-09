@@ -14,7 +14,7 @@
             </v-list-tile-avatar>
   
             <v-list-tile-content>
-              <v-list-tile-title>Administrator</v-list-tile-title>
+              <v-list-tile-title>Prosjekter</v-list-tile-title>
             </v-list-tile-content>
   
             <v-list-tile-action>
@@ -66,9 +66,10 @@ import AdminNav from '../components/Admin/AdminNav'
       return {
         drawer: true,
         items: [
-          { title: 'Home', icon: 'dashboard', link: '/dashboard/home'},
+          { title: 'Hjem', icon: 'dashboard', link: '/dashboard/home'},
           { title: 'Interne', icon: 'question_answer', link: '/dashboard/interne' },
           { title: 'Eksterne', icon: 'question_answer', link: '/dashboard/eksterne' },
+          { title: 'Utvalgte', icon: 'question_answer', link: '/dashboard/utvalgte' },
         ],
         mini: true,
         right: null
