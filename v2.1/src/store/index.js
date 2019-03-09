@@ -53,6 +53,9 @@ export const store = new Vuex.Store({
                       imageUrl: doc.data().imageUrl,
                       date: moment(doc.data().date).format('lll'),
                       slug: doc.data().slug,
+                      internt: doc.data().internt,
+                      eksternt: doc.data().eksternt,
+                      utvalgt: doc.data().utvalgt,
                       creatorId: doc.data().creatorId
                   })
               }
@@ -68,6 +71,9 @@ export const store = new Vuex.Store({
         content: payload.content,
         date: payload.date,
         slug: payload.slug,
+        internt: false,
+        eksternt: false,
+        utvalgt: false,
         creatorId: firebase.auth().currentUser.uid
       }
       // LAGRER I DATABASEN
