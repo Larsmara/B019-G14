@@ -92,7 +92,9 @@ import AdminNav from '../components/Admin/AdminNav'
 }
 .sidebar{
   height: 100%;
-  position: absolute;
-  z-index: 999;
+  margin-top: 50px;
+  padding-top: 65px;
+  position: fixed;
+  z-index: 1;
 }
 </style>
