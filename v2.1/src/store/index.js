@@ -18,8 +18,11 @@ export const store = new Vuex.Store({
     setLoadedProjects(state, payload){
       state.loadedProjects = payload
     },
-    /* createProject(state, payload){
-      state.loadedProjects.push(payload)
+ /*    updateToInternt(state, payload){
+      const project = state.loadedProjects.find(project => {
+        return project.id === payload.id
+      })
+      project.internt = true
     }, */
     setUser(state, payload){
       state.user = payload
@@ -42,9 +45,28 @@ export const store = new Vuex.Store({
     loadProjects({commit}){
       commit('setLoading', true)
       const projects = []
+      /* firebase.firestore().collection('projects').get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          const data = {
+            id: doc.id,
+            title: doc.data().title,
+            content: doc.data().content,
+            imageUrl: doc.data().imageUrl,
+            date: moment(doc.data().date).format('lll'),
+            slug: doc.data().slug,
+            internt: doc.data().internt,
+            eksternt: doc.data().eksternt,
+            utvalgt: doc.data().utvalgt,
+            creatorId: doc.data().creatorId
+          }
+          projects.push(data)
+        })
+        commit('setLoadedProjects', projects)
+      }) */
       firebase.firestore().collection('projects').onSnapshot((snapshot) => {
           snapshot.docChanges().forEach((change) => {
-              if(change.type == 'added'){
+              if(change.type == 'added' || change.type == 'modified'){
                   let doc = change.doc
                   projects.push({
                       id: doc.id,
@@ -74,6 +96,7 @@ export const store = new Vuex.Store({
         internt: false,
         eksternt: false,
         utvalgt: false,
+        produksjon: false,
         creatorId: firebase.auth().currentUser.uid
       }
       // LAGRER I DATABASEN
@@ -103,6 +126,26 @@ export const store = new Vuex.Store({
           id: key
         })
       }).catch((error) => {
+        console.log(error)
+      })
+    },
+    // OPPDTATERER PROSJEKTET TIL INTERNT
+    updateToInternt({commit}, payload){
+      commit('setLoading', true)
+      commit('clearError')
+      const updateObj = {}
+
+      if(!payload.internt){
+        updateObj.internt = true
+      }
+      firebase.firestore().collection('projects').doc(payload.id).update({
+        updateObj
+      }).then(() => {
+        console.log('Oppdatert til INTERNT')
+        commit('setLoading', false)
+        commit('updateToInternt', payload)
+        window.location.reload()
+      }).catch(error => {
         console.log(error)
       })
     },
@@ -232,7 +275,7 @@ export const store = new Vuex.Store({
       return state.loadedProjects.filter(project => project.utvalgt)
     },
     brukerProsjekter(state){
-      return state.loadedProjects.filter(project => project.creatorId === state.user.userId)
+      return state.loadedProjects.filter(project => project.creatorId === state.user[0].userId)
     },
     loadedUser(state){
       return state.loadedUser   

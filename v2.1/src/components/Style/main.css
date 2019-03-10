@@ -64,7 +64,7 @@ h4 {
 
 /* About */
 .about-header {
-    height: 40vh;
+    /* height: 40vh; */
     /* background-image: url("../images/smartcity-about.jpg"); */
     background-size: cover;
     background-position: top;

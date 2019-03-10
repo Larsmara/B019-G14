@@ -96,6 +96,7 @@
     methods: {
       onLogOut(){
         this.$store.dispatch('logout')
+        this.$router.push('/')
       }
     },
     computed: {
@@ -130,7 +131,7 @@
         return this.$store.getters.user !== null && this.$store.getters.user !== undefined
       },
       user(){
-        console.log("bruker:" + this.$store.getters.user[0].admin)
+        console.log("bruker:" + this.$store.getters.user[0].userId)
         return this.$store.getters.user
       }
     }
