@@ -45,25 +45,6 @@ export const store = new Vuex.Store({
     loadProjects({commit}){
       commit('setLoading', true)
       const projects = []
-      /* firebase.firestore().collection('projects').get()
-      .then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          const data = {
-            id: doc.id,
-            title: doc.data().title,
-            content: doc.data().content,
-            imageUrl: doc.data().imageUrl,
-            date: moment(doc.data().date).format('lll'),
-            slug: doc.data().slug,
-            internt: doc.data().internt,
-            eksternt: doc.data().eksternt,
-            utvalgt: doc.data().utvalgt,
-            creatorId: doc.data().creatorId
-          }
-          projects.push(data)
-        })
-        commit('setLoadedProjects', projects)
-      }) */
       firebase.firestore().collection('projects').onSnapshot((snapshot) => {
           snapshot.docChanges().forEach((change) => {
               if(change.type == 'added' || change.type == 'modified'){

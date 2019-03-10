@@ -75,9 +75,9 @@ export default {
         })
     },
     computed: {
-        /* projects () {
-            return this.$store.getters.adminProject
-        }  */
+        project () {
+            return this.$store.getters.adminProject 
+        } 
     }
 }
 </script>
