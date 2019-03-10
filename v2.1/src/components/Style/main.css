@@ -35,7 +35,7 @@ h4 {
 
 /* Index */
 .index-header {
-    height: 50vh;
+    /* height: 50vh; */
     /* background-image: url("../images/smartcity-index.jpg"); */
     background-size: cover;
     background-position: 0 25%;
