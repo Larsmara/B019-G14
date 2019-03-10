@@ -1,11 +1,12 @@
 <template>
-  <v-navigation-drawer
+<div class="admin">
+  <v-navigation-drawer class="sidebar"
       v-model="drawer"
       :mini-variant.sync="mini"
       hide-overlay
       stateless
     >
-      <v-toolbar flat class="transparent">
+      <v-toolbar flat class="">
         <v-list class="pa-0">
           <v-list-tile avatar>
             <v-list-tile-avatar>
@@ -13,7 +14,7 @@
             </v-list-tile-avatar>
   
             <v-list-tile-content>
-              <v-list-tile-title>Administrator</v-list-tile-title>
+              <v-list-tile-title>Prosjekter</v-list-tile-title>
             </v-list-tile-content>
   
             <v-list-tile-action>
@@ -46,19 +47,29 @@
       </v-list>
     </v-navigation-drawer>  
 
-    
+  <main class="admin-content">
+    <router-view/>
+  </main>
+
+</div>    
 </template>
 
 <script>
+import AdminNav from '../components/Admin/AdminNav'
+
   export default {
     name: 'AdminNav',
+    components: {
+      AdminNav
+    },
     data () {
       return {
         drawer: true,
         items: [
-          { title: 'Home', icon: 'dashboard', link: '/dashboard'},
+          { title: 'Hjem', icon: 'dashboard', link: '/dashboard/home'},
           { title: 'Interne', icon: 'question_answer', link: '/dashboard/interne' },
           { title: 'Eksterne', icon: 'question_answer', link: '/dashboard/eksterne' },
+          { title: 'Utvalgte', icon: 'question_answer', link: '/dashboard/utvalgte' },
         ],
         mini: true,
         right: null
@@ -69,3 +80,21 @@
     }
   }
 </script>
+
+<style>
+.admin-content{
+  display: inline-block;
+    width: 100%;
+    padding-left: 100px;
+    padding-top: 20px;
+    -webkit-transition: padding-left .3s ease;
+    transition: padding-left .3s ease; 
+}
+.sidebar{
+  height: 100%;
+  margin-top: 50px;
+  padding-top: 65px;
+  position: fixed;
+  z-index: 1;
+}
+</style>

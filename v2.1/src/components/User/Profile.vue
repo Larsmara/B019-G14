@@ -1,21 +1,21 @@
 <template>
     <v-container grid-list-md>
-        <v-layout row>
+        <v-layout col>
             <v-flex>
-            <h2>Bruker profil for {{user[0].name}}</h2>
-            <p>email: {{user[0].email}}</p>
-            <p>tlf: {{user[0].phone}}</p>
-            <p>id: {{user[0].userId}}</p>
-            <p>joined: {{user[0].joined}}</p>
-            <p v-if="user[0].admin">Bruker er administrator</p>
-            <v-btn>Tilbakestill passord</v-btn>
-            <v-btn>Endre informasjon</v-btn>
+                <h2>Bruker profil for {{user[0].name}}</h2>
+                <p>email: {{user[0].email}}</p>
+                <p>tlf: {{user[0].phone}}</p>
+                <p>id: {{user[0].userId}}</p>
+                <p>joined: {{user[0].joined}}</p>
+                <p v-if="user[0].admin">Bruker er administrator</p>
+                <v-btn>Tilbakestill passord</v-btn>
+                <v-btn>Endre informasjon</v-btn>
             </v-flex>
         </v-layout>
 
-        <v-layout row wrap>
+        <v-layout row wrap >
             <v-flex height="350px" xs12 md4 lg2 v-for="project in projects" :key="project.id">
-                <v-card v-if="project.creatorId == user[0].userId">
+                <v-card >
                     <v-card-title>
                         <h3 class="primary--text">{{project.title}}</h3>
                     </v-card-title>
@@ -52,7 +52,7 @@ export default {
             return this.$store.getters.user
         },
         projects(){
-            return this.$store.getters.loadedProjects
+            return this.$store.getters.brukerProsjekter
         }
     }
 }
