@@ -63,7 +63,7 @@ export default {
     },
     created(){
         document.title = 'Innkommende prosjekter'
-        firebase.firestore().collection('projects').get()
+        firebase.firestore().collection('projects').orderBy('date').get()
         .then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
                 if(doc.data().internt === false && doc.data().eksternt === false && doc.data().utvalgt === false){

@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from '../components/Home.vue'
 import About from '../components/About'
 import Project from '../components/Project/Project.vue'
+import ProjectUtv from '../components/Project/ProjectUtv'
 import CreateProject from '../components/Project/CreateProject.vue'
 import ShowProject from '../components/Project/ShowProject.vue'
 import Dashboard from '../views/Dashboard.vue'
@@ -12,6 +13,7 @@ import Register from '../components/User/Register.vue'
 import Interne from '../components/Admin/Interne.vue'
 import Eksterne from '../components/Admin/Eksterne'
 import Utvalgte from '../components/Admin/Utvalgte'
+import Produksjon from '../components/Admin/Produksjon'
 import AdminHome from '../components/Admin/Home.vue'
 import AuthGuard from './auth-guards'
 import firebase from 'firebase'
@@ -35,7 +37,12 @@ export default new Router({
     {
       path: '/prosjekter',
       name: 'prosjekter',
-      component: Project
+      component: Project,
+    },
+    {
+      path: '/prosjekter/utvalgte',
+      name: 'Utvalgte',
+      component: ProjectUtv
     },
     {
       path: '/ny-idé',
@@ -81,6 +88,10 @@ export default new Router({
         path: 'utvalgte',
         name: 'Utvalgte',
         component: Utvalgte
+      }, {
+        path: 'produksjon',
+        name: 'Produksjon',
+        component: Produksjon
       }]
     },
     {

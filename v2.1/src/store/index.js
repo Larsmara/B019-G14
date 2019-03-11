@@ -289,6 +289,9 @@ export const store = new Vuex.Store({
     utvalgteProsjekter(state){
       return state.loadedProjects.filter(project => project.utvalgt)
     },
+    produksjonProsjekter(state){
+      return state.loadedProjects.filter(project => project.produksjon === true)
+    },
     brukerProsjekter(state){
       return state.loadedProjects.filter(project => project.creatorId === state.user[0].userId)
     },

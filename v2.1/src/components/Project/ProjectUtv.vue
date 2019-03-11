@@ -8,7 +8,7 @@
                 <v-btn large router to="/prosjekter/utvalgte" class="primary">Utvalgte prosjekter</v-btn>
             </v-flex>
         </v-layout>
-        <h2>Prosjekter i produksjon</h2>
+        <h2>Utvalgte Prosjekter</h2>
         <v-layout row wrap>
             <v-flex height="350px" xs12 md4 lg2 v-for="project in prosjekt" :key="project.id">
                 <v-card>
@@ -46,7 +46,7 @@ import firebase from 'firebase'
 import moment from 'moment'
 
 export default {
-    name: 'Produksjon',
+    name: 'Utvalgt',
     data(){
         return{
             prosjekt: []
@@ -56,7 +56,7 @@ export default {
         firebase.firestore().collection('projects').get()
         .then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
-                if(doc.data().produksjon === true){
+                if(doc.data().utvalgt === true){
                 const data = {
                     id: doc.id,
                     title: doc.data().title,
@@ -77,7 +77,7 @@ export default {
     },
     computed: {
       projects () {
-        return this.$store.getters.produksjonProsjekter
+        return this.$store.getters.utvalgteProsjekter
       }
     },
   }

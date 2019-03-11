@@ -70,6 +70,7 @@ import AdminNav from '../components/Admin/AdminNav'
           { title: 'Interne', icon: 'question_answer', link: '/dashboard/interne' },
           { title: 'Eksterne', icon: 'question_answer', link: '/dashboard/eksterne' },
           { title: 'Utvalgte', icon: 'question_answer', link: '/dashboard/utvalgte' },
+          { title: 'I Produksjon', icon: 'question_answer', link: '/dashboard/produksjon' },
         ],
         mini: true,
         right: null

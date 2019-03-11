@@ -1,6 +1,6 @@
 <template>
     <v-container grid-list-md >
-      <h2>Eksterne Prosjekter</h2>
+      <h2>Prosjekter i produksjon</h2>
         <v-layout row wrap>
             <v-flex height="350px" xs12 md4 lg4 v-for="(project, index) in prosjekt" :key="project.id">
                 <v-card >
@@ -16,9 +16,10 @@
                     <v-card-actions>
                       <v-btn bottom flat :to="'/prosjekt/' + project.id" class="blue">Les mer</v-btn>
                       <v-btn bottom flat class="red" @click="deleteProject(project, index)">Slett</v-btn>
+                      <v-btn bottom flat class="red" @click="updateToInternt(project, index)">Internt</v-btn>
                     </v-card-actions>
                     <v-card-actions>
-                      <v-btn bottom flat class="brown" @click="updateToInternt(project, index)">Intern</v-btn>
+                      <v-btn bottom flat class="brown" @click="updateToEksternt(project, index)">Eksterne</v-btn>
                       <v-btn bottom flat class="yellow" @click="updateToUtvalgt(project, index)">Utvalgt</v-btn>
                       <v-btn bottom flat class="green" @click="updateToProduksjon(project, index)">Produksjon</v-btn>
                     </v-card-actions>
@@ -32,7 +33,7 @@
 import firebase from 'firebase'
 import moment from 'moment'
   export default {
-    name: 'Eksterne',
+    name: 'Interne',
     data () {
       return {
         prosjekt: []
@@ -41,10 +42,10 @@ import moment from 'moment'
     created(){
         document.title = 'Interne prosjekter'
 
-        firebase.firestore().collection('projects').orderBy('date').get()
+        firebase.firestore().collection('projects').get()
         .then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
-                if(doc.data().eksternt === true){
+                if(doc.data().produksjon === true){
                 const data = {
                     id: doc.id,
                     title: doc.data().title,
