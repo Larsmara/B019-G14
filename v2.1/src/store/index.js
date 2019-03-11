@@ -9,6 +9,7 @@ moment.locale('nb')
 export const store = new Vuex.Store({
   state: {
     loadedProjects: [],
+    interneProsjekter: [],
     loadedUser: [],
     user: null,
     loading: false,
@@ -18,12 +19,9 @@ export const store = new Vuex.Store({
     setLoadedProjects(state, payload){
       state.loadedProjects = payload
     },
- /*    updateToInternt(state, payload){
-      const project = state.loadedProjects.find(project => {
-        return project.id === payload.id
-      })
-      project.internt = true
-    }, */
+    setInterneProsjekter(state, payload){
+      state.interneProsjekter = payload
+    },
     setUser(state, payload){
       state.user = payload
     },
@@ -112,23 +110,59 @@ export const store = new Vuex.Store({
     },
     // OPPDTATERER PROSJEKTET TIL INTERNT
     updateToInternt({commit}, payload){
-      commit('setLoading', true)
-      commit('clearError')
-      const updateObj = {}
-
-      if(!payload.internt){
-        updateObj.internt = true
-      }
+      console.log(payload.id)
       firebase.firestore().collection('projects').doc(payload.id).update({
-        updateObj
+          internt: true,
+          eksternt: false,
+          produksjon: false
       }).then(() => {
-        console.log('Oppdatert til INTERNT')
-        commit('setLoading', false)
-        commit('updateToInternt', payload)
-        window.location.reload()
+          console.log('oppdatert til internt - ' + payload.title) 
       }).catch(error => {
-        console.log(error)
+          console.log(error)
       })
+    },
+    // OPPDATER PROSJEKTET TIL EKSTERNT
+    updateToEksternt({commit}, payload){
+      console.log(payload.id)
+      firebase.firestore().collection('projects').doc(payload.id).update({
+          eksternt: true,
+          internt: false,
+          produksjon: false
+      }).then(() => {
+          console.log('oppdatert til eksternt - ' + payload.title) 
+      }).catch(error => {
+          console.log(error)
+      })
+    },
+    updateToUtvalgt({commit}, payload){
+      console.log(payload.id)
+      firebase.firestore().collection('projects').doc(payload.id).update({
+          eksternt: payload.eksternt,
+          internt: payload.internt,
+          produksjon: payload.produksjon,
+          utvalgt: true
+      }).then(() => {
+          console.log('oppdatert til utvalgt - ' + payload.title) 
+      }).catch(error => {
+          console.log(error)
+      })
+    },
+    updateToProduksjon({commit}, payload){
+      console.log(payload.id)
+      firebase.firestore().collection('projects').doc(payload.id).update({
+          eksternt: payload.eksternt,
+          internt: payload.internt,
+          produksjon: true,
+          utvalgt: payload.utvalgt
+      }).then(() => {
+          console.log('oppdatert til produksjon - ' + payload.title) 
+      }).catch(error => {
+          console.log(error)
+      })
+    },
+    deleteProject({commit}, payload){
+      firebase.firestore().collection('projects').doc(payload.id).delete()
+      console.log('Slettet prosjekt ' + payload.title)
     },
     // REGISTRERER EN NY BRUKER
     signUserUp({commit, getters}, payload){

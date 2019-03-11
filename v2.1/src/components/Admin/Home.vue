@@ -15,12 +15,13 @@
 
                     <v-card-actions>
                             <v-btn bottom flat :to="'/prosjekt/' + project.id" class="blue">Les mer</v-btn>
-                            <v-btn bottom flat class="red">Slett</v-btn>
+                            <v-btn bottom flat class="red" @click="deleteProject(project, index)">Slett</v-btn>
+                            <v-btn bottom flat class="red" @click="updateToProduksjon(project, index)">Produksjon</v-btn>
                     </v-card-actions>
-                    <v-card-actions>
-                        <v-btn bottom flat class="green" @click="updateInternt(index, project)">Interne</v-btn>
-                        <v-btn bottom flat class="brown" @click="updateToEksternt(project)">Eksterne</v-btn>
-                        <v-btn bottom flat class="yellow">Utvalgt</v-btn>
+                    <v-card-actions id="updateBtns">
+                        <v-btn bottom flat class="green" @click="updateToInternt(project, index)" >Interne</v-btn>
+                        <v-btn bottom flat class="brown" @click="updateToEksternt(project, index)">Eksterne</v-btn>
+                        <v-btn bottom flat class="yellow" @click="updateToUtvalgt(project, index)">Utvalgt</v-btn>
                     </v-card-actions>
                 </v-card>
             </v-flex>
@@ -39,16 +40,25 @@ export default {
         }
     },
     methods:{
-        updateInternt(index, project){
-            
-            firebase.firestore().collection('projects').doc(project.id).update({
-                internt: true
-            }).then(() => {
-                this.prosjekt.splice(index, 1)
-                console.log('oppdatert til internt - ' + project.title)
-            }).catch(error => {
-                console.log(error)
-            })
+        updateToInternt(project, index){
+            this.prosjekt.splice(index, 1)
+            this.$store.dispatch('updateToInternt',project)
+        },
+        updateToEksternt(project, index){
+            this.prosjekt.splice(index, 1)
+            this.$store.dispatch('updateToEksternt',project)
+        },
+        updateToUtvalgt(project, index){
+            this.prosjekt.splice(index, 1)
+            this.$store.dispatch('updateToUtvalgt',project)
+        },
+        updateToProduksjon(project, index){
+            this.prosjekt.splice(index, 1)
+            this.$store.dispatch('updateToProduksjon',project)
+        },
+        deleteProject(project, index){
+            this.prosjekt.splice(index, 1)
+            this.$store.dispatch('deleteProject',project)
         }
     },
     created(){
@@ -67,6 +77,7 @@ export default {
                     internt: doc.data().internt,
                     eksternt: doc.data().eksternt,
                     utvalgt: doc.data().utvalgt,
+                    produksjon: doc.data().produksjon,
                     creatorId: doc.data().creatorId
                 }
                 this.prosjekt.push(data)

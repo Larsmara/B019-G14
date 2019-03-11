@@ -2,7 +2,7 @@
     <v-container grid-list-md >
       <h2>Eksterne Prosjekter</h2>
         <v-layout row wrap>
-            <v-flex height="350px" xs12 md4 lg4 v-for="project in projects" :key="project.id">
+            <v-flex height="350px" xs12 md4 lg4 v-for="(project,index) in projects" :key="project.id">
                 <v-card >
                     
                     <v-card-title primary-title>
@@ -15,7 +15,7 @@
 
                     <v-card-actions>
                       <v-btn bottom flat :to="'/prosjekt/' + project.id" class="blue">Les mer</v-btn>
-                      <v-btn bottom flat class="red">Slett</v-btn>
+                      <v-btn bottom flat class="red" @click="deleteProject(project, index)">Slett</v-btn>
                     </v-card-actions>
                     <v-card-actions>
                       <v-btn bottom flat class="brown">Interne</v-btn>
@@ -37,6 +37,12 @@
     },
     created(){
         document.title = 'Eksterne prosjekter'
+    },
+    methods: {
+      deleteProject(project, index){
+            //this.prosjekt.splice(index, 1)
+            this.$store.dispatch('deleteProject',project)
+        }
     },
     computed: {
       projects () {
