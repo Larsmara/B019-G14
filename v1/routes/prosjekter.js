@@ -13,7 +13,8 @@ router.get("/", function(req,res){
             if(err){
                 console.log(err);
             } else {
-                res.render("prosjekter/index", {selected: allUsers, project: allPosts, currentUser: req.user, title:'Prosjekter'});
+                res.render("prosjekter/index", 
+                {selected: allUsers, project: allPosts, currentUser: req.user, title:'Prosjekter'});
             }
         });
     });

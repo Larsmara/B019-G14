@@ -1,0 +1,118 @@
+*, *::after, *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.7;
+    box-sizing: border-box;
+    background-color: #F1F1F1;
+}
+
+img {
+    max-width: 100%;
+}
+
+h2 {
+    font-size: 3.8rem;
+}
+
+h4 {
+    font-size: 2rem;
+}
+
+.field label {
+    font-size: 1.3rem;
+}
+
+
+/* Index */
+.index-header {
+    margin: auto 0;
+    /* background-image: url("../images/smartcity-index.jpg"); */
+    background-size: cover;
+    background-position: 0 25%;
+}
+
+.index-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 3rem;
+    margin-top: 3rem;
+}
+
+.index h2{
+    font-size: 3rem;
+    margin-top: 0;
+}
+
+.idea{
+    color: #fff;
+}
+
+.card .btn {
+    margin-top: 1rem;
+}
+
+
+/* About */
+.about-header {
+    /* height: 40vh; */
+    /* background-image: url("../images/smartcity-about.jpg"); */
+    background-size: cover;
+    background-position: top;
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 3rem;
+    margin-top: 3rem;
+}
+
+.about-content .card {
+    grid-column: 2 / 6;
+}
+
+.about h2, .about h4 {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.about h4 {
+    margin-bottom: 3rem;
+}
+
+.about-intro {
+    font-weight: 800;
+    display: block;
+    margin-bottom: 3rem;
+}
+
+/* UserProfile */
+.user-profile{
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.user-profile .time{
+    display: block;
+    font-size: 1.28rem;
+}
+
+.user-info {
+    grid-column: 1;
+    text-align: center;
+}
+
+.user-projects {
+    grid-column: 3 / 5;
+}

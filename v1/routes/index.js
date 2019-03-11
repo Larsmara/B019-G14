@@ -27,7 +27,6 @@ router.post("/register", function(req,res){
             return res.render("register", {error: err.message ,title:'Registrer deg'});
         } 
             passport.authenticate("local")(req,res,function(){
-                console.log("Navn: " + user.username + " e-post: " + user.name + " tlf: " + user.tlf + " admin: " + user.isAdmin);
                 req.flash("success", "Innlogget som: " + req.body.username);
                 res.render("reg-done",{title:'Registrering fullført'});
             });

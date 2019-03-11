@@ -88,9 +88,9 @@ export default {
               // SMS sent. Prompt user to type the code from the message, then sign the
               // user in with confirmationResult.confirm(code).
               window.confirmationResult = confirmationResult;
-              window.signingIn = false;
-              document.getElementById('skjema').style.display = 'none';
-              document.getElementById('skjema2').style.display = 'block';
+              window.signingIn = false;  
+              document.getElementById('skjema').style.display = 'none';   
+              document.getElementById('skjema2').style.display = '';         
             }).catch(function (error) {
               // Error; SMS not sent
               console.error('Error during signInWithPhoneNumber', error);

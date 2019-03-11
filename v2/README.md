@@ -59,9 +59,11 @@ LOGIN ALTERNATIVER
 []  -   Tilbakemelding til eier av prosjektet om det går i produksjon
 []  -   Sende med media
 [X]  -   Passord reset
-[]  -   
-
+[]  -   Glemt passord på innloggingssiden
+[]  -   Slette brukerkonto
+[]  -   Sletting / redigering av fil 
 
 
 OPPRYDDING
 []  -   Rydde opp i koden på Register.vue
+[]  -   Dialog for å skrive inn kode fra sms

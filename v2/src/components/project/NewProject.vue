@@ -54,7 +54,7 @@ export default {
         document.title = "Ny idé"
         let ref = db.collection('users')
         // Get current user
-        ref.where('user_id', '==', firebase.auth().currentUser.uid).get()
+        ref.where('userId', '==', firebase.auth().currentUser.uid).get()
         .then(snapshot => {
             snapshot.forEach(doc => {
                 this.user = doc.data()
@@ -73,14 +73,14 @@ export default {
                     lower: true
                 })
                 console.log(this.title, this.content)
-                console.log(this.user.user_id)
+                console.log(this.user.userId)
                 this.feedback = null
                 db.collection('projects').add({
                     title: this.title,
                     content: this.content,
                     img_url: null,
                     time: Date.now(),
-                    user_id: this.user.user_id,
+                    userId: this.user.userId,
                     showing: false,
                     slug: this.slug
                 }).then(() => {
