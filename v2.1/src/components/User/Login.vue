@@ -17,7 +17,7 @@
                   <span slot="loader" class="custom-loader"><v-icon light>cached</v-icon></span>
                   </v-btn>
 <!--                 <button class="btn blue reset" @click="forgotPassword">Glemt passord?</button>
- -->            </div>
+-->            </div>
         </form>
     </div>
 </template>

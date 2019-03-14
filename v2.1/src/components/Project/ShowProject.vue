@@ -1,6 +1,8 @@
 <template>
     <v-container class="visProsjekt">
+
         <v-layout row wrap>
+            <v-btn @click="goBack" class="primary">Tilbake</v-btn>
             <v-flex xs12>
                 <v-card>
                     <v-card-title>
@@ -32,6 +34,14 @@ export default {
     computed: {
         project(){
             return this.$store.getters.loadedProject(this.id)
+        },
+        loading(){
+            return this.$store.getters.loading
+        }
+    },
+    methods: {
+        goBack(){
+            this.$router.go(-1)
         }
     }
 }

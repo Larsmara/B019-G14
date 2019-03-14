@@ -6,6 +6,10 @@ import App from './App.vue'
 import router from './router/router'
 import {store} from './store/index'
 import AlertCmp from '@/components/Shared/Alert.vue'
+import SuccessCmp from '@/components/Shared/Success.vue'
+import EditUser from '@/components/User/edit/EditUser'
+import LoginComp from '@/components/User/LoginComp'
+import RegisterComp from '@/components/User/RegisterComp'
 
 Vue.config.productionTip = false
 
@@ -19,6 +23,10 @@ Vue.use(Vuetify, {
 })
 
 Vue.component('app-alert', AlertCmp)
+Vue.component('app-success', SuccessCmp)
+Vue.component('app-login-user', LoginComp)
+Vue.component('app-register-user', RegisterComp)
+Vue.component('app-edit-user', EditUser)
 
 new Vue({
   router,
@@ -38,6 +46,8 @@ new Vue({
       if(user){
         this.$store.dispatch('autoSignIn', user)
         this.$store.dispatch('fetchUserData')
+      } else {
+        console.log('Bruker er ikke deffinert')
       }
     })
     this.$store.dispatch('loadProjects')

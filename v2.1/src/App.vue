@@ -73,6 +73,9 @@
         <v-icon left dark>account_box</v-icon>
         Min Side
         </v-btn>
+
+        <app-login-user flat v-if="!userIsAuthenticated"></app-login-user> 
+
         <v-btn flat v-if="userIsAuthenticated" @click="onLogOut">
         <v-icon left dark>exit_to_app</v-icon>
         Log Out
@@ -91,7 +94,7 @@
 <script>
   export default {
     data: () => ({
-      drawer: null
+      drawer: null,
     }),
     methods: {
       onLogOut(){
@@ -118,9 +121,6 @@
       },
       menuItemsRight(){
         let menuItemsRight = [
-          {icon: 'lock_open', title: 'Logg inn', link: '/login'},
-          {icon: 'face', title: 'Registrer deg', link: '/register'}
-
         ]
         if(this.userIsAuthenticated){
           menuItemsRight = []
@@ -131,7 +131,6 @@
         return this.$store.getters.user !== null && this.$store.getters.user !== undefined
       },
       user(){
-        console.log("bruker:" + this.$store.getters.user[0].userId)
         return this.$store.getters.user
       }
     }

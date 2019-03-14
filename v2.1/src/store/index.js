@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import * as firebase from 'firebase'
 import moment from 'moment'
+import { stat } from 'fs';
 
 Vue.use(Vuex)
 moment.locale('nb')
@@ -13,7 +14,8 @@ export const store = new Vuex.Store({
     loadedUser: [],
     user: null,
     loading: false,
-    error: null
+    error: null,
+    success: null
   },
   mutations: {
     setLoadedProjects(state, payload){
@@ -25,6 +27,17 @@ export const store = new Vuex.Store({
     setUser(state, payload){
       state.user = payload
     },
+    updateUser(state, payload){
+      const user = state.user.find(user => {
+        return user.userId === payload.userId
+      })
+      if(payload.email){
+        user.email = payload.email
+      }
+      if(payload.phone){
+        user.phone = payload.phone
+      }
+    },
     setLoadedUser(state, payload){
       state.loadedUser = payload
     },
@@ -34,14 +47,22 @@ export const store = new Vuex.Store({
     setError(state, payload){
       state.error = payload
     },
+    setSuccess(state, payload){
+      state.success = payload
+    },
     clearError(state){
       state.error = null
+    },
+    clearSuccess(state, payload){
+      state.success = null
     }
   },
   actions: {
     // HENTER PROSJEKTER FRA DATABASEN
     loadProjects({commit}){
       commit('setLoading', true)
+      commit('clearSuccess')
+      commit('clearError')
       const projects = []
       firebase.firestore().collection('projects').onSnapshot((snapshot) => {
           snapshot.docChanges().forEach((change) => {
@@ -67,6 +88,8 @@ export const store = new Vuex.Store({
     },
     // LAGER ET NYTT PROSJEKT
     createProject({commit, getters}, payload){
+      commit('clearError')
+      commit('clearSuccess')
       const project = {
         title: payload.title,
         content: payload.content,
@@ -99,6 +122,8 @@ export const store = new Vuex.Store({
         /* imageUrl = fileData.metadata.downloadURLs[0]
         return firebase.firestore().collection('projects').child(key).update({imageUrl: imageUrl}) */
       }).then(() => {
+        let success = {message: 'Takk for ditt bidrag!'}
+        commit('setSuccess', success)
         commit('createProject', {
           ...project,
           imageUrl: imageUrl,
@@ -110,6 +135,8 @@ export const store = new Vuex.Store({
     },
     // OPPDTATERER PROSJEKTET TIL INTERNT
     updateToInternt({commit}, payload){
+      commit('clearSuccess')
+      commit('clearError')
       console.log(payload.id)
       firebase.firestore().collection('projects').doc(payload.id).update({
           internt: true,
@@ -123,6 +150,8 @@ export const store = new Vuex.Store({
     },
     // OPPDATER PROSJEKTET TIL EKSTERNT
     updateToEksternt({commit}, payload){
+      commit('clearSuccess')
+      commit('clearError')
       console.log(payload.id)
       firebase.firestore().collection('projects').doc(payload.id).update({
           eksternt: true,
@@ -134,7 +163,10 @@ export const store = new Vuex.Store({
           console.log(error)
       })
     },
+    // OPPDATER PROSJEKTET TIL INTERNT
     updateToUtvalgt({commit}, payload){
+      commit('clearSuccess')
+      commit('clearError')
       console.log(payload.id)
       firebase.firestore().collection('projects').doc(payload.id).update({
           eksternt: payload.eksternt,
@@ -147,7 +179,10 @@ export const store = new Vuex.Store({
           console.log(error)
       })
     },
+    // OPPDATER PROSJEKTET TIL PRODUKSJON
     updateToProduksjon({commit}, payload){
+      commit('clearSuccess')
+      commit('clearError')
       console.log(payload.id)
       firebase.firestore().collection('projects').doc(payload.id).update({
           eksternt: payload.eksternt,
@@ -167,10 +202,12 @@ export const store = new Vuex.Store({
     // REGISTRERER EN NY BRUKER
     signUserUp({commit, getters}, payload){
       commit('setLoading', true)
+      commit('clearSuccess')
       commit('clearError')
       
       firebase.firestore().collection('users').doc(payload.user.phone).get()
       .then(doc => {
+        console.log(doc)
         if(doc.exists){
           let error = {message: 'Mobilnummber finnes'}
           commit('setError', error)
@@ -194,9 +231,9 @@ export const store = new Vuex.Store({
               console.log(error)
             })
             commit('setLoading', false)
-            const newUser = {
-              id: user.uid
-            }
+            const newUser = [
+              id = user.uid
+            ]
             commit('setUser', newUser)
           }).catch((error) => {
             commit('setLoading', false)
@@ -206,9 +243,39 @@ export const store = new Vuex.Store({
         }
       })
     },
+    // OPPDATERER BRUKER EPOST OG TELEFONNUMMER
+    updateUser({commit,getters}, payload){
+      commit('setLoading', true)
+      commit('clearSuccess')
+      commit('clearError')
+      const updateObj = {}
+
+      if(payload.email){
+        updateObj.email = payload.email
+      }
+      if(payload.phone){
+        updateObj.phone = payload.phone
+      }
+
+      const userDoc = getters.user[0].phone
+      firebase.auth().currentUser.updateEmail(payload.email).then(() => {
+        commit('setLoading', false)
+        commit('updateUser', payload)
+        let success = {message: 'Epost adresse er endret'}
+        commit('setSuccess', success)
+      }).then(() => {
+        
+      }).catch(error => {
+        console.log(error)
+        commit('setError', error)
+        commit('setLoading', false)
+      })
+
+    },
     // LOGGER BRUKER INN
     signUserIn({commit}, payload){
       commit('setLoading', true)
+      commit('clearSuccess')
       commit('clearError')
       
       firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
@@ -230,6 +297,8 @@ export const store = new Vuex.Store({
     // Henter bruker fra DB
     fetchUserData({commit}){
       commit('setLoading', true)
+      commit('clearSuccess')
+      commit('clearError')
       let userData = []
 
       firebase.firestore().collection('users')
@@ -247,6 +316,7 @@ export const store = new Vuex.Store({
                   slug: docs.slug,
                   userId: docs.userId
                 })  
+                console.log('Bruker epost ' + doc.data().email)
             })
         })
         commit('setLoading', false)
@@ -264,6 +334,10 @@ export const store = new Vuex.Store({
     // FJERNER FEILMELDINGER HOS BRUKER
     clearError({commit}){
       commit('clearError')
+    },
+    // FJERNER SUCCESS MELDINGEN
+    clearSuccess({commit}){
+      commit('clearSuccess')
     }
   },
   getters: {
@@ -306,6 +380,9 @@ export const store = new Vuex.Store({
     },
     error(state){
       return state.error
+    },
+    success(state){
+      return state.success
     }
   }
 })

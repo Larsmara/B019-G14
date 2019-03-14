@@ -1,6 +1,8 @@
 <template>
     <v-container grid-list-md >
-        <v-layout row wrap class="mb-2">
+        <app-success @dismissed="onDismissed" v-if="success" :text="success.message"></app-success>
+
+        <v-layout row wrap class="mb-2" >
             <v-flex xs12 sm6 class="text-xs-center text-sm-right">
                 <v-btn large router to="/prosjekter" class="primary">Prosjekter i produksjon</v-btn>
             </v-flex>
@@ -9,7 +11,18 @@
             </v-flex>
         </v-layout>
         <h2>Prosjekter i produksjon</h2>
-        <v-layout row wrap>
+
+        <v-layout row wrap v-if="loading">
+            <v-flex xs12 class="text-xs-center">
+                <v-progress-circular
+                indeterminate
+                color="primary"
+                :width="7"
+                :size="70"></v-progress-circular>
+            </v-flex>
+        </v-layout>
+
+        <v-layout row wrap v-else>
             <v-flex height="350px" xs12 md4 lg2 v-for="project in prosjekt" :key="project.id">
                 <v-card>
                     <v-img v-if="project.imageUrl"
@@ -78,7 +91,18 @@ export default {
     computed: {
       projects () {
         return this.$store.getters.produksjonProsjekter
+      },
+      loading(){
+          return this.$store.getters.loading
+      },
+      success(){
+          return this.$store.getters.success
       }
     },
+    methods: {
+        onDismissed(){
+            this.$store.dispatch('clearError')
+        }
+    }
   }
 </script>
