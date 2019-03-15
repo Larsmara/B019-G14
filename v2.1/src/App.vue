@@ -16,6 +16,15 @@
           </v-list-tile-content>
         </v-list-tile>
 
+        <v-list-tile v-if="!userIsAuthenticated" class="login-dialog">
+          <v-list-tile-action>
+            <v-icon>face</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title ><login/></v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+
         <v-list-tile v-if="userIsAuthenticated && user[0].admin" to="/dashboard">
           <v-list-tile-action>
             <v-icon>assignment</v-icon>
@@ -74,7 +83,10 @@
         Min Side
         </v-btn>
 
-        <app-login-user flat v-if="!userIsAuthenticated"></app-login-user> 
+        <v-btn flat v-if="!userIsAuthenticated">
+        <v-icon left dark>account_box</v-icon>
+        <login/>
+        </v-btn>
 
         <v-btn flat v-if="userIsAuthenticated" @click="onLogOut">
         <v-icon left dark>exit_to_app</v-icon>
@@ -92,10 +104,14 @@
 </template>
 
 <script>
+import login from './components/User/LoginComp'
   export default {
     data: () => ({
       drawer: null,
     }),
+    components: {
+      login
+    },
     methods: {
       onLogOut(){
         this.$store.dispatch('logout')
@@ -137,3 +153,10 @@
   }
 </script>
 
+<style>
+
+.login-dialog a {
+  color: black;
+}
+
+</style>
