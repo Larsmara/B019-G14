@@ -108,6 +108,7 @@ import login from './components/User/LoginComp'
   export default {
     data: () => ({
       drawer: null,
+      admin: null,
     }),
     components: {
       login
