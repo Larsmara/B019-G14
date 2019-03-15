@@ -19,11 +19,8 @@
                     <h2 class="indigo-text">Har du en idé?</h2>
                     <p>Vi som kommune ønsker å være på topp når det gjelder innovative løsninger, men det er ikke alltid at det er oss ansatte som
                         sitter på de beste idéene, eller ser behovene. Derfor ønsker vi å høre deres idéforslag.</p>
-                    <span class="btn blue" v-if="userIsAuthenticated">
+                    <span class="btn blue">
                         <router-link :to="'/ny-idé'" class="idea">Send inn din idé!</router-link>
-                    </span>
-                    <span class="btn blue"  v-if="!userIsAuthenticated">
-                        <login/>
                     </span>
                 </article>
             </div>
@@ -44,44 +41,20 @@
 </template>
 
 <script>
-import login from './User/LoginComp'
 export default {
   name: 'Index',
-  components: {login},
   data () {
     return {
 
     }
   },
-  methods: {
-      idea(){
-          if(this.userIsAuthenticated){
-              this.$router.push('/ny-idé')
-              console.log('autentisert')
-          } else {
-              console.log
-          }
-      }
-  },
   created(){
     document.title = "Hjem"
-  },
-  computed: {
-      userIsAuthenticated(){
-        return this.$store.getters.user !== null && this.$store.getters.user !== undefined
-      },
-      user(){
-        return this.$store.getters.user
-      }
   }
 }
 </script>
 
 <style>
-
-.btn a{
-    color:white;
-}
 
 @import "../components/Style/main.css";
 

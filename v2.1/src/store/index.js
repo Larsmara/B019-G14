@@ -219,7 +219,6 @@ export const store = new Vuex.Store({
               name: payload.user.name,
               slug: payload.user.slug,
               phone: payload.user.phone,
-              gdpr: payload.user.gdpr,
               isAdmin: false,
               joined: payload.user.joined,
               userId: user.user.uid
