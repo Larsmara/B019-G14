@@ -25,7 +25,6 @@ Vue.use(Vuetify, {
 Vue.component('app-alert', AlertCmp)
 Vue.component('app-success', SuccessCmp)
 Vue.component('app-login-user', LoginComp)
-Vue.component('app-register-user', RegisterComp)
 Vue.component('app-edit-user', EditUser)
 
 new Vue({
