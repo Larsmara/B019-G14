@@ -231,6 +231,9 @@ export const store = new Vuex.Store({
               console.log(error)
             })
             commit('setLoading', false)
+            const newUser = [
+              id = user.uid
+            ]
             commit('setUser', newUser)
           }).catch((error) => {
             commit('setLoading', false)
@@ -274,14 +277,12 @@ export const store = new Vuex.Store({
       commit('setLoading', true)
       commit('clearSuccess')
       commit('clearError')
-      console.log('Logger inn...')
       
       firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
       .then((user) => {
         commit('setLoading', false)
-        console.log(user.user.uid)
         const newUser = {
-          id: user.user.uid
+          id: user.uid
         }
         commit('setUser', newUser)
       }).catch((error) => {

@@ -95,7 +95,6 @@
   export default {
     data: () => ({
       drawer: null,
-      admin: null,
     }),
     methods: {
       onLogOut(){

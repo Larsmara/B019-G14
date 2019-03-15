@@ -41,16 +41,13 @@ new Vue({
       storageBucket: "bachelor-824d5.appspot.com",
       messagingSenderId: "896918903719"
     })
-
-    firebase.auth().currentUser.providerData.forEach(profile => {
-      console.log(profile)
-    })
     // LOGGER EN BRUKER AUTOMATISK INN HVIS BRUKER HAR ET TOKEN LOKALT PÅ SIN MASKIN
     firebase.auth().onAuthStateChanged((user) => {
       if(user){
-        console.log(user.uid)
         this.$store.dispatch('autoSignIn', user)
         this.$store.dispatch('fetchUserData')
+      } else {
+        console.log('Bruker er ikke deffinert')
       }
     })
     this.$store.dispatch('loadProjects')
