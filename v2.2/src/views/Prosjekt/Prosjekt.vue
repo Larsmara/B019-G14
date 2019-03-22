@@ -1,13 +1,13 @@
 <template>
     <div class="prosjekt">
-        <div class="mb-2 mt-4">
+        <div class="mb-2 mt-4 knapper">
             <b-button variant="info" router to="/prosjekter">Prosjekter i produksjon</b-button>
             <b-button variant="info" class="ml-2" router to="/prosjekter/test">Utvalgte prosjekter</b-button>
         </div>
 
         <b-container class="prosjekt-container w-75 p-3" fluid>
             <b-row>
-                <div class="card mb-4 mr-2 ml-2 " style="width: 18rem;" v-for="project in projects" :key="project.id">
+                <!-- <div class="card mb-4 mr-2 ml-2 " style="width: 18rem;" v-for="project in projects" :key="project.id">
                     <img v-if="!project.imageUrl" src="https://picsum.photos/600/300/?image=25" class="card-img-top" alt="Standard bilde">
                     <img v-if="project.imageUrl" :src="project.imageUrl" class="card-img-top" alt="Prosjekt bilde">
                     <div class="card-body">
@@ -15,14 +15,14 @@
                         <p class="card-text">{{project.content}}</p>
                         <a href="#" class="btn btn-info">Les Mer</a>
                     </div>
-                </div>
-                <!-- <b-card v-for="project in prosjekt" :key="project.id"
+                </div> -->
+                <b-card v-for="project in prosjekt" :key="project.id"
                     :title=project.title
                     img-src="https://picsum.photos/600/300/?image=25"
                     img-alt="Image"
                     img-top
                     tag="article"
-                    style="max-width: 20rem;"
+                    style="width: 20rem;"
                     class="mb-4 mr-2 ml-4"
                     >
                     <b-card-img></b-card-img>
@@ -31,7 +31,7 @@
                     </b-card-text>
 
                     <b-button href="#" variant="info">Les mer</b-button>
-                </b-card> -->
+                </b-card>
 
                 <!-- <b-card no-body class="overflow-hidden mr-2 mb-2" style="max-width: 540px;" v-for="project in prosjekt" :key="project.id">
                     <b-row no-gutters>
@@ -106,7 +106,7 @@ export default {
 </script>
 
 <style>
-/* .prosjekt-container{
-    width: 80%;
-} */
+.knapper{
+    text-align: center;
+}
 </style>

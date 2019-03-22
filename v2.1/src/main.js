@@ -11,9 +11,9 @@ import EditUser from '@/components/User/edit/EditUser'
 import LoginComp from '@/components/User/LoginComp'
 import RegisterComp from '@/components/User/RegisterComp'
 
-import BootstrapVue from 'bootstrap-vue'
+/* import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css' */
 
 Vue.config.productionTip = false
 /* 
@@ -25,7 +25,7 @@ Vue.use(Vuetify, {
     error: '#b71c1c'
   }
 }) */
-Vue.use(BootstrapVue)
+Vue.use(Vuetify)
 
 
 Vue.component('app-alert', AlertCmp)

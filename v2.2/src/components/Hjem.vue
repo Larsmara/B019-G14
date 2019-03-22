@@ -1,13 +1,9 @@
 <template>
   <div class="hello">
-    <b-container class="home-container">
       <b-row>
-        <b-col>
+        <b-col lg="3" sm="12" order-lg="1" order="3">
           <b-card
-            title="Card Title"
-            img-src="https://picsum.photos/600/300/?image=25"
-            img-alt="Image"
-            img-top
+            title="Smart City"
             tag="article"
             class="mb-2"
           >
@@ -15,15 +11,12 @@
               Smart City, eller smarte byer, er et begrep som brukes over hele verden og som forklarer hvordan byer og bygder skal utvikles til å bli bærekraftige og moderne samfunn der både økonomiske, sosiale og miljømessige verdier gjennomsyrer alt vi gjør og skaper.
             </b-card-text>
 
-            <b-button href="#" variant="primary">Go somewhere</b-button>
+            <b-button href="#" variant="info">Go somewhere</b-button>
           </b-card>
         </b-col>
-        <b-col cols="6">
+        <b-col lg="6" md="12" sm="12" order-lg="2" order="1">
           <b-card
-            title="Card Title"
-            img-src="https://picsum.photos/600/300/?image=25"
-            img-alt="Image"
-            img-top
+            title="Send Idé"
             tag="article"
             class="mb-2"
           >
@@ -31,15 +24,12 @@
               Vi som kommune ønsker å være på topp når det gjelder innovative løsninger, men det er ikke alltid at det er oss ansatte som sitter på de beste idéene, eller ser behovene. Derfor ønsker vi å høre deres idéforslag.
             </b-card-text>
 
-            <b-button href="#" variant="primary">Go somewhere</b-button>
+            <b-button href="#" variant="info">Go somewhere</b-button>
           </b-card>
         </b-col>
-        <b-col>
+        <b-col lg="3" sm="12" order-lg="3" order="2">
           <b-card
-            title="Card Title"
-            img-src="https://picsum.photos/600/300/?image=25"
-            img-alt="Image"
-            img-top
+            title="Prosjekter"
             tag="article"
             class="mb-2"
           >
@@ -47,11 +37,10 @@
                Et Smart City Halden prosjekt utpeker seg ved at (1) prosjektet er bærekraftig på både kort og lang sikt, (2) det utføres i samarbeid med flere ulike samfunnsaktører og (3) det tar i bruk teknologi på en innovativ måte.
             </b-card-text>
 
-            <b-button href="#" variant="primary">Go somewhere</b-button>
+            <b-button href="#" variant="info">Go somewhere</b-button>
           </b-card>
           </b-col>
       </b-row>
-    </b-container>
   </div>
 </template>
 
@@ -67,18 +56,9 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
-h3 {
-  margin: 40px 0 0;
+.hello{
+  width: 80%;
+  margin: 0 auto;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+
 </style>

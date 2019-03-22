@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-  <b-navbar toggleable="lg" type="dark" variant="info" sticky=true class="mb-2">
+  <b-navbar toggleable="lg"  sticky=true class="mb-2 nav-farge bg-info">
     <b-navbar-brand to="/">Smart City</b-navbar-brand>
 
     <b-navbar-toggle target="nav_collapse" />
@@ -51,23 +51,9 @@ export default {
 
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
+
+.nav-farge{
+  background-color: 
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>
