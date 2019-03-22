@@ -1,6 +1,6 @@
 <template>
   <div class="index">
-        <header class="index-header"></header>
+        <header class="index-header">
         <div class="container index-content">
             <div class="card">
                 <article class="card-content">
@@ -40,6 +40,7 @@
             </div>
             
         </div>
+        </header>
     </div>
 </template>
 
