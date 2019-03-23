@@ -1,63 +1,54 @@
 <template>
     <div class="loginComp">
-        <b-nav-item @click="modalShow = !modalShow">Logger deg inn</b-nav-item>
+        <b-button @click="modalShow = !modalShow">Logger deg inn</b-button>
 
         <b-modal v-model="modalShow" hide-footer centered title="Smart City">
-
-            <!-- <b-tabs card v-model="tabIndex" class="bg-transparent" id="tabs">
-                <b-tab title="Logg Inn" :title-link-class="linkClass(0)">
-                  <b-form @submit.prevent="onSubmit">
-                      <b-form-input
-                        id="exampleInput1"
-                        type="email"
-                        v-model="email"
-                        required
-                        placeholder="Enter email" />
-
-                    <b-form-group  label="Your Name:">
-                      <b-form-input
-                        type="text"
-                        v-model="name"
-                        required
-                        placeholder="Enter name" />
-                    </b-form-group>
-
-                    <b-button type="submit" variant="primary">Submit</b-button>
-                  </b-form>
-                </b-tab>
-                <b-tab title="Registrer deg" :title-link-class="linkClass(1)">Tab Contents 2
-
-                </b-tab>
-            </b-tabs> -->
-            
             <b-tabs content-class="mt-3" class="navbar-dark">
               <b-tab title="Logg inn" active class="text--dark">
-                <b-form @submit.prevent="onSubmit">
+                <b-form @submit.prevent="login">
                  <b-form-group  label="E-post:">
                   <b-form-input
-                    type="text"
-                    v-model="name"
+                    type="email"
+                    v-model="email"
                     required
-                    placeholder="Enter name" />
+                    placeholder="E-post" />
                 </b-form-group>
 
-                <b-form-group  label="Your Name:">
+                <b-form-group  label="Passord:">
                   <b-form-input
-                    type="text"
-                    v-model="name"
+                    type="password"
+                    v-model="password"
                     required
-                    placeholder="Enter name" />
+                    placeholder="Passord" />
                 </b-form-group>
-
-                <b-button type="submit" variant="primary">Submit</b-button>
+                <div class="knapper mt-4">
+                <b-button type="submit">Logg inn</b-button>
+                </div>
+                <div class="knapper mt-2">
+                  <b-button variant="link" @click="dialog2 = !dialog2">Glemt passord?</b-button>
+                </div>
               </b-form>
               </b-tab>
-              <b-tab title="second"><p>I'm the second tab content</p></b-tab>
+              <b-tab title="Registrer deg"><p>I'm the second tab content</p></b-tab>
             </b-tabs>
-
-            
-
         </b-modal>
+
+        <b-modal v-model="dialog2" hide-footer centered title="Glemt passord">
+          <b-form @submit.prevent="onSubmit">
+                 <b-form-group  label="E-post:">
+                  <b-form-input
+                    type="email"
+                    v-model="email"
+                    required
+                    placeholder="E-post" />
+                </b-form-group>
+                <div class="knapper mt-4">
+                  <b-button class="mr-2" @click="dialog2 = !dialog2">Avbryt</b-button>
+                <b-button type="submit">Nullstill passord</b-button>
+                </div>
+              </b-form>
+        </b-modal>
+
     </div>
 </template>
 
@@ -67,9 +58,10 @@ export default {
     data(){
         return{
             modalShow: false,
+            dialog2: false,
             tabIndex: 0,
             email: '',
-            name: ''
+            password: ''
         }
     },
     methods: {
@@ -80,8 +72,8 @@ export default {
           return ['bg-light', 'text-info']
         }
       },
-      onSubmit(){
-        console.log('Submitta')
+      login(){
+        this.$store.dispatch('signUserIn', {email: this.email, password: this.password})
       }
     }
 }

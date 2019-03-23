@@ -26,6 +26,14 @@ new Vue({
       storageBucket: "bachelor-824d5.appspot.com",
       messagingSenderId: "896918903719"
     })
+    firebase.auth().onAuthStateChanged((user) => {
+      if(user){
+        this.$store.dispatch('autoSignIn', user)
+        this.$store.dispatch('fetchUserData')
+      } else {
+        console.log('Bruker er ikke deffinert')
+      }
+    })
     this.$store.dispatch('loadProjects')
 
   }

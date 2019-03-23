@@ -1,10 +1,10 @@
 <template>
-  <div class="about">
+  <div class="about ">
     <b-container>
       <b-row>
         <b-col>
           <b-card-group deck>
-            <b-card  class="text-center">
+            <b-card  class="text-left hello">
               <h2>Smart City Halden</h2>
                     <h4> Smart by, et godt sted å leve</h4>
                     <p><span class="about-intro">Smart City, eller smarte byer, er et begrep som brukes over hele verden og som forklarer
@@ -14,8 +14,8 @@
                     <p>Programmet skal legge til rette for forskning, utvikling og innovasjon for en bærekraftig samfunnsutvikling. Programmet skal
                       stimulere til eksperimentering, testing og demonstrering av ny teknologi, nye tjenester til innbyggerne og nye typer
                       forretningsmodeller som skaper verdi for et fremtidsrettet samfunn. </p>
-                    <p>Et Smart City Halden prosjekt utpeker seg ved at (1) prosjektet er bærekraftig på både kort og lang sikt, (2) det utføres
-                      i samarbeid med flere ulike samfunnsaktører og (3) det tar i bruk teknologi på en innovativ måte. </p>
+                    <p>Et Smart City Halden prosjekt utpeker seg ved at <br>(1) prosjektet er bærekraftig på både kort og lang sikt <br>(2) det utføres
+                      i samarbeid med flere ulike samfunnsaktører og <br>(3) det tar i bruk teknologi på en innovativ måte. </p>
                     <p>Disse tre er driverne i Smart City Halden, og skal være synlige i ethvert Smart City Halden-prosjekt.</p>
             </b-card>
           </b-card-group>
@@ -32,3 +32,18 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+.hello{
+  margin: 10% auto auto auto;
+}
+
+.about{
+    background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)), url(../../public/HaldenBy.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.7)), url(../../public/HaldenBy.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    background-attachment: fixed;
+}
+</style>
