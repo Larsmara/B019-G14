@@ -6,6 +6,7 @@ import {store} from './store'
 import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import './style/style.css'
 import LoginComp from './components/Bruker/LoginComp.vue'
 
 Vue.config.productionTip = false

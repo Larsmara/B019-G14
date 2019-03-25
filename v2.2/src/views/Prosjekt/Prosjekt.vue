@@ -52,6 +52,13 @@ export default {
     },
     created(){
         document.title = "Prosjekter"
+        var element = document.getElementById("prosjekter");
+        element.classList.add("active");
+    },
+    destroyed() {
+        document.title = "Prosjekter"
+        var element = document.getElementById("prosjekter");
+        element.classList.toggle("active");
     },
     computed: {
       projects () {

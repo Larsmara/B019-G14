@@ -28,8 +28,15 @@
 <script>
 export default {
   created(){
-        document.title = "Om oss"
-    }
+      document.title = "Om-oss"
+      var element = document.getElementById("om-oss");
+      element.classList.add("active");
+  },
+  destroyed() {
+      document.title = "Prosjekter"
+      var element = document.getElementById("om-oss");
+      element.classList.toggle("active");
+  },
 }
 </script>
 
