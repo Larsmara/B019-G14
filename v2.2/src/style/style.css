@@ -4,6 +4,10 @@
 }
 
 .hk-blue{
+    color: rgb(0, 114, 187);
+}
+
+.hk-blue{
     background-color: rgb(0, 114, 187);
 }
 
@@ -18,7 +22,7 @@
 }
 
 .hk-nav-active{
-    border-left: rgb(0, 145, 211, 1) 3px solid;
+    border-left: rgb(0, 145, 211, 0.8) 3px solid;
 }
 
 @media(max-width: 556px){
@@ -28,6 +32,11 @@
 }
 /* MAIN COLORS */
 
+body{
+    margin: 0;
+    height: 100%;
+}
+/* APP.vue margin for å ikke kollidere med nav-bar */
 .main-view{
     margin-top: 56px;
 }
@@ -40,6 +49,10 @@
     position: relative;
     min-height: 500px;
     z-index: 1;
+}
+
+.about{
+    height: 100vh;
 }
 
 .home-box{
@@ -70,3 +83,22 @@
     display: table-cell;
     vertical-align: middle;
   }
+
+  .login-tabs a{
+      color: #495057;
+  }
+
+  .login-tabs .nav-tabs .nav-item .active{
+    color: rgb(0, 114, 187);
+}
+
+.tab-pane {
+    outline: none;
+}
+
+/* BUTTONS */
+.btn-link{
+    text-decoration: none;
+    border: none;
+}
+/* BUTTONS END */

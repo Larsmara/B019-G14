@@ -18,32 +18,22 @@
                     <p>Et Smart City Halden prosjekt utpeker seg ved at <br>(1) prosjektet er bærekraftig på både kort og lang sikt <br>(2) det utføres
                       i samarbeid med flere ulike samfunnsaktører og <br>(3) det tar i bruk teknologi på en innovativ måte. </p>
                     <p>Disse tre er driverne i Smart City Halden, og skal være synlige i ethvert Smart City Halden-prosjekt.</p>
-
-                    <b-button @click="show = true" class="btn hk-btn btn-lg">Login</b-button>
-                    
-
             </b-card>
           </b-card-group>
         </b-col>
       </b-row>
     </b-container>
 
-<testDialog :sho="show"></testDialog>
 
   </div>
 </template>
 
 <script>
-import testDialog from '../components/Bruker/Dialog.vue'
 
 export default {
   data(){
     return{
-      show: false
     }
-  },
-  components: {
-    testDialog
   },
   created(){
       document.title = "Om-oss"
@@ -63,12 +53,5 @@ export default {
   margin: 10% auto auto auto;
 }
 
-.about{
-    background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)), url(../../public/HaldenBy.jpg);
-    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.7)), url(../../public/HaldenBy.jpg);
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    background-attachment: fixed;
-}
+
 </style>

@@ -51,14 +51,14 @@ export default {
         }
     },
     created(){
-        document.title = "Prosjekter"
-        var element = document.getElementById("prosjekter");
-        element.classList.add("active");
+      document.title = "Prosjekter"
+      var element = document.getElementById("prosjekter");
+      element.classList.add("active", "hk-nav-active");
     },
     destroyed() {
         document.title = "Prosjekter"
         var element = document.getElementById("prosjekter");
-        element.classList.toggle("active");
+        element.classList.remove("active", "hk-nav-active");
     },
     computed: {
       projects () {

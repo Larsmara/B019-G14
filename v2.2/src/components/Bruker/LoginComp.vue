@@ -2,7 +2,7 @@
     <div class="loginComp">
         <!-- <b-button @click="modalShow = !modalShow">Logger deg inn</b-button> -->
 
-        <b-modal :show="show" hide-footer centered title="Smart City">
+        <b-modal :v-model="show" hide-footer centered title="Smart City">
             <b-tabs content-class="mt-3" class="navbar-dark">
               <b-tab title="Logg inn" active class="text--dark">
                 <b-form @submit.prevent="login">
@@ -58,6 +58,7 @@ export default {
     data(){
         return{
             modalShow: false,
+            show: false,
             dialog2: false,
             tabIndex: 0,
             email: '',

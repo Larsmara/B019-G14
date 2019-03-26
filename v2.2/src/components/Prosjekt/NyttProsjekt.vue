@@ -1,5 +1,5 @@
 <template>
-  <div class="container mt-4 ">
+  <div class="container mt-4 pt-5">
       <h1 class="text-center">Send oss din idé!</h1>
     <b-form @submit.prevent="onSubmit">
       <b-form-group
@@ -100,12 +100,15 @@ import slugify from 'slugify'
             this.file = null
             this.imageUrl = null
         }
-    }
+    },
+    created(){
+      document.title = "Ny Idé"
+      var element = document.getElementById("ny-idé");
+      element.classList.add("active", "hk-nav-active");
+    },
+    destroyed() {
+        var element = document.getElementById("ny-idé");
+        element.classList.remove("active", "hk-nav-active");
+    },
   }
 </script>
-
-<style scoped>
-#resetBtn{
-  background-color: red;
-}
-</style>
