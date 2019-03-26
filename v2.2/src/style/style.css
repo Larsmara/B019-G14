@@ -55,6 +55,10 @@ body{
     height: 100vh;
 }
 
+.new-idea{
+    height: 100vh;
+}
+
 .home-box{
     padding-bottom: 5px;
     border: 1px solid rgba(0, 0, 0, .5)
@@ -102,3 +106,20 @@ body{
     border: none;
 }
 /* BUTTONS END */
+
+
+#prosjekter img {
+    margin-top: -40px; 
+}
+
+#prosjekterVisning img {
+    margin-top: -100px; 
+}
+
+#prosjekterVisning{
+    height: 100vh;
+}
+
+#prosjekterVisning .card{
+    margin: auto;
+}

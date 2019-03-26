@@ -1,21 +1,28 @@
 <template>
-    <div class="prosjekt">
-        <b-container >
-            <b-button variant="info" class="mt-4 mr-2" @click="goBack">Tilbake</b-button>
-             <div class="card mb-4 mr-2 ml-2 mt-2">
-                    <img v-if="!project.imageUrl" src="https://picsum.photos/600/300/?image=25" class="card-img-top" alt="Standard bilde">
-                    <img v-if="project.imageUrl" :src="project.imageUrl" class="card-img-top" alt="Prosjekt bilde">
-                    <div class="card-body">
-                        <h5 class="card-title">{{project.title}}</h5>
-                        <hr>
-                        <p class="card-text">{{project.content}}</p>
-                    </div>
-                    <div class="card-footer text-muted">
-                        Innsendt: {{project.date}}
+    <div class="container pt-4">
+        <button class="align-self-start btn hk-btn" @click="goBack">Tilbake</button>
+        <!-- PROSJEKT VISNING -->
+    <section id="prosjekterVisning" class="my-5 pt-5 text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col pb-5">
+                    <div class="card w-75 h-100">
+                        <div class="card-body">
+                            <img v-if="!project.imageUrl" src="../../assets/idea.png" alt="Standard prosjekt bilde om innsender ikke legger ved ett" class="img-fluid rounded w-25 mb-3 pt-5">
+                            <img v-else :src="project.imageUrl" alt="Prosjekt bilde fra innsender" class="img-fluid rounded w-50 mb-3 border">
+                            <h3>{{project.title}}</h3>
+                            <hr>
+                            <p>{{project.content}}</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">{{project.date}}</small>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
 
-        </b-container>
     </div>
 </template>
 

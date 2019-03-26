@@ -43,6 +43,7 @@ export default {
     return {
       show_dialog: false,
       dialog2: false,
+      tab: null,
       tabIndex: 0,
       email: '',
       password: ''

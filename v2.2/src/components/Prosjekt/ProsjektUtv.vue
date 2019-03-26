@@ -1,41 +1,37 @@
 <template>
-    <div class="test">
-        <div class="mb-2 mt-4 knapper">
-            <b-button variant="info" router to="/prosjekter">Prosjekter i produksjon</b-button>
-            <b-button variant="info" class="ml-2" router to="/prosjekter/test">Utvalgte prosjekter</b-button>
-            <h2 class="mt-4">Utvalgte prosjekter</h2>
+    <div class="container pt-4">
+        <!-- NAVIGASJON MELLOM PRODUKSJON OG UTVALGTE -->
+        <div class="row">
+            <div class="col text-center pt-3">
+                <p class="d-lg-none h4">Prosjekter i produksjon</p>
+                <router-link class=" my-2 btn btn-lg hk-btn" to="/prosjekter">Prosjekter i produksjon</router-link>
+                <router-link class="ml-2 my-2 btn btn-lg hk-btn" to="/prosjekter/utvalgte">Utvalgte prosjekter</router-link>
+                <p class="h1 d-none d-lg-block pb-4">Prosjekter i Produksjon</p>
+            </div>
         </div>
 
-        <b-container class="prosjekt-container w-75 p-3" fluid>
-            <b-row>
-                <!-- <div class="card mb-4 mr-2 ml-2 " style="width: 18rem;" v-for="project in projects" :key="project.id">
-                    <img v-if="!project.imageUrl" src="https://picsum.photos/600/300/?image=25" class="card-img-top" alt="Standard bilde">
-                    <img v-if="project.imageUrl" :src="project.imageUrl" class="card-img-top" alt="Prosjekt bilde">
-                    <div class="card-body">
-                        <h5 class="card-title">{{project.title}}</h5>
-                        <p class="card-text">{{project.content}}</p>
-                        <a href="#" class="btn btn-info">Les Mer</a>
+        <!-- PROSJEKT VISNING -->
+    <section id="prosjekter" class="my-5 text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 pb-5" v-for="project in projects" :key="project.id">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <img v-if="!project.imageUrl" src="../../assets/idea.png" alt="Standard prosjekt bilde om innsender ikke legger ved ett" class="img-fluid rounded-circle w-50 mb-3">
+                            <img v-else :src="project.imageUrl" alt="Prosjekt bilde fra innsender" class="img-fluid rounded-circle w-50 mb-3">
+                            <h3>{{project.title}}</h3>
+                            <p>{{project.content}}</p>
+                            <router-link class="btn hk-btn btn-block" router :to="'/prosjekt/' + project.id">Les mer</router-link>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">{{project.date}}</small>
+                        </div>
                     </div>
-                </div> -->
-                <b-card v-for="project in projects" :key="project.id"
-                    :title=project.title
-                    img-src="https://picsum.photos/600/300/?image=25"
-                    img-alt="Image"
-                    img-top
-                    tag="article"
-                    style="width: 20rem;"
-                    class="mb-4 mr-2 ml-4"
-                    >
-                    <b-card-img></b-card-img>
-                    <b-card-text>
-                    {{project.content}}
-                    </b-card-text>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                    <b-button variant="info" router :to="'/prosjekt/' + project.id">Les mer</b-button>
-                </b-card>
-
-            </b-row>
-        </b-container>
     </div>
 </template>
 
@@ -48,7 +44,13 @@ export default {
         }
     },
     created(){
-        document.title = "Prosjekter"
+      document.title = "Utvalgte Prosjekter"
+      var element = document.getElementById("prosjekter");
+      element.classList.add("active", "hk-nav-active");
+    },
+    destroyed() {
+        var element = document.getElementById("prosjekter");
+        element.classList.remove("active", "hk-nav-active");
     },
     computed: {
       projects () {

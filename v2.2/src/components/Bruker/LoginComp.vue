@@ -1,6 +1,5 @@
 <template>
     <div class="loginComp">
-        <!-- <b-button @click="modalShow = !modalShow">Logger deg inn</b-button> -->
 
         <b-modal :v-model="show" hide-footer centered title="Smart City">
             <b-tabs content-class="mt-3" class="navbar-dark">
@@ -81,8 +80,4 @@ export default {
 }
 </script>
 
-<style>
-#tabs{
-  outline: none;
-}
-</style>
+

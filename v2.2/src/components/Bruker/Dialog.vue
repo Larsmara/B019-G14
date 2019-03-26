@@ -1,6 +1,9 @@
 <template>
 <div>
     <b-modal :visible="show" class="m-0 p-0" hide-footer centered title="Smart City" ref="myModalRef">
+      <div v-if="melding" class="alert alert-success" role="alert">
+        {{melding}}
+      </div>
       <!-- Tabs with card integration -->
       <b-tabs v-model="tabIndex" class="m-0 p-0 login-tabs">
         <!-- LOGG INN TAB -->
@@ -8,7 +11,7 @@
           <form @submit.prevent="login">
             <div class="form-group">
               <label for="exampleInputEmail1">E-post</label>
-              <input type="email" v-model="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="E-post">
+              <input type="email" v-model="email" class="form-control" id="exampleInputEmail1" placeholder="E-post">
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Passord</label>
@@ -24,8 +27,8 @@
         <b-tab title="Registrer deg" class="pt-2">
           <form @submit.prevent="register">
             <div class="form-group">
-              <label for="exampleInputEmail1">Epost</label>
-              <input type="email" class="form-control" v-model="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Epost" required>
+              <label for="exampleInputEmail3">Epost</label>
+              <input type="email" class="form-control" v-model="email" id="exampleInputEmail3"  placeholder="Epost" required>
             </div>
             <div class="form-group">
               <label for="fornavn">Fornavn</label>
@@ -40,8 +43,8 @@
               <input type="text" class="form-control" v-model="telefon" id="telefon" aria-describedby="telefonHelp" placeholder="Telefon" required>
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password" v-model="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+              <label for="exampleInputPassword3">Password</label>
+              <input type="password" v-model="password" class="form-control" id="exampleInputPassword3" placeholder="Password" required>
             </div>
             <div class="form-group">
               <label for="exampleInputPassword2">Verifiser Passord</label>
@@ -64,6 +67,7 @@
 
 <script>
 import slugify from 'slugify'
+import {setTimeout} from 'timers'
 
 export default {
   props: {
@@ -81,14 +85,16 @@ export default {
       password: null,
       password2: null,
       slug: null,
-      tabIndex: 0
+      tabIndex: 0,
+      melding: null,
     }
   },
   methods: {
     login(){
-      console.log(this.email + " " + this.password)
       this.$store.dispatch('signUserIn', {email: this.email, password: this.password})
-      this.$refs.myModalRef.hide()
+      this.melding = 'Du er nå logget inn'
+      setTimeout(() => (this.$refs.myModalRef.hide()), 2000)
+      
     },
     register(){
       if(this.password !== this.password2){

@@ -1,5 +1,5 @@
 <template>
-  <div class="container mt-4 pt-5">
+  <div class="container mt-4 pt-5 new-idea">
       <h1 class="text-center">Send oss din idé!</h1>
     <b-form @submit.prevent="onSubmit">
       <b-form-group
