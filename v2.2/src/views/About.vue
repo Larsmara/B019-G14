@@ -1,5 +1,6 @@
 <template>
   <div class="about ">
+    
     <b-container>
       <b-row>
         <b-col>
@@ -17,25 +18,42 @@
                     <p>Et Smart City Halden prosjekt utpeker seg ved at <br>(1) prosjektet er bærekraftig på både kort og lang sikt <br>(2) det utføres
                       i samarbeid med flere ulike samfunnsaktører og <br>(3) det tar i bruk teknologi på en innovativ måte. </p>
                     <p>Disse tre er driverne i Smart City Halden, og skal være synlige i ethvert Smart City Halden-prosjekt.</p>
+
+                    <b-button @click="show = true" class="btn hk-btn btn-lg">Login</b-button>
+                    
+
             </b-card>
           </b-card-group>
         </b-col>
       </b-row>
     </b-container>
+
+<testDialog :sho="show"></testDialog>
+
   </div>
 </template>
 
 <script>
+import testDialog from '../components/Bruker/Dialog.vue'
+
 export default {
+  data(){
+    return{
+      show: false
+    }
+  },
+  components: {
+    testDialog
+  },
   created(){
       document.title = "Om-oss"
       var element = document.getElementById("om-oss");
-      element.classList.add("active");
+      element.classList.add("active", "hk-nav-active");
   },
   destroyed() {
       document.title = "Prosjekter"
       var element = document.getElementById("om-oss");
-      element.classList.toggle("active");
+      element.classList.remove("active", "hk-nav-active");
   },
 }
 </script>

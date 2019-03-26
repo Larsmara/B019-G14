@@ -10,13 +10,11 @@ import SuccessCmp from '@/components/Shared/Success.vue'
 import EditUser from '@/components/User/edit/EditUser'
 import LoginComp from '@/components/User/LoginComp'
 import RegisterComp from '@/components/User/RegisterComp'
+import './components/Style/bootstrap.css'
 
-/* import BootstrapVue from 'bootstrap-vue'
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css' */
 
 Vue.config.productionTip = false
-/* 
+
 Vue.use(Vuetify, {
   theme: {
     primary: '#2196f3',
@@ -24,7 +22,7 @@ Vue.use(Vuetify, {
     accent: '#8c9eff',
     error: '#b71c1c'
   }
-}) */
+})
 Vue.use(Vuetify)
 
 

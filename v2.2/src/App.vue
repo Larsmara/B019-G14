@@ -1,34 +1,40 @@
 <template>
-  <div id="app">
-    <b-navbar id="main-nav" toggleable="lg" type="light" fixed="top" class="p-2">
+  <div id="app" class="bg-light">
+
+    <b-navbar id="main-nav" toggleable="lg" type="light" fixed="top" class="shadow-sm p-3 mb-5 bg-white rounded">
       <b-navbar-brand to="/">Smart City</b-navbar-brand>
 
       <b-navbar-toggle target="nav_collapse" />
 
       <b-collapse is-nav id="nav_collapse">
         <b-navbar-nav>
-          <b-nav-item id="hjem" to="/" class="active">Home</b-nav-item>
+          <b-nav-item id="hjem" to="/">Home</b-nav-item>
           <b-nav-item id="ny-idé" to="/ny-idé" v-if="userIsAuthenticated && user">Send idé</b-nav-item>
           <b-nav-item id="prosjekter" to="/prosjekter">Prosjekter</b-nav-item>
           <b-nav-item id="om-oss" to="/om-oss">Om oss</b-nav-item>
+          <b-nav-item @click="showDialog">Test</b-nav-item>
         </b-navbar-nav>
 
         <b-navbar-nav class="ml-auto">
           <b-nav-item to="#" v-if="userIsAuthenticated && user">Dashboard</b-nav-item>
           <b-nav-item to="#" v-if="userIsAuthenticated && user">Min side</b-nav-item>
-          <b-button @click="modalShow = !modalShow">Logger deg inn</b-button>
-          <!-- <Login v-if="!userIsAuthenticated"/>
+          
+<!--           <b-button @click="modalShow = !modalShow">Logger deg inn</b-button>
+ -->          <!-- <Login v-if="!userIsAuthenticated"/>
           <b-nav-item v-if="userIsAuthenticated && user" @click="onLogOut">Logg ut</b-nav-item> -->
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
+
+  <dialog :show="show_dialog"></dialog>
+
 
     <div class="main-view">
     <router-view/>
   </div>
     
 <!-- LOGIN MODAL -->
-  <b-modal v-model="modalShow" hide-footer centered title="Smart City">
+  <!-- <b-modal v-model="modalShow" hide-footer centered title="Smart City">
     <b-tabs content-class="mt-3" class="navbar-dark">
       <b-tab title="Logg inn" active class="text--dark">
         <b-form @submit.prevent="login">
@@ -73,7 +79,7 @@
     <b-button type="submit">Nullstill passord</b-button>
     </div>
   </b-form>
-  </b-modal>
+  </b-modal> -->
   <!-- LOGIN MODAL END -->
 
 
@@ -81,11 +87,13 @@
 </template>
 
 <script>
-import Login from './components/Bruker/LoginComp'
+import dialog from './components/Bruker/Dialog'
+
 export default {
   data(){
     return {
       modalShow: false,
+      show_dialog: false,
       dialog2: false,
       tabIndex: 0,
       email: '',
@@ -93,7 +101,7 @@ export default {
     }
   },
   components: {
-    Login
+    dialog
   },
   computed: {
     userIsAuthenticated(){
@@ -107,6 +115,10 @@ export default {
     onLogOut(){
       this.$store.dispatch('logout')
       this.$router.push('/')
+    },
+    showDialog(){
+      console.log('true')
+      this.show_dialog = true
     }
   }
 }

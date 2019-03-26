@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <el-container>
+    <!-- <el-container>
     <el-row>
       <el-col :span="6" :xs="24"><div class="grid-content bg-purple-light">
         <el-card shadow="hover">
@@ -29,7 +29,7 @@
         </el-card>
         </div></el-col>
     </el-row>
-  </el-container>
+  </el-container> -->
   </div>
 </template>
 

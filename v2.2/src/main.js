@@ -8,11 +8,13 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import './style/style.css'
 import LoginComp from './components/Bruker/LoginComp.vue'
+import dialog from './components/Bruker/Dialog.vue'
 
 Vue.config.productionTip = false
 
 Vue.use(BootstrapVue)
 Vue.component('app-login', LoginComp)
+Vue.component('app-dialog', dialog)
 
 new Vue({
   router,

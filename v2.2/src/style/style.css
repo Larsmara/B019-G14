@@ -1,3 +1,33 @@
+/* MAIN COLORS */
+.hk-main{
+    color: #F6F6F6;
+}
+
+.hk-blue{
+    background-color: rgb(0, 114, 187);
+}
+
+.hk-btn{
+    background-color: rgb(0, 114, 187);
+    color: #fff;
+}
+
+.hk-btn:hover{
+    background-color: rgb(0, 145, 211);
+    color: #fff;
+}
+
+.hk-nav-active{
+    border-left: rgb(0, 145, 211, 1) 3px solid;
+}
+
+@media(max-width: 556px){
+    .hk-nav-active{
+        
+    }
+}
+/* MAIN COLORS */
+
 .main-view{
     margin-top: 56px;
 }
@@ -10,6 +40,11 @@
     position: relative;
     min-height: 500px;
     z-index: 1;
+}
+
+.home-box{
+    padding-bottom: 5px;
+    border: 1px solid rgba(0, 0, 0, .5)
 }
 
 #logo .carousel-inner .carousel-item img{

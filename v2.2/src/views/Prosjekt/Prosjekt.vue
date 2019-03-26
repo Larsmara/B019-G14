@@ -1,6 +1,6 @@
 <template>
     <div class="prosjekt">
-        <div class="mb-2 mt-4 knapper">
+        <div class="mb-2 mt-4 py-3 knapper">
             <b-button variant="info" router to="/prosjekter">Prosjekter i produksjon</b-button>
             <b-button variant="info" class="ml-2" router to="/prosjekter/utvalgte">Utvalgte prosjekter</b-button>
             <h2 class="mt-4">Prosjekter i produksjon</h2>

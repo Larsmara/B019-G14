@@ -1,8 +1,8 @@
 <template>
     <div class="loginComp">
-        <b-button @click="modalShow = !modalShow">Logger deg inn</b-button>
+        <!-- <b-button @click="modalShow = !modalShow">Logger deg inn</b-button> -->
 
-        <b-modal v-model="modalShow" hide-footer centered title="Smart City">
+        <b-modal :show="show" hide-footer centered title="Smart City">
             <b-tabs content-class="mt-3" class="navbar-dark">
               <b-tab title="Logg inn" active class="text--dark">
                 <b-form @submit.prevent="login">
@@ -73,6 +73,7 @@ export default {
         }
       },
       login(){
+        console.log('logget inn')
         this.$store.dispatch('signUserIn', {email: this.email, password: this.password})
       }
     }
