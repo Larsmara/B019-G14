@@ -16,10 +16,9 @@
             <div class="row">
                 <div class="col-lg-3 col-md-6 pb-5" v-for="project in projects" :key="project.id">
                     <div class="card shadow-sm h-100">
-                        <img v-if="!project.imageUrl" src="../../assets/idea.png" alt="Standard prosjekt bilde om innsender ikke legger ved ett" class="img-fluid rounded-circle w-50 mb-3">
+                        <div class="card-body">
+                            <img v-if="!project.imageUrl" src="../../assets/idea2.jpg" alt="Standard prosjekt bilde om innsender ikke legger ved ett" class="img-fluid rounded-circle w-50 mb-3">
                             <img v-else :src="project.imageUrl" alt="Prosjekt bilde fra innsender" class="img-fluid rounded-circle w-50 mb-3">
-                        <div class="card-body d-flex flex-column">
-                            
                             <h3>{{project.title}}</h3>
                             <p>{{project.content}}</p>
                             <router-link class="btn hk-btn btn-block mt-auto" router :to="'/prosjekt/' + project.id">Les mer</router-link>
