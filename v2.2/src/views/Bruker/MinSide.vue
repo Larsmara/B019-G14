@@ -8,10 +8,10 @@
                         Min info
                     </div>
                     <div class="card-body">
-                        <p class="d-flex"><i class="fas fa-envelope pt-1 pr-1"></i> {{user[0].email}} <button class="btn hk-btn-red btn-sm ml-auto">Endre epost</button></p>
-                        <p><i class="fas fa-user"></i> {{user[0].name}}</p>
-                        <p class="d-flex"><i class="fas fa-phone pt-1 pr-1"></i> {{user[0].phone}} <button class="btn hk-btn-red btn-sm ml-auto">Endre epost</button> </p>
-                        <p class="card-text text-muted">Ble medlem: {{(user[0].joined)}}</p>
+                        <p class="d-flex"><i class="fas fa-envelope pt-1 pr-1"></i> {{user.email}} <button class="btn hk-btn-red btn-sm ml-auto">Endre epost</button></p>
+                        <p><i class="fas fa-user"></i> {{user.name}}</p>
+                        <p class="d-flex"><i class="fas fa-phone pt-1 pr-1"></i> {{user.phone}} <button class="btn hk-btn-red btn-sm ml-auto">Endre epost</button> </p>
+                        <p class="card-text text-muted">Ble medlem: {{moment(user.joined)}}</p>
                     </div>
                 </div>
             </div>
@@ -42,7 +42,7 @@ export default {
     props: ['id'],
     data(){
         return{
-
+            moment
         }
     },
     computed: {

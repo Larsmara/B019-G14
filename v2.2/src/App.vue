@@ -16,7 +16,7 @@
 
         <b-navbar-nav class="ml-auto">
           <b-nav-item to="#" v-if="userIsAuthenticated && user">Dashboard</b-nav-item>
-          <b-nav-item :to="'/profil/' + user[0].slug" v-if="userIsAuthenticated && user">Min side</b-nav-item>
+          <b-nav-item :to="'/profil/' + user.slug" v-if="userIsAuthenticated && user">Min side</b-nav-item>
           <b-nav-item v-if="!userIsAuthenticated" @click="show_dialog = !show_dialog, tab=0">Logg Inn</b-nav-item>
           <b-nav-item v-if="!userIsAuthenticated" @click="show_dialog = !show_dialog, tab=1">Registrer deg</b-nav-item>
           

@@ -300,7 +300,7 @@ export const store = new Vuex.Store({
             snapshot.forEach(doc => {
               let docs = doc.data()
               console.log(doc.data())
-              const user = {
+              var user = {
                   email: doc.data().email,
                   name: docs.name,
                   phone: docs.phone,
@@ -309,11 +309,13 @@ export const store = new Vuex.Store({
                   slug: docs.slug,
                   userId: docs.userId
               }
-              console.log('Bruker epost ' + user)
+              let string = JSON.stringify(user)
+              console.log('Bruker epost ' + string)
+              commit('setUser', doc.data())
             })
             
         })
-        commit('setUser', userData)
+        
     },
     // METODE FOR Å AUTOMATISK LOGGE EN BRUKER INN
     autoSignIn({commit}, payload){
@@ -360,12 +362,14 @@ export const store = new Vuex.Store({
       return state.loadedProjects.filter(project => project.produksjon)
     },
     brukerProsjekter(state){
-      return state.loadedProjects.filter(project => project.creatorId === state.user[0].userId)
+      return state.loadedProjects.filter(project => project.creatorId === state.user.userId)
     },
     loadedUser(state){
+      console.log("LoadedState user: " + state.loadedUser)
       return state.loadedUser   
     },
     user(state){
+      console.log("state user: " + state.user)
       return state.user
     },
     loading(state){
