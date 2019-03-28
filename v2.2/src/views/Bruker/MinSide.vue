@@ -2,16 +2,16 @@
 <div class="min-side bg-light">
     <div class="pt-5">
         <div class="row">
-            <div class="col-xl-3 col-lg-4 col-md-12 col-xs-10">
+            <div class="col-xl-4 col-lg-4 col-md-12 col-xs-10">
                 <div class="card shadow-sm">
                     <div class="card-header">
                         Min info
                     </div>
                     <div class="card-body">
-                        <p class="d-flex"><i class="fas fa-envelope pt-1 pr-1"></i> {{user.email}} <button class="btn hk-btn-red btn-sm ml-auto">Endre epost</button></p>
-                        <p><i class="fas fa-user"></i> {{user.name}}</p>
-                        <p class="d-flex"><i class="fas fa-phone pt-1 pr-1"></i> {{user.phone}} <button class="btn hk-btn-red btn-sm ml-auto">Endre epost</button> </p>
-                        <p class="card-text text-muted">Ble medlem: {{moment(user.joined)}}</p>
+                        <p class="d-flex"><i class="fas fa-envelope pt-1 pr-1"></i> {{user[0].email}} <button class="btn hk-btn-red btn-sm ml-auto">Endre epost</button></p>
+                        <p><i class="fas fa-user"></i> {{user[0].name}}</p>
+                        <p class="d-flex"><i class="fas fa-phone pt-1 pr-1"></i> {{user[0].phone}} <button class="btn hk-btn-red btn-sm ml-auto">Endre epost</button> </p>
+                        <p class="card-text text-muted">Ble medlem: {{moment(user[0].joined)}}</p>
                     </div>
                 </div>
             </div>
@@ -52,6 +52,15 @@ export default {
         projects(){
             return this.$store.getters.brukerProsjekter
         }
-    }
+    },
+    created(){
+      document.title = "Min Side"
+      var element = document.getElementById("minSide");
+      element.classList.add("active", "hk-nav-active");
+    },
+    destroyed() {
+        var element = document.getElementById("minSide");
+        element.classList.remove("active", "hk-nav-active");
+    },
 }
 </script>

@@ -12,7 +12,7 @@ export const store = new Vuex.Store({
     loadedProjects: [],
     interneProsjekter: [],
     loadedUser: [],
-    user: '',
+    user: null,
     loading: false,
     error: null,
     success: null
@@ -293,27 +293,28 @@ export const store = new Vuex.Store({
     },
     // Henter bruker fra DB
     fetchUserData({commit}){
+      let userData = []
 
       firebase.firestore().collection('users')
       .where('userId', '==', firebase.auth().currentUser.uid).get()
         .then(snapshot => {
             snapshot.forEach(doc => {
               let docs = doc.data()
-              console.log(doc.data())
-              var user = {
+              console.log(moment(docs.joined))
+              userData.push({
                   email: doc.data().email,
                   name: docs.name,
                   phone: docs.phone,
                   admin: docs.isAdmin,
-                  joined: moment(doc.data().joined),
+                  joined: moment(doc.data().joined).format('LL'),
                   slug: docs.slug,
                   userId: docs.userId
-              }
-              console.log('Bruker epost ' + user.email)
-              commit('setUser', user)
+                })  
+                console.log('Bruker epost ' + doc.data().email)
             })
-            
         })
+        commit('setLoading', false)
+        commit('setUser', userData)
         
     },
     // METODE FOR Å AUTOMATISK LOGGE EN BRUKER INN

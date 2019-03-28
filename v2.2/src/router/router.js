@@ -5,6 +5,7 @@ import Hjem from '../views/Home'
 import About from '../views/About.vue'
 import Prosjekt from '../views/Prosjekt/Prosjekt.vue'
 import MinSide from '../views/Bruker/MinSide.vue'
+import Dashbord from '../views/admin/Dashbord.vue'
 import UtvalgteProsjekter from '../components/Prosjekt/ProsjektUtv.vue'
 import SeProsjekt from '../components/Prosjekt/SeProsjekt.vue'
 import NyIdé from '../components/Prosjekt/NyttProsjekt'
@@ -52,6 +53,12 @@ export default new Router({
       name: 'profil',
       props: true,
       component: MinSide
+    },
+    {
+      path: '/admin/dashbord',
+      name: 'dashbord',
+      props: true,
+      component: Dashbord
     },
   ]
 })

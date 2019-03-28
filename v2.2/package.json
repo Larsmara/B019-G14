@@ -14,6 +14,7 @@
     "node-sass": "^4.11.0",
     "sass": "^1.17.3",
     "sass-loader": "^7.1.0",
+    "slugify": "^1.3.4",
     "vue": "^2.6.6",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
