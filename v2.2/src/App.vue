@@ -29,7 +29,6 @@
   
 
     <div class="main-view bg-light">
-      <p class="pt-5">{{user}}</p>
     <router-view/>
   </div>
 

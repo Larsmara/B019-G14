@@ -12,7 +12,7 @@ export const store = new Vuex.Store({
     loadedProjects: [],
     interneProsjekter: [],
     loadedUser: [],
-    user: null,
+    user: '',
     loading: false,
     error: null,
     success: null
@@ -87,7 +87,7 @@ export const store = new Vuex.Store({
       })
     },
     // LAGER ET NYTT PROSJEKT
-    createProject({commit, getters}, payload){
+    createProject({commit}, payload){
       commit('clearError')
       commit('clearSuccess')
       const project = {
@@ -305,13 +305,12 @@ export const store = new Vuex.Store({
                   name: docs.name,
                   phone: docs.phone,
                   admin: docs.isAdmin,
-                  joined: moment(doc.data().joined).format('LLL'),
+                  joined: moment(doc.data().joined),
                   slug: docs.slug,
                   userId: docs.userId
               }
-              let string = JSON.stringify(user)
-              console.log('Bruker epost ' + string)
-              commit('setUser', doc.data())
+              console.log('Bruker epost ' + user.email)
+              commit('setUser', user)
             })
             
         })
