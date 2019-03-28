@@ -1,4 +1,4 @@
-*, *::after, *::before {
+*/* , *::after, *::before {
     margin: 0;
     padding: 0;
     box-sizing: inherit;
@@ -31,24 +31,34 @@ h4 {
 .field label {
     font-size: 1.3rem;
 }
-
+ */
 
 /* Index */
 .index-header {
-    margin: auto 0;
-    /* background-image: url("../images/smartcity-index.jpg"); */
+    background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../../assets/halden_fredriksten.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url(../../assets/halden_fredriksten.jpg);
     background-size: cover;
-    background-position: 0 25%;
+    background-position: center;
+    height: 100vh;
+    background-attachment: fixed;
 }
 
-.index-content {
+.idea-card{
+    height: 400px;
+}
+
+.index-container{
+    
+}
+
+/* .index-content {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 3rem;
     margin-top: 3rem;
-}
+} */
 
-.index h2{
+/* .index h2{
     font-size: 3rem;
     margin-top: 0;
 }
@@ -59,18 +69,17 @@ h4 {
 
 .card .btn {
     margin-top: 1rem;
-}
+} */
 
 
 /* About */
-.about-header {
-    /* height: 40vh; */
-    /* background-image: url("../images/smartcity-about.jpg"); */
+/* .about-header {
+
     background-size: cover;
     background-position: top;
-}
+} */
 
-.about-content {
+/* .about-content {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 3rem;
@@ -94,10 +103,10 @@ h4 {
     font-weight: 800;
     display: block;
     margin-bottom: 3rem;
-}
+} */
 
 /* UserProfile */
-.user-profile{
+/* .user-profile{
     margin-top: 3rem;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -115,4 +124,4 @@ h4 {
 
 .user-projects {
     grid-column: 3 / 5;
-}
+} */

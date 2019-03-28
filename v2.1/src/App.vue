@@ -1,5 +1,6 @@
 <template>
   <v-app id="navbar">
+
     <!-- MOBIL NAVIGASJON -->
     <v-navigation-drawer v-model="drawer" fixed right app temporary class="hidden-md-and-up">
       <v-list dense>
@@ -83,6 +84,8 @@
       </v-toolbar-items>
       <v-toolbar-side-icon @click.stop="drawer = !drawer" class="hidden-md-and-up"></v-toolbar-side-icon>
     </v-toolbar>
+
+   
     
     <v-content>
       <router-view></router-view>
@@ -136,4 +139,3 @@
     }
   }
 </script>
-

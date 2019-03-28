@@ -1,5 +1,4 @@
 import Vue from 'vue'
-import './plugins/vuetify'
 import Vuetify from 'vuetify'
 import * as firebase from 'firebase'
 import App from './App.vue'
