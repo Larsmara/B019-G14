@@ -47,20 +47,44 @@
 </template>
 
 <script>
+import login from './User/LoginComp'
 export default {
   name: 'Index',
+  components: {login},
   data () {
     return {
 
     }
   },
+  methods: {
+      idea(){
+          if(this.userIsAuthenticated){
+              this.$router.push('/ny-idé')
+              console.log('autentisert')
+          } else {
+              console.log
+          }
+      }
+  },
   created(){
     document.title = "Hjem"
+  },
+  computed: {
+      userIsAuthenticated(){
+        return this.$store.getters.user !== null && this.$store.getters.user !== undefined
+      },
+      user(){
+        return this.$store.getters.user
+      }
   }
 }
 </script>
 
 <style>
+
+.btn a{
+    color:white;
+}
 
 @import "../components/Style/main.css";
 

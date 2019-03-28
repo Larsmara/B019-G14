@@ -66,7 +66,7 @@ export const store = new Vuex.Store({
       const projects = []
       firebase.firestore().collection('projects').onSnapshot((snapshot) => {
           snapshot.docChanges().forEach((change) => {
-              if(change.type == 'added' || change.type == 'modified'){
+              if(change.type == 'added'){
                   let doc = change.doc
                   projects.push({
                       id: doc.id,
@@ -80,6 +80,9 @@ export const store = new Vuex.Store({
                       utvalgt: doc.data().utvalgt,
                       creatorId: doc.data().creatorId
                   })
+              }
+              if(change.type == 'modified'){
+                console.log('Modifisert data!')
               }
           })
           commit('setLoadedProjects', projects)
@@ -219,6 +222,7 @@ export const store = new Vuex.Store({
               name: payload.user.name,
               slug: payload.user.slug,
               phone: payload.user.phone,
+              gdpr: payload.user.gdpr,
               isAdmin: false,
               joined: payload.user.joined,
               userId: user.user.uid

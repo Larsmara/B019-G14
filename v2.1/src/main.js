@@ -9,6 +9,8 @@ import SuccessCmp from '@/components/Shared/Success.vue'
 import EditUser from '@/components/User/edit/EditUser'
 import LoginComp from '@/components/User/LoginComp'
 import RegisterComp from '@/components/User/RegisterComp'
+import './components/Style/bootstrap.css'
+
 
 Vue.config.productionTip = false
 
@@ -20,11 +22,12 @@ Vue.use(Vuetify, {
     error: '#b71c1c'
   }
 })
+Vue.use(Vuetify)
+
 
 Vue.component('app-alert', AlertCmp)
 Vue.component('app-success', SuccessCmp)
 Vue.component('app-login-user', LoginComp)
-Vue.component('app-register-user', RegisterComp)
 Vue.component('app-edit-user', EditUser)
 
 new Vue({
