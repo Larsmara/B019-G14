@@ -5,7 +5,11 @@ import Hjem from '../views/Home'
 import About from '../views/About.vue'
 import Prosjekt from '../views/Prosjekt/Prosjekt.vue'
 import MinSide from '../views/Bruker/MinSide.vue'
+/* ADMIN */
 import Dashbord from '../views/admin/Dashbord.vue'
+import AdminHjem from '../components/admin/Hjem.vue'
+import AdminInterne from '../components/admin/Interne.vue'
+
 import UtvalgteProsjekter from '../components/Prosjekt/ProsjektUtv.vue'
 import SeProsjekt from '../components/Prosjekt/SeProsjekt.vue'
 import NyIdé from '../components/Prosjekt/NyttProsjekt'
@@ -58,7 +62,26 @@ export default new Router({
       path: '/admin/dashbord',
       name: 'dashbord',
       props: true,
-      component: Dashbord
+      component: Dashbord,
+      children: [{
+        path: 'hjem',
+        name: 'hjem',
+        component: AdminHjem
+      }, {
+        path: 'interne',
+        name: 'interne',
+        component: AdminInterne
+      },
+      {
+        path: 'eksterne',
+        name: 'eksterne',
+        component: AdminEksterne
+      },
+      {
+        path: 'produksjon',
+        name: 'produksjon',
+        component: AdminProduksjon
+      }]
     },
   ]
 })

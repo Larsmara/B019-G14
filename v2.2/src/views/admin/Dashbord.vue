@@ -5,31 +5,31 @@
       <div class="sidebar-sticky pt-5">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <router-link class="nav-link" to="/hjem">
+            <router-link class="nav-link" to="/admin/dashbord/hjem">
               <span data-feather="home"></span>
               Dashbord
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/interne">
+            <router-link class="nav-link" to="/admin/dashbord/interne">
               <span data-feather="file"></span>
               Interne
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/eksterne">
+            <router-link class="nav-link" to="/admin/dashbord/eksterne">
               <span data-feather="shopping-cart"></span>
               Eksterne
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/produksjon">
+            <router-link class="nav-link" to="/admin/dashbord/produksjon">
               <span data-feather="users"></span>
               Produksjon
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/utvalgte">
+            <router-link class="nav-link" to="/admin/dashbord/utvalgte">
               <span data-feather="bar-chart-2"></span>
               Utvalgte
             </router-link>
