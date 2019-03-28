@@ -16,13 +16,21 @@
     color: #fff;
 }
 
+.hk-btn-red{
+    background-color:  rgba(229, 85, 79, 1);
+}
+
+.hk-btn-red:hover{
+    background-color:  rgba(231, 54, 60, 0.7);
+}
+
 .hk-btn:hover{
     background-color: rgb(0, 145, 211);
     color: #fff;
 }
 
 .hk-nav-active{
-    border-left: rgb(0, 145, 211, 0.8) 3px solid;
+    border-left: rgba(0, 145, 211, 0.8) 3px solid;
 }
 
 @media(max-width: 556px){
@@ -105,12 +113,11 @@ body{
     text-decoration: none;
     border: none;
 }
-/* BUTTONS END */
 
+/* BUTTONS END */
 
 #prosjekter img {
     margin-top: -40px; 
-    
 }
 
 #prosjekterVisning img {

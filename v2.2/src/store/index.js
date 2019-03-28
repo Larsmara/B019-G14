@@ -71,7 +71,7 @@ export const store = new Vuex.Store({
                       title: doc.data().title,
                       content: doc.data().content,
                       imageUrl: doc.data().imageUrl,
-                      date: moment(doc.data().date).format('lll'),
+                      date: moment(doc.data().date).format('LL'),
                       slug: doc.data().slug,
                       internt: doc.data().internt,
                       eksternt: doc.data().eksternt,
@@ -137,7 +137,6 @@ export const store = new Vuex.Store({
     updateToInternt({commit}, payload){
       commit('clearSuccess')
       commit('clearError')
-      console.log(payload.id)
       firebase.firestore().collection('projects').doc(payload.id).update({
           internt: true,
           eksternt: false,
@@ -152,7 +151,6 @@ export const store = new Vuex.Store({
     updateToEksternt({commit}, payload){
       commit('clearSuccess')
       commit('clearError')
-      console.log(payload.id)
       firebase.firestore().collection('projects').doc(payload.id).update({
           eksternt: true,
           internt: false,
@@ -167,7 +165,6 @@ export const store = new Vuex.Store({
     updateToUtvalgt({commit}, payload){
       commit('clearSuccess')
       commit('clearError')
-      console.log(payload.id)
       firebase.firestore().collection('projects').doc(payload.id).update({
           eksternt: payload.eksternt,
           internt: payload.internt,
@@ -183,7 +180,6 @@ export const store = new Vuex.Store({
     updateToProduksjon({commit}, payload){
       commit('clearSuccess')
       commit('clearError')
-      console.log(payload.id)
       firebase.firestore().collection('projects').doc(payload.id).update({
           eksternt: payload.eksternt,
           internt: payload.internt,
@@ -297,30 +293,26 @@ export const store = new Vuex.Store({
     },
     // Henter bruker fra DB
     fetchUserData({commit}){
-      commit('setLoading', true)
-      commit('clearSuccess')
-      commit('clearError')
-      let userData = []
 
       firebase.firestore().collection('users')
       .where('userId', '==', firebase.auth().currentUser.uid).get()
         .then(snapshot => {
             snapshot.forEach(doc => {
               let docs = doc.data()
-              console.log(moment(docs.joined))
-              userData.push({
+              console.log(doc.data())
+              const user = {
                   email: doc.data().email,
                   name: docs.name,
                   phone: docs.phone,
                   admin: docs.isAdmin,
-                  joined: moment(docs.joined),
+                  joined: moment(doc.data().joined).format('LLL'),
                   slug: docs.slug,
                   userId: docs.userId
-                })  
-                console.log('Bruker epost ' + doc.data().email)
+              }
+              console.log('Bruker epost ' + user)
             })
+            
         })
-        commit('setLoading', false)
         commit('setUser', userData)
     },
     // METODE FOR Å AUTOMATISK LOGGE EN BRUKER INN

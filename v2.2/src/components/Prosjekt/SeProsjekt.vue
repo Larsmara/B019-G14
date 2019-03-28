@@ -15,7 +15,7 @@
                             <p>{{project.content}}</p>
                         </div>
                         <div class="card-footer">
-                            <small class="text-muted">{{project.date}}</small>
+                            <small class="text-muted">Innsendt: {{project.date}}</small>
                         </div>
                     </div>
                 </div>

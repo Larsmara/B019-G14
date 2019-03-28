@@ -5,7 +5,7 @@
         {{melding}}
       </div>
       <!-- Tabs with card integration -->
-      <b-tabs v-model="tabIndex" class="m-0 p-0 login-tabs">
+      <b-tabs :v-model="tabIndex" class="m-0 p-0 login-tabs">
         <!-- LOGG INN TAB -->
         <b-tab title="Logg Inn" class="pt-2">
           <form @submit.prevent="login">
@@ -77,7 +77,6 @@ export default {
   data(){
     return{
       dialog2: false,
-      show: false,
       email: null,
       fnavn: null,
       enavn: null,
@@ -85,15 +84,14 @@ export default {
       password: null,
       password2: null,
       slug: null,
-      tabIndex: 0,
       melding: null,
     }
   },
   methods: {
     login(){
       this.$store.dispatch('signUserIn', {email: this.email, password: this.password})
-      this.melding = 'Du er nå logget inn'
-      setTimeout(() => (this.$refs.myModalRef.hide()), 2000)
+      this.melding = 'Du blir logget inn..'
+      setTimeout(() => (this.show = false), 2000)
       
     },
     register(){

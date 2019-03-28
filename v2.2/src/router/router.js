@@ -4,6 +4,7 @@ import AuthGuard from './auth-guards'
 import Hjem from '../views/Home'
 import About from '../views/About.vue'
 import Prosjekt from '../views/Prosjekt/Prosjekt.vue'
+import MinSide from '../views/Bruker/MinSide.vue'
 import UtvalgteProsjekter from '../components/Prosjekt/ProsjektUtv.vue'
 import SeProsjekt from '../components/Prosjekt/SeProsjekt.vue'
 import NyIdé from '../components/Prosjekt/NyttProsjekt'
@@ -45,6 +46,12 @@ export default new Router({
       name: 'SeProsjekt',
       props: true,
       component: SeProsjekt
-    }
+    },
+    {
+      path: '/profil/:id',
+      name: 'profil',
+      props: true,
+      component: MinSide
+    },
   ]
 })
