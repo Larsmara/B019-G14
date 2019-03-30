@@ -73,7 +73,7 @@
       </a>
     </li>
     <li class="fab-buttons__item">
-      <a href="/" class="fab-buttons__link" data-tooltip="Hjem">
+      <a href="/admin/dashbord/hjem" class="fab-buttons__link" data-tooltip="Hjem">
         <i class="icon-material icon-material_gp"></i>
       </a>
     </li>

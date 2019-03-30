@@ -5,12 +5,12 @@
             <div class="col-xl-4 col-lg-4 col-md-12 col-xs-10">
                 <div class="card shadow-sm">
                     <div class="card-header">
-                        Min info
+                        Min info {{user[0].userId}}
                     </div>
                     <div class="card-body">
-                        <p class="d-flex"><i class="fas fa-envelope pt-1 pr-1"></i> {{user[0].email}} <button class="btn hk-btn-red btn-sm ml-auto">Endre epost</button></p>
+                        <p class="d-flex"><i class="fas fa-envelope pt-1 pr-1"></i> {{user[0].email}} <button class="btn hk-outline-btn btn-sm ml-auto">Endre epost</button></p>
                         <p><i class="fas fa-user"></i> {{user[0].name}}</p>
-                        <p class="d-flex"><i class="fas fa-phone pt-1 pr-1"></i> {{user[0].phone}} <button class="btn hk-btn-red btn-sm ml-auto">Endre epost</button> </p>
+                        <p class="d-flex"><i class="fas fa-phone pt-1 pr-1"></i> {{user[0].phone}} <button class="btn hk-outline-btn btn-sm ml-auto">Endre epost</button> </p>
                         <p class="card-text text-muted">Ble medlem: {{moment(user[0].joined)}}</p>
                     </div>
                 </div>

@@ -330,9 +330,6 @@ export const store = new Vuex.Store({
         console.log(error)
       })
     },
-    loadUser({commit}, payload){
-
-    },
     // Henter bruker fra DB
     fetchUserData({commit}){
       let userData = []
@@ -404,7 +401,7 @@ export const store = new Vuex.Store({
       return state.loadedProjects.filter(project => project.produksjon)
     },
     brukerProsjekter(state){
-      return state.loadedProjects.filter(project => project.creatorId === state.user.userId)
+      return state.loadedProjects.filter(project => project.creatorId === state.user[0].userId)
     },
     loadedUser(state){
       console.log("LoadedState user: " + state.loadedUser)
