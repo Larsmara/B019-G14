@@ -1,7 +1,7 @@
 <template>
 <div class="container-fluid dash-nav">
   <div class="row">
-    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+    <nav class="col-md-2 d-none d-lg-block bg-light sidebar">
       <div class="sidebar-sticky pt-5">
         <ul class="nav flex-column">
           <li class="nav-item">
@@ -43,37 +43,7 @@
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
 
         <router-view/>
-      <!-- <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Dashboard - Nye innkommende forslag</h1>
-        <div class="btn-toolbar mb-2 mb-md-0">
-          <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-            <span data-feather="calendar"></span>
-            This week
-          </button>
-          
-        </div>
-      </div>
-
-      <div class="table-responsive">
-        <b-media vertical-align="center" class="border p-3 my-3 shadow-sm" v-for="project in prosjekter" :key="project.id">
-            <img v-if="!project.imageUrl" src="../../assets/idea2.jpg" slot="aside" blank blank-color="#ccc" width="80" height="80" alt="placeholder" class="d-none d-sm-block" />
-            <img v-else :src="project.imageUrl" slot="aside" blank blank-color="#ccc" width="80" height="80" alt="placeholder" class="d-none d-sm-block"/>
-
-            <h5 class="mt-0 mb-1">{{project.title}}</h5>
-            <p class="mb-0">{{project.content}}</p>
-            <p><small class="text-muted">{{project.date}}</small></p>
-            <div class="btn-group pt-2" role="group" aria-label="Basic example">
-                <button type="button" class="btn hk-outline-btn">Les mer</button>
-                <button type="button" class="btn btn-outline-danger">Slett</button>
-                <button type="button" class="btn hk-outline-btn">Produksjon</button>
-            </div>
-            <div class="btn-group pt-2" role="group">
-                <button type="button" class="btn hk-outline-btn">Interne</button>
-                <button type="button" class="btn hk-outline-btn">Eksterne</button>
-                <button type="button" class="btn hk-outline-btn">Utvalgt</button>
-            </div>
-        </b-media>
-      </div> -->
+      
     </main>
   </div>
 
@@ -98,7 +68,7 @@
       </a>
     </li>
     <li class="fab-buttons__item">
-      <a href="#" class="fab-buttons__link" data-tooltip="Interne">
+      <a href="/admin/dashbord/interne" class="fab-buttons__link" data-tooltip="Interne">
         <i class="icon-material icon-material_gp"></i>
       </a>
     </li>
@@ -128,11 +98,6 @@ export default {
     destroyed() {
         var element = document.getElementById("dashbord");
         element.classList.remove("active", "hk-nav-active");
-    },
-    computed: {
-        prosjekter(){
-            return this.$store.getters.adminProject
-        }
     }
 }
 </script>
@@ -140,12 +105,6 @@ export default {
 
 
 <style lang="scss" scoped>
-
-
-
-body {
-  font-size: .875rem;
-}
 
 .feather {
   width: 16px;

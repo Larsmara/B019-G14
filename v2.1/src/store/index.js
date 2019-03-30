@@ -198,6 +198,7 @@ export const store = new Vuex.Store({
           console.log(error)
       })
     },
+    /* SLETTER PROSJEKT */
     deleteProject({commit}, payload){
       firebase.firestore().collection('projects').doc(payload.id).delete()
       console.log('Slettet prosjekt ' + payload.title)

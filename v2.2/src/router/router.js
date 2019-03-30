@@ -11,6 +11,7 @@ import AdminHjem from '../components/Admin/Hjem.vue'
 import AdminInterne from '../components/Admin/Interne.vue'
 import AdminEksterne from '../components/Admin/Eksterne.vue'
 import AdminProduksjon from '../components/Admin/Produksjon.vue'
+import AdminUtvalgte from '../components/Admin/Utvalgte.vue'
 
 import UtvalgteProsjekter from '../components/Prosjekt/ProsjektUtv.vue'
 import SeProsjekt from '../components/Prosjekt/SeProsjekt.vue'
@@ -83,6 +84,11 @@ export default new Router({
         path: 'produksjon',
         name: 'produksjon',
         component: AdminProduksjon
+      },
+      {
+        path: 'utvalgte',
+        name: 'utvalgte',
+        component: AdminUtvalgte
       }]
     },
   ]

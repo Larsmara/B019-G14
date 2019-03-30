@@ -11,7 +11,6 @@ export const store = new Vuex.Store({
   state: {
     loadedProjects: [],
     interneProsjekter: [],
-    loadedUser: [],
     user: null,
     loading: false,
     error: null,
@@ -61,35 +60,30 @@ export const store = new Vuex.Store({
     // HENTER PROSJEKTER FRA DATABASEN
     loadProjects({commit}){
       const projects = []
-
       firebase.firestore().collection('projects').onSnapshot((snapshot) => {
-          snapshot.docChanges().forEach((change) => {
-              if(change.type == 'added' || change.type == 'modified'){
-                  let doc = change.doc
-                  projects.push({
-                      id: doc.id,
-                      title: doc.data().title,
-                      content: doc.data().content,
-                      imageUrl: doc.data().imageUrl,
-                      date: moment(doc.data().date).format('LL'),
-                      slug: doc.data().slug,
-                      internt: doc.data().internt,
-                      eksternt: doc.data().eksternt,
-                      produksjon: doc.data().produksjon,
-                      utvalgt: doc.data().utvalgt,
-                      creatorId: doc.data().creatorId
-                  })
-                  console.log('Pushet prosjekter til array')
-              }
+          snapshot.forEach((doc) => {
+            projects.push({
+                id: doc.id,
+                title: doc.data().title,
+                content: doc.data().content,
+                imageUrl: doc.data().imageUrl,
+                date: moment(doc.data().date).format('LL'),
+                slug: doc.data().slug,
+                internt: doc.data().internt,
+                eksternt: doc.data().eksternt,
+                produksjon: doc.data().produksjon,
+                utvalgt: doc.data().utvalgt,
+                creatorId: doc.data().creatorId
+            }) 
           })
-          commit('setLoadedProjects', projects)
+          
           commit('setLoading', false)
+          commit('setLoadedProjects', projects)
       })
+      
     },
     // LAGER ET NYTT PROSJEKT
     createProject({commit}, payload){
-      commit('clearError')
-      commit('clearSuccess')
       const project = {
         title: payload.title,
         content: payload.content,
@@ -133,6 +127,48 @@ export const store = new Vuex.Store({
         console.log(error)
       })
     },
+    /* OPPDATERER PROSJEKTET */
+    updateProject(_, payload){
+      console.log(payload.project);
+      var nyeProsjekter = firebase.firestore().collection('projects')
+      var produksjonProsjekter = firebase.firestore().collection('produksjon')
+
+      const project = {
+        title: payload.project.title,
+        content: payload.project.content,
+        date: payload.project.date,
+        slug: payload.project.slug,
+        internt: payload.project.internt,
+        eksternt: payload.project.eksternt,
+        utvalgt: payload.project.utvalgt,
+        produksjon: payload.project.produksjon,
+        creatorId: payload.project.creatorId
+      }
+
+      if(payload.imageUrl === undefined || payload.imageUrl === null){
+        project.imageUrl = ''
+      }
+
+      if(payload.klasse === 1){
+        console.log('Prosjektet er satt i produksjon')
+        console.log(project)
+        nyeProsjekter.doc(payload.project.id).delete()
+        //produksjonProsjekter.add(project)
+      }
+      if(payload.klasse === 2){
+        console.log('Prosjektet er flyttet til Internt');
+        
+      }
+      if(payload.klasse === 3){
+        console.log('Prosjektet er flyttet til eksternt');
+        
+      }
+      if(payload.klasse === 4){
+        console.log('Prosjektet er flyttet til utvalgt');
+        
+      }      
+      
+    },
     // OPPDTATERER PROSJEKTET TIL INTERNT
     updateToInternt({commit}, payload){
       commit('clearSuccess')
@@ -148,7 +184,7 @@ export const store = new Vuex.Store({
       })
     },
     // OPPDATER PROSJEKTET TIL EKSTERNT
-    updateToEksternt({commit}, payload){
+    updateToEksternt({commit, state}, payload){
       commit('clearSuccess')
       commit('clearError')
       firebase.firestore().collection('projects').doc(payload.id).update({
@@ -191,8 +227,14 @@ export const store = new Vuex.Store({
           console.log(error)
       })
     },
-    deleteProject({commit}, payload){
+    /* SLETT PROSJEKT */
+    deleteProject({commit, state}, payload){
       firebase.firestore().collection('projects').doc(payload.id).delete()
+      .then(() => {
+        state.loadedProjects = state.loadedProjects.filter(project => {
+          return project.id != payload.id
+        })
+      })
       console.log('Slettet prosjekt ' + payload.title)
     },
     // REGISTRERER EN NY BRUKER
