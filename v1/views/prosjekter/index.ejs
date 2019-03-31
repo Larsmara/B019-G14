@@ -1,0 +1,37 @@
+<% include ../partials/header %>
+
+<link rel="stylesheet" href="/../stylesheets/prosjekter.css">
+
+<main>
+  <section class="project-intro">
+    <h2>Prosjekter</h2>
+    <p>Totalt antall idéer: <%= project.length%></p>
+    <hr>
+  </Section>
+
+  <section class="project-production">
+    <% if(selected.length > null){ %>
+    <h3>Til produksjon</h3>
+    <% } %>
+    <div>
+      <% selected.forEach(function(selected){ %>
+        <div class="">
+          <a href="/prosjekter/<%=selected._id%>"><%= selected.title %></a>
+        </div>
+      <% }) %>
+    </div>
+  </section>
+
+  <section class="project-all">
+    <h3>Alle ideér</h3>
+    <div>
+      <% project.forEach(function(project){ %>
+        <div>
+          <a href="/prosjekter/<%=project._id%>"><%= project.title %></a>
+        </div>
+      <% }) %>
+    </div>
+  </section>
+</main>
+
+<% include ../partials/footer %>
