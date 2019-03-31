@@ -46,7 +46,8 @@ export default new Router({
     {
       path: '/ny-idé',
       name: 'createProject',
-      component: NyIdé
+      component: NyIdé,
+      beforeEnter: AuthGuard
     },
     {
       path: '/prosjekt/:id',

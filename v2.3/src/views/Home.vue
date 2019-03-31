@@ -11,8 +11,8 @@
               <div class="col-lg-4 order-1 mb-3">
                   <h1 class="display-3">Har du en idé?</h1>
                   <p class="lead">Vi som kommune ønsker å være på topp når det gjelder innovative løsninger, men det er ikke alltid at det er oss ansatte som sitter på de beste idéene, eller ser behovene. Derfor ønsker vi å høre deres idéforslag.</p>
-                  <router-link v-if="isLoggedIn" to="/ny-idé" tag="button" class="btn hk-btn btn-lg">Send Idé</router-link>
-                  <b-button v-if="!isLoggedIn" @click="show_dialog = !show_dialog" class="btn hk-btn btn-lg">Logg inn for å sende idé</b-button>
+                  <router-link v-if="userIsAuthenticated" to="/ny-idé" tag="button" class="btn hk-btn btn-lg">Send Idé</router-link>
+                  <b-button v-else @click="show_dialog = !show_dialog" class="btn hk-btn btn-lg">Logg inn for å sende idé</b-button>
               </div>
               <div class="col-lg-3 order-2 mb-3">
                   <h1 class="display-4">Prosjekter</h1>
@@ -39,8 +39,6 @@
 
 <script>
 import testDialog from '../components/Bruker/Dialog'
-import { mapActions, mapState } from 'vuex'
-
 
 export default {
   name: 'home',
@@ -52,7 +50,7 @@ export default {
   components: {
     testDialog
   },
-  updated(){
+  created(){
       document.title = "Hjem"
       var element = document.getElementById("hjem");
       element.classList.add("active", "hk-nav-active");
@@ -63,7 +61,12 @@ export default {
       element.classList.remove("active", "hk-nav-active");
   },
   computed: {
-    ...mapState('auth', ['user', 'isLoggedIn']),
+    userIsAuthenticated(){
+      return this.$store.getters.user !== null && this.$store.getters.user !== undefined
+    },
+    user(){
+      return this.$store.getters.user
+    }
   },
 }
 </script>

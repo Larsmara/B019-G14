@@ -12,7 +12,7 @@
       <b-collapse is-nav id="nav_collapse">
         <b-navbar-nav>
           <b-nav-item id="hjem" to="/">Hjem</b-nav-item>
-          <b-nav-item id="ny-idé" to="/ny-idé" v-if="isLoggedIn">Send idé</b-nav-item>
+          <b-nav-item id="ny-idé" to="/ny-idé" v-if="isLoggedIn && user">Send idé</b-nav-item>
           <b-nav-item id="prosjekter" to="/prosjekter">Prosjekter</b-nav-item>
           <b-nav-item id="om-oss" to="/om-oss">Om oss</b-nav-item>
         </b-navbar-nav>
