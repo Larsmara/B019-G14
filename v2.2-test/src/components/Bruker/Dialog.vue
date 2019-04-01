@@ -80,7 +80,6 @@ export default {
     return{
       dialog2: false,
       melding: null,
-      show: false,
       user: {
         email: '',
         password: '',
@@ -105,35 +104,5 @@ export default {
       setTimeout(() => (this.show = false), 2000)
     }
   }
-  /* methods: {
-    login(){
-      this.$store.dispatch('signUserIn', {email: this.email, password: this.password})
-      this.melding = 'Du blir logget inn..'
-      setTimeout(() => (this.show = false), 2000)
-      
-    },
-    register(){
-      if(this.password !== this.password2){
-        return
-      }
-
-      this.slug = slugify(this.fnavn + ' ' + this.enavn, {
-        replacement: '-',
-        remove: /[$*_+~.()'"!\._@]/g,
-        lower: true
-        })
-
-        const userData = {
-            email: this.email,
-            name: this.fnavn + ' ' + this.enavn,
-            phone: this.telefon,
-            slug: this.slug,
-            gdpr: this.personvern,
-            joined: Date.now()
-        }
-        this.$store.dispatch('signUserUp', {email: this.email, passord: this.password, user: userData})
-        this.$refs.myModalRef.hide()
-    }
-  } */
 }
 </script>

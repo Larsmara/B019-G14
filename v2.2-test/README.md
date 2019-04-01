@@ -21,15 +21,15 @@ npm run build
 
 ## Prosjekter
 - [X] Hente alle prosjekter
-- [ ] Hente brukerens prosjekter
-- [ ] Hente nye prosjekter
-- [ ] Hente prosjekter i produksjon
-- [ ] Hente utvalgte prosjekter
+- [X] Hente brukerens prosjekter
+- [X] Hente nye prosjekter
+- [X] Hente prosjekter i produksjon
+- [X] Hente utvalgte prosjekter
 - [X] Lage nytt prosjekt
 
 ## Funksjonalitet knyttet til prosjekter
-- [ ] Slette et prosjekt
-- [ ] Sette kattegori på prosjektet
+- [X] Slette et prosjekt
+- [X] Sette kattegori på prosjektet
 
 ## Bruker
 - [ ] Endre epost

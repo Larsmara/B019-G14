@@ -8,14 +8,14 @@
                 <div class="col pb-5">
                     <div class="card w-75 h-100">
                         <div class="card-body">
-                            <img v-if="!project.imageUrl" src="../../assets/idea.png" alt="Standard prosjekt bilde om innsender ikke legger ved ett" class="img-fluid rounded w-25 mb-3 pt-5">
-                            <img v-else :src="project.imageUrl" alt="Prosjekt bilde fra innsender" class="img-fluid rounded w-50 mb-3 border">
-                            <h3>{{project.title}}</h3>
+                            <img v-if="!prosjekt.imageUrl" src="../../assets/idea.png" alt="Standard prosjekt bilde om innsender ikke legger ved ett" class="img-fluid rounded w-25 mb-3 pt-5">
+                            <img v-else :src="prosjekt.imageUrl" alt="Prosjekt bilde fra innsender" class="img-fluid rounded w-50 mb-3 border">
+                            <h3>{{prosjekt.title}}</h3>
                             <hr>
-                            <p>{{project.content}}</p>
+                            <p>{{prosjekt.content}}</p>
                         </div>
                         <div class="card-footer">
-                            <small class="text-muted">Innsendt: {{project.date}}</small>
+                            <small class="text-muted">Innsendt: {{moment(prosjekt.date).format('lll')}}</small>
                         </div>
                     </div>
                 </div>
@@ -28,12 +28,25 @@
 
 <script>
 import moment from 'moment'
+import firebase from '@/firebase'
+
 export default {
-    props: ['id'],
-    computed: {
-        project(){
-            return this.$store.getters.loadedProject(this.id)
+    data(){
+        return{
+            prosjekt: {},
+            moment
         }
+    },
+    props: ['id'],
+    created(){
+        window.scrollTo(0,0)
+        console.log(this.id)
+        firebase.firestore().collection('projects').doc(this.id).get()
+        .then(doc => {
+            console.log(doc.data())
+            this.prosjekt = doc.data()
+        })
+        
     },
     methods:{
         goBack(){

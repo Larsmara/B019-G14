@@ -5,7 +5,7 @@
             <div class="col-xl-4 col-lg-4 col-md-12 col-xs-10">
                 <div class="card shadow-sm">
                     <div class="card-header">
-                        Min info
+                        Min info {{user.id}}
                     </div>
                     <div class="card-body">
                         <p class="d-flex"><i class="fas fa-envelope pt-1 pr-1"></i> {{user.email}} <button class="btn hk-outline-btn btn-sm ml-auto">Endre epost</button></p>
@@ -17,7 +17,7 @@
             </div>
             <div class="col-xl-6 col-lg-8 col-md-12">
                 <div class="container">
-                <b-media vertical-align="center" class="border p-3 my-3 shadow-sm" v-for="project in projects" :key="project.id">
+                <b-media vertical-align="center" class="border p-3 my-3 shadow-sm" v-for="project in prosjekter" :key="project.id">
                     <img v-if="!project.imageUrl" src="../../assets/idea2.jpg" slot="aside" blank blank-color="#ccc" width="80" height="80" alt="placeholder" />
                     <img v-else :src="project.imageUrl" slot="aside" blank blank-color="#ccc" width="80" height="80" alt="placeholder" />
 
@@ -38,13 +38,14 @@
 <script>
 import moment from 'moment'
 import { mapActions, mapState } from 'vuex'
-
+import firebase from '@/firebase'
 
 export default {
     props: ['id'],
     data(){
         return{
-            moment
+            moment,
+            prosjekter: []
         }
     },
     computed: mapState('auth', ['user', 'isLoggedIn']),
@@ -52,6 +53,14 @@ export default {
       document.title = "Min Side"
       var element = document.getElementById("minSide");
       element.classList.add("active", "hk-nav-active");
+
+      firebase.firestore().collection('projects').where('creatorId', '==', firebase.auth().currentUser.uid).orderBy('date')
+        .onSnapshot(snapshot => {
+            snapshot.forEach(doc => {
+                console.log(doc.data())
+                this.prosjekter.push(doc.data())
+            })
+        })
     },
     destroyed() {
         var element = document.getElementById("minSide");

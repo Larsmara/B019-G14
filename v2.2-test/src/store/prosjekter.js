@@ -5,12 +5,18 @@ import firebase from '@/firebase'
 
 const state = {
   prosjekter: [],
+  admin: []
 }
 
 const actions = {
   init: firestoreAction(({ bindFirestoreRef }) => {
     bindFirestoreRef('prosjekter', db.collection('projects'));
   }),
+  
+  initAdmin: firestoreAction(({ bindFirestoreRef }) => {
+    bindFirestoreRef('admin', db.collection('projects').where('kategori', '==', null));
+  }),
+
   createProject({commit}, payload){
       console.log(payload);
       
@@ -19,7 +25,7 @@ const actions = {
       content: payload.content,
       date: payload.date,
       slug: payload.slug,
-      kategori: '',
+      kategori: null,
       creatorId: firebase.auth().currentUser.uid
     }
     // LAGRER I DATABASEN

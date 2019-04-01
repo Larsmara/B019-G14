@@ -67,26 +67,14 @@ export default {
       document.title = "Prosjekter"
       var element = document.getElementById("prosjekter");
       element.classList.add("active", "hk-nav-active");
-      
-      firebase.firestore().collection('projects').get()
-        .then((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
-                if(doc.data().produksjon === true){
-                const data = {
-                    id: doc.id,
-                    title: doc.data().title,
-                    content: doc.data().content,
-                    imageUrl: doc.data().imageUrl,
-                    date: moment(doc.data().date).format('lll'),
-                    slug: doc.data().slug,
-                    internt: doc.data().internt,
-                    eksternt: doc.data().eksternt,
-                    utvalgt: doc.data().utvalgt,
-                    produksjon: doc.data().produksjon,
-                    creatorId: doc.data().creatorId
-                }
-                this.prosjekt.push(data)
-                }
+
+      firebase.firestore().collection('projects').where('kategori', '==', 'produksjon').orderBy('date')
+        .onSnapshot(snapshot => {
+            snapshot.docChanges().forEach(change => {
+                if(change.type == 'added'){
+                    console.log(change.doc.data())
+                    this.prosjekt.push(change.doc.data())
+                } 
             })
         })
     },
@@ -95,19 +83,6 @@ export default {
         element.classList.remove("active", "hk-nav-active");
     },
     computed: {
-        projects () {
-            return this.$store.getters.produksjonProsjekter
-        },
-        ...mapState('prosjekter', ['projects']),
-        projectsLenght () {
-            return this.$store.getters.produksjonProsjekter.length
-        },
-        loading(){
-            return this.$store.getters.loading
-        },
-        success(){
-            return this.$store.getters.success
-        },
         rows(){
             return this.prosjekt.length
         }

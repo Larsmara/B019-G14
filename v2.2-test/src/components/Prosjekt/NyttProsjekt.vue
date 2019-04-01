@@ -63,6 +63,7 @@ import { mapState, mapActions } from 'vuex';
     },
     methods: {
       ...mapActions('prosjekter', ['init', 'createProject']),
+      
         async onCreateProject(){
             if(this.title === null && this.content === null){
                 return
