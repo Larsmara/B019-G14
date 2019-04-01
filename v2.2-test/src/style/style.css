@@ -51,14 +51,6 @@
     line-height: 1.42857;
 }
 
-body{
-    margin: 0;
-    height: 100%;
-}
-/* APP.vue margin for å ikke kollidere med nav-bar */
-.main-view{
-    margin-top: 56px;
-}
 
 #main-nav{
     background-color: #f3f3f3;
@@ -76,6 +68,14 @@ body{
 
 .new-idea{
     height: calc(100vh - 56px);
+}
+
+.main-view{
+  margin-top: 56px;
+}
+
+.min-side{
+  height: calc(100vh - 56px);
 }
 
 .home-box{

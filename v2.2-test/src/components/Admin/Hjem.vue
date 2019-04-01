@@ -30,26 +30,14 @@
 <script>
 import firebase from 'firebase'
 import moment from 'moment'
+import { mapState, mapActions } from 'vuex';
+
 
 export default {
-    name: 'hjem',
-    data(){
-        return{
-            prosjekt: []
-        }
+    mounted() {
+    this.init();
     },
-    computed: {
-        prosjekter(){
-            return this.$store.getters.adminProject
-        }
-    },
-    methods: {
-        updateToInternt(project, klasse){
-            this.$store.dispatch('updateProject', {project: project, klasse: klasse})
-        },
-        slett(project){
-            this.$store.dispatch('deleteProject', project)
-        }
-    }
+    computed: mapState('prosjekter', ['prosjekter']),
+    methods: mapActions('prosjekter', ['init']),
 }
 </script>

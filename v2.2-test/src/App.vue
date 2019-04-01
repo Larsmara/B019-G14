@@ -18,8 +18,8 @@
         </b-navbar-nav>
 
         <b-navbar-nav class="ml-auto">
-          <b-nav-item id="dashbord" to="/admin/dashbord/hjem" >Dashboard</b-nav-item>
-          <b-nav-item id="minSide" :to="'/profil/' + user.slug " v-if="isLoggedIn">Min side</b-nav-item>
+          <b-nav-item id="dashbord" to="/admin/dashbord/hjem" v-if="isLoggedIn && user.admin">Dashboard</b-nav-item>
+          <b-nav-item id="minSide" :to="'/profil/' + user.slug " v-if="isLoggedIn && user">Min side</b-nav-item>
           <b-nav-item v-if="!isLoggedIn" @click="show_dialog = !show_dialog, tab=0">Logg Inn</b-nav-item>
           <b-nav-item v-if="!isLoggedIn" @click="show_dialog = !show_dialog, tab=1">Registrer deg</b-nav-item>
           

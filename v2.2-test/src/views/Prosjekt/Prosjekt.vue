@@ -52,6 +52,7 @@
 <script>
 import firebase from 'firebase'
 import moment from 'moment'
+import { mapState, mapActions } from 'vuex';
 
 export default {
     name: 'Prosjekt',
@@ -97,6 +98,7 @@ export default {
         projects () {
             return this.$store.getters.produksjonProsjekter
         },
+        ...mapState('prosjekter', ['projects']),
         projectsLenght () {
             return this.$store.getters.produksjonProsjekter.length
         },
@@ -109,6 +111,12 @@ export default {
         rows(){
             return this.prosjekt.length
         }
+    },
+    methods: {
+        ...mapActions('prosjekter', ['init'])
+    },
+    mounted() {
+        this.init()
     }
 }
 </script>

@@ -9,8 +9,8 @@
                     </div>
                     <div class="card-body">
                         <p class="d-flex"><i class="fas fa-envelope pt-1 pr-1"></i> {{user.email}} <button class="btn hk-outline-btn btn-sm ml-auto">Endre epost</button></p>
-                        <p><i class="fas fa-user"></i> {{user.name}}</p>
-                        <p class="d-flex"><i class="fas fa-phone pt-1 pr-1"></i> {{user.phone}} <button class="btn hk-outline-btn btn-sm ml-auto">Endre epost</button> </p>
+                        <p><i class="fas fa-user"></i> {{user.fnavn}} {{user.enavn}}</p>
+                        <p class="d-flex"><i class="fas fa-phone pt-1 pr-1"></i> {{user.telefon}} <button class="btn hk-outline-btn btn-sm ml-auto">Endre epost</button> </p>
                         <p class="card-text text-muted">Ble medlem: {{moment(user.joined).format('lll')}}</p>
                     </div>
                 </div>
@@ -48,7 +48,7 @@ export default {
         }
     },
     computed: mapState('auth', ['user', 'isLoggedIn']),
-    updated(){
+    created(){
       document.title = "Min Side"
       var element = document.getElementById("minSide");
       element.classList.add("active", "hk-nav-active");

@@ -13,3 +13,8 @@ npm run serve
 npm run build
 ```
 
+### TODO
+- [ ] Legge til feilmeldinger / suksessmeldinger på:
+    - [ ] Innlogging / utlogging
+    - [ ] Registrering
+    - [ ] Sendt idé

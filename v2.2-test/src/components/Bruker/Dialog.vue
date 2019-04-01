@@ -8,7 +8,7 @@
       <b-tabs :v-model="tabIndex" class="m-0 p-0 login-tabs">
         <!-- LOGG INN TAB -->
         <b-tab title="Logg Inn" class="pt-2">
-          <form @submit.prevent="login(user)">
+          <form @submit.prevent="onLogin(user)">
             <div class="form-group">
               <label>E-post</label>
               <input type="text" v-model="user.email" class="form-control" placeholder="E-post">
@@ -25,30 +25,30 @@
         </b-tab>
         <!-- REGISTRERINGS TAB -->
         <b-tab title="Registrer deg" class="pt-2">
-          <form @submit.prevent="register">
+          <form @submit.prevent="onRegister(user)">
             <div class="form-group">
               <label>Epost</label>
-              <input type="email" class="form-control" v-model="email"  placeholder="Epost" required>
+              <input type="email" class="form-control" v-model="user.email"  placeholder="Epost" required>
             </div>
             <div class="form-group">
               <label>Fornavn</label>
-              <input type="text" class="form-control" v-model="fnavn"  aria-describedby="fnavnHelp" placeholder="Fornavn" required>
+              <input type="text" class="form-control" v-model="user.fnavn"  aria-describedby="fnavnHelp" placeholder="Fornavn" required>
             </div>
             <div class="form-group">
               <label>Etternavn</label>
-              <input type="text" class="form-control" v-model="enavn" aria-describedby="enavnHelp" placeholder="Etternavn" required>
+              <input type="text" class="form-control" v-model="user.enavn" aria-describedby="enavnHelp" placeholder="Etternavn" required>
             </div>
             <div class="form-group">
               <label>Telefon</label>
-              <input type="text" class="form-control" v-model="telefon" aria-describedby="telefonHelp" placeholder="Telefon" required>
+              <input type="text" class="form-control" v-model="user.telefon" aria-describedby="telefonHelp" placeholder="Telefon" required>
             </div>
             <div class="form-group">
               <label>Password</label>
-              <input type="password" v-model="password" class="form-control" placeholder="Password" required>
+              <input type="password" v-model="user.password" class="form-control" placeholder="Password" required>
             </div>
             <div class="form-group">
               <label>Verifiser Passord</label>
-              <input type="password" v-model="password2" class="form-control" placeholder="Verifiser Passord" required>
+              <input type="password" v-model="user.password2" class="form-control" placeholder="Verifiser Passord" required>
             </div>
             <div class="form-group form-check">
               <input type="checkbox" class="form-check-input" required>
@@ -79,25 +79,29 @@ export default {
   data(){
     return{
       dialog2: false,
-      email: null,
-      fnavn: null,
-      enavn: null,
-      telefon: null,
-      password: null,
-      password2: null,
-      slug: null,
       melding: null,
+      show: false,
       user: {
         email: '',
-        password: ''
+        password: '',
+        password2: '',
+        fnavn: '',
+        enavn: '',
+        telefon: '',
+        slug: '',
       }
     }
   },
   methods: {
-    ...mapActions('auth', ['login']),
+    ...mapActions('auth', ['login','register']),
     onLogin(){
       this.login(this.user)
       this.melding = 'Du blir logget inn..'
+      setTimeout(() => (this.show = false), 2000)
+    },
+    onRegister(){
+      this.register(this.user)
+      this.melding = 'Du blir registrert'
       setTimeout(() => (this.show = false), 2000)
     }
   }

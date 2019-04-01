@@ -12,17 +12,19 @@ firebase.auth().onAuthStateChanged((user) => {
         const setUser =  {
             id: user.uid,
         }
-            
-        db.collection('users').doc(setUser.id).set(setUser)
+            console.log('user')
+            console.log(setUser)
+            console.log('------------')
+        //db.collection('users').doc(setUser.id).set(setUser)
         db.collection('users').where('userId', '==', user.uid).get()
         .then(snapshot => {
             snapshot.forEach(doc => {
-                console.log(doc.data().email)
                 setUser.email = doc.data().email,
-                setUser.name = doc.data().name,
-                setUser.phone = doc.data().phone,
+                setUser.fnavn = doc.data().fnavn,
+                setUser.enavn = doc.data().enavn,
+                setUser.telefon = doc.data().telefon,
                 setUser.admin = doc.data().isAdmin,
-                setUser.joined = moment(doc.data().joined).format('LLL'),
+                setUser.joined = doc.data().joined,
                 setUser.slug = doc.data().slug
             })
             

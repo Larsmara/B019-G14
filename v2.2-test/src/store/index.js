@@ -5,6 +5,7 @@ import Vuex from 'vuex';
 import auth from './auth'
 import { vuexfireMutations } from 'vuexfire'
 import users from './users'
+import prosjekter from './prosjekter'
 
 Vue.use(Vuex);
 
@@ -14,6 +15,7 @@ export default new Vuex.Store({
   },
   modules: {
     auth,
-    users
+    users,
+    prosjekter
   },
 });
