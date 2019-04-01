@@ -29,7 +29,7 @@ npm run build
 
 ## Funksjonalitet knyttet til prosjekter
 - [X] Slette et prosjekt
-- [X] Sette kattegori på prosjektet
+- [X] Sette kategori på prosjektet
 
 ## Bruker
 - [ ] Endre epost
