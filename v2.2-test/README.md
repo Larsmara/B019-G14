@@ -18,3 +18,17 @@ npm run build
     - [ ] Innlogging / utlogging
     - [ ] Registrering
     - [ ] Sendt idé
+## Prosjekter
+- [ ] Hente brukerens prosjekter
+- [ ] Hente nye prosjekter
+- [ ] Hente prosjekter i produksjon
+- [ ] Hente utvalgte prosjekter
+
+## Funksjonalitet knyttet til prosjekter
+- [ ] Slette et prosjekt
+- [ ] Sette kattegori på prosjektet
+
+## Bruker
+- [ ] Endre epost
+- [ ] Endre telefon
+- [ ] Endre passord
