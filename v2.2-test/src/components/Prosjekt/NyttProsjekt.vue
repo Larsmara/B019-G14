@@ -1,7 +1,7 @@
 <template>
   <div class="container mt-4 pt-5 new-idea">
       <h1 class="text-center">Send oss din idé!</h1>
-    <b-form @submit.prevent="onSubmit">
+    <b-form @submit.prevent="onCreateProject">
       <b-form-group
         id="exampleInputGroup1"
         label="Tittel:"
@@ -49,6 +49,7 @@
 
 <script>
 import slugify from 'slugify'
+import { mapState, mapActions } from 'vuex';
 
   export default {
     data() {
@@ -61,7 +62,8 @@ import slugify from 'slugify'
       }
     },
     methods: {
-        onSubmit(){
+      ...mapActions('prosjekter', ['init', 'createProject']),
+        async onCreateProject(){
             if(this.title === null && this.content === null){
                 return
             }
@@ -78,8 +80,7 @@ import slugify from 'slugify'
                 image: this.image,
                 slug: this.slug
             }
-            this.$store.dispatch('createProject', projectData)
-            this.$router.push('/prosjekter')
+            this.createProject(projectData)
         },
         onFilePicked(event){
             const files = event.target.files

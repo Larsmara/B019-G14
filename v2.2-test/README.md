@@ -25,6 +25,7 @@ npm run build
 - [ ] Hente nye prosjekter
 - [ ] Hente prosjekter i produksjon
 - [ ] Hente utvalgte prosjekter
+- [X] Lage nytt prosjekt
 
 ## Funksjonalitet knyttet til prosjekter
 - [ ] Slette et prosjekt
