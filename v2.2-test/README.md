@@ -18,8 +18,9 @@ npm run build
     - [ ] Innlogging / utlogging
     - [ ] Registrering
     - [ ] Sendt idé
-    
+
 ## Prosjekter
+- [X] Hente alle prosjekter
 - [ ] Hente brukerens prosjekter
 - [ ] Hente nye prosjekter
 - [ ] Hente prosjekter i produksjon
