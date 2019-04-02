@@ -9,9 +9,6 @@ const state = {
 
 const mutations = {
     setUser(state, user){
-        console.log('Bruker id ======');
-        console.log(user);
-        console.log('=================');
         if(user){
             state.user = user;
             state.isLoggedIn = true;
@@ -70,7 +67,7 @@ const actions = {
     },
     async logout(){
         await firebase.auth().signOut()
-        router.push('/')
+        this.$router.push('/')
     }
 };
 

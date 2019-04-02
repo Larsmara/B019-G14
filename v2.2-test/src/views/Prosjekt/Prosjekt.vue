@@ -73,7 +73,6 @@ export default {
         .onSnapshot(snapshot => {
             snapshot.docChanges().forEach(change => {
                 if(change.type == 'added'){
-                    console.log(change.doc.id)
                     this.prosjekt.push({
                         data: change.doc.data(),
                         id: change.doc.id

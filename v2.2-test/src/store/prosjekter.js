@@ -18,7 +18,6 @@ const actions = {
   }),
 
   createProject({commit}, payload){
-      console.log(payload);
       
     const project = {
       title: payload.title,

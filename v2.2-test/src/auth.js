@@ -12,9 +12,7 @@ firebase.auth().onAuthStateChanged((user) => {
         const setUser =  {
             id: user.uid,
         }
-            console.log('user')
-            console.log(setUser)
-            console.log('------------')
+
         //db.collection('users').doc(setUser.id).set(setUser)
         db.collection('users').where('userId', '==', user.uid).get()
         .then(snapshot => {
