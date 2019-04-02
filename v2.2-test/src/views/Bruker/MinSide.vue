@@ -5,7 +5,7 @@
             <div class="col-xl-4 col-lg-4 col-md-12 col-xs-10">
                 <div class="card shadow-sm">
                     <div class="card-header">
-                        Min info {{user.id}}
+                        Min info
                     </div>
                     <div class="card-body">
                         <p class="d-flex"><i class="fas fa-envelope pt-1 pr-1"></i> {{user.email}} <button class="btn hk-outline-btn btn-sm ml-auto">Endre epost</button></p>

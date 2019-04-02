@@ -1,4 +1,4 @@
-/* import { store } from "../store";
+import { store } from "../store";
 
 export default (to, from, next) => {
     if(store.getters.user){
@@ -6,4 +6,4 @@ export default (to, from, next) => {
     } else {
         next('/')
     }
-} */
+}

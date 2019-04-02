@@ -18,6 +18,7 @@ npm run build
     - [ ] Innlogging / utlogging
     - [ ] Registrering
     - [ ] Sendt idé
+- [X] Route guards
 
 ## Prosjekter
 - [X] Hente alle prosjekter

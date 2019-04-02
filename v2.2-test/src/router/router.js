@@ -17,6 +17,10 @@ import UtvalgteProsjekter from '../components/Prosjekt/ProsjektUtv.vue'
 import SeProsjekt from '../components/Prosjekt/SeProsjekt.vue'
 import NyIdé from '../components/Prosjekt/NyttProsjekt'
 
+/* AUTH - Routeguards. Check if user is logged in and check if user is admin */
+import firebase from '@/firebase'
+import { mapActions, mapState } from 'vuex'
+
 Vue.use(Router)
 
 export default new Router({
@@ -46,7 +50,17 @@ export default new Router({
     {
       path: '/ny-idé',
       name: 'createProject',
-      component: NyIdé
+      component: NyIdé,
+      beforeEnter(to, from, next){
+        firebase.firestore().collection('users').doc(firebase.auth().currentUser.uid).get()
+        .then(doc => {
+          if(doc.exists){
+            next()
+          } else {
+            next('/')
+          }
+        })
+      },
     },
     {
       path: '/prosjekt/:id',
@@ -58,13 +72,35 @@ export default new Router({
       path: '/profil/:id',
       name: 'profil',
       props: true,
-      component: MinSide
+      component: MinSide,
+      beforeEnter(to, from, next){
+        const docId = firebase.auth().currentUser
+        firebase.firestore().collection('users').doc(docId.uid).get()
+        .then(doc => {
+          if(doc.exists){
+            next()
+          } else {
+            next('/')
+          }
+        })
+      },
     },
     {
       path: '/admin/dashbord',
       name: 'dashbord',
       props: true,
       component: Dashbord,
+      beforeEnter(to, from, next){
+        firebase.firestore().collection('users').doc(firebase.auth().currentUser.uid).get()
+        .then(doc => {
+          console.log(doc.exists)
+          if(doc.data().isAdmin === true){
+            next()
+          } else {
+            next('/')
+          }
+        })
+      },
       children: [{
         path: 'hjem',
         name: 'dashHjem',
