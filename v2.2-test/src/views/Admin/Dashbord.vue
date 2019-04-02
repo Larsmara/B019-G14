@@ -41,7 +41,6 @@
     
 
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-
         <router-view/>
       
     </main>
@@ -53,27 +52,27 @@
     </span>
   <ul class="fab-buttons">
       <li class="fab-buttons__item">
-      <a href="#" class="fab-buttons__link" data-tooltip="Utvalgt">
+      <a @click="link('utvalgte')" class="fab-buttons__link" data-tooltip="Utvalgt">
         <i class="icon-material icon-material_gp"></i>
       </a>
     </li>
     <li class="fab-buttons__item">
-      <a href="#" class="fab-buttons__link" data-tooltip="Produksjon">
+      <a @click="link('produksjon')" class="fab-buttons__link" data-tooltip="Produksjon">
         <i class="icon-material icon-material_gp"></i>
       </a>
     </li>
     <li class="fab-buttons__item">
-      <a href="#" class="fab-buttons__link" data-tooltip="Eksterne">
+      <a @click="link('eksterne')" class="fab-buttons__link" data-tooltip="Eksterne">
         <i class="icon-material icon-material_gp"></i>
       </a>
     </li>
     <li class="fab-buttons__item">
-      <a href="/admin/dashbord/interne" class="fab-buttons__link" data-tooltip="Interne">
+      <a @click="link('interne')" class="fab-buttons__link" data-tooltip="Interne">
         <i class="icon-material icon-material_gp"></i>
       </a>
     </li>
     <li class="fab-buttons__item">
-      <a href="/admin/dashbord/hjem" class="fab-buttons__link" data-tooltip="Hjem">
+      <a @click="link('hjem')" class="fab-buttons__link" data-tooltip="Hjem">
         <i class="icon-material icon-material_gp"></i>
       </a>
     </li>
@@ -89,6 +88,12 @@ export default {
         return{
 
         }
+    },
+    methods: {
+      link(sted){
+        console.log(sted)
+        this.$router.push(sted)
+      }
     },
     created(){
       document.title = "Admin - Dashbord"

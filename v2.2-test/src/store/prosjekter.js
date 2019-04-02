@@ -26,6 +26,7 @@ const actions = {
       date: payload.date,
       slug: payload.slug,
       kategori: null,
+      imageUrl: payload.image,
       creatorId: firebase.auth().currentUser.uid
     }
     // LAGRER I DATABASEN

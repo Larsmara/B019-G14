@@ -1,5 +1,13 @@
 <template>
   <div class="container mt-4 pt-5 new-idea">
+
+      <div v-if="takk" class="alert alert-success" role="alert">
+        <div class="d-flex align-items-center">
+            Din ide er registrert. Denne ideen vil bli vurdert, men vi gjør oppmerksom på at vi ikke kan realisere alle ideer, men dit innspill kan bidra til et bedre samfunn i halden.
+          <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
+        </div>
+      </div>
+
       <h1 class="text-center">Send oss din idé!</h1>
     <b-form @submit.prevent="onCreateProject">
       <b-form-group
@@ -50,6 +58,7 @@
 <script>
 import slugify from 'slugify'
 import { mapState, mapActions } from 'vuex';
+import { setTimeout } from 'timers';
 
   export default {
     data() {
@@ -58,7 +67,8 @@ import { mapState, mapActions } from 'vuex';
           content: null,
           file: null,
           slug: null,
-          imageUrl: null
+          imageUrl: null,
+          takk: null,
       }
     },
     methods: {
@@ -78,10 +88,15 @@ import { mapState, mapActions } from 'vuex';
                 title: this.title,
                 content: this.content,
                 date: Date.now(),
-                image: this.image,
+                image: this.imageUrl,
                 slug: this.slug
             }
-            this.createProject(projectData)
+              this.takk = 'true'
+              this.createProject(projectData)
+            setTimeout(() => {
+              this.$router.push('/')
+            }, 3000)
+            
         },
         onFilePicked(event){
             const files = event.target.files

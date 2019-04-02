@@ -17,8 +17,9 @@ npm run build
 - [ ] Legge til feilmeldinger / suksessmeldinger på:
     - [ ] Innlogging / utlogging
     - [ ] Registrering
-    - [ ] Sendt idé
+    - [X] Sendt idé
 - [X] Route guards
+- [X] Fikset fab routing
 
 ## Prosjekter
 - [X] Hente alle prosjekter

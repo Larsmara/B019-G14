@@ -23,12 +23,12 @@
                                         <div class="card-body">
                                             <img v-if="!project.imageUrl" src="../../assets/idea2.jpg" alt="Standard prosjekt bilde om innsender ikke legger ved ett" class="img-fluid rounded-circle w-50 mb-3">
                                             <img v-else :src="project.imageUrl" alt="Prosjekt bilde fra innsender" class="img-fluid rounded-circle w-50 mb-3">
-                                            <h3>{{project.title}}</h3>
-                                            <p>{{project.content}}</p>    
+                                            <h3>{{project.data.title}}</h3>
+                                            <p>{{project.data.content}}</p>    
                                         </div>
                                         <router-link class="btn hk-btn mx-3 mb-2" router :to="'/prosjekt/' + project.id">Les mer</router-link>
                                         <div class="card-footer">
-                                            <small class="text-muted">Innsendt: {{project.date}}</small>
+                                            <small class="text-muted">Innsendt: {{moment(project.data.date).format('lll')}}</small>
                                         </div>
                                     </div>
                                 </div>
@@ -45,7 +45,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 </template>
 
@@ -60,7 +59,8 @@ export default {
         return{
             perPage: 6,
             currentPage: 1,
-            prosjekt: []
+            prosjekt: [],
+            moment
         }
     },
     created(){
@@ -72,8 +72,11 @@ export default {
         .onSnapshot(snapshot => {
             snapshot.docChanges().forEach(change => {
                 if(change.type == 'added'){
-                    console.log(change.doc.data())
-                    this.prosjekt.push(change.doc.data())
+                    console.log(change.doc.id)
+                    this.prosjekt.push({
+                        data: change.doc.data(),
+                        id: change.doc.id
+                    })
                 } 
             })
         })
