@@ -15,8 +15,10 @@ npm run build
 
 ## TODO
 - [ ] Legge til feilmeldinger / suksessmeldinger på:
-    - [ ] Innlogging / utlogging
-    - [ ] Registrering
+    - [ ] Sukess: Innlogging / utlogging
+        - [ ] Feil: Innlogging / utlogging
+    - [ ] Sukess: Registrering
+        - [ ] Feil: Registrering
     - [X] Sukess: Sendt idé
         - [ ] Feilmelding: sendt idé
 - [X] Route guards
