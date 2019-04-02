@@ -20,6 +20,7 @@ npm run build
     - [X] Sendt idé
 - [X] Route guards
 - [X] Fikset fab routing
+- [X] Lagt til editor på text-area på ny idé
 
 ## Prosjekter
 - [X] Hente alle prosjekter

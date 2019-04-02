@@ -2,17 +2,17 @@
     <div class="container pt-4">
         <button class="align-self-start btn hk-btn" @click="goBack">Tilbake</button>
         <!-- PROSJEKT VISNING -->
-    <section id="prosjekterVisning" class="my-5 pt-5 text-center">
+    <section id="prosjekterVisning" class="my-5 pt-5">
         <div class="container">
             <div class="row">
                 <div class="col pb-5">
-                    <div class="card w-75 h-100">
+                    <div class="card w-75 h-100 text-center">
                         <div class="card-body">
                             <img v-if="!prosjekt.imageUrl" src="../../assets/idea.png" alt="Standard prosjekt bilde om innsender ikke legger ved ett" class="img-fluid rounded w-25 mb-3 pt-5">
                             <img v-else :src="prosjekt.imageUrl" alt="Prosjekt bilde fra innsender" class="img-fluid rounded w-50 mb-3 border">
-                            <h3>{{prosjekt.title}}</h3>
+                            <h3 class="text-center">{{prosjekt.title}}</h3>
                             <hr>
-                            <p>{{prosjekt.content}}</p>
+                            <div class="text-left" v-html="prosjekt.content"></div>
                         </div>
                         <div class="card-footer">
                             <small class="text-muted">Innsendt: {{moment(prosjekt.date).format('lll')}}</small>

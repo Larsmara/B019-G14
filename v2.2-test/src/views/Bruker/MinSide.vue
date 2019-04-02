@@ -17,18 +17,24 @@
             </div>
             <div class="col-xl-6 col-lg-8 col-md-12">
                 <div class="container">
-                <b-media vertical-align="center" class="border p-3 my-3 shadow-sm" v-for="project in prosjekter" :key="project.id">
+                <b-media vertical-align="center" class="border p-3 my-3 shadow-sm" v-for="project in prosjekter.slice((currentPage-1)*perPage, (currentPage-1)*perPage+4)" :key="project.id">
                     <img v-if="!project.imageUrl" src="../../assets/idea2.jpg" slot="aside" blank blank-color="#ccc" width="80" height="80" alt="placeholder" />
                     <img v-else :src="project.imageUrl" slot="aside" blank blank-color="#ccc" width="80" height="80" alt="placeholder" />
 
                     <h5 class="mt-0 mb-1">{{project.title}}</h5>
                     <p class="mb-0">{{project.content}}</p>
-                    <p><small class="text-muted">{{project.date}}</small></p>
+                    <p><small class="text-muted">{{moment(project.date).format('lll')}}</small></p>
                     <div class="mt-1">
                         <router-link class="btn hk-btn mt-auto" router :to="'/prosjekt/' + project.id">Les mer</router-link>
                     </div>
                 </b-media>
                 </div>
+                <b-pagination class="pb-4"
+                v-model="currentPage"
+                align="center"
+                :total-rows="prosjekter.length"
+                :per-page="perPage"
+                /> 
             </div>
         </div>
     </div>
@@ -45,10 +51,17 @@ export default {
     data(){
         return{
             moment,
-            prosjekter: []
+            prosjekter: [],
+            perPage: 4,
+            currentPage: 1,
         }
     },
-    computed: mapState('auth', ['user', 'isLoggedIn']),
+    computed: {
+        ...mapState('auth', ['user', 'isLoggedIn']),
+        rows(){
+            return this.prosjekter.length
+        }
+    },
     created(){
       document.title = "Min Side"
       var element = document.getElementById("minSide");

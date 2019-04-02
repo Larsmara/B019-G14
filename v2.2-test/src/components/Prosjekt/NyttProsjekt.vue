@@ -40,18 +40,22 @@
       </b-form-group>
 
       <b-form-group id="exampleInputGroup2" label="Forklar din idé:" label-for="exampleInput2">
-          <b-form-textarea
+          <!-- <b-form-textarea
             id="textarea"
             v-model="content"
             placeholder="Enter something..."
             rows="3"
             max-rows="6"
-        />
+        /> -->
+        <vue-editor class="bg-white" v-model="content" :editorToolbar="customToolbar"></vue-editor>
+
       </b-form-group>
 
-      <b-button type="submit" variant="info" class="mb-2 mr-2">Registrer idé</b-button>
+      <b-button type="submit" class="mb-2 mr-2 hk-btn">Registrer idé</b-button>
       <b-button @click="reset" variant="danger" id="resetBtn" class="mb-2">Reset</b-button>
     </b-form>
+         
+
   </div>
 </template>
 
@@ -59,6 +63,8 @@
 import slugify from 'slugify'
 import { mapState, mapActions } from 'vuex';
 import { setTimeout } from 'timers';
+import { VueEditor } from 'vue2-editor'
+
 
   export default {
     data() {
@@ -69,7 +75,23 @@ import { setTimeout } from 'timers';
           slug: null,
           imageUrl: null,
           takk: null,
+          customToolbar: [
+            [{ header: [false, 1, 2, 3, 4, 5, 6] }],
+            ["bold", "italic", "underline", "strike"], // toggled buttons
+            [
+              { align: "" },
+              { align: "center" },
+              { align: "right" },
+              { align: "justify" }
+            ],
+            ["blockquote", "code-block"],
+            [{ list: "ordered" }, { list: "bullet" }, { list: "check" }],
+            [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
+          ]
       }
+    },
+    components: {
+      VueEditor
     },
     methods: {
       ...mapActions('prosjekter', ['init', 'createProject']),

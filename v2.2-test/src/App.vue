@@ -30,12 +30,10 @@
 
   <testDialog :show="show_dialog" :tabIndex="tab"></testDialog> 
   
-
+  
     <div class="main-view bg-light">
     <router-view/>
   </div>
-
-
   </div>
 </template>
 
@@ -51,7 +49,8 @@ export default {
       tab: null,
       tabIndex: 0,
       email: '',
-      password: ''
+      password: '',
+      
     }
   },
   components: {
