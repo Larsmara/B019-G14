@@ -21,6 +21,9 @@ npm run build
         - [ ] Feil: Registrering
     - [X] Sukess: Sendt idé
         - [ ] Feilmelding: sendt idé
+    - [X] Suksess: Endre personopplysninger
+        - [X] Feil: Endre personopplysninger
+        
 - [X] Route guards
 - [X] Fikset fab routing
 - [X] Lagt til editor på text-area på ny idé
