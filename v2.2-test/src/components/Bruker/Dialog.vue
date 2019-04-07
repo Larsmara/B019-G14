@@ -11,7 +11,7 @@
           <form @submit.prevent="onLogin(user)">
             <div class="form-group">
               <label>E-post</label>
-              <input type="text" v-model="user.email" class="form-control" placeholder="E-post">
+              <input type="email" v-model="user.email" class="form-control" placeholder="E-post">
             </div>
             <div class="form-group">
               <label>Passord</label>
@@ -52,7 +52,7 @@
             </div>
             <div class="form-group form-check">
               <input type="checkbox" class="form-check-input" required>
-              <label class="form-check-label"><small>Jeg godtar at Halden Kommune lagrer mine opplysninger.</small></label>
+              <label class="form-check-label"><small>Ved og godta, godtar du Halden Kommunes <a class="text-primary" href="https://www.halden.kommune.no/selvbetjening_og_skjemaer/Sider/Personvernerkl%C3%A6ring.aspx" target="_blank">personverkerklæring</a> </small></label>
             </div>
             <button type="submit" class="btn hk-btn btn-block">Registrer deg</button>
             <div class="knapper mt-2">

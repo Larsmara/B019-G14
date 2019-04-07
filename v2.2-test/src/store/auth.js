@@ -67,7 +67,6 @@ const actions = {
     },
     async logout(){
         await firebase.auth().signOut()
-        this.$router.push('/')
     }
 };
 

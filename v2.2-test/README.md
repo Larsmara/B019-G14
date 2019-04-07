@@ -28,6 +28,8 @@ npm run build
 - [X] Fikset fab routing
 - [X] Lagt til editor på text-area på ny idé
 
+- [X] personvernerklæring
+
 ## Prosjekter
 - [X] Hente alle prosjekter
 - [X] Hente brukerens prosjekter
