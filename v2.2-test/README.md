@@ -41,6 +41,6 @@ npm run build
 - [X] Sette kategori på prosjektet
 
 ## Bruker
-- [ ] Endre epost
-- [ ] Endre telefon
-- [ ] Endre passord
+- [X] Endre epost
+- [X] Endre telefon
+- [X] Endre passord

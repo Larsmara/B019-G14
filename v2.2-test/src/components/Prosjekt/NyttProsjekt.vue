@@ -40,6 +40,7 @@
       </b-form-group>
 
       <b-form-group id="exampleInputGroup2" label="Forklar din idé:" label-for="exampleInput2">
+        <!-- FJERN KOMMENTAREN TIL b-form-textarea FOR Å FÅ TILBAKE ET RENT TEKST INPUT -->
           <!-- <b-form-textarea
             id="textarea"
             v-model="content"
@@ -47,7 +48,7 @@
             rows="3"
             max-rows="6"
         /> -->
-        <vue-editor class="bg-white" v-model="content" :editorToolbar="customToolbar"></vue-editor>
+        <vue-editor class="bg-white" v-model="content" :editorToolbar="customToolbar"></vue-editor> <!-- FJERN DENNE LINJEN FOR Å BLI HTML KODE I TEKSTEN -->
 
       </b-form-group>
 
