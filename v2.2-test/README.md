@@ -20,7 +20,7 @@ npm run build
     - [X] Sukess: Registrering
         - [X] Feil: Registrering
     - [X] Sukess: Sendt idé
-        - [ ] Feilmelding: sendt idé
+        - [X] Feilmelding: sendt idé
     - [X] Suksess: Endre personopplysninger
         - [X] Feil: Endre personopplysninger
         
