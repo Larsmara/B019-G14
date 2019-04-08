@@ -3,19 +3,19 @@
   <div class="row">
     <nav class="col-md-2 d-none d-lg-block bg-light sidebar">
       <div class="sidebar-sticky pt-5">
-        <ul class="nav flex-column">
+        <ul class="nav flex-column dash-nav">
           <li class="nav-item">
             <router-link class="nav-link d-flex" to="/admin/dashbord/hjem">
               <span data-feather="home"></span>
               Dashbord
-              <span class="ml-auto dash-antall">{{hjem}}</span>
+              <span class="ml-auto dash-antall hk-blue px-2">{{hjem}}</span>
             </router-link>
           </li>
           <li class="nav-item">
             <router-link class="nav-link d-flex" to="/admin/dashbord/interne">
               <span data-feather="file"></span>
               Interne
-              <span class="ml-auto dash-antall">{{interne}}</span>
+              <span class="ml-auto dash-antall hk-blue px-2">{{interne}}</span>
             </router-link>
             
           </li>
@@ -23,21 +23,21 @@
             <router-link class="nav-link d-flex" to="/admin/dashbord/eksterne">
               <span data-feather="shopping-cart"></span>
               Eksterne
-              <span class="ml-auto dash-antall">{{eksterne}}</span>
+              <span class="ml-auto dash-antall hk-blue px-2">{{eksterne}}</span>
             </router-link>
           </li>
           <li class="nav-item">
             <router-link class="nav-link d-flex" to="/admin/dashbord/produksjon">
               <span data-feather="users"></span>
               Produksjon
-              <span class="ml-auto dash-antall">{{produksjon}}</span>
+              <span class="ml-auto dash-antall hk-blue px-2">{{produksjon}}</span>
             </router-link>
           </li>
           <li class="nav-item">
             <router-link class="nav-link d-flex" to="/admin/dashbord/utvalgte">
               <span data-feather="bar-chart-2"></span>
               Utvalgte
-              <span class="ml-auto dash-antall">{{utvalgte}}</span>
+              <span class="ml-auto dash-antall hk-blue px-2">{{utvalgte}}</span>
             </router-link>
           </li>
         </ul> 
