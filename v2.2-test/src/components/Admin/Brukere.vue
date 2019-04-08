@@ -1,6 +1,6 @@
 <template>
-<div>
-    <table class="table">
+<div class="table-responsive-sm bg-white">
+    <table class="table table-striped">
         <thead>
             <tr>
             <th scope="col">#</th>
@@ -10,6 +10,7 @@
             <th scope="col">Id</th>
             <th scope="col">Admin</th>
             <th scope="col">Ble medlem</th>
+            <th scope="col">Slett</th>
             </tr>
         </thead>
         <tbody>
@@ -21,6 +22,7 @@
                 <td>{{bruker.userId}}</td>
                 <td>{{bruker.isAdmin}}</td>
                 <td>{{moment(bruker.joined).format('lll')}}</td>
+                <td><button class="hk-btn-red" @click="slett(bruker)">Slett</button></td>
             </tr>
         </tbody>
     </table>
@@ -30,6 +32,7 @@
 <script>
 import firebase from '@/firebase'
 import moment from 'moment'
+import { log } from 'util';
 
 export default {
     data(){
@@ -42,10 +45,15 @@ export default {
         firebase.firestore().collection('users')
         .onSnapshot(snapshot => {
             snapshot.docChanges().forEach(change => {
-                console.log(change.doc.data())
                 this.brukere.push( change.doc.data())
             })
         })
+    },
+    methods: {
+        slett(bruker){
+            console.log(bruker);
+            
+        }
     }
 }
 </script>
