@@ -99,6 +99,7 @@ export default {
     props: ['id'],
     data(){
         return{
+            show: false,
             moment,
             prosjekter: [],
             perPage: 4,

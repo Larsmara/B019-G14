@@ -20,15 +20,15 @@
         <b-navbar-nav class="ml-auto">
           <b-nav-item id="dashbord" to="/admin/dashbord/hjem" v-if="isLoggedIn && user.admin"><small id="notification">{{newProjects.length}}</small> Dashboard</b-nav-item>
           <b-nav-item id="minSide" :to="'/profil/' + user.slug " v-if="isLoggedIn && user">Min side</b-nav-item>
-          <b-nav-item v-if="!isLoggedIn" @click="show_dialog = !show_dialog, tab=0">Logg Inn</b-nav-item>
-          <b-nav-item v-if="!isLoggedIn" @click="show_dialog = !show_dialog, tab=1">Registrer deg</b-nav-item>
+          <b-nav-item v-if="!isLoggedIn" @click="show_dialog = !show_dialog">Logg Inn</b-nav-item>
+          <b-nav-item v-if="!isLoggedIn" @click="show_dialog = !show_dialog">Registrer deg</b-nav-item>
           
           <b-nav-item v-if="isLoggedIn" @click="onLogout">Logg ut</b-nav-item>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
 
-  <testDialog :show="show_dialog" :tabIndex="tab"></testDialog> 
+  <testDialog :show="show_dialog"></testDialog> 
   
     <main>
       <div class="main-view bg-light">
@@ -48,9 +48,6 @@ export default {
   data(){
     return {
       show_dialog: false,
-      dialog2: false,
-      tab: null,
-      tabIndex: 0,
       email: '',
       password: '',
       newProjects: [],

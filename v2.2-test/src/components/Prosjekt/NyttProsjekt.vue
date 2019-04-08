@@ -56,7 +56,7 @@
       </b-form-group>
       <b-button @click="reset" variant="danger" id="resetBtn" class="mb-2">Nullstill skjema</b-button>
       <b-button type="submit" class="mb-2 ml-2 hk-btn" v-if="!takk">Registrer idé</b-button>
-      <button v-if="suksess" type="submit" class="btn hk-btn btn-block" disabled><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span></button>
+      <button v-if="!takk" type="submit" class="btn hk-btn mb-2 ml-2" disabled><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span></button>
     </b-form>
          
 
