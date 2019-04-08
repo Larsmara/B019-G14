@@ -54,7 +54,8 @@
               <input type="checkbox" class="form-check-input" required>
               <label class="form-check-label"><small>Ved og godta, godtar du Halden Kommunes <a class="text-primary" href="https://www.halden.kommune.no/selvbetjening_og_skjemaer/Sider/Personvernerkl%C3%A6ring.aspx" target="_blank">personverkerklæring</a> </small></label>
             </div>
-            <button type="submit" class="btn hk-btn btn-block">Registrer deg</button>
+            <button v-if="!suksess" type="submit" class="btn hk-btn btn-block">Registrer deg</button>
+            <button v-if="suksess" type="submit" class="btn hk-btn btn-block" disabled><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span></button>
             <div class="knapper mt-2">
               <button class="btn btn-link" style="color: rgb(0,114,187)">Avbryt</button>
             </div>

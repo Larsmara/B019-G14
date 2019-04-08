@@ -1,8 +1,9 @@
 <template>
-    <div class="container pt-4">
+<div id="home-section" class="home-section bg-light">
+    <div class="container pt-5">
         <button class="align-self-start btn hk-btn" @click="goBack">Tilbake</button>
         <!-- PROSJEKT VISNING -->
-    <section id="prosjekterVisning" class="my-5 pt-5">
+    <section id="prosjekterVisning" class="">
         <div class="container">
             <div class="row">
                 <div class="col pb-5">
@@ -15,7 +16,19 @@
                             <div class="text-left" v-html="prosjekt.content"></div>
                         </div>
                         <div class="card-footer">
-                            <small class="text-muted">Innsendt: {{moment(prosjekt.date).format('lll')}}</small>
+                            <small class="text-muted">Innsendt: {{moment(prosjekt.date).format('lll')}} </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3" v-if="user.admin">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5>Sendt inn av:</h5>
+                            <p>{{bruker.fnavn}} {{bruker.enavn}}</p>
+                            <h5>E-post:</h5>
+                            <p>{{bruker.email}}</p>
+                            <h5>Telefon:</h5>
+                            <p>{{bruker.telefon}}</p>
                         </div>
                     </div>
                 </div>
@@ -24,19 +37,24 @@
     </section>
 
     </div>
+</div>
 </template>
 
 <script>
 import moment from 'moment'
 import firebase from '@/firebase'
+import { mapActions, mapState } from 'vuex'
+
 
 export default {
     data(){
         return{
             prosjekt: {},
+            bruker: [],
             moment
         }
     },
+    computed: mapState('auth', ['user', 'isLoggedIn']),
     props: ['id'],
     created(){
         window.scrollTo(0,0)
@@ -45,8 +63,13 @@ export default {
         .then(doc => {
             console.log(doc.data())
             this.prosjekt = doc.data()
-        })
-        
+            const creator = doc.data().creatorId
+
+            firebase.firestore().collection('users').doc(creator).get()
+            .then(doc => {
+                this.bruker = doc.data()
+            })
+        })  
     },
     methods:{
         goBack(){

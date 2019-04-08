@@ -1,11 +1,11 @@
 <template>
-    <div style="height: calc(100vh - 56px);">
+    <div>
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h1 class="h2">Dashboard - Nye innkommende forslag</h1>
         </div>
 
       <div class="table-responsive">
-        <b-media vertical-align="center" class="border p-3 my-3 shadow-sm" v-for="(project, index) in prosjekt" :key="project.id">
+        <b-media vertical-align="center" class="border p-3 my-3 shadow-sm bg-white" v-for="(project, index) in prosjekt" :key="project.id">
             <img v-if="!project.imageUrl" src="../../assets/idea2.jpg" slot="aside" blank blank-color="#ccc" width="80" height="80" alt="placeholder" class="d-none d-sm-block" />
             <img v-else :src="project.imageUrl" slot="aside" blank blank-color="#ccc" width="80" height="80" alt="placeholder" class="d-none d-sm-block"/>
 
