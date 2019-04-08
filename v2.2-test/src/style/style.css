@@ -112,9 +112,6 @@ body{
   bottom: 0;
 }
 
-.min-side{
-  height: calc(100vh - 56px);
-}
 
 .home-box{
     padding-bottom: 5px;

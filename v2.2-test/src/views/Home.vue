@@ -110,13 +110,12 @@ export default {
   components: {
     testDialog
   },
-  updated(){
+  created(){
       document.title = "Hjem"
       var element = document.getElementById("hjem");
       element.classList.add("active", "hk-nav-active");
   },
   destroyed() {
-      document.title = "Prosjekter"
       var element = document.getElementById("hjem");
       element.classList.remove("active", "hk-nav-active");
   },

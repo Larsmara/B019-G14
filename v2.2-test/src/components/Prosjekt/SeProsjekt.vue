@@ -6,8 +6,8 @@
     <section id="prosjekterVisning" class="">
         <div class="container">
             <div class="row">
-                <div class="col pb-5">
-                    <div class="card w-75 h-100 text-center">
+                <div class="col-lg-9 col-md-12 pb-5">
+                    <div class="card mt-4 h-100 text-center">
                         <div class="card-body">
                             <img v-if="!prosjekt.imageUrl" src="../../assets/idea.png" alt="Standard prosjekt bilde om innsender ikke legger ved ett" class="img-fluid rounded w-25 mb-3 pt-5">
                             <img v-else :src="prosjekt.imageUrl" alt="Prosjekt bilde fra innsender" class="img-fluid rounded w-50 mb-3 border">
@@ -21,7 +21,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3" v-if="user.admin">
-                    <div class="card">
+                    <div class="card mt-4">
                         <div class="card-body">
                             <h5>Sendt inn av:</h5>
                             <p>{{bruker.fnavn}} {{bruker.enavn}}</p>

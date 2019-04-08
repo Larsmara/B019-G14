@@ -4,7 +4,7 @@
     <b-navbar id="main-nav" toggleable="lg" type="light" fixed="top" class="shadow-sm p-3  bg-white rounded">
       <b-navbar-brand to="/">
       <img src="./assets/smart-city-logo.png" class="d-inline-block align-top avatar" alt="BV" />
-      
+      <span class="d-sm-none ml-2">Smart City</span>
       </b-navbar-brand>
 
       <b-navbar-toggle target="nav_collapse" />

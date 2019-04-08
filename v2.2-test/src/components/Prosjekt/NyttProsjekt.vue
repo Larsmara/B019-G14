@@ -146,7 +146,7 @@ import { VueEditor } from 'vue2-editor'
         }
     },
     created(){
-      document.title = "Ny Idé"
+      document.title = "Nytt"
       var element = document.getElementById("ny-idé");
       element.classList.add("active", "hk-nav-active");
     },
