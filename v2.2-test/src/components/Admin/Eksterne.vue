@@ -39,7 +39,7 @@ export default {
         }
     },
     created(){
-            firebase.firestore().collection('projects').where('kategori', '==', 'eksterne').orderBy('date')
+            firebase.firestore().collection('projects').where('kategori', '==', 'eksternt').orderBy('date')
             .onSnapshot(snapshot => {
                 snapshot.docChanges().forEach(change => {
                     if(change.type == 'added'){

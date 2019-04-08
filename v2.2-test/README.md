@@ -14,9 +14,9 @@ npm run build
 ```
 
 ## TODO
-- [ ] Legge til feilmeldinger / suksessmeldinger på:
-    - [ ] Sukess: Innlogging / utlogging
-        - [ ] Feil: Innlogging / utlogging
+- [X] Legge til feilmeldinger / suksessmeldinger på:
+    - [X] Sukess: Innlogging / utlogging
+        - [X] Feil: Innlogging / utlogging
     - [X] Sukess: Registrering
         - [X] Feil: Registrering
     - [X] Sukess: Sendt idé

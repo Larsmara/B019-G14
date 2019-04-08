@@ -5,33 +5,39 @@
       <div class="sidebar-sticky pt-5">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <router-link class="nav-link" to="/admin/dashbord/hjem">
+            <router-link class="nav-link d-flex" to="/admin/dashbord/hjem">
               <span data-feather="home"></span>
               Dashbord
+              <span class="ml-auto dash-antall">{{hjem}}</span>
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/admin/dashbord/interne">
+            <router-link class="nav-link d-flex" to="/admin/dashbord/interne">
               <span data-feather="file"></span>
               Interne
+              <span class="ml-auto dash-antall">{{interne}}</span>
             </router-link>
+            
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/admin/dashbord/eksterne">
+            <router-link class="nav-link d-flex" to="/admin/dashbord/eksterne">
               <span data-feather="shopping-cart"></span>
               Eksterne
+              <span class="ml-auto dash-antall">{{eksterne}}</span>
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/admin/dashbord/produksjon">
+            <router-link class="nav-link d-flex" to="/admin/dashbord/produksjon">
               <span data-feather="users"></span>
               Produksjon
+              <span class="ml-auto dash-antall">{{produksjon}}</span>
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/admin/dashbord/utvalgte">
+            <router-link class="nav-link d-flex" to="/admin/dashbord/utvalgte">
               <span data-feather="bar-chart-2"></span>
               Utvalgte
+              <span class="ml-auto dash-antall">{{utvalgte}}</span>
             </router-link>
           </li>
         </ul> 
@@ -83,10 +89,16 @@
 </template>
 
 <script>
+import firebase from '@/firebase'
+
 export default {
     data(){
         return{
-
+          interne: null,
+          eksterne: null,
+          produksjon: null,
+          utvalgte: null,
+          hjem: null
         }
     },
     methods: {
@@ -99,6 +111,36 @@ export default {
       document.title = "Admin - Dashbord"
       var element = document.getElementById("dashbord");
       element.classList.add("active", "hk-nav-active");
+
+      firebase.firestore().collection('projects').where('kategori', '==', 'internt').orderBy('date')
+      .onSnapshot(snapshot => {
+        console.log(snapshot.size);
+        this.interne = snapshot.size
+      })
+
+      firebase.firestore().collection('projects').where('kategori', '==', 'eksternt').orderBy('date')
+      .onSnapshot(snapshot => {
+        console.log(snapshot.size);
+        this.eksterne = snapshot.size
+      })
+
+      firebase.firestore().collection('projects').where('kategori', '==', 'produksjon').orderBy('date')
+      .onSnapshot(snapshot => {
+        console.log(snapshot.size);
+        this.produksjon = snapshot.size
+      })
+
+      firebase.firestore().collection('projects').where('kategori', '==', 'utvalgt').orderBy('date')
+      .onSnapshot(snapshot => {
+        console.log(snapshot.size);
+        this.utvalgte = snapshot.size
+      })
+      
+      firebase.firestore().collection('projects').where('kategori', '==', null).orderBy('date')
+      .onSnapshot(snapshot => {
+        console.log(snapshot.size);
+        this.hjem = snapshot.size
+      })
     },
     destroyed() {
         var element = document.getElementById("dashbord");
