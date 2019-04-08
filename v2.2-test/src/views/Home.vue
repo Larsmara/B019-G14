@@ -1,38 +1,96 @@
 <template>
-  <div id="home-section">
-    <section id="showcase" class="pt-5">
-        <div class="container-fluid w-75">
-          <div class="row justify-content-between align-items-center">
-              <div class="col-lg-3 order-3 order-lg-1 mb-3">
-                  <h1 class="display-4">Smart City</h1>
-                  <p class="lead">Smart City, eller smarte byer, er et begrep som brukes over hele verden og som forklarer hvordan byer og bygder skal utvikles til å bli bærekraftige og moderne samfunn der både økonomiske, sosiale og miljømessige verdier gjennomsyrer alt vi gjør og skaper.</p>
-                  <router-link to="/om-oss" tag="button" class="btn hk-btn btn-lg">Mer om Smart City</router-link>
+  <div id="home-section" class="home-section bg-light">
+    <section class="pt-5">
+        <div class="container-fluid">
+          <div class="row justify-content-between">
+            <div class="col-lg-3 order-3 order-lg-1">
+              <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                  <h3 class="card-title">Smart City</h3>
+                  <p class="card-text">Smart City, eller smarte byer, er et begrep som brukes over hele verden og som forklarer hvordan byer og bygder skal utvikles til å bli bærekraftige og moderne samfunn. En smart by tar utgangspunkt i innbyggernes behov og tar i bruk ny teknologi for å gjøre byen til et bedre sted å leve, bo og arbeide...</p>
+                  
+                </div>
+                <router-link to="/om-oss" tag="button" class="btn hk-btn">Mer om Smart City</router-link>
               </div>
-              <div class="col-lg-4 order-1 mb-3">
-                  <h1 class="display-3">Har du en idé?</h1>
-                  <p class="lead">Vi som kommune ønsker å være på topp når det gjelder innovative løsninger, men det er ikke alltid at det er oss ansatte som sitter på de beste idéene, eller ser behovene. Derfor ønsker vi å høre deres idéforslag.</p>
-                  <router-link v-if="isLoggedIn" to="/ny-idé" tag="button" class="btn hk-btn btn-lg">Send Idé</router-link>
+            </div>
+            <div class="col-lg-4 order-1">
+              <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                  <h3 class="card-title">Hva er en innovasjonside?</h3>
+                  <p class="card-text">Med en innovasjonside menes forslag til endrede arbeidsmetoder, innføring av ny teknologi eller nye systemer som vil oppfylle minst en av følgende punkter</p>
+                  <ol>
+                    <li>Bedre kvalitet på tjenesten</li>
+                    <li>bidra til en mer effektiv arbeidshverdag</li>
+                    <li>Gi innbyggerne bedre tjenester og/eller miljø</li>
+                  </ol>
+                  
+                </div>
+                <router-link v-if="isLoggedIn" to="/ny-idé" tag="button" class="btn hk-btn">Send din Idé</router-link>
+                  <b-button v-if="!isLoggedIn" @click="show_dialog = !show_dialog" class="btn hk-btn">Logg inn for å sende idé</b-button>
+              </div>
+            </div>
+            <div class="col-lg-3 order-3 order-lg-1">
+              <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                  <h3 class="card-title">Hva er et innovasjonsprosjekt?</h3>
+                  <p class="card-text">Et prosjekt som setter en innovasjonside ut i livet. Når innovasjonsprosjektet er iverksatt vil dette gi en nytteverdi for ansatte og/eller innbyggere. I et prosjekt definerer vi mål for hva vi vil oppnå og arbeider etter en plan for å nå målet.</p>
+                  
+                </div>
+                <router-link to="/prosjekter" tag="button" class="btn hk-btn">Se innovasjonsidéer</router-link>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="card-deck">
+              <div class="card w-75">
+                <div class="card-body">
+                  <h5 class="card-title">Smart City</h5>
+                  <p class="card-text">Smart City, eller smarte byer, er et begrep som brukes over hele verden og som forklarer hvordan byer og bygder skal utvikles til å bli bærekraftige og moderne samfunn. En smart by tar utgangspunkt i innbyggernes behov og tar i bruk ny teknologi for å gjøre byen til et bedre sted å leve, bo og arbeide...</p>
+                  <router-link to="/om-oss" tag="button" class="btn hk-btn btn-lg">Mer om Smart City</router-link>
+                </div>
+              </div>
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Hva er en innovasjonside?</h5>
+                <p class="card-text">Med en innovasjonside menes forslag til endrede arbeidsmetoder, innføring av ny teknologi eller nye systemer som vil oppfylle minst en av følgende punkter</p>
+                <ol>
+                    <li>Bedre kvalitet på tjenesten</li>
+                    <li>bidra til en mer effektiv arbeidshverdag</li>
+                    <li>Gi innbyggerne bedre tjenester og/eller miljø</li>
+                  </ol>
+                  <router-link v-if="isLoggedIn" to="/ny-idé" tag="button" class="btn hk-btn btn-lg">Send din Idé</router-link>
                   <b-button v-if="!isLoggedIn" @click="show_dialog = !show_dialog" class="btn hk-btn btn-lg">Logg inn for å sende idé</b-button>
               </div>
-              <div class="col-lg-3 order-2 mb-3">
-                  <h1 class="display-4">Prosjekter</h1>
-                  <p class="lead">Et Smart City Halden prosjekt utpeker seg ved at (1) prosjektet er bærekraftig på både kort og lang sikt, (2) det utføres i samarbeid med flere ulike samfunnsaktører og (3) det tar i bruk teknologi på en innovativ måte.</p>
-                  <router-link to="/prosjekter" tag="button" class="btn hk-btn btn-lg">Se prosjekter</router-link>
+            </div>
+            <div class="card w-75">
+              <div class="card-body">
+                <h5 class="card-title">Hva er et innovasjonsprosjekt?</h5>
+                <p class="card-text">Et prosjekt som setter en innovasjonside ut i livet. Når innovasjonsprosjektet er iverksatt vil dette gi en nytteverdi for ansatte og/eller innbyggere. I et prosjekt definerer vi mål for hva vi vil oppnå og arbeider etter en plan for å nå målet.</p>
+                <router-link to="/prosjekter" tag="button" class="btn hk-btn btn-lg">Se innovasjonsidéer</router-link>
               </div>
+            </div>
+          </div> -->
+        </div>
+
+      <!-- <div class="logo">
+        <div class="carousel-inner d-none d-xl-block pt-4">
+          <div class="carousel-item img-fluid carousel-image-1 active">
+            <img src="../assets/hk-design.png" alt="" class="img-fluid">
           </div>
-      </div>
+        </div>
+      </div> -->
+
     </section>
 
       <testDialog :show="show_dialog" ></testDialog> 
 
 
-    <section id="logo">
+    <!-- <section id="logo">
       <div class="carousel-inner d-none d-xl-block pt-4">
           <div class="carousel-item img-fluid carousel-image-1 active">
             <img src="../assets/hk-design.png" alt="" class="img-fluid">
           </div>
       </div>
-    </section>
+    </section> -->
 
   </div>
 </template>

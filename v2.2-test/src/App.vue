@@ -30,10 +30,12 @@
 
   <testDialog :show="show_dialog" :tabIndex="tab"></testDialog> 
   
-  
-    <div class="main-view bg-light">
-    <router-view/>
-  </div>
+    <main>
+      <div class="main-view bg-light">
+        <router-view/>
+      </div>
+    </main>
+
   </div>
 </template>
 

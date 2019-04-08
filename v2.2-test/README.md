@@ -17,8 +17,8 @@ npm run build
 - [ ] Legge til feilmeldinger / suksessmeldinger på:
     - [ ] Sukess: Innlogging / utlogging
         - [ ] Feil: Innlogging / utlogging
-    - [ ] Sukess: Registrering
-        - [ ] Feil: Registrering
+    - [X] Sukess: Registrering
+        - [X] Feil: Registrering
     - [X] Sukess: Sendt idé
         - [ ] Feilmelding: sendt idé
     - [X] Suksess: Endre personopplysninger

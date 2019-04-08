@@ -7,6 +7,7 @@
           <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
         </div>
       </div>
+      <app-feil v-if="feil" :text="feil.message"></app-feil>
 
       <h1 class="text-center">Send oss din idé!</h1>
     <b-form @submit.prevent="onCreateProject">
@@ -40,7 +41,9 @@
       </b-form-group>
 
       <b-form-group id="exampleInputGroup2" label="Forklar din idé:" label-for="exampleInput2">
+
         <!-- FJERN KOMMENTAREN TIL b-form-textarea FOR Å FÅ TILBAKE ET RENT TEKST INPUT -->
+
           <!-- <b-form-textarea
             id="textarea"
             v-model="content"
@@ -48,12 +51,12 @@
             rows="3"
             max-rows="6"
         /> -->
-        <vue-editor class="bg-white" v-model="content" :editorToolbar="customToolbar"></vue-editor> <!-- FJERN DENNE LINJEN FOR Å BLI HTML KODE I TEKSTEN -->
+        <vue-editor class="bg-white" v-model="content" :editorToolbar="customToolbar"></vue-editor> <!-- FJERN DENNE LINJEN FOR Å BLI KVITT HTML KODE I TEKSTEN -->
 
       </b-form-group>
-
-      <b-button type="submit" class="mb-2 mr-2 hk-btn">Registrer idé</b-button>
-      <b-button @click="reset" variant="danger" id="resetBtn" class="mb-2">Reset</b-button>
+      <b-button @click="reset" variant="danger" id="resetBtn" class="mb-2">Nullstill skjema</b-button>
+      <b-button type="submit" class="mb-2 ml-2 hk-btn" v-if="!takk">Registrer idé</b-button>
+      <button v-if="suksess" type="submit" class="btn hk-btn btn-block" disabled><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span></button>
     </b-form>
          
 
@@ -76,6 +79,7 @@ import { VueEditor } from 'vue2-editor'
           slug: null,
           imageUrl: null,
           takk: null,
+          feil: null,
           customToolbar: [
             [{ header: [false, 1, 2, 3, 4, 5, 6] }],
             ["bold", "italic", "underline", "strike"], // toggled buttons
@@ -99,7 +103,7 @@ import { VueEditor } from 'vue2-editor'
       
         async onCreateProject(){
             if(this.title === null && this.content === null){
-                return
+                this.feil = {message: 'Tittel eller forklaring kan ikke være tomt.'}
             }
             this.slug = slugify(this.title, {
                 replacement: '-',
@@ -118,14 +122,14 @@ import { VueEditor } from 'vue2-editor'
               this.createProject(projectData)
             setTimeout(() => {
               this.$router.push('/')
-            }, 3000)
+            }, 4000)
             
         },
         onFilePicked(event){
             const files = event.target.files
             let filename = files[0].name
             if (filename.lastIndexOf('.') <= 0) {
-            return alert('Please add a valid file!')
+            this.feil = {message: 'Filen er ikke gyldig'}
             }
             const fileReader = new FileReader()
             fileReader.addEventListener('load', () => {

@@ -13,8 +13,8 @@
             <p class="mb-0">{{project.content}}</p>
             <p><small class="text-muted">{{project.date}}</small></p>
             <div class="btn-group pt-2" role="group" aria-label="Basic example">
-                <button type="button" class="btn hk-outline-btn">Les mer</button>
-                <button type="button" class="btn btn-outline-danger" @click="slettProsjekt(project, index)">Slett</button>
+                <b-button class=" hk-outline-btn" :to="'/prosjekt/' + project.id">Les mer</b-button>
+                <button type="button" class="btn hk-outline-danger" @click="slettProsjekt(project, index)">Slett</button>
                 <button type="button" class="btn hk-outline-btn" @click="oppdaterProsjekt(project, index, 'produksjon')">Produksjon</button>
             </div>
             <div class="btn-group pt-2" role="group">
