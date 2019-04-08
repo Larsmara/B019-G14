@@ -12,6 +12,7 @@ import AdminInterne from '../components/Admin/Interne.vue'
 import AdminEksterne from '../components/Admin/Eksterne.vue'
 import AdminProduksjon from '../components/Admin/Produksjon.vue'
 import AdminUtvalgte from '../components/Admin/Utvalgte.vue'
+import AdminBrukere from '../components/Admin/Brukere.vue'
 
 import UtvalgteProsjekter from '../components/Prosjekt/ProsjektUtv.vue'
 import SeProsjekt from '../components/Prosjekt/SeProsjekt.vue'
@@ -124,6 +125,11 @@ export default new Router({
         path: 'utvalgte',
         name: 'dashUtvalgte',
         component: AdminUtvalgte
+      },
+      {
+        path: 'brukere',
+        name: 'brukere',
+        component: AdminBrukere
       }]
     },
   ]

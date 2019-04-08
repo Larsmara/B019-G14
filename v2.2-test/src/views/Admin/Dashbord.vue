@@ -40,6 +40,13 @@
               <span class="ml-auto dash-antall hk-blue px-2">{{utvalgte}}</span>
             </router-link>
           </li>
+          <li class="nav-item">
+            <router-link class="nav-link d-flex" to="/admin/dashbord/brukere">
+              <span data-feather="bar-chart-2"></span>
+              Brukere
+              <span class="ml-auto dash-antall hk-blue px-2">{{brukere}}</span>
+            </router-link>
+          </li>
         </ul> 
       </div>
     </nav>
@@ -57,6 +64,11 @@
         <i class="fab-action-button__icon"></i>
     </span>
   <ul class="fab-buttons">
+    <li class="fab-buttons__item">
+      <a @click="link('brukere')" class="fab-buttons__link" data-tooltip="Utvalgt">
+        <i class="icon-material icon-material_gp"></i>
+      </a>
+    </li>
       <li class="fab-buttons__item">
       <a @click="link('utvalgte')" class="fab-buttons__link" data-tooltip="Utvalgt">
         <i class="icon-material icon-material_gp"></i>
@@ -98,7 +110,8 @@ export default {
           eksterne: null,
           produksjon: null,
           utvalgte: null,
-          hjem: null
+          hjem: null,
+          brukere: null,
         }
     },
     methods: {
@@ -114,32 +127,32 @@ export default {
 
       firebase.firestore().collection('projects').where('kategori', '==', 'internt').orderBy('date')
       .onSnapshot(snapshot => {
-        console.log(snapshot.size);
         this.interne = snapshot.size
       })
 
       firebase.firestore().collection('projects').where('kategori', '==', 'eksternt').orderBy('date')
       .onSnapshot(snapshot => {
-        console.log(snapshot.size);
         this.eksterne = snapshot.size
       })
 
       firebase.firestore().collection('projects').where('kategori', '==', 'produksjon').orderBy('date')
       .onSnapshot(snapshot => {
-        console.log(snapshot.size);
         this.produksjon = snapshot.size
       })
 
       firebase.firestore().collection('projects').where('kategori', '==', 'utvalgt').orderBy('date')
       .onSnapshot(snapshot => {
-        console.log(snapshot.size);
         this.utvalgte = snapshot.size
       })
       
       firebase.firestore().collection('projects').where('kategori', '==', null).orderBy('date')
       .onSnapshot(snapshot => {
-        console.log(snapshot.size);
         this.hjem = snapshot.size
+      })
+
+      firebase.firestore().collection('users')
+      .onSnapshot(snapshot => {
+        this.brukere = snapshot.size
       })
     },
     destroyed() {
