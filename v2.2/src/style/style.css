@@ -71,11 +71,11 @@ body{
 }
 
 .about{
-    height: 100vh;
+    height: calc(100vh - 56px);
 }
 
 .new-idea{
-    height: 100vh;
+    height: calc(100vh - 56px);
 }
 
 .home-box{

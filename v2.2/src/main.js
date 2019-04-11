@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
+import '@/firebase'
 import * as firebase from 'firebase'
 import router from './router/router'
 import {store} from './store'
@@ -20,15 +21,8 @@ new Vue({
   store,
   render: h => h(App),
   created(){
-    firebase.initializeApp({
-      apiKey: "AIzaSyCQSTFAbaVWVBwe8oUeuWPFQ9EmV1pF_0E",
-      authDomain: "bachelor-824d5.firebaseapp.com",
-      databaseURL: "https://bachelor-824d5.firebaseio.com",
-      projectId: "bachelor-824d5",
-      storageBucket: "bachelor-824d5.appspot.com",
-      messagingSenderId: "896918903719"
-    })
     firebase.auth().onAuthStateChanged((user) => {
+      console.log(user.uid)
       if(user){       
         this.$store.dispatch('autoSignIn', user)
         this.$store.dispatch('fetchUserData')

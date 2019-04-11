@@ -1,0 +1,31 @@
+{
+  "name": "vue-bootstrap",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "bootstrap-vue": "^2.0.0-rc.15",
+    "firebase": "^5.9.1",
+    "froala-editor": "^2.9.3",
+    "moment": "^2.24.0",
+    "node-sass": "^4.11.0",
+    "sass": "^1.17.3",
+    "sass-loader": "^7.1.0",
+    "slugify": "^1.3.4",
+    "vue": "^2.6.6",
+    "vue-froala-wysiwyg": "^2.9.3",
+    "vue-router": "^3.0.1",
+    "vue2-editor": "^2.6.6",
+    "vuex": "^3.0.1",
+    "vuexfire": "^3.0.0-alpha.15"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.5.0",
+    "@vue/cli-service": "^3.5.0",
+    "vue-template-compiler": "^2.5.21"
+  }
+}
