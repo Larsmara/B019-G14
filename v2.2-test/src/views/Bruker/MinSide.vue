@@ -17,15 +17,17 @@
             </div>
             <div class="col-xl-6 col-lg-8 col-md-12">
                 <div class="container">
-                <b-media vertical-align="center" class="border p-3 my-3 shadow-sm" v-for="project in prosjekter.slice((currentPage-1)*perPage, (currentPage-1)*perPage+4)" :key="project.id">
+                <b-media vertical-align="center" class="border p-3 my-3 shadow-sm d-flex" v-for="project in prosjekter.slice((currentPage-1)*perPage, (currentPage-1)*perPage+4)" :key="project.id">
                     <img v-if="!project.data.imageUrl" src="../../assets/idea2.jpg" slot="aside" blank blank-color="#ccc" width="80" height="80" alt="placeholder" />
                     <img v-else :src="project.data.imageUrl" slot="aside" blank blank-color="#ccc" width="80" height="80" alt="placeholder" />
 
                     <h5 class="mt-0 mb-1">{{project.data.title}}</h5>
                     <p class="mb-0">{{project.data.content}}</p>
                     <p><small class="text-muted">{{moment(project.data.date).format('lll')}}</small></p>
-                    <div class="mt-1">
+                    <div class="mt-1 d-flex">
                         <router-link class="btn hk-btn mt-auto" router :to="'/prosjekt/' + project.id">Les mer</router-link>
+
+                        <span v-if="project.data.kategori == 'produksjon'" class="ml-auto">{{project.data.kategori}}</span>
                     </div>
                 </b-media>
                 </div>
@@ -196,7 +198,7 @@ export default {
       var element = document.getElementById("minSide");
       element.classList.add("active", "hk-nav-active");
 
-      firebase.firestore().collection('projects').where('creatorId', '==', firebase.auth().currentUser.uid).orderBy('date')
+      firebase.firestore().collection('projects').where('creatorId', '==', firebase.auth().currentUser.uid).orderBy('date', 'desc')
         .onSnapshot(snapshot => {
             snapshot.forEach(doc => {
                 this.prosjekter.push({

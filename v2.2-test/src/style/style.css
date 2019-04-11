@@ -91,9 +91,6 @@ body{
     height: calc(100vh - 56px);
 }
 
-.new-idea{
-    height: calc(100vh - 56px);
-}
 
 .main-view{
   margin-top: 56px;
@@ -354,3 +351,7 @@ body{
     }
 
  }
+
+
+
+ 

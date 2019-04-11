@@ -27,32 +27,35 @@
         <b-tab title="Registrer deg" class="pt-2">
           <form @submit.prevent="onRegister(user)">
             <div class="form-group">
-              <label>Epost</label>
+              <label>* Epost</label>
               <input type="email" class="form-control" v-model="user.email"  placeholder="Epost" required>
             </div>
             <div class="form-group">
-              <label>Fornavn</label>
+              <label>* Fornavn</label>
               <input type="text" class="form-control" v-model="user.fnavn"  aria-describedby="fnavnHelp" placeholder="Fornavn" required>
             </div>
             <div class="form-group">
-              <label>Etternavn</label>
+              <label>* Etternavn</label>
               <input type="text" class="form-control" v-model="user.enavn" aria-describedby="enavnHelp" placeholder="Etternavn" required>
             </div>
             <div class="form-group">
-              <label>Telefon</label>
+              <label>* Telefon</label>
               <input type="text" class="form-control" v-model="user.telefon" aria-describedby="telefonHelp" placeholder="Telefon" required>
             </div>
             <div class="form-group">
-              <label>Password</label>
+              <label>* Password</label>
               <input type="password" v-model="user.password" class="form-control" placeholder="Password" required>
             </div>
             <div class="form-group">
-              <label>Verifiser Passord</label>
+              <label>* Verifiser Passord</label>
               <input type="password" v-model="user.password2" class="form-control" placeholder="Verifiser Passord" required>
             </div>
             <div class="form-group form-check">
               <input type="checkbox" class="form-check-input" required>
-              <label class="form-check-label"><small>Ved og godta, godtar du Halden Kommunes <a class="text-primary" href="https://www.halden.kommune.no/selvbetjening_og_skjemaer/Sider/Personvernerkl%C3%A6ring.aspx" target="_blank">personverkerklæring</a> </small></label>
+              <label class="form-check-label"><small>Jeg godtar at Halden Kommune lagrer mine opplysninger. <a class="text-primary" href="https://www.halden.kommune.no/selvbetjening_og_skjemaer/Sider/Personvernerkl%C3%A6ring.aspx" target="_blank">personverkerklæring</a> </small></label>
+            </div>
+            <div class="form-group">
+              <small>Alle punktene med * må fylles ut</small>
             </div>
             <button v-if="!suksess" type="submit" class="btn hk-btn btn-block">Registrer deg</button>
             <button v-if="suksess" type="submit" class="btn hk-btn btn-block" disabled><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span></button>

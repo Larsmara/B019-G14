@@ -14,7 +14,7 @@
           <li class="nav-item">
             <router-link class="nav-link d-flex" to="/admin/dashbord/interne">
               <span data-feather="file"></span>
-              Interne
+              Interne Felles
               <span class="ml-auto dash-antall hk-blue px-2">{{interne}}</span>
             </router-link>
             
