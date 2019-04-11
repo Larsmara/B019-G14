@@ -27,7 +27,7 @@
         <b-tab title="Registrer deg" class="pt-2">
           <form @submit.prevent="register">
             <div class="form-group">
-              <label for="exampleInputEmail3">Epost</label>
+              <label for="exampleInputEmail3">Epost *</label>
               <input type="email" class="form-control" v-model="email" id="exampleInputEmail3"  placeholder="Epost" required>
             </div>
             <div class="form-group">
