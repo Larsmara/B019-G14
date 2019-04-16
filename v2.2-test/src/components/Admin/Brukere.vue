@@ -22,7 +22,7 @@
                 <td>{{bruker.userId}}</td>
                 <td>{{bruker.isAdmin}}</td>
                 <td>{{moment(bruker.joined).format('lll')}}</td>
-                <td><button class="hk-btn-red" @click="slett(bruker)">Slett</button></td>
+                <td><button class="hk-btn-red" @click="slett(bruker, index)">Slett</button></td>
             </tr>
         </tbody>
     </table>
@@ -50,9 +50,16 @@ export default {
         })
     },
     methods: {
-        slett(bruker){
-            console.log(bruker);
-            
+        slett(bruker, index){
+
+            firebase.auth()
+            /* firebase.firestore().collection('users').doc(bruker.userId).delete()
+            .then(() => {
+                console.log('Slettet bruker', bruker); 
+                this.brukere.splice(index, 1)             
+            }).catch(error => {
+                console.log(error);       
+            }) */
         }
     }
 }

@@ -12,12 +12,18 @@
             </router-link>
           </li>
           <li class="nav-item">
+            <router-link class="nav-link d-flex" to="/admin/dashbord/synlige">
+              <span data-feather="file"></span>
+              Prosjekter som er synlige
+              <span class="ml-auto dash-antall hk-blue px-2">{{synlig}}</span>
+            </router-link>
+          </li>
+          <li class="nav-item">
             <router-link class="nav-link d-flex" to="/admin/dashbord/interne">
               <span data-feather="file"></span>
               Interne Felles
               <span class="ml-auto dash-antall hk-blue px-2">{{interne}}</span>
             </router-link>
-            
           </li>
           <li class="nav-item">
             <router-link class="nav-link d-flex" to="/admin/dashbord/eksterne">
@@ -38,6 +44,27 @@
               <span data-feather="bar-chart-2"></span>
               Utvalgte
               <span class="ml-auto dash-antall hk-blue px-2">{{utvalgte}}</span>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link d-flex" to="/admin/dashbord/skole">
+              <span data-feather="bar-chart-2"></span>
+              Skole
+              <span class="ml-auto dash-antall hk-blue px-2">{{skole}}</span>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link d-flex" to="/admin/dashbord/teknisk">
+              <span data-feather="bar-chart-2"></span>
+              Teknisk
+              <span class="ml-auto dash-antall hk-blue px-2">{{teknisk}}</span>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link d-flex" to="/admin/dashbord/helse">
+              <span data-feather="bar-chart-2"></span>
+              Helse
+              <span class="ml-auto dash-antall hk-blue px-2">{{helse}}</span>
             </router-link>
           </li>
           <li class="nav-item">
@@ -65,7 +92,7 @@
     </span>
   <ul class="fab-buttons">
     <li class="fab-buttons__item">
-      <a @click="link('brukere')" class="fab-buttons__link" data-tooltip="Utvalgt">
+      <a @click="link('brukere')" class="fab-buttons__link" data-tooltip="Brukere">
         <i class="icon-material icon-material_gp"></i>
       </a>
     </li>
@@ -111,6 +138,10 @@ export default {
           produksjon: null,
           utvalgte: null,
           hjem: null,
+          skole: null,
+          teknisk: null,
+          helse: null,
+          synlig: null,
           brukere: null,
         }
     },
@@ -150,10 +181,31 @@ export default {
         this.hjem = snapshot.size
       })
 
+      firebase.firestore().collection('projects').where('kategori', '==', 'skole').orderBy('date')
+      .onSnapshot(snapshot => {
+        this.skole = snapshot.size
+      })
+
+      firebase.firestore().collection('projects').where('kategori', '==', 'teknisk').orderBy('date')
+      .onSnapshot(snapshot => {
+        this.teknisk = snapshot.size
+      })
+
+      firebase.firestore().collection('projects').where('kategori', '==', 'helse').orderBy('date')
+      .onSnapshot(snapshot => {
+        this.helse = snapshot.size
+      })
+
       firebase.firestore().collection('users')
       .onSnapshot(snapshot => {
         this.brukere = snapshot.size
       })
+
+      firebase.firestore().collection('projects').where('synlig', '==', true).orderBy('date')
+      .onSnapshot(snapshot => {
+        this.synlig = snapshot.size
+      })
+      
     },
     destroyed() {
         var element = document.getElementById("dashbord");

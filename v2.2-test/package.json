@@ -17,6 +17,7 @@
     "sass-loader": "^7.1.0",
     "slugify": "^1.3.4",
     "vue": "^2.6.6",
+    "vue-bootstrap-toasts": "^1.0.4",
     "vue-froala-wysiwyg": "^2.9.3",
     "vue-router": "^3.0.1",
     "vue2-editor": "^2.6.6",

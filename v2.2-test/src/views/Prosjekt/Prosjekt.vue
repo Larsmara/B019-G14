@@ -69,7 +69,7 @@ export default {
       var element = document.getElementById("prosjekter");
       element.classList.add("active", "hk-nav-active");
 
-      firebase.firestore().collection('projects').where('kategori', '==', 'produksjon').orderBy('date', 'desc')
+      firebase.firestore().collection('projects').where('synlig', '==', true).orderBy('date', 'desc')
         .onSnapshot(snapshot => {
             snapshot.docChanges().forEach(change => {
                 if(change.type == 'added'){

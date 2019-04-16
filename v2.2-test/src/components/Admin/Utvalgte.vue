@@ -19,7 +19,12 @@
             </div>
             <div class="btn-group pt-2" role="group">
                 <button type="button" class="btn hk-outline-btn" @click="oppdaterProsjekt(project, index, 'eksternt')">Eksterne</button>
-                <button type="button" class="btn hk-outline-btn" @click="oppdaterProsjekt(project, index, 'utvalgt')">Utvalgt</button>
+                <button type="button" class="btn hk-outline-btn" @click="oppdaterProsjekt(project, index, 'internt')">Interne</button>
+            </div>
+            <div class="btn-group pt-2" role="group">
+                <button type="button" class="btn hk-outline-btn" @click="oppdaterProsjekt(project, index, 'skole')">Skole</button>
+                <button type="button" class="btn hk-outline-btn" @click="oppdaterProsjekt(project, index, 'teknisk')">Teknisk</button>
+                <button type="button" class="btn hk-outline-btn" @click="oppdaterProsjekt(project, index, 'helse')">Helse</button>
             </div>
         </b-media>
       </div>

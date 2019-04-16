@@ -1,5 +1,8 @@
 <template>
     <div>
+
+        <Toasts></Toasts>
+
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h1 class="h2">Dashboard - Nye innkommende forslag</h1>
         </div>
@@ -22,8 +25,16 @@
                 <button type="button" class="btn hk-outline-btn" @click="oppdaterProsjekt(project, index, 'eksternt')">Eksterne</button>
                 <button type="button" class="btn hk-outline-btn" @click="oppdaterProsjekt(project, index, 'utvalgt')">Utvalgt</button>
             </div>
+            <div class="btn-group pt-2" role="group">
+                <button type="button" class="btn hk-outline-btn" @click="oppdaterProsjekt(project, index, 'skole')">Skole</button>
+                <button type="button" class="btn hk-outline-btn" @click="oppdaterProsjekt(project, index, 'teknisk')">Teknisk</button>
+                <button type="button" class="btn hk-outline-btn" @click="oppdaterProsjekt(project, index, 'helse')">Helse</button>
+            </div>
         </b-media>
       </div>
+
+
+
     </div>
 </template>
 
@@ -73,14 +84,17 @@ export default {
                 kategori: type
             }).then(() => {
                 console.log('oppdatert til: ' + type + ' ' + project.title) 
+                this.$toast.success('Flyttet ' + '"' + project.title + '"' + ' til ' + type)
             }).catch(error => {
                 console.log(error)
+                this.$toast.error('Kunne ikke oppdatere prosjektet. Refresh siden og prøv på nytt.')
             })
             
         },
         slettProsjekt(project, index){
             this.prosjekt.splice(index, 1)
             firebase.firestore().collection('projects').doc(project.id).delete()
+            this.$toast.warning('Prosjektet har blitt slettet.')
         }
     },
 }

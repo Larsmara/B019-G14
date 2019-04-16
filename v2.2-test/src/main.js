@@ -11,6 +11,7 @@ import './style/style.css'
 import './auth'
 import 'moment'
 import moment from 'moment';
+import VueBootstrapToasts from 'vue-bootstrap-toasts'
 
 /* Komponenter */
 import feil from './components/shared/Feil.vue'
@@ -23,6 +24,7 @@ moment.locale('nb')
 Vue.config.productionTip = false
 
 Vue.use(BootstrapVue)
+Vue.use(VueBootstrapToasts)
 
 new Vue({
   router,

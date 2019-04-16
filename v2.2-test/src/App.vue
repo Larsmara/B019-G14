@@ -36,6 +36,13 @@
       </div>
     </main>
 
+    <footer class="footer border-top">
+      <div class="container">
+        <span class="text-muted">&copy; Halden kommune</span>
+        <p class="text-muted">Laget av B019-G14. Lars-Martin Antonsen og Kristine Hemstad</p>
+      </div>
+    </footer>
+
   </div>
 </template>
 

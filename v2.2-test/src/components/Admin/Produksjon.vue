@@ -9,17 +9,23 @@
             <img v-if="!project.imageUrl" src="../../assets/idea2.jpg" slot="aside" blank blank-color="#ccc" width="80" height="80" alt="placeholder" class="d-none d-sm-block" />
             <img v-else :src="project.imageUrl" slot="aside" blank blank-color="#ccc" width="80" height="80" alt="placeholder" class="d-none d-sm-block"/>
 
-            <h5 class="mt-0 mb-1">{{project.title}}</h5>
+            <h5 class="mt-0 mb-1">{{project.title}} - {{project.id}}</h5>
             <p class="mb-0">{{project.content}}</p>
             <p><small class="text-muted">{{project.date}}</small></p>
             <div class="btn-group pt-2" role="group" aria-label="Basic example">
                 <b-button class=" hk-outline-btn" :to="'/prosjekt/' + project.id">Les mer</b-button>
                 <button type="button" class="btn hk-outline-danger" @click="slettProsjekt(project, index)">Slett</button>
-                <button type="button" class="btn hk-outline-btn" @click="oppdaterProsjekt(project, index, 'produksjon')">Produksjon</button>
+                <button type="button" class="btn hk-outline-btn" @click="oppdaterProsjekt(project, index, 'produksjon', true)">Synlig</button>
             </div>
             <div class="btn-group pt-2" role="group">
                 <button type="button" class="btn hk-outline-btn" @click="oppdaterProsjekt(project, index, 'eksternt')">Eksterne</button>
                 <button type="button" class="btn hk-outline-btn" @click="oppdaterProsjekt(project, index, 'utvalgt')">Utvalgt</button>
+                <button type="button" class="btn hk-outline-btn" @click="oppdaterProsjekt(project, index, 'utvalgt')">Vis prosjekt</button>
+            </div>
+            <div class="btn-group pt-2" role="group">
+                <button type="button" class="btn hk-outline-btn" @click="oppdaterProsjekt(project, index, 'skole')">Skole</button>
+                <button type="button" class="btn hk-outline-btn" @click="oppdaterProsjekt(project, index, 'teknisk')">Teknisk</button>
+                <button type="button" class="btn hk-outline-btn" @click="oppdaterProsjekt(project, index, 'helse')">Helse</button>
             </div>
         </b-media>
       </div>
@@ -59,10 +65,11 @@ export default {
  
     },
     methods: {
-        oppdaterProsjekt(project, index, type){
+        oppdaterProsjekt(project, index, type, synlig){
             this.prosjekt.splice(index, 1)             
             firebase.firestore().collection('projects').doc(project.id).update({
-                kategori: type
+                kategori: type,
+                synlig: synlig,
             }).then(() => {
                 console.log('oppdatert til: ' + type + ' ' + project.title) 
             }).catch(error => {

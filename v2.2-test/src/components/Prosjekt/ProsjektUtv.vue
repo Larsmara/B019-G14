@@ -13,8 +13,6 @@
         <div class="row">
             <div class="col">
                 <div class="overflow-auto">
-
-
                     <section id="prosjekter" class="my-5 text-center">
                         <div class="container">
                             <div class="row">

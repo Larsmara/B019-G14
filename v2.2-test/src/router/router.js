@@ -13,6 +13,10 @@ import AdminEksterne from '../components/Admin/Eksterne.vue'
 import AdminProduksjon from '../components/Admin/Produksjon.vue'
 import AdminUtvalgte from '../components/Admin/Utvalgte.vue'
 import AdminBrukere from '../components/Admin/Brukere.vue'
+import AdminSkole from '../components/Admin/Skole.vue'
+import AdminTeknisk from '../components/Admin/Teknisk.vue'
+import AdminHelse from '../components/Admin/Helse.vue'
+import AdminSynlig from '../components/Admin/Synlige.vue'
 
 import UtvalgteProsjekter from '../components/Prosjekt/ProsjektUtv.vue'
 import SeProsjekt from '../components/Prosjekt/SeProsjekt.vue'
@@ -125,6 +129,26 @@ export default new Router({
         path: 'utvalgte',
         name: 'dashUtvalgte',
         component: AdminUtvalgte
+      },
+      {
+        path: 'skole',
+        name: 'dashSkole',
+        component: AdminSkole
+      },
+      {
+        path: 'teknisk',
+        name: 'dashTeknisk',
+        component: AdminTeknisk
+      },
+      {
+        path: 'helse',
+        name: 'dashHelse',
+        component: AdminHelse
+      },
+      {
+        path: 'synlige',
+        name: 'dashSynlige',
+        component: AdminSynlig
       },
       {
         path: 'brukere',
