@@ -8,6 +8,7 @@ package-lock.json
 firebase.js
 database.rules.json
 firestore.rules
+storeage.rules
 
 # local env files
 .env.local
