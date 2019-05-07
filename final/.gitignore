@@ -12,6 +12,7 @@ firebase-debug.log*
 firebase.js
 database.rules.json
 firestore.rules
+storage.rules
 
 # Firebase config
 
