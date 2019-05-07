@@ -36,6 +36,7 @@
                 align="center"
                 :total-rows="prosjekter.length"
                 :per-page="perPage"
+                v-if="prosjekter.length < 0"
                 /> 
             </div>
         </div>
