@@ -1,5 +1,7 @@
 <template>
     <div>
+        <Toasts></Toasts>
+        
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Dashboard - Prosjekter i produksjon</h1>
       </div>
@@ -72,6 +74,7 @@ export default {
                 synlig: synlig,
             }).then(() => {
                 console.log('oppdatert til: ' + type + ' ' + project.title) 
+                this.$toast.success('Flyttet ' + '"' + project.title + '"' + ' til ' + type)
             }).catch(error => {
                 console.log(error)
             })
@@ -79,6 +82,7 @@ export default {
         },
         slettProsjekt(project, index){
             this.prosjekt.splice(index, 1)
+            this.$toast.warning('Prosjektet har blitt slettet.')
             firebase.firestore().collection('projects').doc(project.id).delete()
         }
     },

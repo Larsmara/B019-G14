@@ -42,6 +42,7 @@
     </div>
 
     <!-- MODALS -->
+    <!-- ENDRE EPOST -->
     <b-modal centered hide-footer id="modal-multi-1" ref="my-modal1" title="Endre epost adresse" no-stacking>
         <app-feil v-if="feil" :text="feil.message"></app-feil>
         <app-suksess v-if="suksess" :text="suksess.message"></app-suksess>
@@ -61,6 +62,7 @@
             </div>
     </b-modal>
 
+    <!-- TILBAKESTILL PASSORD -->
     <b-modal centered hide-footer id="modal-multi-2" ref="my-modal2" title="Glemt passord?">
         <app-feil v-if="feil" :text="feil.message"></app-feil>
         <app-suksess v-if="suksess" :text="suksess.message"></app-suksess>
@@ -73,6 +75,7 @@
         </form>
     </b-modal>
 
+    <!-- ENDRE TELEFONNUMMER -->
     <b-modal centered hide-footer id="modal3" ref="my-modal3" title="Endre telefonnummer">
         <app-feil v-if="feil" :text="feil.message"></app-feil>
         <app-suksess v-if="suksess" :text="suksess.message"></app-suksess>

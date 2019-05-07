@@ -7,7 +7,7 @@
               <div class="card h-100 shadow-sm home-section-box">
                 <div class="card-body">
                   <h3 class="card-title">Smart City</h3>
-                  <p class="card-text">Smart City, eller smarte byer, er et begrep som brukes over hele verden og som forklarer hvordan byer og bygder skal utvikles til å bli bærekraftige og moderne samfunn. En smart by tar utgangspunkt i innbyggernes behov og tar i bruk ny teknologi for å gjøre byen til et bedre sted å leve, bo og arbeide...</p>
+                  <p class="card-text">Smart City, eller smarte byer, er et begrep som brukes over hele verden og som forklarer hvordan byer og bygder skal utvikles til å bli bærekraftige og moderne samfunn. En smart by tar utgangspunkt i innbyggernes behov og tar i bruk ny teknologi for å gjøre byen til et bedre sted å leve, bo og arbeide.</p>
                   
                 </div>
                 <router-link to="/om-oss" tag="button" class="btn hk-btn">Mer om Smart City</router-link>
@@ -16,11 +16,11 @@
             <div class="col-lg-4 order-1 mb-3">
               <div class="card h-100 shadow-sm home-section-box">
                 <div class="card-body">
-                  <h3 class="card-title">Hva er en innovasjonside?</h3>
+                  <h3 class="card-title">Har du en Innovasjonsidè?</h3>
                   <p class="card-text">Med en innovasjonside menes forslag til endrede arbeidsmetoder, innføring av ny teknologi eller nye systemer som vil oppfylle minst en av følgende punkter</p>
                   <ol>
                     <li>Bedre kvalitet på tjenesten</li>
-                    <li>bidra til en mer effektiv arbeidshverdag</li>
+                    <li>Bidra til en mer effektiv arbeidshverdag</li>
                     <li>Gi innbyggerne bedre tjenester og/eller miljø</li>
                   </ol>
                   
@@ -33,10 +33,10 @@
               <div class="card h-100 shadow-sm home-section-box">
                 <div class="card-body">
                   <h3 class="card-title">Hva er et innovasjonsprosjekt?</h3>
-                  <p class="card-text">Et prosjekt som setter en innovasjonside ut i livet. Når innovasjonsprosjektet er iverksatt vil dette gi en nytteverdi for ansatte og/eller innbyggere. I et prosjekt definerer vi mål for hva vi vil oppnå og arbeider etter en plan for å nå målet.</p>
+                  <p class="card-text">Et prosjekt som setter en Innovasjonside ut i livet. Når innovasjonsprosjektet er iverksatt vil dette gi en nytteverdi for ansatte og/eller innbyggere. I et prosjekt definerer vi mål for hva vi vil oppnå og arbeider etter en plan for å nå målet.</p>
                   
                 </div>
-                <router-link to="/prosjekter" tag="button" class="btn hk-btn">Se innovasjonsidéer</router-link>
+                <router-link to="/prosjekter" tag="button" class="btn hk-btn">Se Innovasjonsprosjekter</router-link>
               </div>
             </div>
           </div>

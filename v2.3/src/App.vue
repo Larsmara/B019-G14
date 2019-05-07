@@ -20,8 +20,7 @@
         <b-navbar-nav class="ml-auto">
           <b-nav-item id="dashbord" to="/admin/dashbord/hjem" v-if="isLoggedIn && user.admin"><small id="notification">{{newProjects.length}}</small> Dashboard</b-nav-item>
           <b-nav-item id="minSide" :to="'/profil/' + user.slug " v-if="isLoggedIn && user">Min side</b-nav-item>
-          <b-nav-item v-if="!isLoggedIn" @click="show_dialog = !show_dialog">Logg Inn</b-nav-item>
-          <b-nav-item v-if="!isLoggedIn" @click="show_dialog = !show_dialog">Registrer deg</b-nav-item>
+          <b-nav-item v-if="!isLoggedIn" @click="show_dialog = !show_dialog">Logg Inn / Ny bruker</b-nav-item>
           
           <b-nav-item v-if="isLoggedIn" @click="onLogout">Logg ut</b-nav-item>
         </b-navbar-nav>
@@ -39,7 +38,7 @@
     <footer class="footer border-top">
       <div class="container">
         <span class="text-muted">&copy; Halden kommune</span>
-        <p class="text-muted">Laget av B019-G14. Lars-Martin Antonsen og Kristine Hemstad</p>
+        <p class="text-muted">Laget Lars-Martin Antonsen og Kristine Hemstad</p>
       </div>
     </footer>
 

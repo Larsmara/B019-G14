@@ -10,7 +10,7 @@
             <th scope="col">Id</th>
             <th scope="col">Admin</th>
             <th scope="col">Ble medlem</th>
-            <th scope="col">Slett</th>
+            <!-- <th scope="col">Slett</th> -->
             </tr>
         </thead>
         <tbody>
@@ -22,7 +22,7 @@
                 <td>{{bruker.userId}}</td>
                 <td>{{bruker.isAdmin}}</td>
                 <td>{{moment(bruker.joined).format('lll')}}</td>
-                <td><button class="hk-btn-red" @click="slett(bruker, index)">Slett</button></td>
+                <!-- <td><button class="hk-btn-red" @click="slett(bruker, index)">Slett</button></td> -->
             </tr>
         </tbody>
     </table>
