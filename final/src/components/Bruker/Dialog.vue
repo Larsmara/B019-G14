@@ -1,7 +1,7 @@
 <template>
 <div>
-    <b-nav-item>Åpne</b-nav-item>
-    <b-modal :visible="show" class="m-0 p-0" hide-footer centered title="Smart City" ref="myModalRef">
+    <b-nav-item v-b-modal.modal-1>Åpne</b-nav-item>
+    <b-modal id="modal-1" class="m-0 p-0" hide-footer centered title="Smart City" ref="myModalRef">
       <app-feil v-if="feil" :text="feil.message"></app-feil>
         <app-suksess v-if="suksess" :text="suksess.message"></app-suksess>
       <!-- Tabs with card integration -->

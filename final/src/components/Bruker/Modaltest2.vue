@@ -1,8 +1,8 @@
 <template>
 <div>
-    <b-button @click="showModal" class="btn hk-btn btn-block">Logg inn for å sende idé</b-button>
+    <b-button v-b-modal.modal-multi-1 class="btn hk-btn btn-block">Logg inn for å sende idé</b-button>
 
-     <b-modal centered hide-footer id="modal-multi-1" ref="my-modal" title="Endre epost adresse" no-stacking>
+     <b-modal centered hide-footer id="modal-multi-1" ref="my-modal" title="Smart City Halden" no-stacking>
         <app-feil v-if="feil" :text="feil.message"></app-feil>
         <app-suksess v-if="suksess" :text="suksess.message"></app-suksess>
 
@@ -25,7 +25,7 @@
             </div>
         </b-tab>
     <b-tab title="Ny bruker">
-       <!--  <form @submit.prevent="onRegister(user)">
+        <form @submit.prevent="onRegister(user)">
             <div class="form-group">
               <label>* Epost</label>
               <input type="email" class="form-control" v-model="user.email"  placeholder="Epost" required>
@@ -52,17 +52,17 @@
             </div>
             <div class="form-group form-check">
               <input type="checkbox" class="form-check-input" required>
-              <label class="form-check-label"><small>Jeg godtar at Halden Kommune lagrer mine opplysninger. <a class="text-primary" href="https://www.halden.kommune.no/selvbetjening_og_skjemaer/Sider/Personvernerkl%C3%A6ring.aspx" target="_blank">personverkerklæring</a> </small></label>
+              <label class="form-check-label"><small>Jeg godtar at Halden kommune lagrer mine opplysninger. <a class="text-primary" href="https://www.halden.kommune.no/selvbetjening_og_skjemaer/Sider/Personvernerkl%C3%A6ring.aspx" target="_blank">personverkerklæring</a> </small></label>
             </div>
             <div class="form-group">
               <small>Alle punktene med * må fylles ut</small>
             </div>
-            <button v-if="!suksess" type="submit" class="btn hk-btn btn-block">Registrer deg</button>
-            <button v-if="suksess" type="submit" class="btn hk-btn btn-block" disabled><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span></button>
+            <button v-if="!suksess" class="btn hk-btn btn-block">Registrer deg</button>
+            <button v-if="suksess" class="btn hk-btn btn-block" disabled><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span></button>
             <div class="knapper mt-2">
               <button class="btn btn-link" style="color: rgb(0,114,187)" @click="hideModal">Avbryt</button>
             </div>
-        </form> -->
+        </form>
     </b-tab>
 
   </b-tabs>
@@ -139,6 +139,8 @@ import firebase from '@/firebase'
         if(doc.exists){
           this.feil = {message: 'Telefon nummeret finnes fra før'}
         } else {
+          this.suksess = {message: 'Du blir nå registrert'}
+          this.feil = false
           firebase.auth().createUserWithEmailAndPassword(this.user.email, this.user.password)
           .then((doc) => {
               let id = doc.user.uid
@@ -154,7 +156,7 @@ import firebase from '@/firebase'
             })
             .then(() => {
               this.suksess = {message: 'Du blir nå registrert'}
-              setTimeout(() => (this.suksess = false, this.feil = false), 3000)
+              setTimeout(() =>  4000)
             }).catch((error) => {
               this.feil = {message: 'Det har skjedd en feil med informasjonen du har tastet inn. Vennligst prøv igjen.'}
               this.user.email = null

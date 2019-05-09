@@ -173,11 +173,15 @@ body{
  
   padding: 1px 3px;
   font-size: 10px;
-
 }
+
+
 
  @media(min-width: 998px){
     #home-section .container-fluid{
       width: 75%;
+    }
+    .model-dialog{
+      display: inline-block;
     }
  }
