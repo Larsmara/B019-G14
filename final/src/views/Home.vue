@@ -81,7 +81,7 @@ export default {
     testDialog,
     modal2
   },
-  created(){
+  mounted(){
       document.title = "Hjem"
       var element = document.getElementById("hjem");
       element.classList.add("active", "hk-nav-active");

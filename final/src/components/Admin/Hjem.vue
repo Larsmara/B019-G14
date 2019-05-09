@@ -41,7 +41,6 @@
 <script>
 import firebase from 'firebase'
 import moment from 'moment'
-import { mapState, mapActions } from 'vuex';
 
 
 export default {
@@ -49,13 +48,6 @@ export default {
         return{
             prosjekt: []
         }
-    },
-    mounted() {
-    this.init();
-    this.initAdmin();
-    },
-    computed: {
-        ...mapState('prosjekter', ['prosjekter', 'admin']),
     },
     created(){
         firebase.firestore().collection('projects').where('kategori', '==', null).orderBy('date', 'desc')
@@ -77,7 +69,6 @@ export default {
         })
     },
     methods: {
-        ...mapActions('prosjekter', ['init', 'initAdmin']),
         oppdaterProsjekt(project, index, type){
             this.prosjekt.splice(index, 1)             
             firebase.firestore().collection('projects').doc(project.id).update({

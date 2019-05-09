@@ -98,7 +98,6 @@ export default new Router({
       beforeEnter(to, from, next){
         firebase.firestore().collection('users').doc(firebase.auth().currentUser.uid).get()
         .then(doc => {
-          console.log(doc.exists)
           if(doc.data().isAdmin === true){
             next()
           } else {

@@ -38,7 +38,6 @@ const actions = {
         firebase.firestore().collection('users').doc(user.telefon).get()
       .then(doc => {
         if(doc.exists){
-          console.log('Finnes')
         } else {
           firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
           .then((doc) => {

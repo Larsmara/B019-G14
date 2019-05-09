@@ -13,11 +13,6 @@ import 'moment'
 import moment from 'moment';
 import VueBootstrapToasts from 'vue-bootstrap-toasts'
 
-/* Komponenter */
-import feil from './components/shared/Feil.vue'
-import suksess from './components/shared/Suksess.vue'
-Vue.component('app-feil', feil)
-Vue.component('app-suksess', suksess)
 
 moment.locale('nb')
 
