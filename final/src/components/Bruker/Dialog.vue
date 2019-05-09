@@ -60,7 +60,7 @@
             <button v-if="!suksess" type="submit" class="btn hk-btn btn-block">Registrer deg</button>
             <button v-if="suksess" type="submit" class="btn hk-btn btn-block" disabled><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span></button>
             <div class="knapper mt-2">
-              <button class="btn btn-link" style="color: rgb(0,114,187)">Avbryt</button>
+              <button class="btn btn-link" style="color: rgb(0,114,187)" @click="hideModal">Avbryt</button>
             </div>
           </form>
         </b-tab>
@@ -175,6 +175,9 @@ export default {
         this.$refs['my-modal'+tall].show()
         this.feil = false
         this.suksess = false
+    },
+    hideModal(){
+      this.$refs['myModalRef'].hide()
     },
     resetPassord(reset){
         firebase.auth().sendPasswordResetEmail(reset.email)

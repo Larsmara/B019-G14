@@ -11,7 +11,7 @@
                         <p class="d-flex"><i class="fas fa-envelope pt-1 pr-1"></i> {{user.email}} <button @click="showModal(1)" class="btn hk-outline-btn btn-sm ml-auto">Endre epost</button></p>
                         <p><i class="fas fa-user"></i> {{user.fnavn}} {{user.enavn}}</p>
                         <p class="d-flex"><i class="fas fa-phone pt-1 pr-1"></i> {{user.telefon}} <button  @click="showModal(3)" class="btn hk-outline-btn btn-sm ml-auto">Endre telefon</button> </p>
-                        <p class="card-text text-muted">Ble medlem: {{moment(user.joined).format('lll')}}</p>
+                        <p class="d-flex card-text text-muted">Ble medlem: {{moment(user.joined).format('lll')}} <button @click="showModal(4)" class="btn hk-outline-danger btn-sm ml-auto">Slett bruker</button></p>
                     </div>
                 </div>
             </div>
@@ -91,6 +91,36 @@
         </form>
     </b-modal>
 
+    <!-- SLETT BRUKER -->
+    <b-modal centered hide-footer id="modal-multi-4" ref="my-modal4" title="Slett brukerkonto" no-stacking>
+        <app-feil v-if="feil" :text="feil.message"></app-feil>
+        <app-suksess v-if="suksess" :text="suksess.message"></app-suksess>
+        <form>
+            <div class="form-group">
+                <label>Slett din brukerkonto</label>
+                <input type="email" v-model="bruker.email" class="form-control" placeholder="Din epost">
+            </div>
+            <div class="form-group">
+                <label>Passord <span v-b-tooltip.hover title="For å kunne slette din konto må du verifisere passordet knyttet til din epost"><i class="far fa-question-circle"></i></span></label>
+                <input type="password" v-model="bruker.password" class="form-control" placeholder="Passord">
+            </div>
+        </form>
+        <button @click="showModal(5)" class="btn hk-outline-danger btn-block">Slett</button>
+    </b-modal>
+
+    <!-- BEKREFTELSE PÅ SLETTING AV BRUKER -->
+    <b-modal centered hide-footer id="modal-multi-5" ref="my-modal5" title="Glemt passord?">
+        <app-feil v-if="feil" :text="feil.message"></app-feil>
+        <app-suksess v-if="suksess" :text="suksess.message"></app-suksess>
+        <form @submit.prevent="slettBruker(bruker)">
+            <div class="form-group">
+                <h3>Er du sikker på at du vil slette din konto hos oss?</h3>
+            </div>
+            <button type="submit" class="btn hk-btn-red btn-block">Slett</button>
+            <button class="btn hk-btn btn-block" @click="hideModal(5)">Angre</button>
+        </form>
+    </b-modal>
+
 </div>
 </template>
 
@@ -131,6 +161,11 @@ export default {
     methods: {
         showModal(tall){
             this.$refs['my-modal'+tall].show()
+            this.feil = false
+            this.suksess = false
+        },
+        hideModal(tall){
+            this.$refs['my-modal'+tall].hide()
             this.feil = false
             this.suksess = false
         },
@@ -186,7 +221,7 @@ export default {
                     telefon: tlf.telefon
                 }).then(() => {
                     this.feil = false
-                    this.suksess = {message: 'Byttet nr til: ' + tlf.telefon}
+                    
                     setTimeout(() => {
                         this.$refs['my-modal3'].hide()
                     }, 3000)
@@ -195,6 +230,37 @@ export default {
                     this.feil = error
                 })
             }
+        },
+        slettBruker(bruker){
+            console.log(this.user)
+            var user = firebase.auth().currentUser;
+            var credential = firebase.auth.EmailAuthProvider.credential(
+                bruker.email, 
+                bruker.password
+            );
+
+            user.reauthenticateAndRetrieveDataWithCredential(credential)
+            .then(function() {
+            }).then(() => {
+            firebase.auth().currentUser.delete()
+                .then(() => {
+                    this.suksess = {message: 'Du er nå slettet!'}
+                    setTimeout(() => (this.$router.push('/')), 500)
+                }).catch(error => {
+                    this.feil = {message: error.message}
+                })
+
+            }).catch(function(error) {
+                this.feil = {message: error.message}
+            });
+
+            firebase.firestore().collection('users').doc(this.user.id).delete()
+            .then(function() {
+                setTimeout(() => (this.$router.push('/')), 500)
+            }).catch(error => {
+                this.feil = error
+            })
+
         }
     },
     created(){

@@ -1,134 +1,46 @@
 <template>
-<div class="container-fluid dash-nav">
-  <div class="row">
-    <nav class="col-md-2 d-none d-lg-block bg-light sidebar">
-      <div class="sidebar-sticky pt-5">
-        <ul class="nav flex-column dash-nav">
-          <li class="nav-item">
-            <router-link class="nav-link d-flex" to="/admin/dashbord/hjem">
-              <span data-feather="home"></span>
-              Dashbord
-              <span class="ml-auto dash-antall hk-blue px-2">{{hjem}}</span>
-            </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link d-flex" to="/admin/dashbord/synlige">
-              <span data-feather="file"></span>
-              Prosjekter som er synlige
-              <span class="ml-auto dash-antall hk-blue px-2">{{synlig}}</span>
-            </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link d-flex" to="/admin/dashbord/interne">
-              <span data-feather="file"></span>
-              Interne Felles
-              <span class="ml-auto dash-antall hk-blue px-2">{{interne}}</span>
-            </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link d-flex" to="/admin/dashbord/eksterne">
-              <span data-feather="shopping-cart"></span>
-              Eksterne
-              <span class="ml-auto dash-antall hk-blue px-2">{{eksterne}}</span>
-            </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link d-flex" to="/admin/dashbord/produksjon">
-              <span data-feather="users"></span>
-              Produksjon
-              <span class="ml-auto dash-antall hk-blue px-2">{{produksjon}}</span>
-            </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link d-flex" to="/admin/dashbord/utvalgte">
-              <span data-feather="bar-chart-2"></span>
-              Utvalgte
-              <span class="ml-auto dash-antall hk-blue px-2">{{utvalgte}}</span>
-            </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link d-flex" to="/admin/dashbord/skole">
-              <span data-feather="bar-chart-2"></span>
-              Skole
-              <span class="ml-auto dash-antall hk-blue px-2">{{skole}}</span>
-            </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link d-flex" to="/admin/dashbord/teknisk">
-              <span data-feather="bar-chart-2"></span>
-              Teknisk
-              <span class="ml-auto dash-antall hk-blue px-2">{{teknisk}}</span>
-            </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link d-flex" to="/admin/dashbord/helse">
-              <span data-feather="bar-chart-2"></span>
-              Helse
-              <span class="ml-auto dash-antall hk-blue px-2">{{helse}}</span>
-            </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link d-flex" to="/admin/dashbord/brukere">
-              <span data-feather="bar-chart-2"></span>
-              Brukere
-              <span class="ml-auto dash-antall hk-blue px-2">{{brukere}}</span>
-            </router-link>
-          </li>
-        </ul> 
+
+<div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    <div class="bg-light border-right dash-nav" id="sidebar-wrapper">
+      <div class="sidebar-heading">Administrator</div>
+      <div class="list-group list-group-flush">
+        <a href="#" class="list-group-item list-group-item-action bg-light" @click="link('hjem')">Dashbord <span class="ml-auto dash-antall hk-blue px-2">{{hjem}}</span></a>
+        <a href="#" class="list-group-item list-group-item-action bg-light" @click="link('synlige')">Prosjekter som er synlige <span class="ml-auto dash-antall hk-blue px-2">{{synlig}}</span></a>
+        <a href="#" class="list-group-item list-group-item-action bg-light" @click="link('interne')">Interne felles <span class="ml-auto dash-antall hk-blue px-2">{{interne}}</span></a>
+        <a href="#" class="list-group-item list-group-item-action bg-light" @click="link('eksterne')">Eksterne <span class="ml-auto dash-antall hk-blue px-2">{{eksterne}}</span></a>
+        <a href="#" class="list-group-item list-group-item-action bg-light" @click="link('produksjon')">Produksjon <span class="ml-auto dash-antall hk-blue px-2">{{produksjon}}</span></a>
+        <a href="#" class="list-group-item list-group-item-action bg-light" @click="link('utvalgte')">Utvalgte <span class="ml-auto dash-antall hk-blue px-2">{{utvalgte}}</span></a>
+        <a href="#" class="list-group-item list-group-item-action bg-light" @click="link('skole')">Skole <span class="ml-auto dash-antall hk-blue px-2">{{skole}}</span></a>
+        <a href="#" class="list-group-item list-group-item-action bg-light" @click="link('teknisk')">Teknisk <span class="ml-auto dash-antall hk-blue px-2">{{teknisk}}</span></a>
+        <a href="#" class="list-group-item list-group-item-action bg-light" @click="link('helse')">Helse <span class="ml-auto dash-antall hk-blue px-2">{{helse}}</span></a>
+        <a href="#" class="list-group-item list-group-item-action bg-light border-bottom" @click="link('brukere')">Brukere <span class="ml-auto dash-antall hk-blue px-2">{{brukere}}</span></a>
       </div>
-    </nav>
+    </div>
+    <!-- /#sidebar-wrapper -->
 
-    
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+      <button class="btn btn-primary sideMenu mt-2 ml-2" id="menu-toggle" @click="toggleSideBar">Vis meny</button>
 
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-        <router-view/>
+      <div class="container-fluid">
       
-    </main>
+          <router-view/>
+      
+        
+      </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
   </div>
 
-<div class="fab">
-  <span class="fab-action-button">
-        <i class="fab-action-button__icon"></i>
-    </span>
-  <ul class="fab-buttons">
-    <li class="fab-buttons__item">
-      <a @click="link('brukere')" class="fab-buttons__link" data-tooltip="Brukere">
-        <i class="icon-material icon-material_gp"></i>
-      </a>
-    </li>
-      <li class="fab-buttons__item">
-      <a @click="link('utvalgte')" class="fab-buttons__link" data-tooltip="Utvalgt">
-        <i class="icon-material icon-material_gp"></i>
-      </a>
-    </li>
-    <li class="fab-buttons__item">
-      <a @click="link('produksjon')" class="fab-buttons__link" data-tooltip="Produksjon">
-        <i class="icon-material icon-material_gp"></i>
-      </a>
-    </li>
-    <li class="fab-buttons__item">
-      <a @click="link('eksterne')" class="fab-buttons__link" data-tooltip="Eksterne">
-        <i class="icon-material icon-material_gp"></i>
-      </a>
-    </li>
-    <li class="fab-buttons__item">
-      <a @click="link('interne')" class="fab-buttons__link" data-tooltip="Interne">
-        <i class="icon-material icon-material_gp"></i>
-      </a>
-    </li>
-    <li class="fab-buttons__item">
-      <a @click="link('hjem')" class="fab-buttons__link" data-tooltip="Hjem">
-        <i class="icon-material icon-material_gp"></i>
-      </a>
-    </li>
-  </ul>
-</div>
-
-</div>
 </template>
 
 <script>
 import firebase from '@/firebase'
+import JQuery from 'jquery'
+let $ = JQuery
 
 export default {
     data(){
@@ -149,9 +61,17 @@ export default {
       link(sted){
         console.log(sted)
         this.$router.push(sted)
+      },
+      toggleSideBar(){
+        console.log('sidebar')
+        $("#menu-toggle").click(function(e) {
+          e.preventDefault();
+          $("#wrapper").toggleClass("toggled");
+        });
       }
     },
     created(){
+
       document.title = "Admin - Dashbord"
       var element = document.getElementById("dashbord");
       element.classList.add("active", "hk-nav-active");
@@ -218,106 +138,47 @@ export default {
 
 <style lang="scss" scoped>
 
-.feather {
-  width: 16px;
-  height: 16px;
-  vertical-align: text-bottom;
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -17rem;
+  margin-top: 20px;
+  -webkit-transition: margin .25s ease-out;
+  -moz-transition: margin .25s ease-out;
+  -o-transition: margin .25s ease-out;
+  transition: margin .25s ease-out;
 }
 
-/*
- * Sidebar
- */
-
-.sidebar {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 100; /* Behind the navbar */
-  padding: 48px 0 0; /* Height of navbar */
-  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
 }
 
-.sidebar-sticky {
-  position: relative;
-  top: 0;
-  height: calc(100vh - 48px);
-  padding-top: .5rem;
-  overflow-x: hidden;
-  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+#sidebar-wrapper .list-group {
+  width: 17rem;
 }
 
-@supports ((position: -webkit-sticky) or (position: sticky)) {
-  .sidebar-sticky {
-    position: -webkit-sticky;
-    position: sticky;
-  }
+#page-content-wrapper {
+  min-width: 100vw;
+  margin-top: 20px;
 }
 
-.sidebar .nav-link {
-  font-weight: 500;
-  color: #333;
-}
-
-.sidebar .nav-link .feather {
-  margin-right: 4px;
-  color: #999;
-}
-
-.sidebar .nav-link.active {
-  color: #007bff;
-}
-
-.sidebar .nav-link:hover .feather,
-.sidebar .nav-link.active .feather {
-  color: inherit;
-}
-
-.sidebar-heading {
-  font-size: .75rem;
-  text-transform: uppercase;
-}
-
-/*
- * Content
- */
-
-[role="main"] {
-  padding-top: 133px; /* Space for fixed navbar */
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
 }
 
 @media (min-width: 768px) {
-  [role="main"] {
-    padding-top: 48px; /* Space for fixed navbar */
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -17rem;
   }
 }
 
-/*
- * Navbar
- */
-
-.navbar-brand {
-  padding-top: .75rem;
-  padding-bottom: .75rem;
-  font-size: 1rem;
-  background-color: rgba(0, 0, 0, .25);
-  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
-}
-
-.navbar .form-control {
-  padding: .75rem 1rem;
-  border-width: 0;
-  border-radius: 0;
-}
-
-.form-control-dark {
-  color: #fff;
-  background-color: rgba(255, 255, 255, .1);
-  border-color: rgba(255, 255, 255, .1);
-}
-
-.form-control-dark:focus {
-  border-color: transparent;
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
-}
 </style>

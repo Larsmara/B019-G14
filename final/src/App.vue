@@ -18,7 +18,7 @@
         </b-navbar-nav>
 
         <b-navbar-nav class="ml-auto">
-          <b-nav-item id="dashbord" to="/admin/dashbord/hjem" v-if="isLoggedIn && user.admin"><small id="notification">{{newProjects.length}}</small> Dashboard</b-nav-item>
+          <b-nav-item id="dashbord" to="/admin/dashbord/hjem" v-if="isLoggedIn && user.admin"><small v-if="newProjects.length < 0" id="notification">{{newProjects.length}}</small> Dashboard</b-nav-item>
           <b-nav-item id="minSide" :to="'/profil/' + user.slug " v-if="isLoggedIn && user">Min side</b-nav-item>
           <b-nav-item v-if="!isLoggedIn" @click="show_dialog = true">Logg Inn / Ny bruker</b-nav-item>
           
