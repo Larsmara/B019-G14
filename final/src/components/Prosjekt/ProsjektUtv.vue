@@ -23,7 +23,9 @@
                                             <img v-if="!project.data.imageUrl" src="../../assets/idea2.jpg" alt="Standard prosjekt bilde om innsender ikke legger ved ett" class="img-fluid rounded-circle w-50 mb-3">
                                             <img v-else :src="project.data.imageUrl" alt="Prosjekt bilde fra innsender" class="img-fluid rounded-circle w-50 mb-3">
                                             <h3>{{project.data.title}}</h3>
-                                            <p>{{project.data.content}}</p>    
+                                            <hr>
+                                            <!-- <p>{{project.data.content}}</p>  -->  
+                                            <div v-html="project.data.content.slice(0,60)"></div>  
                                         </div>
                                         <router-link class="btn hk-btn mx-3 mb-2" router :to="'/prosjekt/' + project.id">Les mer</router-link>
                                         <div class="card-footer">
