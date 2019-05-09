@@ -221,7 +221,7 @@ export default {
                     telefon: tlf.telefon
                 }).then(() => {
                     this.feil = false
-                    
+                    this.suksess = {message: 'Ditt telefonnummer er nå endret'}
                     setTimeout(() => {
                         this.$refs['my-modal3'].hide()
                     }, 3000)
@@ -249,7 +249,6 @@ export default {
                 }).catch(error => {
                     this.feil = {message: error.message}
                 })
-
             }).catch(function(error) {
                 this.feil = {message: error.message}
             });

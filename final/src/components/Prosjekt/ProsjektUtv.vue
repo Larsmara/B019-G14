@@ -20,8 +20,8 @@
                                 <div class="col-lg-4 col-md-6 pb-5" v-for="project in prosjekt.slice((currentPage-1)*perPage, (currentPage-1)*perPage+6)" :key="project.id">
                                     <div class="card shadow-sm h-100">
                                         <div class="card-body">
-                                            <img v-if="!project.data.imageUrl" src="../../assets/idea2.jpg" alt="Standard prosjekt bilde om innsender ikke legger ved ett" class="img-fluid rounded-circle w-50 mb-3">
-                                            <img v-else :src="project.data.imageUrl" alt="Prosjekt bilde fra innsender" class="img-fluid rounded-circle w-50 mb-3">
+                                            <img v-if="!project.data.imageUrl" src="../../assets/idea2.jpg" alt="Standard prosjekt bilde om innsender ikke legger ved ett" class="img-fluid w-50 mb-3">
+                                            <img v-else :src="project.data.imageUrl" alt="Prosjekt bilde fra innsender" class="img-fluid w-50 mb-3">
                                             <h3>{{project.data.title}}</h3>
                                             <hr>
                                             <!-- <p>{{project.data.content}}</p>  -->  
