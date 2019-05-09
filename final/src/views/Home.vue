@@ -40,44 +40,15 @@
               </div>
             </div>
           </div>
-          <!-- <div class="card-deck">
-              <div class="card w-75">
-                <div class="card-body">
-                  <h5 class="card-title">Smart City</h5>
-                  <p class="card-text">Smart City, eller smarte byer, er et begrep som brukes over hele verden og som forklarer hvordan byer og bygder skal utvikles til å bli bærekraftige og moderne samfunn. En smart by tar utgangspunkt i innbyggernes behov og tar i bruk ny teknologi for å gjøre byen til et bedre sted å leve, bo og arbeide...</p>
-                  <router-link to="/om-oss" tag="button" class="btn hk-btn btn-lg">Mer om Smart City</router-link>
-                </div>
-              </div>
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Hva er en innovasjonside?</h5>
-                <p class="card-text">Med en innovasjonside menes forslag til endrede arbeidsmetoder, innføring av ny teknologi eller nye systemer som vil oppfylle minst en av følgende punkter</p>
-                <ol>
-                    <li>Bedre kvalitet på tjenesten</li>
-                    <li>bidra til en mer effektiv arbeidshverdag</li>
-                    <li>Gi innbyggerne bedre tjenester og/eller miljø</li>
-                  </ol>
-                  <router-link v-if="isLoggedIn" to="/ny-idé" tag="button" class="btn hk-btn btn-lg">Send din Idé</router-link>
-                  <b-button v-if="!isLoggedIn" @click="show_dialog = !show_dialog" class="btn hk-btn btn-lg">Logg inn for å sende idé</b-button>
-              </div>
-            </div>
-            <div class="card w-75">
-              <div class="card-body">
-                <h5 class="card-title">Hva er et innovasjonsprosjekt?</h5>
-                <p class="card-text">Et prosjekt som setter en innovasjonside ut i livet. Når innovasjonsprosjektet er iverksatt vil dette gi en nytteverdi for ansatte og/eller innbyggere. I et prosjekt definerer vi mål for hva vi vil oppnå og arbeider etter en plan for å nå målet.</p>
-                <router-link to="/prosjekter" tag="button" class="btn hk-btn btn-lg">Se innovasjonsidéer</router-link>
-              </div>
-            </div>
-          </div> -->
         </div>
 
-      <!-- <div class="logo">
+      <div class="logo">
         <div class="carousel-inner d-none d-xl-block pt-4">
           <div class="carousel-item img-fluid carousel-image-1 active">
             <img src="../assets/hk-design.png" alt="" class="img-fluid">
           </div>
         </div>
-      </div> -->
+      </div>
 
     </section>
 
