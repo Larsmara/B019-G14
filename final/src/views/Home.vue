@@ -26,7 +26,7 @@
                   
                 </div>
                 <router-link v-if="isLoggedIn" to="/ny-idé" tag="button" class="btn hk-btn">Send din Idé</router-link>
-                  <b-button v-if="!isLoggedIn" @click="show_dialog = !show_dialog" class="btn hk-btn">Logg inn for å sende idé</b-button>
+                <modal2 v-if="!isLoggedIn"/>
               </div>
             </div>
             <div class="col-lg-4 order-3 order-lg-1 mb-3">
@@ -52,7 +52,6 @@
 
     </section>
 
-      <testDialog :show="show_dialog" ></testDialog> 
 
 
     <!-- <section id="logo">
@@ -69,7 +68,7 @@
 <script>
 import testDialog from '../components/Bruker/Dialog'
 import { mapActions, mapState } from 'vuex'
-
+import modal2 from '../components/Bruker/Modaltest2'
 
 export default {
   name: 'home',
@@ -79,7 +78,8 @@ export default {
     }
   },
   components: {
-    testDialog
+    testDialog,
+    modal2
   },
   created(){
       document.title = "Hjem"
@@ -95,3 +95,5 @@ export default {
   },
 }
 </script>
+
+

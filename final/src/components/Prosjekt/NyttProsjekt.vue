@@ -56,7 +56,7 @@
       </b-form-group>
 
       <b-form-group>
-        Ved å sende inn en idé godtar du at Smart City kan ta kontakt med deg.
+        Ved å sende inn en idé godtar du at Smart City kan ta kontakt med deg. <br> Dine personlige data vil ikke vises for andre brukere av denne nettsiden.
       </b-form-group>
 
       <b-button @click="reset" variant="danger" id="resetBtn" class="mb-5">Nullstill skjema</b-button>

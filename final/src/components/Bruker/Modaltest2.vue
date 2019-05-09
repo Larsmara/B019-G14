@@ -1,32 +1,31 @@
 <template>
 <div>
-    <b-nav-item>Åpne</b-nav-item>
-    <b-modal :visible="show" class="m-0 p-0" hide-footer centered title="Smart City" ref="myModalRef">
-      <app-feil v-if="feil" :text="feil.message"></app-feil>
+    <b-button @click="showModal" class="btn hk-btn btn-block">Logg inn for å sende idé</b-button>
+
+     <b-modal centered hide-footer id="modal-multi-1" ref="my-modal" title="Endre epost adresse" no-stacking>
+        <app-feil v-if="feil" :text="feil.message"></app-feil>
         <app-suksess v-if="suksess" :text="suksess.message"></app-suksess>
-      <!-- Tabs with card integration -->
-      <b-tabs class="m-0 p-0 login-tabs">
-        <!-- LOGG INN TAB -->
-        <b-tab title="Logg Inn" class="pt-2">
-          <form @submit.prevent="onLogin(user)">
+
+        <b-tabs content-class="mt-3" fill>
+        <b-tab title="Logg inn" active>
+            <form @submit.prevent="onLogin(bruker)">
             <div class="form-group">
               <label>E-post</label>
-              <input type="email" class="form-control" v-model="user.email"  placeholder="Epost" required>
+              <input type="email" class="form-control" v-model="bruker.email"  placeholder="Epost" required>
             </div>
             <div class="form-group">
               <label>Passord</label>
-              <input type="password" v-model="user.password" class="form-control" placeholder="Passord">
+              <input type="password" v-model="bruker.password" class="form-control" placeholder="Passord">
             </div>
-            <button v-if="!suksess" type="submit" class="btn hk-btn btn-block">Logg inn</button>
-            <button v-if="suksess" type="submit" class="btn hk-btn btn-block" disabled><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span></button>
+            <button v-if="!suksess" class="btn hk-btn btn-block">Logg inn</button>
+            <button v-if="suksess" class="btn hk-btn btn-block" disabled><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span></button>
           </form>
             <div class="knapper mt-2">
-              <button @click="showModal(2)" class="btn btn-link text-center" style="color: rgb(0,114,187)">Glemt passord?</button>
+                <button v-b-modal.modal-multi-2 class="btn btn-link" style="color: rgb(0,114,187)">Glemt passord?</button>
             </div>
         </b-tab>
-        <!-- REGISTRERINGS TAB -->
-        <b-tab title="Registrer deg" class="pt-2">
-          <form @submit.prevent="onRegister(user)">
+    <b-tab title="Ny bruker">
+       <!--  <form @submit.prevent="onRegister(user)">
             <div class="form-group">
               <label>* Epost</label>
               <input type="email" class="form-control" v-model="user.email"  placeholder="Epost" required>
@@ -63,11 +62,15 @@
             <div class="knapper mt-2">
               <button class="btn btn-link" style="color: rgb(0,114,187)" @click="hideModal">Avbryt</button>
             </div>
-          </form>
-        </b-tab>
-      </b-tabs>
+        </form> -->
+    </b-tab>
+
+  </b-tabs>
     </b-modal>
 
+    <!-- <button v-b-modal.modal-multi-2 class="btn btn-link" style="color: rgb(0,114,187)">Glemt passord?</button> -->
+
+    <!-- TILBAKESTILL PASSORD -->
     <b-modal centered hide-footer id="modal-multi-2" ref="my-modal2" title="Glemt passord?">
         <app-feil v-if="feil" :text="feil.message"></app-feil>
         <app-suksess v-if="suksess" :text="suksess.message"></app-suksess>
@@ -79,54 +82,47 @@
             <button type="submit" class="btn hk-btn btn-block">Tilbakestill passord</button>
         </form>
     </b-modal>
-
-</div>
+  </div>
 </template>
 
 <script>
 import slugify from 'slugify'
 import {setTimeout} from 'timers'
-import { mapActions, mapState } from 'vuex'
 import firebase from '@/firebase'
 
-export default {
-  props: {
-    show: Boolean,
-  },
-  data(){
-    return{
-      melding: null,
-      feil: null,
-      suksess: null,
-      show: false,
-      user: {
-        email: '',
-        password: '',
-        password2: '',
-        fnavn: '',
-        enavn: '',
-        telefon: '',
-        slug: '',
-      },
-      bruker: {
-          email: '',
-          password: '',
-      },
-    }
-  },
-  methods: {
-    ...mapActions('auth', ['login','register']),
-    onLogin(){
-      this.feil = false
-      firebase.auth().signInWithEmailAndPassword(this.user.email, this.user.password)
-        .then(user => {
-          this.suksess = {message: 'Du blir logget inn'}
-          setTimeout(() => (this.show = false, this.suksess = false, this.feil = false), 3000)
-        }).catch(error => {
-            this.feil = {message: 'Feil epost eller passord'}
-        }) 
+  export default {
+    name: 'modal',
+    data(){
+        return{
+        melding: null,
+        feil: null,
+        suksess: false,
+        user: {
+            email: '',
+            password: '',
+            password2: '',
+            fnavn: '',
+            enavn: '',
+            telefon: '',
+            slug: '',
+        },
+        bruker: {
+            email: '',
+            password: '',
+        },
+        }
     },
-    onRegister(){
+    methods: {
+      onLogin(bruker){
+          this.suksess = {message: 'Du blir logget inn'}
+          
+        firebase.auth().signInWithEmailAndPassword(bruker.email, bruker.password)
+        .catch(error => {
+            this.feil = {message: 'Eposten finnes ikke eller er skrevet feil'}
+            this.suksess = false
+        })
+    },
+      onRegister(){
       const slug = slugify(this.user.fnavn + ' ' + this.user.enavn, {
         replacement: '-',
         remove: /[$*_+~.()'"!\._@]/g,
@@ -158,7 +154,7 @@ export default {
             })
             .then(() => {
               this.suksess = {message: 'Du blir nå registrert'}
-              setTimeout(() => (this.show = false, this.suksess = false, this.feil = false), 3000)
+              setTimeout(() => (this.suksess = false, this.feil = false), 3000)
             }).catch((error) => {
               this.feil = {message: 'Det har skjedd en feil med informasjonen du har tastet inn. Vennligst prøv igjen.'}
               this.user.email = null
@@ -174,14 +170,6 @@ export default {
         }
       })     
     },
-    showModal(tall){
-        this.$refs['my-modal'+tall].show()
-        this.feil = false
-        this.suksess = false
-    },
-    hideModal(){
-      this.$refs['myModalRef'].hide()
-    },
     resetPassord(reset){
         firebase.auth().sendPasswordResetEmail(reset.email)
         .then(() => {
@@ -192,6 +180,19 @@ export default {
         })
         setTimeout(() => (this.show = true, this.$refs['my-modal2'].hide()), 4000)
     },
-  }
-}
+    close() {
+        this.$emit('close');
+    },
+    showModal() {
+        this.$refs['my-modal'].show()
+    },
+    hideModal() {
+        this.$refs['my-modal'].hide()
+    },
+    },
+  };
 </script>
+
+<style>
+
+</style>

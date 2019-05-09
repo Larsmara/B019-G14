@@ -59,7 +59,6 @@ export default {
     },
     methods: {
       link(sted){
-        console.log(sted)
         this.$router.push(sted)
       },
       toggleSideBar(){
